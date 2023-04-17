@@ -1,0 +1,10 @@
+# currently unused; redocly bundle with filter-out is too weak for our purposes
+
+decorators:
+  # remove fields we don't want to support yet
+  - filter-out:
+    property: "$ref"
+    value:
+      - "#/components/schemas/Location"
+      - "#/components/schemas/PaymentMeta"
+    matchStrategy: any
