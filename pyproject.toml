@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 license = "Proprietary"
 authors = ["mgdelmonte <mgdelmonte@gmail.com>"]
-readme = "usage.md"
+readme = "readme.md"
 packages = [{include = "plaid_skel", from = "skeleton/src"}]
 
 [tool.poetry.dependencies]
