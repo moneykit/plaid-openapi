@@ -10,7 +10,7 @@ This repo uses Plaid's OpenAPI spec to generate request and response models, for
 
 To generate the skeleton, run `generator/regen.sh`, which:
 - sets up our custom generator template
-- download the latest plaid spec
+- downloads the latest Plaid spec
 - preprocesses Plaid's spec to remove things we don't support
 - generates the skeleton
 - fixes the enums
@@ -24,3 +24,4 @@ It's a python package.  Import models from it.
 - include examples
 - x-hidden-from-docs (include_in_schema)
 - min/max/length/pattern (le, ge, etc.)
+- fix externalDocs url, which is currently bogus
