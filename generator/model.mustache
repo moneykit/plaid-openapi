@@ -36,7 +36,10 @@ class {{classname}}(BaseModel):
         schema_extra = {
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#{{{classFilename}}}"
-            }
+            },
+            {{#nullable}}
+            "nullable": True,
+            {{/nullable}}
         }
 
 {{#vars}}
