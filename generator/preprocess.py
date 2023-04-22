@@ -1,9 +1,12 @@
-import yaml
-import dpath
+import pathlib
 
+import dpath
+import yaml
+
+SCRIPT_DIR = pathlib.Path(__file__).parent
 
 print("reading yaml")
-with open("../2020-09-14.yml", "r") as f:
+with open(SCRIPT_DIR / "tmp" / "2020-09-14.yml", "r") as f:
     y = yaml.safe_load(f)
 
 
