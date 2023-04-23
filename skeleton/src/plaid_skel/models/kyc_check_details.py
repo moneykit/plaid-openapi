@@ -28,6 +28,7 @@ class KYCCheckDetails(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#kyc_check_details"
             }
+            , "nullable": True,
         }
 
     status: str = Field( description="The outcome status for the associated Identity Verification attempt's `kyc_check` step. This field will always have the same value as `steps.kyc_check`.")

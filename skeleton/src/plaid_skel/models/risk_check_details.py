@@ -28,6 +28,7 @@ class RiskCheckDetails(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#risk_check_details"
             }
+            , "nullable": True,
         }
 
     status: IdentityVerificationStepStatus = Field()

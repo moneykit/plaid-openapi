@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.plaid_error import PlaidError
+from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
 
 
 
@@ -30,5 +31,6 @@ class AssetsErrorWebhook(BaseModel):
     webhook_code: str = Field( description="`ERROR`")
     error: Optional[PlaidError] = Field(default=None,)
     asset_report_id: str = Field( description="The ID associated with the Asset Report.")
+    environment: WebhookEnvironmentValues = Field()
 
 AssetsErrorWebhook.update_forward_refs()

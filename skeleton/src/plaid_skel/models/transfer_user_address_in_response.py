@@ -23,6 +23,7 @@ class TransferUserAddressInResponse(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#transfer_user_address_in_response"
             }
+            , "nullable": True,
         }
 
     street: Optional[str] = Field(default=None, description="The street number and name (i.e., \"100 Market St.\").")

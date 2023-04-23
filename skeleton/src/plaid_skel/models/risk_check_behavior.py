@@ -26,6 +26,7 @@ class RiskCheckBehavior(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#risk_check_behavior"
             }
+            , "nullable": True,
         }
 
     user_interactions: RiskCheckBehaviorUserInteractionsLabel = Field()

@@ -23,6 +23,7 @@ class RecipientBACSNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#recipient_bacs_nullable"
             }
+            , "nullable": True,
         }
 
     account: Optional[str] = Field(default=None, description="The account number of the account. Maximum of 10 characters.")

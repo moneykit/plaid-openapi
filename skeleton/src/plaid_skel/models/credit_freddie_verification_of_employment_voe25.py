@@ -24,6 +24,7 @@ class CreditFreddieVerificationOfEmploymentVOE25(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#credit_freddie_verification_of_employment_voe25"
             }
+            , "nullable": True,
         }
 
     deal: CreditFreddieVerificationOfEmploymentDealVOE25 = Field()

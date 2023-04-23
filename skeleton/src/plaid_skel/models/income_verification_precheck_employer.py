@@ -24,6 +24,7 @@ class IncomeVerificationPrecheckEmployer(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_employer"
             }
+            , "nullable": True,
         }
 
     name: Optional[str] = Field(default=None, description="The employer's name")

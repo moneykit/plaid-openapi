@@ -24,6 +24,7 @@ class ExternalPaymentScheduleGet(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#external_payment_schedule_get"
             }
+            , "nullable": True,
         }
 
     interval: PaymentScheduleInterval = Field()

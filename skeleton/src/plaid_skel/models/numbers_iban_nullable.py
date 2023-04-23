@@ -23,6 +23,7 @@ class NumbersIBANNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#numbers_iban_nullable"
             }
+            , "nullable": True,
         }
 
 

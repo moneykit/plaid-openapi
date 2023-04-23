@@ -24,6 +24,7 @@ class PhysicalDocumentExtractedData(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#physical_document_extracted_data"
             }
+            , "nullable": True,
         }
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")

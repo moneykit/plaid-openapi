@@ -34,7 +34,7 @@ class IncomeVerificationPrecheckRequest(BaseModel):
     user: Optional[IncomeVerificationPrecheckUser] = Field(default=None,)
     employer: Optional[IncomeVerificationPrecheckEmployer] = Field(default=None,)
     payroll_institution: Optional[IncomeVerificationPrecheckPayrollInstitution] = Field(default=None,)
-    transactions_access_token: Optional[str] = Field(default=None,)
+    transactions_access_token: Optional[str] = Field(default=None, description="The access token associated with the Item data is being requested for.")
     transactions_access_tokens: Optional[List[str]] = Field(default=None, description="An array of access tokens corresponding to Items belonging to the user whose eligibility is being checked. Note that if the Items specified here are not already initialized with `transactions`, providing them in this field will cause these Items to be initialized with (and billed for) the Transactions product.")
     us_military_info: Optional[IncomeVerificationPrecheckMilitaryInfo] = Field(default=None,)
 

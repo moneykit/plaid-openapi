@@ -24,6 +24,7 @@ class PaymentInitiationStandingOrderMetadata(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_initiation_standing_order_metadata"
             }
+            , "nullable": True,
         }
 
     supports_standing_order_end_date: bool = Field( description="Indicates whether the institution supports closed-ended standing orders by providing an end date.")

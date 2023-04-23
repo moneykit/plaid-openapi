@@ -24,6 +24,7 @@ class CreditFreddieMacVerificationOfAssetsVOA24(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_verification_of_assets_voa24"
             }
+            , "nullable": True,
         }
 
     deal: CreditFreddieMacVerificationOfAssetsDealVOA24 = Field()

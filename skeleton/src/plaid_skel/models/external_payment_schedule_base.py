@@ -24,6 +24,7 @@ class ExternalPaymentScheduleBase(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#external_payment_schedule_base"
             }
+            , "nullable": True,
         }
 
     interval: Optional[PaymentScheduleInterval] = Field(default=None,)

@@ -23,6 +23,7 @@ class PaymentInitiationAddress(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_initiation_address"
             }
+            , "nullable": True,
         }
 
     street: List[str] = Field( description="An array of length 1-2 representing the street address where the recipient is located. Maximum of 70 characters.")

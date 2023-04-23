@@ -26,6 +26,7 @@ class ItemStatusNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#item_status_nullable"
             }
+            , "nullable": True,
         }
 
     investments: Optional[ItemStatusInvestments] = Field(default=None,)

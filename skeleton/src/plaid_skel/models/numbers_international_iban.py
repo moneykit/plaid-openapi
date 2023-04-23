@@ -23,6 +23,7 @@ class NumbersInternationalIBAN(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#numbers_international_iban"
             }
+            , "nullable": True,
         }
 
     iban: str = Field( description="International Bank Account Number (IBAN).")

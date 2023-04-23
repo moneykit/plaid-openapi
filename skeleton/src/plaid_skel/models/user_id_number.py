@@ -24,6 +24,7 @@ class UserIDNumber(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#user_id_number"
             }
+            , "nullable": True,
         }
 
     value: str = Field( description="Value of identity document value typed in by user. Alpha-numeric, with all formatting characters stripped.")

@@ -24,6 +24,7 @@ class DocumentRiskSignal(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#document_risk_signal"
             }
+            , "nullable": True,
         }
 
     type: Optional[str] = Field(default=None, description="The result from the risk signal check.")

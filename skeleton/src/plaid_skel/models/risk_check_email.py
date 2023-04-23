@@ -29,6 +29,7 @@ class RiskCheckEmail(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#risk_check_email"
             }
+            , "nullable": True,
         }
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()

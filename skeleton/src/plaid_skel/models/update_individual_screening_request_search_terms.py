@@ -23,6 +23,7 @@ class UpdateIndividualScreeningRequestSearchTerms(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#update_individual_screening_request_search_terms"
             }
+            , "nullable": True,
         }
 
     watchlist_program_id: Optional[str] = Field(default=None, description="ID of the associated program.")

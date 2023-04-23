@@ -27,6 +27,7 @@ class PhysicalDocumentExtractedDataAnalysis(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#physical_document_extracted_data_analysis"
             }
+            , "nullable": True,
         }
 
     name: DocumentNameMatchCode = Field()

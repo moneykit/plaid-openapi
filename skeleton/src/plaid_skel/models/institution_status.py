@@ -25,6 +25,7 @@ class InstitutionStatus(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#institution_status"
             }
+            , "nullable": True,
         }
 
     item_logins: Optional[ProductStatus] = Field(default=None,)

@@ -23,6 +23,7 @@ class CreditSessionDocumentIncomeResult(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#credit_session_document_income_result"
             }
+            , "nullable": True,
         }
 
     num_paystubs_uploaded: int = Field( description="The number of paystubs uploaded by the user.")

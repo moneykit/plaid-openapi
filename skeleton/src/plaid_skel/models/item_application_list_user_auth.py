@@ -23,6 +23,7 @@ class ItemApplicationListUserAuth(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#item_application_list_user_auth"
             }
+            , "nullable": True,
         }
 
     user_id: Optional[str] = Field(default=None, description="Account username.")

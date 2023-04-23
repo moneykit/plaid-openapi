@@ -14,6 +14,7 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_authorization_guarantee_decision import TransferAuthorizationGuaranteeDecision
 from plaid_skel.models.transfer_authorization_guarantee_decision_rationale import TransferAuthorizationGuaranteeDecisionRationale
+from plaid_skel.models.transfer_expected_settlement_schedule_item import TransferExpectedSettlementScheduleItem
 from plaid_skel.models.transfer_failure import TransferFailure
 from plaid_skel.models.transfer_network import TransferNetwork
 from plaid_skel.models.transfer_refund import TransferRefund
@@ -56,9 +57,11 @@ class Transfer(BaseModel):
     iso_currency_code: str = Field( description="The currency of the transfer amount, e.g. \"USD\"")
     standard_return_window: Optional[date] = Field(default=None, description="The date 3 business days from settlement date indicating the following ACH returns can no longer happen: R01, R02, R03, R29. This will be of the form YYYY-MM-DD.")
     unauthorized_return_window: Optional[date] = Field(default=None, description="The date 61 business days from settlement date indicating the following ACH returns can no longer happen: R05, R07, R10, R11, R51, R33, R37, R38, R51, R52, R53. This will be of the form YYYY-MM-DD.")
-    expected_settlement_date: Optional[date] = Field(default=None, description="An estimation of the settlement date which can be useful when the transfer is `pending`. Only set for ACH transfers and is `null` for non-ACH transfers. This will be of the form YYYY-MM-DD.")
+    expected_settlement_date: Optional[date] = Field(default=None, description="The expected date when the full amount of the transfer settles at the consumers’ account, if the transfer is credit; or at the customer's business checking account, if the transfer is debit. Only set for ACH transfers and is null for non-ACH transfers. Only set for ACH transfers. This will be of the form YYYY-MM-DD.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a third-party sender (TPS).")
     refunds: List[TransferRefund] = Field( description="A list of refunds associated with this transfer.")
     recurring_transfer_id: Optional[str] = Field(default=None, description="The id of the recurring transfer if this transfer belongs to a recurring transfer.")
+    settled_amount: Optional[str] = Field(default=None, description="The accumulated amount that have been swept to date. This number does not reflect `return_swept` amount if the transfer is returned. Only applies to ACH debit transfers.")
+    expected_settlement_schedule: Optional[List[TransferExpectedSettlementScheduleItem]] = Field(default=None, description="The expected settlement schedule of this transfer, if posted. Only applies to ACH debit transfers.")
 
 Transfer.update_forward_refs()

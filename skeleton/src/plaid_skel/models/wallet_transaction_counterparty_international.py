@@ -23,6 +23,7 @@ class WalletTransactionCounterpartyInternational(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_counterparty_international"
             }
+            , "nullable": True,
         }
 
     iban: Optional[str] = Field(default=None, description="International Bank Account Number (IBAN).")

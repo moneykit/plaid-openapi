@@ -24,6 +24,7 @@ class AddressNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#address_nullable"
             }
+            , "nullable": True,
         }
 
     data: AddressData = Field()

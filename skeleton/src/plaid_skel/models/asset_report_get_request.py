@@ -30,7 +30,7 @@ class AssetReportGetRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     asset_report_token: str = Field( description="A token that can be provided to endpoints such as `/asset_report/get` or `/asset_report/pdf/get` to fetch or update an Asset Report.")
     include_insights: Optional[bool] = Field(default=None, description="`true` if you would like to retrieve the Asset Report with Insights, `false` otherwise. This field defaults to `false` if omitted.")
-    fast_report: Optional[bool] = Field(default=None, description="`true` to fetch \"fast\" version of asset report. Defaults to false if omitted.")
+    fast_report: Optional[bool] = Field(default=None, description="`true` to fetch \"fast\" version of asset report. Defaults to false if omitted. Can only be used if `/asset_report/create` was called with `options.add_ons` set to `[\"fast_assets\"]`.")
     options: Optional[AssetReportGetRequestOptions] = Field(default=None,)
 
 AssetReportGetRequest.update_forward_refs()

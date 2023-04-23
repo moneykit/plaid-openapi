@@ -23,6 +23,7 @@ class TransferIntentGetFailureReason(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#transfer_intent_get_failure_reason"
             }
+            , "nullable": True,
         }
 
     error_type: Optional[str] = Field(default=None, description="A broad categorization of the error.")

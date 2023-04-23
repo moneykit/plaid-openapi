@@ -25,6 +25,7 @@ class ScopesNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#scopes_nullable"
             }
+            , "nullable": True,
         }
 
     product_access: Optional[ProductAccess] = Field(default=None,)

@@ -23,6 +23,7 @@ class UserAddress(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#user_address"
             }
+            , "nullable": True,
         }
 
     street: str = Field( description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")

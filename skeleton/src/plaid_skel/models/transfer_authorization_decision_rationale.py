@@ -24,6 +24,7 @@ class TransferAuthorizationDecisionRationale(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#transfer_authorization_decision_rationale"
             }
+            , "nullable": True,
         }
 
     code: TransferAuthorizationDecisionRationaleCode = Field()

@@ -24,6 +24,7 @@ class PayrollIncomeAccountData(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payroll_income_account_data"
             }
+            , "nullable": True,
         }
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")

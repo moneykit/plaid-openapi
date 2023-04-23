@@ -24,6 +24,7 @@ class PaymentInitiationMetadata(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_initiation_metadata"
             }
+            , "nullable": True,
         }
 
     supports_international_payments: bool = Field( description="Indicates whether the institution supports payments from a different country.")

@@ -23,6 +23,7 @@ class InstitutionsSearchPaymentInitiationOptions(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#institutions_search_payment_initiation_options"
             }
+            , "nullable": True,
         }
 
     payment_id: Optional[str] = Field(default=None, description="A unique ID identifying the payment")
