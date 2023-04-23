@@ -59,6 +59,7 @@ openapi_generator \
 
 docker cp $CONTAINER_NAME:$DOCKER_OUTPUT_DIR ../
 touch ../skeleton/src/__init__.py
+touch ../skeleton/src/py.typed
 
 echo "Postprocessing enums"
 python fix_enums.py
