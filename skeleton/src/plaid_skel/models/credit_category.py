@@ -23,6 +23,7 @@ class CreditCategory(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#credit_category"
             }
+            , "nullable": True,
         }
 
     primary: str = Field( description="A high level category that communicates the broad category of the transaction.")

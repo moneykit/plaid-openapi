@@ -39,7 +39,7 @@ class TransferEvent(BaseModel):
     transfer_amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
     failure_reason: Optional[TransferFailure] = Field(default=None,)
     sweep_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a sweep.")
-    sweep_amount: Optional[str] = Field(default=None, description="A signed amount of how much was `swept` or `return_swept` (decimal string with two digits of precision e.g. \"-5.50\").")
+    sweep_amount: Optional[str] = Field(default=None, description="A signed amount of how much was `swept` or `return_swept` for this transfer (decimal string with two digits of precision e.g. \"-5.50\").")
     refund_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a refund. A non-null value indicates the event is for the associated refund of the transfer.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of the transfer that this event applies to. Only present if the transfer was created on behalf of another client as a third-party sender (TPS).")
 

@@ -23,6 +23,7 @@ class AddressDataNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#address_data_nullable"
             }
+            , "nullable": True,
         }
 
     city: Optional[str] = Field(default=None, description="The full city name")

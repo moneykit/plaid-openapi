@@ -23,6 +23,7 @@ class IdentityVerificationRetryRequestStepsObject(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#identity_verification_retry_request_steps_object"
             }
+            , "nullable": True,
         }
 
     verify_sms: bool = Field( description="A boolean field specifying whether the new session should require or skip the `verify_sms` step.")

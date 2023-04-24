@@ -28,6 +28,6 @@ class CreditAuditCopyTokenUpdateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     audit_copy_token: str = Field( description="The `audit_copy_token` you would like to update.")
-    report_tokens: List[str] = Field( description="Array of tokens which the specified Audit Copy Token will be updated with. The types of token supported are asset report token and employment report token. There can be at most 1 of each type can be in the array.")
+    report_tokens: List[str] = Field( description="Array of tokens which the specified Audit Copy Token will be updated with. The types of token supported are asset report token and employment report token. There can be at most 1 of each token type in the array.")
 
 CreditAuditCopyTokenUpdateRequest.update_forward_refs()

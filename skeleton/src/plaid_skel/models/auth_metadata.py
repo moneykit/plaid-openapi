@@ -24,6 +24,7 @@ class AuthMetadata(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#auth_metadata"
             }
+            , "nullable": True,
         }
 
     supported_methods: Optional[AuthSupportedMethods] = Field(default=None,)

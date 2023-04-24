@@ -23,6 +23,7 @@ class TransactionData(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#transaction_data"
             }
+            , "nullable": True,
         }
 
     description: str = Field( description="The description of the transaction.")

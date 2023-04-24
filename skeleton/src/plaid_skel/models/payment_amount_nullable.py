@@ -24,6 +24,7 @@ class PaymentAmountNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_amount_nullable"
             }
+            , "nullable": True,
         }
 
     currency: PaymentAmountCurrency = Field()

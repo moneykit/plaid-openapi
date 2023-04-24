@@ -24,6 +24,7 @@ class ExternalPaymentRefundDetails(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#external_payment_refund_details"
             }
+            , "nullable": True,
         }
 
     name: str = Field( description="The name of the account holder.")

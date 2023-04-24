@@ -24,6 +24,7 @@ class RiskCheckPhone(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#risk_check_phone"
             }
+            , "nullable": True,
         }
 
     linked_services: list[RiskCheckLinkedService] = Field()

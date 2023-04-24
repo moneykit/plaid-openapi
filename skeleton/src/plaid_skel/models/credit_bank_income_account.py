@@ -34,6 +34,6 @@ class CreditBankIncomeAccount(BaseModel):
     official_name: Optional[str] = Field(default=None, description="The official name of the bank account.")
     subtype: DepositoryAccountSubtype = Field()
     type: CreditBankIncomeAccountType = Field()
-    owners: List[Owner] = Field()
+    owners: List[Owner] = Field( description="Data returned by the financial institution about the account owner or owners. Identity information is optional, so field may return an empty array.")
 
 CreditBankIncomeAccount.update_forward_refs()

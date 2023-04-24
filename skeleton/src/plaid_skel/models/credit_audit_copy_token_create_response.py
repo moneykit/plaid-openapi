@@ -25,7 +25,7 @@ class CreditAuditCopyTokenCreateResponse(BaseModel):
             }
         }
 
-    audit_copy_token: str = Field( description="A token that can be shared with a third party auditor to allow them to obtain access to the Asset or Income Report. This token should be stored securely.")
+    audit_copy_token: str = Field( description="A token that can be shared with a third party auditor, which allows them to fetch the Asset Reports attached to the token. This token should be stored securely.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 CreditAuditCopyTokenCreateResponse.update_forward_refs()

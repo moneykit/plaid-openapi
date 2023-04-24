@@ -23,6 +23,7 @@ class ItemStatusLastWebhook(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#item_status_last_webhook"
             }
+            , "nullable": True,
         }
 
     sent_at: Optional[datetime] = Field(default=None, description="[ISO 8601](https://wikipedia.org/wiki/ISO_8601) timestamp of when the webhook was fired. ")

@@ -23,6 +23,7 @@ class PersonalFinanceCategory(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#personal_finance_category"
             }
+            , "nullable": True,
         }
 
     primary: str = Field( description="A high level category that communicates the broad category of the transaction.")

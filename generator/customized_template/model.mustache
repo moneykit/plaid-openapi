@@ -37,6 +37,9 @@ class {{classname}}(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#{{{classFilename}}}"
             }
+            {{#isNullable}}
+            , "nullable": True,
+            {{/isNullable}}
         }
 
 {{#vars}}

@@ -27,7 +27,7 @@ class CreditFreddieMacReportsGetResponse(BaseModel):
             }
         }
 
-    voa: CreditFreddieMacVerificationOfAssetsVOA24 = Field()
+    voa: Optional[CreditFreddieMacVerificationOfAssetsVOA24] = Field(default=None,)
     voe: Optional[CreditFreddieVerificationOfEmploymentVOE25] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

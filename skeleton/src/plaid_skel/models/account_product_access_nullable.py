@@ -23,6 +23,7 @@ class AccountProductAccessNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#account_product_access_nullable"
             }
+            , "nullable": True,
         }
 
     account_data: Optional[bool] = Field(default=None, description="Allow the application to access account data. Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")

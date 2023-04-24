@@ -23,6 +23,7 @@ class SignalPersonName(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#signal_person_name"
             }
+            , "nullable": True,
         }
 
     prefix: Optional[str] = Field(default=None, description="The user's name prefix (e.g. \"Mr.\")")

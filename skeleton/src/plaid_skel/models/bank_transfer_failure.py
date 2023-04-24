@@ -23,6 +23,7 @@ class BankTransferFailure(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#bank_transfer_failure"
             }
+            , "nullable": True,
         }
 
     ach_return_code: Optional[str] = Field(default=None, description="The ACH return code, e.g. `R01`.  A return code will be provided if and only if the transfer status is `reversed`. For a full listing of ACH return codes, see [Bank Transfers errors](https://plaid.com/docs/errors/bank-transfers/#ach-return-codes).")

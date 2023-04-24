@@ -23,6 +23,7 @@ class PaymentConsentValidDateTime(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_consent_valid_date_time"
             }
+            , "nullable": True,
         }
 
     _from: Optional[datetime] = Field(default=None, description="The date and time from which the consent should be active, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")

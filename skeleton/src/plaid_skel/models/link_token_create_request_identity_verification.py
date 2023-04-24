@@ -26,7 +26,7 @@ class LinkTokenCreateRequestIdentityVerification(BaseModel):
         }
 
     template_id: str = Field( description="ID of the associated Identity Verification template.")
-    consent: Optional[bool] = Field(default=None,)
+    consent: Optional[bool] = Field(default=None, description="A flag specifying whether the end user has already agreed to a privacy policy specifying that their data will be shared with Plaid for verification purposes.  If `gave_consent` is set to `true`, the `accept_tos` step will be marked as `skipped` and the end user's session will start at the next step requirement.")
     gave_consent: Optional[bool] = Field(default=None, description="A flag specifying whether the end user has already agreed to a privacy policy specifying that their data will be shared with Plaid for verification purposes.  If `gave_consent` is set to `true`, the `accept_tos` step will be marked as `skipped` and the end user's session will start at the next step requirement.")
 
 LinkTokenCreateRequestIdentityVerification.update_forward_refs()

@@ -24,6 +24,7 @@ class DocumentaryVerification(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#documentary_verification"
             }
+            , "nullable": True,
         }
 
     status: str = Field( description="The outcome status for the associated Identity Verification attempt's `documentary_verification` step. This field will always have the same value as `steps.documentary_verification`.")

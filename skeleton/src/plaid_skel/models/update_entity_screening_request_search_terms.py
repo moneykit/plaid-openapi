@@ -23,6 +23,7 @@ class UpdateEntityScreeningRequestSearchTerms(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#update_entity_screening_request_search_terms"
             }
+            , "nullable": True,
         }
 
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")
@@ -32,8 +33,6 @@ class UpdateEntityScreeningRequestSearchTerms(BaseModel):
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
     phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
     url: Optional[AnyUrl] = Field(default=None, description="An 'http' or 'https' URL (must begin with either of those).")
-    client_id: str = Field( description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
-    secret: str = Field( description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
 
     @validator("legal_name")
     def legal_name_min_length(cls, value):

@@ -23,6 +23,7 @@ class IdentityVerificationUserAddress(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#identity_verification_user_address"
             }
+            , "nullable": True,
         }
 
     street: Optional[str] = Field(default=None, description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")

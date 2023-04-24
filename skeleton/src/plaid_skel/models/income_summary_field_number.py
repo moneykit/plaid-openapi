@@ -24,6 +24,7 @@ class IncomeSummaryFieldNumber(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#income_summary_field_number"
             }
+            , "nullable": True,
         }
 
     value: float = Field( description="The value of the field.")

@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.counterparty import Counterparty
 from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
+from plaid_skel.models.recurrence import Recurrence
 
 
 
@@ -36,6 +37,7 @@ class Enrichments(BaseModel):
     merchant_name: Optional[str] = Field(default=None, description="The name of the primary counterparty, such as the merchant or the financial institution, as extracted by Plaid from the raw description.")
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
     personal_finance_category_icon_url: str = Field( description="A link to the icon associated with the primary personal finance category. The logo will always be 100x100 pixels.")
+    recurrence: Optional[Recurrence] = Field(default=None,)
     website: Optional[str] = Field(default=None, description="The website associated with this transaction.")
 
 Enrichments.update_forward_refs()

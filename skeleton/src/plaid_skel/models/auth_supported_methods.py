@@ -23,6 +23,7 @@ class AuthSupportedMethods(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#auth_supported_methods"
             }
+            , "nullable": True,
         }
 
     instant_auth: bool = Field( description="Indicates if instant auth is supported.")

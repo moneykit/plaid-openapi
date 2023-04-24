@@ -25,6 +25,7 @@ class PayFrequency(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#pay_frequency"
             }
+            , "nullable": True,
         }
 
     value: PayFrequencyValue = Field()

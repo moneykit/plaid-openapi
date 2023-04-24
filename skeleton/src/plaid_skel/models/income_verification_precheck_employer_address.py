@@ -23,6 +23,7 @@ class IncomeVerificationPrecheckEmployerAddress(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_employer_address"
             }
+            , "nullable": True,
         }
 
     city: Optional[str] = Field(default=None, description="The full city name")

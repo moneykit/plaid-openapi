@@ -23,6 +23,7 @@ class SignalAddressData(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#signal_address_data"
             }
+            , "nullable": True,
         }
 
     city: Optional[str] = Field(default=None, description="The full city name")

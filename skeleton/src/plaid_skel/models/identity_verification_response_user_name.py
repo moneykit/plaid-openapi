@@ -23,6 +23,7 @@ class IdentityVerificationResponseUserName(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#identity_verification_response_user_name"
             }
+            , "nullable": True,
         }
 
     given_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")

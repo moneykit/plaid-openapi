@@ -23,6 +23,7 @@ class NumbersBACSNullable(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#numbers_bacs_nullable"
             }
+            , "nullable": True,
         }
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")

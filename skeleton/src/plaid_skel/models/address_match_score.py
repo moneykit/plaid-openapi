@@ -23,6 +23,7 @@ class AddressMatchScore(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#address_match_score"
             }
+            , "nullable": True,
         }
 
     score: Optional[int] = Field(default=None, description="Match score for address. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the address is missing from either the API or financial institution, this is empty.")

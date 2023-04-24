@@ -28,4 +28,14 @@ class LinkTokenCreateRequestIncomeVerificationBankIncome(BaseModel):
     days_requested: int = Field( description="The number of days of data to request for the Bank Income product")
     enable_multiple_items: Optional[bool] = Field(default=None, description="Whether to enable multiple Items to be added in the Link session")
 
+    @validator("days_requested")
+    def days_requested_max(cls, value):
+        assert value <= 731
+        return value
+
+    @validator("days_requested")
+    def days_requested_min(cls, value):
+        assert value >= 1
+        return value
+
 LinkTokenCreateRequestIncomeVerificationBankIncome.update_forward_refs()

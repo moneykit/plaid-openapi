@@ -24,6 +24,7 @@ class ExternalPaymentInitiationConsentOptions(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#external_payment_initiation_consent_options"
             }
+            , "nullable": True,
         }
 
     request_refund_details: Optional[bool] = Field(default=None, description="When `true`, Plaid will attempt to request refund details from the payee's financial institution.  Support varies between financial institutions and will not always be available.  If refund details could be retrieved, they will be available in the `/payment_initiation/payment/get` response.")

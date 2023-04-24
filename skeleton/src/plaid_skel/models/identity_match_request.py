@@ -31,6 +31,7 @@ class IdentityMatchRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     user: Optional[IdentityMatchUser] = Field(default=None,)
+    identity_verification_id: Optional[str] = Field(default=None, description="ID of the associated Identity Verification attempt. This field can be used instead of `user` to perform fuzzy match against the data collected during identity verification.")
     options: Optional[IdentityMatchRequestOptions] = Field(default=None,)
 
 IdentityMatchRequest.update_forward_refs()

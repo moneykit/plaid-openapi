@@ -24,6 +24,7 @@ class IncomeSummaryFieldString(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#income_summary_field_string"
             }
+            , "nullable": True,
         }
 
     value: str = Field( description="The value of the field.")

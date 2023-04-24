@@ -31,7 +31,7 @@ class AssetReportCreateRequestOptions(BaseModel):
     webhook: Optional[str] = Field(default=None, description="URL to which Plaid will send Assets webhooks, for example when the requested Asset Report is ready.")
     include_fast_report: Optional[bool] = Field(default=None, description="true to return balance and identity earlier as a fast report. Defaults to false if omitted.")
     products: Optional[List[str]] = Field(default=None, description="Additional information that can be included in the asset report. Possible values: `\"investments\"`")
-    add_ons: Optional[List[AssetReportAddOns]] = Field(default=None, description="Additional information that can be included in the asset report. Possible values: `\"fast_assets\"`")
+    add_ons: Optional[List[AssetReportAddOns]] = Field(default=None, description="Use this field to request a `fast_asset` report. When Fast Assets is requested, Plaid will create two versions of the Asset Report: first, the Fast Asset Report, which will contain only current identity and balance information, and later, the Full Asset Report, which will also contain historical balance information and transaction data. A `PRODUCT_READY` webhook will be fired for each Asset Report when it is ready, and the `report_type` field will indicate whether the webhook is firing for the `full` or `fast` Asset Report. To retrieve the Fast Asset Report, call `/asset_report/get` with `fast_report` set to `true`. There is no additional charge for using Fast Assets.")
     user: Optional[AssetReportUser] = Field(default=None,)
 
 AssetReportCreateRequestOptions.update_forward_refs()

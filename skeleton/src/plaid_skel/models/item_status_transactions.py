@@ -23,6 +23,7 @@ class ItemStatusTransactions(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#item_status_transactions"
             }
+            , "nullable": True,
         }
 
     last_successful_update: Optional[datetime] = Field(default=None, description="[ISO 8601](https://wikipedia.org/wiki/ISO_8601) timestamp of the last successful transactions update for the Item. The status will update each time Plaid successfully connects with the institution, regardless of whether any new data is available in the update.")

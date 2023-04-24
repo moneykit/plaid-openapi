@@ -24,6 +24,7 @@ class PlaidError(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#plaid_error"
             }
+            , "nullable": True,
         }
 
     error_type: PlaidErrorType = Field()

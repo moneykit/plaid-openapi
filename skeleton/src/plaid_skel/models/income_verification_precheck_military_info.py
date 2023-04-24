@@ -23,6 +23,7 @@ class IncomeVerificationPrecheckMilitaryInfo(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_military_info"
             }
+            , "nullable": True,
         }
 
     is_active_duty: Optional[bool] = Field(default=None, description="Is the user currently active duty in the US military")

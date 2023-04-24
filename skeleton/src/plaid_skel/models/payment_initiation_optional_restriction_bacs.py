@@ -23,6 +23,7 @@ class PaymentInitiationOptionalRestrictionBacs(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#payment_initiation_optional_restriction_bacs"
             }
+            , "nullable": True,
         }
 
     account: Optional[str] = Field(default=None, description="The account number of the account. Maximum of 10 characters.")

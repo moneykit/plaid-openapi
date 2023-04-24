@@ -23,6 +23,7 @@ class NameMatchScore(BaseModel):
             "externalDocs": {
                 "url": "https://plaid.com/docs/api/accounts/#name_match_score"
             }
+            , "nullable": True,
         }
 
     score: Optional[int] = Field(default=None, description="Represents the match score for name. 100 is a perfect score, 85-99 means a strong match, 50-84 is a partial match, less than 50 is a weak match and 0 is a complete mismatch. If the name is missing from either the API or financial institution, this is empty.")
