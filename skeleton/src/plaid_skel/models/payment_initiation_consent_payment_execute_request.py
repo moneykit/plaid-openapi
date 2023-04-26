@@ -19,12 +19,6 @@ from plaid_skel.models.payment_amount import PaymentAmount
 class PaymentInitiationConsentPaymentExecuteRequest(BaseModel):
     """PaymentInitiationConsentPaymentExecuteRequest defines the request schema for `/payment_initiation/consent/payment/execute`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_consent_payment_execute_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")

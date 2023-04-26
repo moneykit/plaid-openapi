@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatu
 class WatchlistScreeningIndividualListRequest(BaseModel):
     """Request input for listinging watchlist screenings for individuals"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_list_request"
-            }
-        }
 
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")

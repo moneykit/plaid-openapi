@@ -19,12 +19,7 @@ class WalletTransactionCounterpartyInternational(BaseModel):
     """International Bank Account Number for a Wallet Transaction"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_counterparty_international"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     iban: Optional[str] = Field(default=None, description="International Bank Account Number (IBAN).")
 

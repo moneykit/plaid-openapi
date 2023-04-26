@@ -19,12 +19,7 @@ class PaymentInitiationAddress(BaseModel):
     """The optional address of the payment recipient. Required by most institutions outside of the UK."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_address"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     street: List[str] = Field( description="An array of length 1-2 representing the street address where the recipient is located. Maximum of 70 characters.")
     city: str = Field( description="The city where the recipient is located. Maximum of 35 characters.")

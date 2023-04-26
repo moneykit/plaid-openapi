@@ -20,12 +20,6 @@ from plaid_skel.models.enrichments import Enrichments
 class ClientProvidedEnrichedTransaction(BaseModel):
     """A client-provided transaction that Plaid has enriched."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#client_provided_enriched_transaction"
-            }
-        }
 
     id: str = Field( description="The unique ID for the transaction as provided by you in the request.")
     description: str = Field( description="The raw description of the transaction.")

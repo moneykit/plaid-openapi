@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestAuth(BaseModel):
     """Specifies options for initializing Link for use with the Auth product. This field can be used to enable or disable extended Auth flows for the resulting Link session. Omitting any field will result in a default that can be configured by your account manager."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_auth"
-            }
-        }
 
     auth_type_select_enabled: Optional[bool] = Field(default=None, description="Specifies whether Auth Type Select is enabled for the Link session, allowing the end user to choose between linking instantly or manually prior to selecting their financial institution. Note that this can only be true if `same_day_microdeposits_enabled` is set to true.")
     automated_microdeposits_enabled: Optional[bool] = Field(default=None, description="Specifies whether the Link session is enabled for the Automated Micro-deposits flow.")

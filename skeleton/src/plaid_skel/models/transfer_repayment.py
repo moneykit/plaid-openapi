@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferRepayment(BaseModel):
     """A repayment is created automatically after one or more guaranteed transactions receive a return. If there are multiple eligible returns in a day, they are batched together into a single repayment.  Repayments are sent over ACH, with funds typically available on the next banking day."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_repayment"
-            }
-        }
 
     repayment_id: str = Field( description="Identifier of the repayment.")
     created: datetime = Field( description="The datetime when the repayment occurred, in RFC 3339 format.")

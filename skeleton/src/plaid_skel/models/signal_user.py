@@ -20,12 +20,6 @@ from plaid_skel.models.signal_person_name import SignalPersonName
 class SignalUser(BaseModel):
     """Details about the end user initiating the transaction (i.e., the account holder)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#signal_user"
-            }
-        }
 
     name: Optional[SignalPersonName] = Field(default=None,)
     phone_number: Optional[str] = Field(default=None, description="The user's phone number, in E.164 format: +{countrycode}{number}. For example: \"+14151234567\"")

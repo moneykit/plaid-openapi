@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Holding(BaseModel):
     """A securities holding at an institution."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#holding"
-            }
-        }
 
     account_id: str = Field( description="The Plaid `account_id` associated with the holding.")
     security_id: str = Field( description="The Plaid `security_id` associated with the holding. Security data is not specific to a user's account; any user who held the same security at the same financial institution at the same time would have identical security data. The `security_id` for the same security will typically be the same across different institutions, but this is not guaranteed. The `security_id` does not typically change, but may change if inherent details of the security change due to a corporate action, for example, in the event of a ticker symbol change or CUSIP change.")

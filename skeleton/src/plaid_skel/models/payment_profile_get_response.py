@@ -19,12 +19,6 @@ from plaid_skel.models.payment_profile_status import PaymentProfileStatus
 class PaymentProfileGetResponse(BaseModel):
     """PaymentProfileGetResponse defines the response schema for `/payment_profile/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_profile_get_response"
-            }
-        }
 
     updated_at: datetime = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the last time the given Payment Profile was updated at")
     created_at: datetime = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Payment Profile was created at")

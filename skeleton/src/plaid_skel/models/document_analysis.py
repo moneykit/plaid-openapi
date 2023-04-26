@@ -21,12 +21,6 @@ from plaid_skel.models.physical_document_extracted_data_analysis import Physical
 class DocumentAnalysis(BaseModel):
     """High level descriptions of how the associated document was processed. If a document fails verification, the details in the `analysis` object should help clarify why the document was rejected."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_analysis"
-            }
-        }
 
     authenticity: DocumentAuthenticityMatchCode = Field()
     image_quality: ImageQuality = Field()

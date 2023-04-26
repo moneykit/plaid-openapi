@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_loan_voa24 import CreditFreddieMacLoan
 class CreditFreddieMacLoansVOA24(BaseModel):
     """A collection of loans that are part of a single deal."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_loans_voa24"
-            }
-        }
 
     loan: CreditFreddieMacLoanVOA24 = Field()
 

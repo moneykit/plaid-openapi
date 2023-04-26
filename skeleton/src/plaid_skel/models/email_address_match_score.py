@@ -19,12 +19,7 @@ class EmailAddressMatchScore(BaseModel):
     """Score found by matching email provided by the API with the email on the account at the financial institution. 100 is a perfect match and 0 is a no match. If the account contains multiple owners, the maximum match score is filled."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#email_address_match_score"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     score: Optional[int] = Field(default=None, description="Match score for normalized email. 100 is a perfect match and 0 is a no match. If the email is missing from either the API or financial institution, this is empty.")
 

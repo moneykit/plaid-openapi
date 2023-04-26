@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class StudentRepaymentPlan(BaseModel):
     """An object representing the repayment plan for the student loan"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#student_repayment_plan"
-            }
-        }
 
     description: Optional[str] = Field(default=None, description="The description of the repayment plan as provided by the servicer.")
     type: Optional[str] = Field(default=None, description="The type of the repayment plan.")

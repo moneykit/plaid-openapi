@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferRecurringCancelResponse(BaseModel):
     """Defines the response schema for `/transfer/recurring/cancel`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_recurring_cancel_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

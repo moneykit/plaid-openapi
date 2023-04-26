@@ -29,12 +29,6 @@ from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
 class Transfer(BaseModel):
     """Represents a transfer within the Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer"
-            }
-        }
 
     id: str = Field( description="Plaid’s unique identifier for a transfer.")
     ach_class: Optional[ACHClass] = Field(default=None,)

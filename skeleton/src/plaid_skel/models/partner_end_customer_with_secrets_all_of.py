@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer_secrets import PartnerEndCustomerSec
 class PartnerEndCustomerWithSecretsAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_with_secrets_all_of"
-            }
-        }
 
     secrets: Optional[PartnerEndCustomerSecrets] = Field(default=None,)
 

@@ -19,12 +19,6 @@ from plaid_skel.models.link_delivery_session_status import LinkDeliverySessionSt
 class LinkDeliveryGetResponse(BaseModel):
     """LinkDeliveryGetRequest defines the response schema for `/link_delivery/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_get_response"
-            }
-        }
 
     status: LinkDeliverySessionStatus = Field()
     created_at: datetime = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Link Delivery Session was created at.")

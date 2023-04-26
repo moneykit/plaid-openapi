@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class LiabilitiesDefaultUpdateWebhook(BaseModel):
     """The webhook of type `LIABILITIES` and code `DEFAULT_UPDATE` will be fired when new or updated liabilities have been detected on a liabilities item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#liabilities_default_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`LIABILITIES`")
     webhook_code: str = Field( description="`DEFAULT_UPDATE`")

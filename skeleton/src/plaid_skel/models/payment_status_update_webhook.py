@@ -21,12 +21,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class PaymentStatusUpdateWebhook(BaseModel):
     """Fired when the status of a payment has changed."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_status_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`PAYMENT_INITIATION`")
     webhook_code: str = Field( description="`PAYMENT_STATUS_UPDATE`")

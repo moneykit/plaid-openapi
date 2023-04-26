@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IncidentUpdate(BaseModel):
     """An update on the health incident"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#incident_update"
-            }
-        }
 
     description: Optional[str] = Field(default=None, description="The content of the update.")
     status: Optional[str] = Field(default=None, description="The status of the incident.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class StandaloneCurrencyCodeList(BaseModel):
     """The following currency codes are supported by Plaid."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#standalone_currency_code_list"
-            }
-        }
 
     iso_currency_code: str = Field( description="Plaid supports all ISO 4217 currency codes.")
     unofficial_currency_code: str = Field( description="List of unofficial currency codes")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class StudentLoanRepaymentModel(BaseModel):
     """Student loan repayment information used to configure Sandbox test data for the Liabilities product"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#student_loan_repayment_model"
-            }
-        }
 
     type: str = Field( description="The only currently supported value for this field is `standard`.")
     non_repayment_months: float = Field( description="Configures the number of months before repayment starts.")

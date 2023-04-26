@@ -20,12 +20,6 @@ from plaid_skel.models.products import Products
 class Item(BaseModel):
     """Metadata about the Item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item"
-            }
-        }
 
     item_id: str = Field( description="The Plaid Item ID. The `item_id` is always unique; linking the same account at the same institution twice will result in two Items with different `item_id` values. Like all Plaid identifiers, the `item_id` is case-sensitive.")
     institution_id: Optional[str] = Field(default=None, description="The Plaid Institution ID associated with the Item. Field is `null` for Items created via Same Day Micro-deposits.")

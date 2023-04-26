@@ -21,12 +21,6 @@ from plaid_skel.models.service_product_fulfillment import ServiceProductFulfillm
 class CreditFreddieMacVerificationOfAssetVOE25(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_verification_of_asset_voe25"
-            }
-        }
 
     reporting_information: CreditFreddieMacReportingInformationVOA24 = Field()
     service_product_fulfillment: ServiceProductFulfillment = Field()

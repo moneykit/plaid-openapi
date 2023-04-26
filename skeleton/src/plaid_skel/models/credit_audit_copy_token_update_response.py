@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditAuditCopyTokenUpdateResponse(BaseModel):
     """CreditAuditCopyTokenUpdateResponse defines the response schema for `/credit/audit_copy_token/update`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_audit_copy_token_update_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     updated: bool = Field( description="`true` if the Audit Copy Token was successfully updated.")

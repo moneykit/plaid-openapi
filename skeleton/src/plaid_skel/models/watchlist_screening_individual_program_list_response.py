@@ -19,12 +19,6 @@ from plaid_skel.models.individual_watchlist_program import IndividualWatchlistPr
 class WatchlistScreeningIndividualProgramListResponse(BaseModel):
     """Paginated list of individual watchlist screening programs"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_program_list_response"
-            }
-        }
 
     watchlist_programs: List[IndividualWatchlistProgram] = Field( description="List of individual watchlist screening programs")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

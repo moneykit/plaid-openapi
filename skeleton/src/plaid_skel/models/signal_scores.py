@@ -20,12 +20,6 @@ from plaid_skel.models.customer_initiated_return_risk import CustomerInitiatedRe
 class SignalScores(BaseModel):
     """Risk scoring details broken down by risk category."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#signal_scores"
-            }
-        }
 
     customer_initiated_return_risk: Optional[CustomerInitiatedReturnRisk] = Field(default=None,)
     bank_initiated_return_risk: Optional[BankInitiatedReturnRisk] = Field(default=None,)

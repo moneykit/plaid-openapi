@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Category(BaseModel):
     """Information describing a transaction category"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#category"
-            }
-        }
 
     category_id: str = Field( description="An identifying number for the category. `category_id` is a Plaid-specific identifier and does not necessarily correspond to merchant category codes.")
     group: str = Field( description="`place` for physical transactions or `special` for other transactions such as bank charges.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestTransfer(BaseModel):
     """Specifies options for initializing Link for use with the Transfer product."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_transfer"
-            }
-        }
 
     intent_id: Optional[str] = Field(default=None, description="The `id` returned by the `/transfer/intent/create` endpoint.")
     payment_profile_token: Optional[str] = Field(default=None, description="The `payment_profile_token` returned by the `/payment_profile/create` endpoint.")

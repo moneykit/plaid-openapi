@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class RecurringNewTransferWebhook(BaseModel):
     """Fired when a new transfer of a recurring transfer is originated."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurring_new_transfer_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`TRANSFER`")
     webhook_code: str = Field( description="`RECURRING_NEW_TRANSFER`")

@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class AssetsErrorWebhook(BaseModel):
     """Fired when Asset Report generation has failed. The resulting `error` will have an `error_type` of `ASSET_REPORT_ERROR`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#assets_error_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ASSETS`")
     webhook_code: str = Field( description="`ERROR`")

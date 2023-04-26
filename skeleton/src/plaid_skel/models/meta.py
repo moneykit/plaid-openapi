@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Meta(BaseModel):
     """Allows specifying the metadata of the test account"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#meta"
-            }
-        }
 
     name: str = Field( description="The account's name")
     official_name: str = Field( description="The account's official name")

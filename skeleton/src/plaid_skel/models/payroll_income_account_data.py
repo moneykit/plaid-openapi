@@ -20,12 +20,7 @@ class PayrollIncomeAccountData(BaseModel):
     """An object containing account level data."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payroll_income_account_data"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")
     rate_of_pay: PayrollIncomeRateOfPay = Field()

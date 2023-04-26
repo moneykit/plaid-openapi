@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class DepositSwitchStateUpdateWebhook(BaseModel):
     """Fired when the status of a deposit switch request has changed."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_state_update_webhook"
-            }
-        }
 
     webhook_type: Optional[str] = Field(default=None, description="`\"DEPOSIT_SWITCH\"`")
     webhook_code: Optional[str] = Field(default=None, description="`\"SWITCH_STATE_UPDATE\"`")

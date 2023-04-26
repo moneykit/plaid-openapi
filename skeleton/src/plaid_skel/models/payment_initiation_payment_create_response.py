@@ -19,12 +19,6 @@ from plaid_skel.models.payment_initiation_payment_create_status import PaymentIn
 class PaymentInitiationPaymentCreateResponse(BaseModel):
     """PaymentInitiationPaymentCreateResponse defines the response schema for `/payment_initiation/payment/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment_create_response"
-            }
-        }
 
     payment_id: str = Field( description="A unique ID identifying the payment")
     status: PaymentInitiationPaymentCreateStatus = Field()

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerAssetsUnderManagement(BaseModel):
     """Assets under management for the given end customer. Required for end customers with monthly service commitments."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_assets_under_management"
-            }
-        }
 
     amount: float = Field()
     iso_currency_code: str = Field()

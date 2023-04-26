@@ -21,12 +21,6 @@ from plaid_skel.models.total import Total
 class Deductions(BaseModel):
     """An object with the deduction information found on a paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deductions"
-            }
-        }
 
     subtotals: Optional[List[Total]] = Field(default=None,)
     breakdown: List[DeductionsBreakdown] = Field()

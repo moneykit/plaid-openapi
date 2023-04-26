@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Location(BaseModel):
     """A representation of where a transaction took place"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#location"
-            }
-        }
 
     address: Optional[str] = Field(default=None, description="The street address where the transaction occurred.")
     city: Optional[str] = Field(default=None, description="The city where the transaction occurred.")

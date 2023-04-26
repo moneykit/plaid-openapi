@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class RecurringTransactionsUpdateWebhook(BaseModel):
     """Fired when recurring transactions data is updated. This includes when a new recurring stream is detected or when a new transaction is added to an existing recurring stream. The `RECURRING_TRANSACTIONS_UPDATE` webhook will also fire when one or more attributes of the recurring stream changes, which is usually a result of the addition, update, or removal of transactions to the stream.  After receipt of this webhook, the updated data can be fetched from `/transactions/recurring/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurring_transactions_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`TRANSACTIONS`")
     webhook_code: str = Field( description="`RECURRING_TRANSACTIONS_UPDATE`")

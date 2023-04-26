@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditBankIncomeRefreshResponse(BaseModel):
     """CreditBankIncomeRefreshResponse defines the response schema for `/credit/bank_income/refresh`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_refresh_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

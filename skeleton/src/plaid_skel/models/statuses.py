@@ -19,12 +19,6 @@ from plaid_skel.models.status import Status
 class Statuses(BaseModel):
     """A collection of STATUS containers."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#statuses"
-            }
-        }
 
     status: Status = Field()
 

@@ -19,12 +19,6 @@ from plaid_skel.models.service import Service
 class Services(BaseModel):
     """A collection of objects that describe requests and responses for services."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#services"
-            }
-        }
 
     service: Service = Field()
 

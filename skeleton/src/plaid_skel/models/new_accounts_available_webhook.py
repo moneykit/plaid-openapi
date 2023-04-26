@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class NewAccountsAvailableWebhook(BaseModel):
     """Fired when Plaid detects a new account for Items created or updated with [Account Select v2](https://plaid.com/docs/link/customization/#account-select). Upon receiving this webhook, you can prompt your users to share new accounts with you through [Account Select v2 update mode](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#new_accounts_available_webhook"
-            }
-        }
 
     webhook_type: Optional[str] = Field(default=None, description="`ITEM`")
     webhook_code: Optional[str] = Field(default=None, description="`NEW_ACCOUNTS_AVAILABLE`")

@@ -21,12 +21,6 @@ from plaid_skel.models.transfer_type import TransferType
 class TransferEvent(BaseModel):
     """Represents an event in the Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_event"
-            }
-        }
 
     event_id: int = Field( description="Plaid’s unique identifier for this event. IDs are sequential unsigned 64-bit integers.")
     timestamp: datetime = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")

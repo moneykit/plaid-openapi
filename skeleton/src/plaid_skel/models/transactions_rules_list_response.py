@@ -19,12 +19,6 @@ from plaid_skel.models.transactions_category_rule import TransactionsCategoryRul
 class TransactionsRulesListResponse(BaseModel):
     """TransactionsRulesListResponse defines the response schema for `/beta/transactions/rules/v1/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_rules_list_response"
-            }
-        }
 
     rules: List[TransactionsCategoryRule] = Field( description="A list of the Item's transaction rules")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -19,12 +19,7 @@ class IncomeVerificationPrecheckPayrollInstitution(BaseModel):
     """Information about the end user's payroll institution"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_payroll_institution"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     name: Optional[str] = Field(default=None, description="The name of payroll institution")
 

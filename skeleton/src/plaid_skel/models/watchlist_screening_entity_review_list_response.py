@@ -19,12 +19,6 @@ from plaid_skel.models.entity_watchlist_screening_review import EntityWatchlistS
 class WatchlistScreeningEntityReviewListResponse(BaseModel):
     """Paginated list of entity watchlist screening reviews"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_entity_review_list_response"
-            }
-        }
 
     entity_watchlist_screening_reviews: List[EntityWatchlistScreeningReview] = Field( description="List of entity watchlist screening reviews")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

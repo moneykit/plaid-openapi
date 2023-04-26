@@ -19,12 +19,6 @@ from plaid_skel.models.accounts_balance_get_request_options import AccountsBalan
 class AccountsBalanceGetRequest(BaseModel):
     """AccountsBalanceGetRequest defines the request schema for `/accounts/balance/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#accounts_balance_get_request"
-            }
-        }
 
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")

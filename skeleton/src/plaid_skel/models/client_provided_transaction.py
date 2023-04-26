@@ -19,12 +19,6 @@ from plaid_skel.models.enrich_transaction_direction import EnrichTransactionDire
 class ClientProvidedTransaction(BaseModel):
     """A client-provided transaction for Plaid to enrich."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#client_provided_transaction"
-            }
-        }
 
     id: str = Field( description="A unique ID for the transaction used to help you tie data back to your systems.")
     description: str = Field( description="The raw description of the transaction. If you have location data in available an unstructured format, it may be appended to the `description` field.")

@@ -19,12 +19,6 @@ from plaid_skel.models.proxy_type import ProxyType
 class RiskCheckDevice(BaseModel):
     """Result summary object specifying values for `device` attributes of risk check."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_check_device"
-            }
-        }
 
     ip_proxy_type: Optional[ProxyType] = Field(default=None,)
     ip_spam_list_count: Optional[int] = Field(default=None, description="Count of spam lists the IP address is associated with if known.")

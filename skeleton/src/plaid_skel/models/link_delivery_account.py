@@ -19,12 +19,6 @@ from plaid_skel.models.link_delivery_verification_status import LinkDeliveryVeri
 class LinkDeliveryAccount(BaseModel):
     """Information related to account attached to the connected Item"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_account"
-            }
-        }
 
     id: Optional[str] = Field(default=None, description="The Plaid `account_id`")
     name: Optional[str] = Field(default=None, description="The official account name")

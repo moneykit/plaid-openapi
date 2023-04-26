@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class MortgageInterestRate(BaseModel):
     """Object containing metadata about the interest rate for the mortgage."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#mortgage_interest_rate"
-            }
-        }
 
     percentage: Optional[float] = Field(default=None, description="Percentage value (interest rate of current mortgage, not APR) of interest payable on a loan.")
     type: Optional[str] = Field(default=None, description="The type of interest charged (fixed or variable).")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class StandaloneAccountType(BaseModel):
     """The schema below describes the various `types` and corresponding `subtypes` that Plaid recognizes and reports for financial institution accounts."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#standalone_account_type"
-            }
-        }
 
     depository: str = Field( description="An account type holding cash, in which funds are deposited. Supported products for `depository` accounts are: Auth (`checking` and `savings` types only), Balance, Transactions, Identity, Payment Initiation, and Assets.")
     credit: str = Field( description="A credit card type account. Supported products for `credit` accounts are: Balance, Transactions, Identity, and Liabilities.")

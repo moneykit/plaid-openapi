@@ -20,12 +20,7 @@ class IncomeSummaryFieldNumber(BaseModel):
     """Field number for income summary"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_summary_field_number"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     value: float = Field( description="The value of the field.")
     verification_status: VerificationStatus = Field()

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class NumbersInternational(BaseModel):
     """Identifying information for transferring money to or from an international bank account via wire transfer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_international"
-            }
-        }
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")
     iban: str = Field( description="The International Bank Account Number (IBAN) for the account")

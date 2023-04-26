@@ -19,12 +19,6 @@ from plaid_skel.models.account_base import AccountBase
 class ProcessorBalanceGetResponse(BaseModel):
     """ProcessorBalanceGetResponse defines the response schema for `/processor/balance/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#processor_balance_get_response"
-            }
-        }
 
     account: AccountBase = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -19,12 +19,7 @@ class IncomeVerificationPrecheckEmployerAddress(BaseModel):
     """The address of the employer"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_employer_address"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     city: Optional[str] = Field(default=None, description="The full city name")
     country: Optional[str] = Field(default=None, description="The ISO 3166-1 alpha-2 country code")

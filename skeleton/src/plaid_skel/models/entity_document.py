@@ -19,12 +19,6 @@ from plaid_skel.models.entity_document_type import EntityDocumentType
 class EntityDocument(BaseModel):
     """An official document, usually issued by a governing body or institution, with an associated identifier."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_document"
-            }
-        }
 
     type: EntityDocumentType = Field()
     number: str = Field( description="The numeric or alphanumeric identifier associated with this document.")

@@ -22,12 +22,6 @@ from plaid_skel.models.link_event_name import LinkEventName
 class LinkCallbackMetadata(BaseModel):
     """Information related to the callback from the hosted Link session."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_callback_metadata"
-            }
-        }
 
     callback_type: Optional[LinkDeliveryWebhookCallbackType] = Field(default=None,)
     event_name: Optional[LinkEventName] = Field(default=None,)

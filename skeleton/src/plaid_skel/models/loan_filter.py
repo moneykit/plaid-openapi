@@ -19,12 +19,6 @@ from plaid_skel.models.loan_account_subtype import LoanAccountSubtype
 class LoanFilter(BaseModel):
     """A filter to apply to `loan`-type accounts"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#loan_filter"
-            }
-        }
 
     account_subtypes: List[LoanAccountSubtype] = Field( description="An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). ")
 

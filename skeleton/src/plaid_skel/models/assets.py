@@ -19,12 +19,6 @@ from plaid_skel.models.asset import Asset
 class Assets(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#assets"
-            }
-        }
 
     asset: List[Asset] = Field( description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
 

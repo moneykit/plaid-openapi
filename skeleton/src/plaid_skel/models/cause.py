@@ -19,12 +19,6 @@ from plaid_skel.models.plaid_error_type import PlaidErrorType
 class Cause(BaseModel):
     """An error object and associated `item_id` used to identify a specific Item and error when a batch operation operating on multiple Items has encountered an error in one of the Items."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#cause"
-            }
-        }
 
     error_type: PlaidErrorType = Field()
     error_code: str = Field( description="The particular error code. Safe for programmatic use.")

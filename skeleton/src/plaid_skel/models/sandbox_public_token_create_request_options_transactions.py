@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxPublicTokenCreateRequestOptionsTransactions(BaseModel):
     """An optional set of parameters corresponding to transactions options."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_public_token_create_request_options_transactions"
-            }
-        }
 
     start_date: Optional[date] = Field(default=None, description="The earliest date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
     end_date: Optional[date] = Field(default=None, description="The most recent date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")

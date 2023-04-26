@@ -22,12 +22,6 @@ from plaid_skel.models.security import Security
 class InvestmentsHoldingsGetResponse(BaseModel):
     """InvestmentsHoldingsGetResponse defines the response schema for `/investments/holdings/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investments_holdings_get_response"
-            }
-        }
 
     accounts: List[AccountBase] = Field( description="The accounts associated with the Item")
     holdings: List[Holding] = Field( description="The holdings belonging to investment accounts associated with the Item. Details of the securities in the holdings are provided in the `securities` field. ")

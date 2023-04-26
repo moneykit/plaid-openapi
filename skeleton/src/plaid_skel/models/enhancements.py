@@ -20,12 +20,6 @@ from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
 class Enhancements(BaseModel):
     """A grouping of the Plaid produced transaction enhancement fields."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#enhancements"
-            }
-        }
 
     merchant_name: Optional[str] = Field(default=None, description="The name of the primary counterparty, such as the merchant or the financial institution, as extracted by Plaid from the raw description.")
     website: Optional[str] = Field(default=None, description="The website associated with this transaction, if available.")

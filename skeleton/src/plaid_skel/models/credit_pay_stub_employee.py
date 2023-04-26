@@ -20,12 +20,6 @@ from plaid_skel.models.pay_stub_taxpayer_id import PayStubTaxpayerID
 class CreditPayStubEmployee(BaseModel):
     """Data about the employee."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub_employee"
-            }
-        }
 
     address: CreditPayStubAddress = Field()
     name: Optional[str] = Field(default=None, description="The name of the employee.")

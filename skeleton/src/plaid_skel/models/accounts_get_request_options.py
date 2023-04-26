@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AccountsGetRequestOptions(BaseModel):
     """An optional object to filter `/accounts/get` results."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#accounts_get_request_options"
-            }
-        }
 
     account_ids: Optional[List[str]] = Field(default=None, description="An array of `account_ids` to retrieve for the Account.")
 

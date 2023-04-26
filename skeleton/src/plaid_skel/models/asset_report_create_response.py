@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AssetReportCreateResponse(BaseModel):
     """AssetReportCreateResponse defines the response schema for `/asset_report/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_create_response"
-            }
-        }
 
     asset_report_token: str = Field( description="A token that can be provided to endpoints such as `/asset_report/get` or `/asset_report/pdf/get` to fetch or update an Asset Report.")
     asset_report_id: str = Field( description="A unique ID identifying an Asset Report. Like all Plaid identifiers, this ID is case sensitive.")

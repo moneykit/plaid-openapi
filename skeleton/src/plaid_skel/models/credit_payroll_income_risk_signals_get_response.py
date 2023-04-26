@@ -20,12 +20,6 @@ from plaid_skel.models.plaid_error import PlaidError
 class CreditPayrollIncomeRiskSignalsGetResponse(BaseModel):
     """CreditPayrollIncomeRiskSignalsGetRequest defines the response schema for `/beta/credit/payroll_income/risk_signals/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_payroll_income_risk_signals_get_response"
-            }
-        }
 
     items: List[PayrollRiskSignalsItem] = Field( description="Array of payroll items.")
     error: Optional[PlaidError] = Field(default=None,)

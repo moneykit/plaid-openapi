@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_service_voa24 import CreditFreddieMacS
 class CreditFreddieMacServicesVOA24(BaseModel):
     """A collection of objects that describe requests and responses for services."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_services_voa24"
-            }
-        }
 
     service: CreditFreddieMacServiceVOA24 = Field()
 

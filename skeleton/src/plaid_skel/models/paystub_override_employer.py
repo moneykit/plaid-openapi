@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaystubOverrideEmployer(BaseModel):
     """The employer on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_override_employer"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="The name of the employer.")
 

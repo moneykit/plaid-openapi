@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class BankTransferSweep(BaseModel):
     """BankTransferSweep describes a sweep transfer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_sweep"
-            }
-        }
 
     id: str = Field( description="Identifier of the sweep.")
     created_at: datetime = Field( description="The datetime when the sweep occurred, in RFC 3339 format.")

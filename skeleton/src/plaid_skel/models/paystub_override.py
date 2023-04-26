@@ -22,12 +22,6 @@ from plaid_skel.models.paystub_override_employer import PaystubOverrideEmployer
 class PaystubOverride(BaseModel):
     """An object representing data from a paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_override"
-            }
-        }
 
     employer: Optional[PaystubOverrideEmployer] = Field(default=None,)
     employee: Optional[PaystubOverrideEmployee] = Field(default=None,)

@@ -19,12 +19,6 @@ from plaid_skel.models.payment_initiation_recipient import PaymentInitiationReci
 class PaymentInitiationRecipientListResponse(BaseModel):
     """PaymentInitiationRecipientListResponse defines the response schema for `/payment_initiation/recipient/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_recipient_list_response"
-            }
-        }
 
     recipients: List[PaymentInitiationRecipient] = Field( description="An array of payment recipients created for Payment Initiation")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

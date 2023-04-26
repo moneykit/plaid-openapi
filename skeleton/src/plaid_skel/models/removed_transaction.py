@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class RemovedTransaction(BaseModel):
     """A representation of a removed transaction"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#removed_transaction"
-            }
-        }
 
     transaction_id: Optional[str] = Field(default=None, description="The ID of the removed transaction.")
 

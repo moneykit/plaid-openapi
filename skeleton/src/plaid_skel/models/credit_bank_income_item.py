@@ -20,12 +20,6 @@ from plaid_skel.models.credit_bank_income_source import CreditBankIncomeSource
 class CreditBankIncomeItem(BaseModel):
     """The details and metadata for an end user's Item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_item"
-            }
-        }
 
     bank_income_accounts: Optional[List[CreditBankIncomeAccount]] = Field(default=None, description="The Item's accounts that have Bank Income data.")
     bank_income_sources: Optional[List[CreditBankIncomeSource]] = Field(default=None, description="The income sources for this Item. Each entry in the array is a single income source.")

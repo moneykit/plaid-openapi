@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class JWKPublicKey(BaseModel):
     """A JSON Web Key (JWK) that can be used in conjunction with [JWT libraries](https://jwt.io/#libraries-io) to verify Plaid webhooks"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#jwk_public_key"
-            }
-        }
 
     alg: str = Field( description="The alg member identifies the cryptographic algorithm family used with the key.")
     crv: str = Field( description="The crv member identifies the cryptographic curve used with the key.")

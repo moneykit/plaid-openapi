@@ -20,12 +20,6 @@ from plaid_skel.models.processor_number import ProcessorNumber
 class ProcessorAuthGetResponse(BaseModel):
     """ProcessorAuthGetResponse defines the response schema for `/processor/auth/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#processor_auth_get_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     numbers: ProcessorNumber = Field()

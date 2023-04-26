@@ -21,12 +21,7 @@ class ScopesNullable(BaseModel):
     """The scopes object"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#scopes_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     product_access: Optional[ProductAccess] = Field(default=None,)
     accounts: Optional[List[AccountAccess]] = Field(default=None,)

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaymentProfileCreateResponse(BaseModel):
     """PaymentProfileCreateResponse defines the response schema for `/payment_profile/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_profile_create_response"
-            }
-        }
 
     payment_profile_token: str = Field( description="A payment profile token associated with the Payment Profile data that is being requested.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

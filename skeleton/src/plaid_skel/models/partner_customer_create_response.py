@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer_with_secrets import PartnerEndCustom
 class PartnerCustomerCreateResponse(BaseModel):
     """Response schema for `/partner/customer/create`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_customer_create_response"
-            }
-        }
 
     end_customer: Optional[PartnerEndCustomerWithSecrets] = Field(default=None,)
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

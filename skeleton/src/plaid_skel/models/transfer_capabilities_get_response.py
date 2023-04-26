@@ -19,12 +19,6 @@ from plaid_skel.models.institution_supported_networks import InstitutionSupporte
 class TransferCapabilitiesGetResponse(BaseModel):
     """Defines the response schema for `/transfer/capabilities/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_capabilities_get_response"
-            }
-        }
 
     institution_supported_networks: InstitutionSupportedNetworks = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

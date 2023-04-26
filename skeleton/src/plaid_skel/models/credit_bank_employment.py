@@ -19,12 +19,6 @@ from plaid_skel.models.credit_bank_employer import CreditBankEmployer
 class CreditBankEmployment(BaseModel):
     """Detailed information for the bank employment."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_employment"
-            }
-        }
 
     bank_employment_id: str = Field( description="A unique identifier for the bank employment.")
     account_id: str = Field( description="Plaid's unique identifier for the account.")

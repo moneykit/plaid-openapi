@@ -20,12 +20,6 @@ from plaid_skel.models.link_token_create_request_employment_bank_income import L
 class LinkTokenCreateRequestEmployment(BaseModel):
     """Specifies options for initializing Link for use with the Employment product. This field is required if `employment` is included in the `products` array."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_employment"
-            }
-        }
 
     employment_source_types: Optional[List[EmploymentSourceType]] = Field(default=None, description="The types of source employment data that users will be permitted to share. Options include `bank` and `payroll`. Currently you can only specify one of these options.")
     bank_employment: Optional[LinkTokenCreateRequestEmploymentBankIncome] = Field(default=None,)

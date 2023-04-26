@@ -19,12 +19,7 @@ class NumbersIBANNullable(BaseModel):
     """International Bank Account Number (IBAN)."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_iban_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
 
 NumbersIBANNullable.update_forward_refs()

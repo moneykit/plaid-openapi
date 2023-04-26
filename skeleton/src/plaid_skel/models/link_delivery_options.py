@@ -19,12 +19,6 @@ from plaid_skel.models.link_delivery_recipient import LinkDeliveryRecipient
 class LinkDeliveryOptions(BaseModel):
     """Optional metadata related to the link delivery session"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_options"
-            }
-        }
 
     recipient: Optional[LinkDeliveryRecipient] = Field(default=None,)
 

@@ -19,12 +19,6 @@ from plaid_skel.models.credit_category import CreditCategory
 class AssetReportTransactionAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_transaction_all_of"
-            }
-        }
 
     date_transacted: Optional[str] = Field(default=None, description="The date on which the transaction took place, in IS0 8601 format.")
     credit_category: Optional[CreditCategory] = Field(default=None,)

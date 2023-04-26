@@ -19,12 +19,6 @@ from plaid_skel.models.transaction_stream import TransactionStream
 class TransactionsRecurringGetResponse(BaseModel):
     """TransactionsRecurringGetResponse defines the response schema for `/transactions/recurring/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_recurring_get_response"
-            }
-        }
 
     inflow_streams: List[TransactionStream] = Field( description="An array of depository transaction streams.")
     outflow_streams: List[TransactionStream] = Field( description="An array of expense transaction streams.")

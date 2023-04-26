@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxItemSetVerificationStatusResponse(BaseModel):
     """SandboxItemSetVerificationStatusResponse defines the response schema for `/sandbox/item/set_verification_status`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_item_set_verification_status_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

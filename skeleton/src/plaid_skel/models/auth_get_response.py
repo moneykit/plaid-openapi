@@ -21,12 +21,6 @@ from plaid_skel.models.item import Item
 class AuthGetResponse(BaseModel):
     """AuthGetResponse defines the response schema for `/auth/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#auth_get_response"
-            }
-        }
 
     accounts: List[AccountBase] = Field( description="The `accounts` for which numbers are being retrieved.")
     numbers: AuthGetNumbers = Field()

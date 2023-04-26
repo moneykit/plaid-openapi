@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TaxpayerID(BaseModel):
     """Taxpayer ID of the individual receiving the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#taxpayer_id"
-            }
-        }
 
     id_type: Optional[str] = Field(default=None, description="Type of ID, e.g. 'SSN'")
     id_mask: Optional[str] = Field(default=None, description="ID mask; i.e. last 4 digits of the taxpayer ID")

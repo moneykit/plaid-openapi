@@ -20,12 +20,7 @@ class TransferAuthorizationDecisionRationale(BaseModel):
     """The rationale for Plaid's decision regarding a proposed transfer. It is always set for `declined` decisions, and may or may not be null for `approved` decisions."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_authorization_decision_rationale"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     code: TransferAuthorizationDecisionRationaleCode = Field()
     description: str = Field( description="A human-readable description of the code associated with a transfer approval or transfer decline.")

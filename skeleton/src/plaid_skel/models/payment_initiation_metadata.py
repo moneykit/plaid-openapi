@@ -20,12 +20,7 @@ class PaymentInitiationMetadata(BaseModel):
     """Metadata that captures what specific payment configurations an institution supports when making Payment Initiation requests."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_metadata"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     supports_international_payments: bool = Field( description="Indicates whether the institution supports payments from a different country.")
     supports_sepa_instant: bool = Field( description="Indicates whether the institution supports SEPA Instant payments.")

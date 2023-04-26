@@ -19,12 +19,6 @@ from plaid_skel.models.dashboard_user_status import DashboardUserStatus
 class DashboardUserGetResponse(BaseModel):
     """Account information associated with a team member with access to the Plaid dashboard."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#dashboard_user_get_response"
-            }
-        }
 
     id: str = Field( description="ID of the associated user.")
     created_at: datetime = Field( description="An ISO8601 formatted timestamp.")

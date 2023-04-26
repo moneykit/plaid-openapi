@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CauseAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#cause_all_of"
-            }
-        }
 
     item_id: Optional[str] = Field(default=None, description="The `item_id` of the Item associated with this webhook, warning, or error")
 

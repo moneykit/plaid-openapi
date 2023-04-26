@@ -20,12 +20,7 @@ class CreditFreddieMacVerificationOfAssetsVOA24(BaseModel):
     """Verification of Assets Report"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_verification_of_assets_voa24"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     deal: CreditFreddieMacVerificationOfAssetsDealVOA24 = Field()
     schema_version: float = Field( description="The Verification Of Assets (VOA) schema version.")

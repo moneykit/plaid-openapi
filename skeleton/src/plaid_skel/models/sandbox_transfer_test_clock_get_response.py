@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_test_clock import TransferTestClock
 class SandboxTransferTestClockGetResponse(BaseModel):
     """Defines the response schema for `/sandbox/transfer/test_clock/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_transfer_test_clock_get_response"
-            }
-        }
 
     test_clock: TransferTestClock = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SimulatedTransferSweep(BaseModel):
     """A sweep returned from the `/sandbox/transfer/sweep/simulate` endpoint. Can be null if there are no transfers to include in a sweep."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#simulated_transfer_sweep"
-            }
-        }
 
     id: str = Field( description="Identifier of the sweep.")
     funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")

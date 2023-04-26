@@ -19,12 +19,6 @@ from plaid_skel.models.counterparty_type import CounterpartyType
 class Counterparty(BaseModel):
     """The counterparty, such as the merchant or financial institution, is extracted by Plaid from the raw description."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#counterparty"
-            }
-        }
 
     name: str = Field( description="The name of the counterparty, such as the merchant or the financial institution, as extracted by Plaid from the raw description.")
     entity_id: Optional[str] = Field(default=None, description="A unique, stable, Plaid-generated id that maps to the counterparty.")

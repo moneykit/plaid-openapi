@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IncomeVerificationWebhookStatus(BaseModel):
     """Status of the income verification webhook"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_webhook_status"
-            }
-        }
 
     id: str = Field()
 

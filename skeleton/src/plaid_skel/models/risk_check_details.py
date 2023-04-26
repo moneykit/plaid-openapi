@@ -24,12 +24,7 @@ class RiskCheckDetails(BaseModel):
     """Additional information for the `risk_check` step."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_check_details"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     status: IdentityVerificationStepStatus = Field()
     behavior: Optional[RiskCheckBehavior] = Field(default=None,)

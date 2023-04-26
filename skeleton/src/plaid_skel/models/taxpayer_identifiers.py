@@ -19,12 +19,6 @@ from plaid_skel.models.taxpayer_identifier import TaxpayerIdentifier
 class TaxpayerIdentifiers(BaseModel):
     """The collection of TAXPAYER_IDENTIFICATION elements"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#taxpayer_identifiers"
-            }
-        }
 
     taxpayer_identifier: TaxpayerIdentifier = Field()
 

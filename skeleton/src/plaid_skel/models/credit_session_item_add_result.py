@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditSessionItemAddResult(BaseModel):
     """The details of an Item add in Link."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_item_add_result"
-            }
-        }
 
     public_token: Optional[str] = Field(default=None, description="Returned once a user has successfully linked their Item.")
     item_id: Optional[str] = Field(default=None, description="The Plaid Item ID. The `item_id` is always unique; linking the same account at the same institution twice will result in two Items with different `item_id` values. Like all Plaid identifiers, the `item_id` is case-sensitive.")

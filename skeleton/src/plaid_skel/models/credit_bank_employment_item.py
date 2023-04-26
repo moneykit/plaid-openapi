@@ -20,12 +20,6 @@ from plaid_skel.models.credit_bank_income_account import CreditBankIncomeAccount
 class CreditBankEmploymentItem(BaseModel):
     """The details and metadata for an end user's Item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_employment_item"
-            }
-        }
 
     item_id: str = Field( description="The unique identifier for the Item.")
     last_updated_time: datetime = Field( description="The time when this Item's data was last retrieved from the financial institution, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (e.g. \"2018-04-12T03:32:11Z\").")

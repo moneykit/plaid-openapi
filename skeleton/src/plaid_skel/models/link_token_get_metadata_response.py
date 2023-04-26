@@ -22,12 +22,6 @@ from plaid_skel.models.products import Products
 class LinkTokenGetMetadataResponse(BaseModel):
     """An object specifying the arguments originally provided to the `/link/token/create` call."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_get_metadata_response"
-            }
-        }
 
     initial_products: List[Products] = Field( description="The `products` specified in the `/link/token/create` call.")
     webhook: Optional[str] = Field(default=None, description="The `webhook` specified in the `/link/token/create` call.")

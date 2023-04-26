@@ -19,12 +19,6 @@ from plaid_skel.models.payment_initiation_consent_status import PaymentInitiatio
 class PaymentInitiationConsentCreateResponse(BaseModel):
     """PaymentInitiationConsentCreateResponse defines the response schema for `/payment_initiation/consent/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_consent_create_response"
-            }
-        }
 
     consent_id: str = Field( description="A unique ID identifying the payment consent.")
     status: PaymentInitiationConsentStatus = Field()

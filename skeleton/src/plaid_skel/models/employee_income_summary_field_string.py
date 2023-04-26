@@ -19,12 +19,6 @@ from plaid_skel.models.verification_status import VerificationStatus
 class EmployeeIncomeSummaryFieldString(BaseModel):
     """The name of the employee, as reported on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employee_income_summary_field_string"
-            }
-        }
 
     value: str = Field( description="The value of the field.")
     verification_status: VerificationStatus = Field()

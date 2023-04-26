@@ -20,12 +20,6 @@ from plaid_skel.models.match_summary import MatchSummary
 class ScreeningHitDateOfBirthItem(BaseModel):
     """Analyzed date of birth for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_hit_date_of_birth_item"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[DateRange] = Field(default=None,)

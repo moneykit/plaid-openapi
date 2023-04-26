@@ -21,12 +21,6 @@ from plaid_skel.models.credit_bank_income_warning import CreditBankIncomeWarning
 class CreditBankIncome(BaseModel):
     """The report of the Bank Income data for an end user."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income"
-            }
-        }
 
     bank_income_id: Optional[str] = Field(default=None, description="The unique identifier associated with the Bank Income Report.")
     generated_time: Optional[datetime] = Field(default=None, description="The time when the Bank Income Report was generated.")

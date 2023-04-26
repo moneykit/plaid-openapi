@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerBillingContact(BaseModel):
     """The billing contact for the end customer. Defaults to partner's billing contact if omitted."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_billing_contact"
-            }
-        }
 
     given_name: Optional[str] = Field(default=None,)
     family_name: Optional[str] = Field(default=None,)

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ClientProvidedRawTransaction(BaseModel):
     """A client-provided transaction for Plaid to enhance."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#client_provided_raw_transaction"
-            }
-        }
 
     id: str = Field( description="A unique ID for the transaction used to help you tie data back to your systems.")
     description: str = Field( description="The raw description of the transaction.")

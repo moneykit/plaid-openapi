@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreening
 class WatchlistScreeningIndividualReviewCreateResponse(BaseModel):
     """A review submitted by a team member for an individual watchlist screening. A review can be either a comment on the current screening state, actions taken against hits attached to the watchlist screening, or both."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_review_create_response"
-            }
-        }
 
     id: str = Field( description="ID of the associated review.")
     confirmed_hits: List[str] = Field( description="Hits marked as a true positive after thorough manual review. These hits will never recur or be updated once dismissed. In most cases, confirmed hits indicate that the customer should be rejected.")

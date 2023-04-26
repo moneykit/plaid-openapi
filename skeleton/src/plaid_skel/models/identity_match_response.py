@@ -20,12 +20,6 @@ from plaid_skel.models.item import Item
 class IdentityMatchResponse(BaseModel):
     """IdentityMatchResponse defines the response schema for `/identity/match`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_match_response"
-            }
-        }
 
     accounts: List[AccountIdentityMatchScore] = Field( description="The accounts for which Identity match has been requested")
     item: Item = Field()

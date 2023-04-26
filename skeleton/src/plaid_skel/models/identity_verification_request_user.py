@@ -21,12 +21,6 @@ from plaid_skel.models.user_id_number import UserIDNumber
 class IdentityVerificationRequestUser(BaseModel):
     """User information collected outside of Link, most likely via your own onboarding process.  Each of the following identity fields are optional:  `email_address`  `phone_number`  `date_of_birth`  `name`  `address`  `id_number`  Specifically, these fields are optional in that they can either be fully provided (satisfying every required field in their subschema) or omitted from the request entirely by not providing the key or value. Providing these fields via the API will result in Link skipping the data collection process for the associated user. All verification steps enabled in the associated Identity Verification Template will still be run. Verification steps will either be run immediately, or once the user completes the `accept_tos` step, depending on the value provided to the `gave_consent` field."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_request_user"
-            }
-        }
 
     client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
     email_address: Optional[EmailStr] = Field(default=None, description="A valid email address.")

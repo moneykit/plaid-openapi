@@ -21,12 +21,6 @@ from plaid_skel.models.transaction import Transaction
 class TransactionsGetResponse(BaseModel):
     """TransactionsGetResponse defines the response schema for `/transactions/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_get_response"
-            }
-        }
 
     accounts: List[AccountBase] = Field( description="An array containing the `accounts` associated with the Item for which transactions are being returned. Each transaction can be mapped to its corresponding account via the `account_id` field.")
     transactions: List[Transaction] = Field( description="An array containing transactions from the account. Transactions are returned in reverse chronological order, with the most recent at the beginning of the array. The maximum number of transactions returned is determined by the `count` parameter.")

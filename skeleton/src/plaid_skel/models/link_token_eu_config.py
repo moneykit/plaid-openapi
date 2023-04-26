@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenEUConfig(BaseModel):
     """Configuration parameters for EU flows"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_eu_config"
-            }
-        }
 
     headless: Optional[bool] = Field(default=None, description="If `true`, open Link without an initial UI. Defaults to `false`.")
 

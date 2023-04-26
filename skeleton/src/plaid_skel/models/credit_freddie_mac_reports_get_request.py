@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditFreddieMacReportsGetRequest(BaseModel):
     """CreditFreddieMacReportsGetRequest defines the request schema for `credit/asset_report/freddie_mac/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_reports_get_request"
-            }
-        }
 
     audit_copy_token: str = Field( description="A token that can be shared with a third party auditor to allow them to obtain access to the Asset Report. This token should be stored securely.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")

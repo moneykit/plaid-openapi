@@ -19,12 +19,6 @@ from plaid_skel.models.verification_status import VerificationStatus
 class ProjectedIncomeSummaryFieldNumber(BaseModel):
     """The employee's estimated annual salary, as derived from information reported on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#projected_income_summary_field_number"
-            }
-        }
 
     value: float = Field( description="The value of the field.")
     verification_status: VerificationStatus = Field()

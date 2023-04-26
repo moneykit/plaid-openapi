@@ -19,12 +19,7 @@ class NameMatchScore(BaseModel):
     """Score found by matching name provided by the API with the name on the account at the financial institution. If the account contains multiple owners, the maximum match score is filled."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#name_match_score"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     score: Optional[int] = Field(default=None, description="Represents the match score for name. 100 is a perfect score, 85-99 means a strong match, 50-84 is a partial match, less than 50 is a weak match and 0 is a complete mismatch. If the name is missing from either the API or financial institution, this is empty.")
     is_first_name_or_last_name_match: Optional[bool] = Field(default=None, description="first or last name completely matched, likely a family member")

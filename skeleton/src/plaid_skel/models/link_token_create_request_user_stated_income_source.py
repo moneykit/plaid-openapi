@@ -21,12 +21,6 @@ from plaid_skel.models.user_stated_income_source_pay_type import UserStatedIncom
 class LinkTokenCreateRequestUserStatedIncomeSource(BaseModel):
     """Specifies user stated income sources for the Income product"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_user_stated_income_source"
-            }
-        }
 
     employer: Optional[str] = Field(default=None, description="The employer corresponding to an income source specified by the user")
     category: Optional[UserStatedIncomeSourceCategory] = Field(default=None,)

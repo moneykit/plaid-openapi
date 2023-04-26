@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaystubYTDDetails(BaseModel):
     """The amount of income earned year to date, as based on paystub data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_ytd_details"
-            }
-        }
 
     gross_earnings: Optional[float] = Field(default=None, description="Year-to-date gross earnings.")
     net_earnings: Optional[float] = Field(default=None, description="Year-to-date net (take home) earnings.")

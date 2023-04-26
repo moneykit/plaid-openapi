@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerSecrets(BaseModel):
     """The secrets for the newly created end customer in non-Production environments."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_secrets"
-            }
-        }
 
     sandbox: Optional[str] = Field(default=None, description="The end customer's secret key for the Sandbox environment.")
     development: Optional[str] = Field(default=None, description="The end customer's secret key for the Development environment.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DocumentRiskSummary(BaseModel):
     """A summary across all risk signals associated with a document"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_risk_summary"
-            }
-        }
 
     risk_score: Optional[float] = Field(default=None, description="A number between 0 and 100, inclusive, where a score closer to 0 indicates a document is likely to be trustworthy and a score closer to 100 indicates a document is likely to be fraudulent")
 

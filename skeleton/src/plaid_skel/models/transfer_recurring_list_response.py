@@ -19,12 +19,6 @@ from plaid_skel.models.recurring_transfer import RecurringTransfer
 class TransferRecurringListResponse(BaseModel):
     """Defines the response schema for `/transfer/recurring/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_recurring_list_response"
-            }
-        }
 
     recurring_transfers: List[RecurringTransfer] = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

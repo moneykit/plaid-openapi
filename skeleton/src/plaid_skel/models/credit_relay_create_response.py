@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditRelayCreateResponse(BaseModel):
     """CreditRelayCreateResponse defines the response schema for `/credit/relay/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_relay_create_response"
-            }
-        }
 
     relay_token: str = Field( description="A token that can be shared with a third party to allow them to access the Asset Report. This token should be stored securely.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

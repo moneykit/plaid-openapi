@@ -19,12 +19,7 @@ class AuthSupportedMethods(BaseModel):
     """Metadata specifically related to which auth methods an institution supports."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#auth_supported_methods"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     instant_auth: bool = Field( description="Indicates if instant auth is supported.")
     instant_match: bool = Field( description="Indicates if instant match is supported.")

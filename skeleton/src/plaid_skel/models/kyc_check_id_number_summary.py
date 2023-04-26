@@ -19,12 +19,6 @@ from plaid_skel.models.match_summary_code import MatchSummaryCode
 class KYCCheckIDNumberSummary(BaseModel):
     """Result summary object specifying how the `id_number` field matched."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#kyc_check_id_number_summary"
-            }
-        }
 
     summary: MatchSummaryCode = Field()
 

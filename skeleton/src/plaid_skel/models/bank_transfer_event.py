@@ -22,12 +22,6 @@ from plaid_skel.models.bank_transfer_type import BankTransferType
 class BankTransferEvent(BaseModel):
     """Represents an event in the Bank Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_event"
-            }
-        }
 
     event_id: int = Field( description="Plaid’s unique identifier for this event. IDs are sequential unsigned 64-bit integers.")
     timestamp: datetime = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")

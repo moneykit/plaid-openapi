@@ -20,12 +20,6 @@ from plaid_skel.models.asset_report_user import AssetReportUser
 class AssetReport(BaseModel):
     """An object representing an Asset Report"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report"
-            }
-        }
 
     asset_report_id: str = Field( description="A unique ID identifying an Asset Report. Like all Plaid identifiers, this ID is case sensitive.")
     client_report_id: Optional[str] = Field(default=None, description="An identifier you determine and submit for the Asset Report.")

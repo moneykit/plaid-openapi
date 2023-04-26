@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkOAuthCorrelationIdExchangeResponse(BaseModel):
     """LinkOAuthCorrelationIdExchangeResponse defines the response schema for `/link/oauth/correlation_id/exchange`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_o_auth_correlation_id_exchange_response"
-            }
-        }
 
     link_token: str = Field( description="The `link_token` associated to the given `link_correlation_id`, which can be used to re-initialize Link.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

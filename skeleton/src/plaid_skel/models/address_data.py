@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AddressData(BaseModel):
     """Data about the components comprising an address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#address_data"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The full city name")
     region: Optional[str] = Field(default=None, description="The region or state. In API versions 2018-05-22 and earlier, this field is called `state`. Example: `\"NC\"`")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AssetTransactionDescription(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_transaction_description"
-            }
-        }
 
     asset_transaction_description: str = Field( description="Asset Transaction Description String up to 3 occurances 1 required.")
 

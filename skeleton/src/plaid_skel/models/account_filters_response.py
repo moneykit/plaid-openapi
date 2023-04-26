@@ -22,12 +22,6 @@ from plaid_skel.models.loan_filter import LoanFilter
 class AccountFiltersResponse(BaseModel):
     """The `account_filters` specified in the original call to `/link/token/create`. """
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#account_filters_response"
-            }
-        }
 
     depository: Optional[DepositoryFilter] = Field(default=None,)
     credit: Optional[CreditFilter] = Field(default=None,)

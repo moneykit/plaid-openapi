@@ -19,12 +19,6 @@ from plaid_skel.models.income_breakdown_type import IncomeBreakdownType
 class IncomeBreakdown(BaseModel):
     """An object representing a breakdown of the different income types on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_breakdown"
-            }
-        }
 
     type: Optional[IncomeBreakdownType] = Field(default=None,)
     rate: Optional[float] = Field(default=None, description="The hourly rate at which the income is paid.")

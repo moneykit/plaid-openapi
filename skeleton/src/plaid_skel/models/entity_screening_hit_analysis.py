@@ -19,12 +19,6 @@ from plaid_skel.models.match_summary_code import MatchSummaryCode
 class EntityScreeningHitAnalysis(BaseModel):
     """Analysis information describing why a screening hit matched the provided entity information"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hit_analysis"
-            }
-        }
 
     documents: Optional[MatchSummaryCode] = Field(default=None,)
     email_addresses: Optional[MatchSummaryCode] = Field(default=None,)

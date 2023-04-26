@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IndividualName(BaseModel):
     """Parent container for name that allows for choice group between parsed and unparsed containers.Parent container for name that allows for choice group between parsed and unparsed containers."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#individual_name"
-            }
-        }
 
     first_name: str = Field( description="The first name of the individual represented by the parent object.")
     last_name: str = Field( description="The last name of the individual represented by the parent object.")

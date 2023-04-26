@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Status(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#status"
-            }
-        }
 
     status_code: Optional[str] = Field(default=None, description="Satus Code.")
     status_description: Optional[str] = Field(default=None, description="Status Description.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ItemImportRequestUserAuth(BaseModel):
     """Object of user ID and auth token pair, permitting Plaid to aggregate a user’s accounts"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_import_request_user_auth"
-            }
-        }
 
     user_id: str = Field( description="Opaque user identifier")
     auth_token: str = Field( description="Authorization token Plaid will use to aggregate this user’s accounts")

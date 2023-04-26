@@ -21,12 +21,6 @@ from plaid_skel.models.scopes_nullable import ScopesNullable
 class Activity(BaseModel):
     """Describes a consent activity."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#activity"
-            }
-        }
 
     activity: ActivityType = Field()
     initiated_date: str = Field( description="The date and time this activity was initiated [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")

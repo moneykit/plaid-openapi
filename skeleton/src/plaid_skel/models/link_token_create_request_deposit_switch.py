@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestDepositSwitch(BaseModel):
     """Specifies options for initializing Link for use with the Deposit Switch (beta) product. This field is required if `deposit_switch` is included in the `products` array."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_deposit_switch"
-            }
-        }
 
     deposit_switch_id: str = Field( description="The `deposit_switch_id` provided by the `/deposit_switch/create` endpoint.")
 

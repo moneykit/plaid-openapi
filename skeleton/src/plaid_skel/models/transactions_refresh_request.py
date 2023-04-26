@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransactionsRefreshRequest(BaseModel):
     """TransactionsRefreshRequest defines the request schema for `/transactions/refresh`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_refresh_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")

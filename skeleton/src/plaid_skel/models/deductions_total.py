@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DeductionsTotal(BaseModel):
     """An object representing the total deductions for the pay period"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deductions_total"
-            }
-        }
 
     current_amount: Optional[float] = Field(default=None, description="Raw amount of the deduction")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO-4217 currency code of the line item. Always `null` if `unofficial_currency_code` is non-null.")

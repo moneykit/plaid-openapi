@@ -24,12 +24,7 @@ class KYCCheckDetails(BaseModel):
     """Additional information for the `kyc_check` step. This field will be `null` unless `steps.kyc_check` has reached a terminal state of either `success` or `failed`."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#kyc_check_details"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     status: str = Field( description="The outcome status for the associated Identity Verification attempt's `kyc_check` step. This field will always have the same value as `steps.kyc_check`.")
     address: KYCCheckAddressSummary = Field()

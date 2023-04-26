@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreening
 class IndividualWatchlistProgram(BaseModel):
     """A program that configures the active lists, search parameters, and other behavior for initial and ongoing screening of individuals."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#individual_watchlist_program"
-            }
-        }
 
     id: str = Field( description="ID of the associated program.")
     created_at: datetime = Field( description="An ISO8601 formatted timestamp.")

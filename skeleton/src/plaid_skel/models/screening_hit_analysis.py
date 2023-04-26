@@ -19,12 +19,6 @@ from plaid_skel.models.match_summary_code import MatchSummaryCode
 class ScreeningHitAnalysis(BaseModel):
     """Analysis information describing why a screening hit matched the provided user information"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_hit_analysis"
-            }
-        }
 
     dates_of_birth: Optional[MatchSummaryCode] = Field(default=None,)
     documents: Optional[MatchSummaryCode] = Field(default=None,)

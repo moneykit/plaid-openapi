@@ -21,12 +21,6 @@ from plaid_skel.models.services import Services
 class AssetReportFreddie(BaseModel):
     """An object representing an Asset Report with Freddie Mac schema."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_freddie"
-            }
-        }
 
     loans: Loans = Field()
     parties: Parties = Field()

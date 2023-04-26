@@ -19,12 +19,7 @@ class PaymentConsentValidDateTime(BaseModel):
     """Life span for the payment consent. After the `to` date the payment consent expires and can no longer be used for payment initiation."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_consent_valid_date_time"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     _from: Optional[datetime] = Field(default=None, description="The date and time from which the consent should be active, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     to: Optional[datetime] = Field(default=None, description="The date and time at which the consent expires, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")

@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class RecurringCancelledWebhook(BaseModel):
     """Fired when a recurring transfer is cancelled by Plaid."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurring_cancelled_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`TRANSFER`")
     webhook_code: str = Field( description="`RECURRING_CANCELLED`")

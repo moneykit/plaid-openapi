@@ -21,12 +21,6 @@ from plaid_skel.models.owner import Owner
 class CreditBankIncomeAccount(BaseModel):
     """The Item's bank accounts that have the selected data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_account"
-            }
-        }
 
     account_id: str = Field( description="Plaid's unique identifier for the account.")
     mask: Optional[str] = Field(default=None, description="The last 2-4 alphanumeric characters of an account's official account number. Note that the mask may be non-unique between an Item's accounts, and it may also not match the mask that the bank displays to the user.")

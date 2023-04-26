@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PayrollIncomeRateOfPay(BaseModel):
     """An object representing the rate at which an individual is paid."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payroll_income_rate_of_pay"
-            }
-        }
 
     pay_rate: Optional[str] = Field(default=None, description="The rate at which an employee is paid.")
     pay_amount: Optional[float] = Field(default=None, description="The amount at which an employee is paid.")

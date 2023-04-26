@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class WebhookUpdateAcknowledgedWebhook(BaseModel):
     """Fired when an Item's webhook is updated. This will be sent to the newly specified webhook."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#webhook_update_acknowledged_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`WEBHOOK_UPDATE_ACKNOWLEDGED`")

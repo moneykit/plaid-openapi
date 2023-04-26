@@ -22,12 +22,6 @@ from plaid_skel.models.w2_state_and_local_wages import W2StateAndLocalWages
 class W2(BaseModel):
     """W2 is an object that represents income data taken from a W2 tax document."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#w2"
-            }
-        }
 
     employer: Optional[PaystubEmployer] = Field(default=None,)
     employee: Optional[Employee] = Field(default=None,)

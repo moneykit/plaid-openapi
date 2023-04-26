@@ -20,12 +20,6 @@ from plaid_skel.models.recipient_bacs_nullable import RecipientBACSNullable
 class PaymentInitiationRecipient(BaseModel):
     """PaymentInitiationRecipient defines a payment initiation recipient"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_recipient"
-            }
-        }
 
     recipient_id: str = Field( description="The ID of the recipient.")
     name: str = Field( description="The name of the recipient.")

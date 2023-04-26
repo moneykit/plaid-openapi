@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class W2Box12(BaseModel):
     """Data on the W2 Box 12"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#w2_box12"
-            }
-        }
 
     code: Optional[str] = Field(default=None, description="W2 Box 12 code.")
     amount: Optional[str] = Field(default=None, description="W2 Box 12 amount.")

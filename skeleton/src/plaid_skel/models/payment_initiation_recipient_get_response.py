@@ -20,12 +20,6 @@ from plaid_skel.models.recipient_bacs_nullable import RecipientBACSNullable
 class PaymentInitiationRecipientGetResponse(BaseModel):
     """PaymentInitiationRecipientGetResponse defines the response schema for `/payment_initiation/recipient/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_recipient_get_response"
-            }
-        }
 
     recipient_id: str = Field( description="The ID of the recipient.")
     name: str = Field( description="The name of the recipient.")

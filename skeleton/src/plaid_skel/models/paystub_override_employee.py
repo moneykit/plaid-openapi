@@ -19,12 +19,6 @@ from plaid_skel.models.paystub_override_employee_address import PaystubOverrideE
 class PaystubOverrideEmployee(BaseModel):
     """The employee on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_override_employee"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="The name of the employee.")
     address: Optional[PaystubOverrideEmployeeAddress] = Field(default=None,)

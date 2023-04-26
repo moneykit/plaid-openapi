@@ -19,12 +19,7 @@ class Recurrence(BaseModel):
     """Insights relating to expenses and deposits that are predicted to occur on a scheduled basis, such as biweekly, monthly, or annually.  Common examples include loan payments, bill payments, subscriptions, and payroll income.  This is a beta field, available to all users."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurrence"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     is_recurring: Optional[bool] = Field(default=None, description="Whether or not the transaction is periodically recurring.")
 

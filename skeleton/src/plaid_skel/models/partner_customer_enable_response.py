@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerCustomerEnableResponse(BaseModel):
     """Response schema for `/partner/customer/enable`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_customer_enable_response"
-            }
-        }
 
     production_secret: Optional[str] = Field(default=None, description="The end customer's secret key for the Production environment.")
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

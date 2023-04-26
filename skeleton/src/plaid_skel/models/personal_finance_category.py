@@ -19,12 +19,7 @@ class PersonalFinanceCategory(BaseModel):
     """Information describing the intent of the transaction. Most relevant for personal finance use cases, but not limited to such use cases.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#personal_finance_category"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     primary: str = Field( description="A high level category that communicates the broad category of the transaction.")
     detailed: str = Field( description="A granular category conveying the transaction's intent. This field can also be used as a unique identifier for the category.")

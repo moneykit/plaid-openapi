@@ -19,12 +19,6 @@ from plaid_skel.models.scopes_nullable import ScopesNullable
 class ConnectedApplication(BaseModel):
     """Describes the connected application for a particular end user."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#connected_application"
-            }
-        }
 
     application_id: str = Field( description="This field will map to the application ID that is returned from /item/applications/list, or provided to the institution in an oauth redirect.")
     name: str = Field( description="The name of the application")

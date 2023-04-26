@@ -17094,9 +17094,9 @@ components:
       type: string
       title: CountryCode
       enum:
-      - US
       - GB
       - CA
+      - US
       description: ISO-3166-1 alpha-2 country code standard.
     PaymentMeta:
       title: PaymentMeta
@@ -19100,9 +19100,9 @@ components:
     Products:
       title: Products
       enum:
-      - assets
       - identity
       - transactions
+      - assets
       - auth
       - balance
       description: A list of products that an institution can support. All Items must

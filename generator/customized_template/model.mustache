@@ -32,15 +32,10 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class {{classname}}(BaseModel):
     """{{{description}}}"""
 
+{{#isNullable}}
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#{{{classFilename}}}"
-            }
-            {{#isNullable}}
-            , "nullable": True,
-            {{/isNullable}}
-        }
+        schema_extra = {"nullable": True}
+{{/isNullable}}
 
 {{#vars}}
     {{name}}: {{#required}}{{#isNullable}}Optional[{{/isNullable}}{{>model_field_type}}{{#isNullable}}]{{/isNullable}}{{/required}}{{^required}}Optional[{{>model_field_type}}]{{/required}} = Field({{^required}}default=None,{{/required}}{{#required}}{{#isNullable}}default=None,{{/isNullable}}{{/required}}{{#description}} description="{{{description}}}"{{/description}})

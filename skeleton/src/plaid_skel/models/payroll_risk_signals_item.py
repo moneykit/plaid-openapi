@@ -19,12 +19,6 @@ from plaid_skel.models.document_risk_signals_object import DocumentRiskSignalsOb
 class PayrollRiskSignalsItem(BaseModel):
     """Object containing fraud risk data pertaining to the Item linked as part of the verification."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payroll_risk_signals_item"
-            }
-        }
 
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
     verification_risk_signals: List[DocumentRiskSignalsObject] = Field( description="Array of payroll income document authenticity data retrieved for each of the user's accounts.")

@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class ItemErrorWebhook(BaseModel):
     """Fired when an error is encountered with an Item. The error can be resolved by having the user go through Link’s update mode."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_error_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`ERROR`")

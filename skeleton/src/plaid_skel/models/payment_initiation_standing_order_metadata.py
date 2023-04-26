@@ -20,12 +20,7 @@ class PaymentInitiationStandingOrderMetadata(BaseModel):
     """Metadata specifically related to valid Payment Initiation standing order configurations for the institution."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_standing_order_metadata"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     supports_standing_order_end_date: bool = Field( description="Indicates whether the institution supports closed-ended standing orders by providing an end date.")
     supports_standing_order_negative_execution_days: bool = Field( description="This is only applicable to `MONTHLY` standing orders. Indicates whether the institution supports negative integers (-1 to -5) for setting up a `MONTHLY` standing order relative to the end of the month.")

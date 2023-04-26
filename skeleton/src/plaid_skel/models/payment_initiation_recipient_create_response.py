@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaymentInitiationRecipientCreateResponse(BaseModel):
     """PaymentInitiationRecipientCreateResponse defines the response schema for `/payment_initation/recipient/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_recipient_create_response"
-            }
-        }
 
     recipient_id: str = Field( description="A unique ID identifying the recipient")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

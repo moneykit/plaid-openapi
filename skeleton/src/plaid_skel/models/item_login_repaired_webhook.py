@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class ItemLoginRepairedWebhook(BaseModel):
     """Fired when an Item login is repaired and the Item no longer needs to go through update mode. This will occur when the user completed the update mode flow for the Item, either in your application or in another Plaid-connected app. If you have messaging that tells the user to complete the update mode flow (such as in-app banners or out-of-band notifications) you should silence this messaging upon receiving the `LOGIN_REPAIRED` webhook."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_login_repaired_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`LOGIN_REPAIRED`")

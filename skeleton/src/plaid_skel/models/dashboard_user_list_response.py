@@ -19,12 +19,6 @@ from plaid_skel.models.dashboard_user import DashboardUser
 class DashboardUserListResponse(BaseModel):
     """Paginated list of dashboard users"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#dashboard_user_list_response"
-            }
-        }
 
     dashboard_users: List[DashboardUser] = Field( description="List of dashboard users")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

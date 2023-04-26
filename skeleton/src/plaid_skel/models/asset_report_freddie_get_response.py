@@ -19,12 +19,6 @@ from plaid_skel.models.asset_report_freddie import AssetReportFreddie
 class AssetReportFreddieGetResponse(BaseModel):
     """AssetReportFreddieGetResponse defines the response schema for `/asset_report/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_freddie_get_response"
-            }
-        }
 
     deal: AssetReportFreddie = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

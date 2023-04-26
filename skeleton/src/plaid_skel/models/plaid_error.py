@@ -20,12 +20,7 @@ class PlaidError(BaseModel):
     """We use standard HTTP response codes for success and failure notifications, and our errors are further classified by `error_type`. In general, 200 HTTP codes correspond to success, 40X codes are for developer- or user-related failures, and 50X codes are for Plaid-related issues. An Item with a non-`null` error object will only be part of an API response when calling `/item/get` to view Item status. Otherwise, error fields will be `null` if no error has occurred; if an error has occurred, an error code will be returned instead."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#plaid_error"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     error_type: PlaidErrorType = Field()
     error_code: str = Field( description="The particular error code. Safe for programmatic use.")

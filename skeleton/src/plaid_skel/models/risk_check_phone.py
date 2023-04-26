@@ -20,12 +20,7 @@ class RiskCheckPhone(BaseModel):
     """Result summary object specifying values for `phone` attributes of risk check."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_check_phone"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     linked_services: list[RiskCheckLinkedService] = Field()
 

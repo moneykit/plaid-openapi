@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkDeliveryInstitution(BaseModel):
     """Information related to the financial institution."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_institution"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="The full institution name, such as 'Wells Fargo'")
     institution_id: Optional[str] = Field(default=None, description="The Plaid institution identifier")

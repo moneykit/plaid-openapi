@@ -19,12 +19,6 @@ from plaid_skel.models.taxpayer_identifier_type import TaxpayerIdentifierType
 class TaxpayerIdentifier(BaseModel):
     """Information about the Taxpayer identification values assigned to the individual or legal entity.Information about the Taxpayer identification values assigned to the individual or legal entity."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#taxpayer_identifier"
-            }
-        }
 
     taxpayer_identifier_type: Optional[TaxpayerIdentifierType] = Field(default=None,)
     taxpayer_identifier_value: Optional[str] = Field(default=None, description="The value of the taxpayer identifier as assigned by the IRS to the individual or legal entity.")

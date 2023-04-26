@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ClientProvidedTransactionLocation(BaseModel):
     """A representation of where a transaction took place.  Use this field to pass in structured location information you may have about your transactions. Providing location data is optional but can increase result quality. If you have unstructured location information, it may be appended to the `description` field."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#client_provided_transaction_location"
-            }
-        }
 
     country: Optional[str] = Field(default=None, description="The country where the transaction occurred.")
     region: Optional[str] = Field(default=None, description="The region or state where the transaction occurred.")

@@ -21,12 +21,6 @@ from plaid_skel.models.credit_freddie_mac_services_voa24 import CreditFreddieMac
 class CreditFreddieMacVerificationOfAssetsDealVOA24(BaseModel):
     """An object representing an Asset Report with Freddie Mac schema."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_verification_of_assets_deal_voa24"
-            }
-        }
 
     loans: CreditFreddieMacLoansVOA24 = Field()
     parties: CreditFreddieMacPartiesVOA24 = Field()

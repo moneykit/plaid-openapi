@@ -20,12 +20,6 @@ from plaid_skel.models.wallet_transaction_counterparty_international import Wall
 class WalletTransactionCounterpartyNumbers(BaseModel):
     """The counterparty's bank account numbers. Exactly one of IBAN or BACS data is required."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_counterparty_numbers"
-            }
-        }
 
     bacs: Optional[WalletTransactionCounterpartyBACS] = Field(default=None,)
     international: Optional[WalletTransactionCounterpartyInternational] = Field(default=None,)

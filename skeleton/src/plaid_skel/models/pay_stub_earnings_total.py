@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PayStubEarningsTotal(BaseModel):
     """An object representing both the current pay period and year to date amount for an earning category."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pay_stub_earnings_total"
-            }
-        }
 
     current_amount: Optional[float] = Field(default=None, description="Total amount of the earnings for this pay period.")
     hours: Optional[float] = Field(default=None, description="Total number of hours worked for this pay period.")

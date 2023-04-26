@@ -19,12 +19,6 @@ from plaid_skel.models.w2 import W2
 class Taxform(BaseModel):
     """Data about an official document used to report the user's income to the IRS."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#taxform"
-            }
-        }
 
     doc_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")
     document_type: str = Field( description="The type of tax document. Currently, the only supported value is `w2`.")

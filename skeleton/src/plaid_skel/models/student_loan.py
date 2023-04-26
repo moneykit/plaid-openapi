@@ -22,12 +22,6 @@ from plaid_skel.models.student_repayment_plan import StudentRepaymentPlan
 class StudentLoan(BaseModel):
     """Contains details about a student loan account"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#student_loan"
-            }
-        }
 
     account_id: Optional[str] = Field(default=None, description="The ID of the account that this liability belongs to.")
     account_number: Optional[str] = Field(default=None, description="The account number of the loan. For some institutions, this may be a masked version of the number (e.g., the last 4 digits instead of the entire number).")

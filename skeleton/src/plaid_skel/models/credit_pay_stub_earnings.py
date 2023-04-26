@@ -20,12 +20,6 @@ from plaid_skel.models.pay_stub_earnings_total import PayStubEarningsTotal
 class CreditPayStubEarnings(BaseModel):
     """An object representing both a breakdown of earnings on a pay stub and the total earnings."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub_earnings"
-            }
-        }
 
     breakdown: List[PayStubEarningsBreakdown] = Field()
     total: PayStubEarningsTotal = Field()

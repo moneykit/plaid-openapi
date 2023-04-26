@@ -21,12 +21,6 @@ from plaid_skel.models.po_box_status import POBoxStatus
 class KYCCheckAddressSummary(BaseModel):
     """Result summary object specifying how the `address` field matched."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#kyc_check_address_summary"
-            }
-        }
 
     summary: MatchSummaryCode = Field()
     po_box: POBoxStatus = Field()

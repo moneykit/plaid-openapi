@@ -22,12 +22,6 @@ from plaid_skel.models.watchlist_screening_hit_status import WatchlistScreeningH
 class WatchlistScreeningHit(BaseModel):
     """Data from a government watchlist or PEP list that has been attached to the screening."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_hit"
-            }
-        }
 
     id: str = Field( description="ID of the associated screening hit.")
     review_status: WatchlistScreeningHitStatus = Field()

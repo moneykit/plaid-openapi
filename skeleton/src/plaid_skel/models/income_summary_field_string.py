@@ -20,12 +20,7 @@ class IncomeSummaryFieldString(BaseModel):
     """Data about the income summary"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_summary_field_string"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     value: str = Field( description="The value of the field.")
     verification_status: VerificationStatus = Field()

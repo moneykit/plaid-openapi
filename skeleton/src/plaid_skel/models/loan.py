@@ -19,12 +19,6 @@ from plaid_skel.models.loan_identifiers import LoanIdentifiers
 class Loan(BaseModel):
     """Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#loan"
-            }
-        }
 
     loan_identifiers: LoanIdentifiers = Field()
 

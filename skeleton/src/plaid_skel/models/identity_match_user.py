@@ -19,12 +19,6 @@ from plaid_skel.models.address_data_nullable import AddressDataNullable
 class IdentityMatchUser(BaseModel):
     """The user's legal name, phone number, email address and address used to perform fuzzy match."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_match_user"
-            }
-        }
 
     legal_name: Optional[str] = Field(default=None, description="The user's full legal name.")
     phone_number: Optional[str] = Field(default=None, description="The user's phone number, in E.164 format: +{countrycode}{number}. For example: \"+14151234567\". Phone numbers provided in other formats will be parsed on a best-effort basis.")

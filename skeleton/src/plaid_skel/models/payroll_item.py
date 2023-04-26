@@ -21,12 +21,6 @@ from plaid_skel.models.payroll_item_status import PayrollItemStatus
 class PayrollItem(BaseModel):
     """An object containing information about the payroll item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payroll_item"
-            }
-        }
 
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
     institution_id: str = Field( description="The unique identifier of the institution associated with the Item.")

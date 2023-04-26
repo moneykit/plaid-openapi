@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class BankTransferMigrateAccountResponse(BaseModel):
     """Defines the response schema for `/bank_transfer/migrate_account`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_migrate_account_response"
-            }
-        }
 
     access_token: str = Field( description="The Plaid `access_token` for the newly created Item.")
     account_id: str = Field( description="The Plaid `account_id` for the newly created Item.")

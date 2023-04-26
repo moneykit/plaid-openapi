@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class TransferEventsUpdateWebhook(BaseModel):
     """Fired when new transfer events are available. Receiving this webhook indicates you should fetch the new events from `/transfer/event/sync`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_events_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`TRANSFER`")
     webhook_code: str = Field( description="`TRANSFER_EVENTS_UPDATE`")

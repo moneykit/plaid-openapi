@@ -19,12 +19,6 @@ from plaid_skel.models.address_data import AddressData
 class Address(BaseModel):
     """A physical mailing address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#address"
-            }
-        }
 
     data: AddressData = Field()
     primary: Optional[bool] = Field(default=None, description="When `true`, identifies the address as the primary address on an account.")

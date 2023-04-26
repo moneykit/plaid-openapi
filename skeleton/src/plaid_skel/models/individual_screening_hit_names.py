@@ -19,12 +19,6 @@ from plaid_skel.models.weak_alias_determination import WeakAliasDetermination
 class IndividualScreeningHitNames(BaseModel):
     """Name information for the associated individual watchlist hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#individual_screening_hit_names"
-            }
-        }
 
     full: str = Field( description="The full name of the individual, including all parts.")
     is_primary: bool = Field( description="Primary names are those most commonly used to refer to this person. Only one name will ever be marked as primary.")

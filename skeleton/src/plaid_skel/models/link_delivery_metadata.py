@@ -20,12 +20,6 @@ from plaid_skel.models.link_delivery_webhook_delivery_status import LinkDelivery
 class LinkDeliveryMetadata(BaseModel):
     """Information related to the related to the delivery of the link session to users"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_metadata"
-            }
-        }
 
     communication_method: Optional[LinkDeliveryWebhookCommunicationMethod] = Field(default=None,)
     delivery_status: Optional[LinkDeliveryWebhookDeliveryStatus] = Field(default=None,)

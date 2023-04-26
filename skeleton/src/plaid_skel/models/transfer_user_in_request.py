@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_user_address_in_request import TransferUserAddre
 class TransferUserInRequest(BaseModel):
     """The legal name and other information for the account holder."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_user_in_request"
-            }
-        }
 
     legal_name: str = Field( description="The user's legal name.")
     phone_number: Optional[str] = Field(default=None, description="The user's phone number.")

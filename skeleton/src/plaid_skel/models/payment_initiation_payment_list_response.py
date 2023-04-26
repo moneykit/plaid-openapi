@@ -19,12 +19,6 @@ from plaid_skel.models.payment_initiation_payment import PaymentInitiationPaymen
 class PaymentInitiationPaymentListResponse(BaseModel):
     """PaymentInitiationPaymentListResponse defines the response schema for `/payment_initiation/payment/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment_list_response"
-            }
-        }
 
     payments: List[PaymentInitiationPayment] = Field( description="An array of payments that have been created, associated with the given `client_id`.")
     next_cursor: Optional[datetime] = Field(default=None, description="The value that, when used as the optional `cursor` parameter to `/payment_initiation/payment/list`, will return the next unreturned payment as its first payment.")

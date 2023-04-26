@@ -19,12 +19,6 @@ from plaid_skel.models.asset_report_user import AssetReportUser
 class AssetReportRefreshRequestOptions(BaseModel):
     """An optional object to filter `/asset_report/refresh` results. If provided, cannot be `null`. If not specified, the `options` from the original call to `/asset_report/create` will be used."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_refresh_request_options"
-            }
-        }
 
     client_report_id: Optional[str] = Field(default=None, description="Client-generated identifier, which can be used by lenders to track loan applications.")
     webhook: Optional[str] = Field(default=None, description="URL to which Plaid will send Assets webhooks, for example when the requested Asset Report is ready.")

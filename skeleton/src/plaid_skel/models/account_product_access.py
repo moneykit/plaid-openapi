@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AccountProductAccess(BaseModel):
     """Allow the application to access specific products on this account"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#account_product_access"
-            }
-        }
 
     account_data: Optional[bool] = Field(default=None, description="Allow the application to access account data. Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")
     statements: Optional[bool] = Field(default=None, description="Allow the application to access bank statements. Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")

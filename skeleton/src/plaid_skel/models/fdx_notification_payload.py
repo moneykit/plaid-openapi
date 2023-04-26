@@ -20,12 +20,6 @@ from plaid_skel.models.fdx_notification_payload_id_type import FDXNotificationPa
 class FDXNotificationPayload(BaseModel):
     """Custom key-value pairs payload for a notification"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fdx_notification_payload"
-            }
-        }
 
     id: Optional[str] = Field(default=None, description="ID for the origination entity related to the notification")
     id_type: Optional[FDXNotificationPayloadIdType] = Field(default=None,)

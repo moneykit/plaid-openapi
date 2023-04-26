@@ -19,12 +19,7 @@ class SignalPersonName(BaseModel):
     """The user's legal name"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#signal_person_name"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     prefix: Optional[str] = Field(default=None, description="The user's name prefix (e.g. \"Mr.\")")
     given_name: Optional[str] = Field(default=None, description="The user's given name. If the user has a one-word name, it should be provided in this field.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxItemResetLoginResponse(BaseModel):
     """SandboxItemResetLoginResponse defines the response schema for `/sandbox/item/reset_login`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_item_reset_login_response"
-            }
-        }
 
     reset_login: bool = Field( description="`true` if the call succeeded")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

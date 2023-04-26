@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AccountFilter(BaseModel):
     """Enumerates the account subtypes that the application wishes for the user to be able to select from. For more details refer to Plaid documentation on account filters."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#account_filter"
-            }
-        }
 
     depository: Optional[List[str]] = Field(default=None, description="A list of account subtypes to be filtered.")
     credit: Optional[List[str]] = Field(default=None, description="A list of account subtypes to be filtered.")

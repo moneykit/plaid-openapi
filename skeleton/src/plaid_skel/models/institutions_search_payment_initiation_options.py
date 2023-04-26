@@ -19,12 +19,7 @@ class InstitutionsSearchPaymentInitiationOptions(BaseModel):
     """Additional options that will be used to filter institutions by various Payment Initiation configurations."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_search_payment_initiation_options"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     payment_id: Optional[str] = Field(default=None, description="A unique ID identifying the payment")
     consent_id: Optional[str] = Field(default=None, description="A unique ID identifying the payment consent")

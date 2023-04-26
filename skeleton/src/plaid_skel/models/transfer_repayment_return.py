@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferRepaymentReturn(BaseModel):
     """Represents a return on a Guaranteed ACH transfer that is included in the specified repayment."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_repayment_return"
-            }
-        }
 
     transfer_id: str = Field( description="The unique identifier of the guaranteed transfer that was returned.")
     event_id: int = Field( description="The unique identifier of the corresponding `returned` transfer event.")

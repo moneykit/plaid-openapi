@@ -19,12 +19,6 @@ from plaid_skel.models.connected_application import ConnectedApplication
 class ItemApplicationListResponse(BaseModel):
     """Describes the connected application for a particular end user."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_application_list_response"
-            }
-        }
 
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     applications: List[ConnectedApplication] = Field( description="A list of connected applications.")

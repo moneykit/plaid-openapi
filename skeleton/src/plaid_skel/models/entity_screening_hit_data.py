@@ -24,12 +24,6 @@ from plaid_skel.models.generic_screening_hit_location_items import GenericScreen
 class EntityScreeningHitData(BaseModel):
     """Information associated with the entity watchlist hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hit_data"
-            }
-        }
 
     documents: Optional[List[EntityScreeningHitDocumentsItems]] = Field(default=None, description="Documents associated with the watchlist hit")
     email_addresses: Optional[List[EntityScreeningHitEmailsItems]] = Field(default=None, description="Email addresses associated with the watchlist hit")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PayStubEarningsBreakdown(BaseModel):
     """An object representing the earnings line items for the pay period."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pay_stub_earnings_breakdown"
-            }
-        }
 
     canonical_description: Optional[str] = Field(default=None, description="Commonly used term to describe the earning line item.")
     current_amount: Optional[float] = Field(default=None, description="Raw amount of the earning line item.")

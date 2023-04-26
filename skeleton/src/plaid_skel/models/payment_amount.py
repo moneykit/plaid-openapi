@@ -19,12 +19,6 @@ from plaid_skel.models.payment_amount_currency import PaymentAmountCurrency
 class PaymentAmount(BaseModel):
     """The amount and currency of a payment"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_amount"
-            }
-        }
 
     currency: PaymentAmountCurrency = Field()
     value: float = Field( description="The amount of the payment. Must contain at most two digits of precision e.g. `1.23`. Minimum accepted value is `1`.")

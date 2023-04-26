@@ -19,12 +19,6 @@ from plaid_skel.models.institution import Institution
 class InstitutionsGetByIdResponse(BaseModel):
     """InstitutionsGetByIdResponse defines the response schema for `/institutions/get_by_id`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_get_by_id_response"
-            }
-        }
 
     institution: Institution = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

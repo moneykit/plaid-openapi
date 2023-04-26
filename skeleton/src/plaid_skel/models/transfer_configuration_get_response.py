@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferConfigurationGetResponse(BaseModel):
     """Defines the response schema for `/transfer/configuration/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_configuration_get_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     max_single_transfer_amount: str = Field( description="The max limit of dollar amount of a single transfer (decimal string with two digits of precision e.g. \"10.00\").")

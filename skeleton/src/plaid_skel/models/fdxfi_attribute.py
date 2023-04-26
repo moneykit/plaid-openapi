@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class FDXFiAttribute(BaseModel):
     """Financial Institution provider-specific attribute"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fdxfi_attribute"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="Name of attribute")
     value: Optional[str] = Field(default=None, description="Value of attribute")

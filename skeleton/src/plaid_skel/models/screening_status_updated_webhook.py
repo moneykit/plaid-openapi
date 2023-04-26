@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class ScreeningStatusUpdatedWebhook(BaseModel):
     """Fired when an individual screening status has changed, which can occur manually via the dashboard or during ongoing monitoring."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_status_updated_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`SCREENING`")
     webhook_code: str = Field( description="`STATUS_UPDATED`")

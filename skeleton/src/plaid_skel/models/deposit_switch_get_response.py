@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DepositSwitchGetResponse(BaseModel):
     """DepositSwitchGetResponse defines the response schema for `/deposit_switch/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_get_response"
-            }
-        }
 
     deposit_switch_id: str = Field( description="The ID of the deposit switch.")
     target_account_id: Optional[str] = Field(default=None, description="The ID of the bank account the direct deposit was switched to.")

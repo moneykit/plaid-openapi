@@ -19,12 +19,6 @@ from plaid_skel.models.link_token_get_metadata_response import LinkTokenGetMetad
 class LinkTokenGetResponse(BaseModel):
     """LinkTokenGetResponse defines the response schema for `/link/token/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_get_response"
-            }
-        }
 
     link_token: str = Field( description="A `link_token`, which can be supplied to Link in order to initialize it and receive a `public_token`, which can be exchanged for an `access_token`.")
     created_at: Optional[datetime] = Field(default=None, description="The creation timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")

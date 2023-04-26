@@ -20,12 +20,7 @@ class IncomeVerificationPrecheckEmployer(BaseModel):
     """Information about the end user's employer"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_employer"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     name: Optional[str] = Field(default=None, description="The employer's name")
     address: Optional[IncomeVerificationPrecheckEmployerAddress] = Field(default=None,)

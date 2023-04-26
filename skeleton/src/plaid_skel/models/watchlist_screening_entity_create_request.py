@@ -19,12 +19,6 @@ from plaid_skel.models.entity_watchlist_search_terms import EntityWatchlistSearc
 class WatchlistScreeningEntityCreateRequest(BaseModel):
     """Request input for creating an entity screening review"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_entity_create_request"
-            }
-        }
 
     search_terms: EntityWatchlistSearchTerms = Field()
     client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")

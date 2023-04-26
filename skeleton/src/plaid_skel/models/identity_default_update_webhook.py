@@ -21,12 +21,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class IdentityDefaultUpdateWebhook(BaseModel):
     """Fired when a change to identity data has been detected on an Item. Items are checked for identity updates every 30-90 days. We recommend that upon receiving this webhook you make another call to `/identity/get` to fetch the user's latest identity data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_default_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`IDENTITY`")
     webhook_code: str = Field( description="`DEFAULT_UPDATE`")

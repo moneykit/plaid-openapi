@@ -19,12 +19,6 @@ from plaid_skel.models.paystub_override import PaystubOverride
 class IncomeOverride(BaseModel):
     """Specify payroll data on the account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_override"
-            }
-        }
 
     paystubs: Optional[List[PaystubOverride]] = Field(default=None, description="A list of paystubs associated with the account.")
 

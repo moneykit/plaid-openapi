@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class MortgagePropertyAddress(BaseModel):
     """Object containing fields describing property address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#mortgage_property_address"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The city name.")
     country: Optional[str] = Field(default=None, description="The ISO 3166-1 alpha-2 country code.")

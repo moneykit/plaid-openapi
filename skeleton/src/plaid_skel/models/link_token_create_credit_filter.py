@@ -19,12 +19,6 @@ from plaid_skel.models.credit_account_subtype import CreditAccountSubtype
 class LinkTokenCreateCreditFilter(BaseModel):
     """A filter to apply to `credit`-type accounts"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_credit_filter"
-            }
-        }
 
     account_subtypes: Optional[List[CreditAccountSubtype]] = Field(default=None, description="An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). ")
 

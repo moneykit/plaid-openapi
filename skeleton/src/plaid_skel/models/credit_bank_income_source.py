@@ -21,12 +21,6 @@ from plaid_skel.models.credit_bank_income_pay_frequency import CreditBankIncomeP
 class CreditBankIncomeSource(BaseModel):
     """Detailed information for the income source."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_source"
-            }
-        }
 
     income_source_id: Optional[str] = Field(default=None, description="A unique identifier for an income source.")
     income_description: Optional[str] = Field(default=None, description="The most common name or original description for the underlying income transactions.")

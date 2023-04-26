@@ -20,12 +20,6 @@ from plaid_skel.models.sandbox_public_token_create_request_options_transactions 
 class SandboxPublicTokenCreateRequestOptions(BaseModel):
     """An optional set of options to be used when configuring the Item. If specified, must not be `null`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_public_token_create_request_options"
-            }
-        }
 
     webhook: Optional[str] = Field(default=None, description="Specify a webhook to associate with the new Item.")
     override_username: Optional[str] = Field(default=None, description="Test username to use for the creation of the Sandbox Item. Default value is `user_good`.")

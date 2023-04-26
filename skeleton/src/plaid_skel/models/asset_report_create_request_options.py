@@ -20,12 +20,6 @@ from plaid_skel.models.asset_report_user import AssetReportUser
 class AssetReportCreateRequestOptions(BaseModel):
     """An optional object to filter `/asset_report/create` results. If provided, must be non-`null`. The optional `user` object is required for the report to be eligible for Fannie Mae's Day 1 Certainty program."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_create_request_options"
-            }
-        }
 
     client_report_id: Optional[str] = Field(default=None, description="Client-generated identifier, which can be used by lenders to track loan applications.")
     webhook: Optional[str] = Field(default=None, description="URL to which Plaid will send Assets webhooks, for example when the requested Asset Report is ready.")

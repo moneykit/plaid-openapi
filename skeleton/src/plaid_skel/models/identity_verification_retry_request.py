@@ -20,12 +20,6 @@ from plaid_skel.models.strategy import Strategy
 class IdentityVerificationRetryRequest(BaseModel):
     """Request input for retrying an identity verification attempt"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_retry_request"
-            }
-        }
 
     client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
     template_id: str = Field( description="ID of the associated Identity Verification template.")

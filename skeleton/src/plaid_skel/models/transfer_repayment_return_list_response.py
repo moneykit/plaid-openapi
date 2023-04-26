@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_repayment_return import TransferRepaymentReturn
 class TransferRepaymentReturnListResponse(BaseModel):
     """Defines the response schema for `/transfer/repayments/return/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_repayment_return_list_response"
-            }
-        }
 
     repayment_returns: List[TransferRepaymentReturn] = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

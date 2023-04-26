@@ -20,12 +20,6 @@ from plaid_skel.models.credit_session_results import CreditSessionResults
 class CreditSession(BaseModel):
     """Metadata and results for a Link session"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session"
-            }
-        }
 
     link_session_id: Optional[str] = Field(default=None, description="The unique identifier associated with the Link session. This identifier matches the `link_session_id` returned in the onSuccess/onExit callbacks.")
     session_start_time: Optional[datetime] = Field(default=None, description="The time when the Link session started")

@@ -19,12 +19,6 @@ from plaid_skel.models.asset_type import AssetType
 class CreditFreddieMacAssetDetailVOE25(BaseModel):
     """Details about an asset."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_asset_detail_voe25"
-            }
-        }
 
     asset_unique_identifier: str = Field( description="A vendor created unique Identifier.")
     asset_account_identifier: str = Field( description="A unique alphanumeric string identifying an asset.")

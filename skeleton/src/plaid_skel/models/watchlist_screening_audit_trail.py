@@ -19,12 +19,6 @@ from plaid_skel.models.source import Source
 class WatchlistScreeningAuditTrail(BaseModel):
     """Information about the last change made to the parent object specifying what caused the change as well as when it occurred."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_audit_trail"
-            }
-        }
 
     source: Source = Field()
     dashboard_user_id: Optional[str] = Field(default=None, description="ID of the associated user.")

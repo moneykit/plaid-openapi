@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferUserAddressInRequest(BaseModel):
     """The address associated with the account holder. Providing this data will improve the likelihood that Plaid will be able to guarantee the transfer, if applicable."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_user_address_in_request"
-            }
-        }
 
     street: Optional[str] = Field(default=None, description="The street number and name (i.e., \"100 Market St.\").")
     city: Optional[str] = Field(default=None, description="Ex. \"San Francisco\"")

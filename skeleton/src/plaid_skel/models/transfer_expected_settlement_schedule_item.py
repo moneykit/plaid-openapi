@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferExpectedSettlementScheduleItem(BaseModel):
     """Defines an expected sweep date and amount."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_expected_settlement_schedule_item"
-            }
-        }
 
     settlement_date: date = Field( description="The settlement date of a sweep for this transfer.")
     settled_amount: str = Field( description="The accumulated amount that have been swept by `settlement_date`.")

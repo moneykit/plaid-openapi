@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LiabilitiesGetRequestOptions(BaseModel):
     """An optional object to filter `/liabilities/get` results. If provided, `options` cannot be null."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#liabilities_get_request_options"
-            }
-        }
 
     account_ids: Optional[List[str]] = Field(default=None, description="A list of accounts to retrieve for the Item.  An error will be returned if a provided `account_id` is not associated with the Item")
 

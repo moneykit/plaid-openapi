@@ -19,12 +19,6 @@ from plaid_skel.models.employer import Employer
 class EmployersSearchResponse(BaseModel):
     """EmployersSearchResponse defines the response schema for `/employers/search`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employers_search_response"
-            }
-        }
 
     employers: List[Employer] = Field( description="A list of employers matching the search criteria.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

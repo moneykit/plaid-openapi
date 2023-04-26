@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class IncomeVerificationStatusWebhook(BaseModel):
     """Fired when the status of an income verification instance has changed. It will typically take several minutes for this webhook to fire after the end user has uploaded their documents in the Document Income flow."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_status_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`\"INCOME\"`")
     webhook_code: str = Field( description="`INCOME_VERIFICATION`")

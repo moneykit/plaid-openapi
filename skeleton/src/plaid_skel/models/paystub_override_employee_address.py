@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaystubOverrideEmployeeAddress(BaseModel):
     """The address of the employee."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_override_employee_address"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The full city name.")
     region: Optional[str] = Field(default=None, description="The region or state Example: `\"NC\"`")

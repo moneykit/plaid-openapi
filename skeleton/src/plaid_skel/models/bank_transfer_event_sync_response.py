@@ -19,12 +19,6 @@ from plaid_skel.models.bank_transfer_event import BankTransferEvent
 class BankTransferEventSyncResponse(BaseModel):
     """Defines the response schema for `/bank_transfer/event/sync`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_event_sync_response"
-            }
-        }
 
     bank_transfer_events: List[BankTransferEvent] = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

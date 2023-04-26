@@ -19,12 +19,6 @@ from plaid_skel.models.report_type import ReportType
 class CreditRelayRefreshRequest(BaseModel):
     """CreditRelayRefreshRequest defines the request schema for `/credit/relay/refresh`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_relay_refresh_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")

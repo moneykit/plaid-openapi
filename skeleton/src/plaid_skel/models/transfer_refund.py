@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_refund_status import TransferRefundStatus
 class TransferRefund(BaseModel):
     """Represents a refund within the Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_refund"
-            }
-        }
 
     id: str = Field( description="Plaid’s unique identifier for a refund.")
     transfer_id: str = Field( description="The ID of the transfer to refund.")

@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_party_voa24 import CreditFreddieMacPar
 class CreditFreddieMacPartiesVOA24(BaseModel):
     """A collection of objects that define specific parties to a deal. This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provider."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_parties_voa24"
-            }
-        }
 
     party: List[CreditFreddieMacPartyVOA24] = Field()
 

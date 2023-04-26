@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_event import TransferEvent
 class TransferEventSyncResponse(BaseModel):
     """Defines the response schema for `/transfer/event/sync`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_event_sync_response"
-            }
-        }
 
     transfer_events: List[TransferEvent] = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

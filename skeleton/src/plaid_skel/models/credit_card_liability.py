@@ -19,12 +19,6 @@ from plaid_skel.models.apr import APR
 class CreditCardLiability(BaseModel):
     """An object representing a credit card account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_card_liability"
-            }
-        }
 
     account_id: Optional[str] = Field(default=None, description="The ID of the account that this liability belongs to.")
     aprs: List[APR] = Field( description="The various interest rates that apply to the account. APR information is not provided by all card issuers; if APR data is not available, this array will be empty.")

@@ -19,12 +19,6 @@ from plaid_skel.models.transactions_rule_details import TransactionsRuleDetails
 class TransactionsCategoryRule(BaseModel):
     """A representation of a transactions category rule."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_category_rule"
-            }
-        }
 
     id: Optional[str] = Field(default=None, description="A unique identifier of the rule created")
     item_id: Optional[str] = Field(default=None, description="A unique identifier of the Item the rule was created for.")

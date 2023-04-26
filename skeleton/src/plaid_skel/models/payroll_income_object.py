@@ -21,12 +21,6 @@ from plaid_skel.models.credit_w2 import CreditW2
 class PayrollIncomeObject(BaseModel):
     """An object representing payroll data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payroll_income_object"
-            }
-        }
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")
     pay_stubs: List[CreditPayStub] = Field( description="Array of pay stubs for the user.")

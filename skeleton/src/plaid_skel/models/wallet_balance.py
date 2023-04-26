@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class WalletBalance(BaseModel):
     """An object representing the e-wallet balance"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_balance"
-            }
-        }
 
     iso_currency_code: str = Field( description="The ISO-4217 currency code of the balance")
     current: float = Field( description="The total amount of funds in the account")

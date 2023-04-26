@@ -20,12 +20,6 @@ from plaid_skel.models.warning import Warning
 class AssetReportGetResponse(BaseModel):
     """AssetReportGetResponse defines the response schema for `/asset_report/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_get_response"
-            }
-        }
 
     report: AssetReport = Field()
     warnings: List[Warning] = Field( description="If the Asset Report generation was successful but identity information cannot be returned, this array will contain information about the errors causing identity information to be missing")

@@ -19,12 +19,6 @@ from plaid_skel.models.employment_verification import EmploymentVerification
 class EmploymentVerificationGetResponse(BaseModel):
     """EmploymentVerificationGetResponse defines the response schema for `/employment/verification/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employment_verification_get_response"
-            }
-        }
 
     employments: List[EmploymentVerification] = Field( description="A list of employment verification summaries.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

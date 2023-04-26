@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IncomeVerificationPrecheckEmployerAddressData(BaseModel):
     """Data about the components comprising an address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_employer_address_data"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The full city name")
     country: Optional[str] = Field(default=None, description="The ISO 3166-1 alpha-2 country code")

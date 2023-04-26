@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_request_search_terms import Watchlist
 class WatchlistScreeningIndividualCreateRequest(BaseModel):
     """Request input for creating an individual watchlist screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_create_request"
-            }
-        }
 
     search_terms: WatchlistScreeningRequestSearchTerms = Field()
     client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")

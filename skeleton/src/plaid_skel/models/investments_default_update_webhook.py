@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class InvestmentsDefaultUpdateWebhook(BaseModel):
     """Fired when new transactions have been detected on an investment account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investments_default_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`INVESTMENTS_TRANSACTIONS`")
     webhook_code: str = Field( description="`DEFAULT_UPDATE`")

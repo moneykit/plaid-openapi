@@ -19,12 +19,7 @@ class IdentityVerificationRequestUserName(BaseModel):
     """You can use this field to pre-populate the user's legal name; if it is provided here, they will not be prompted to enter their name in the identity verification attempt."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_request_user_name"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     given_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")
     family_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")

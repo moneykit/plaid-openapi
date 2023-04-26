@@ -20,12 +20,6 @@ from plaid_skel.models.earnings_total import EarningsTotal
 class Earnings(BaseModel):
     """An object representing both a breakdown of earnings on a paystub and the total earnings."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#earnings"
-            }
-        }
 
     subtotals: Optional[List[EarningsTotal]] = Field(default=None,)
     totals: Optional[List[EarningsTotal]] = Field(default=None,)

@@ -19,12 +19,7 @@ class TransferIntentGetFailureReason(BaseModel):
     """The reason for a failed transfer intent. Returned only if the transfer intent status is `failed`. Null otherwise."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_intent_get_failure_reason"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     error_type: Optional[str] = Field(default=None, description="A broad categorization of the error.")
     error_code: Optional[str] = Field(default=None, description="A code representing the reason for a failed transfer intent (i.e., an API error or the authorization being declined).")

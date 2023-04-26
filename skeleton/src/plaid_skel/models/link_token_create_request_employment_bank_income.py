@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestEmploymentBankIncome(BaseModel):
     """Specifies options for initializing Link for use with Bank Employment. This field is required if `employment` is included in the `products` array and `bank` is specified in `employment_source_types`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_employment_bank_income"
-            }
-        }
 
     days_requested: int = Field( description="The number of days of data to request for the Bank Employment product.")
 

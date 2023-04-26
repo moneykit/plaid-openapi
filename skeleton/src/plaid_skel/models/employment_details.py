@@ -19,12 +19,6 @@ from plaid_skel.models.pay import Pay
 class EmploymentDetails(BaseModel):
     """An object representing employment details found on a paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employment_details"
-            }
-        }
 
     annual_salary: Optional[Pay] = Field(default=None,)
     hire_date: Optional[date] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")

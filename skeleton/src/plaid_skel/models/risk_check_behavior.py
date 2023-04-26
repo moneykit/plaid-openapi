@@ -22,12 +22,7 @@ class RiskCheckBehavior(BaseModel):
     """Result summary object specifying values for `behavior` attributes of risk check, when available."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_check_behavior"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     user_interactions: RiskCheckBehaviorUserInteractionsLabel = Field()
     fraud_ring_detected: RiskCheckBehaviorFraudRingDetectedLabel = Field()

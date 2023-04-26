@@ -19,12 +19,7 @@ class PhoneNumberMatchScore(BaseModel):
     """Score found by matching phone number provided by the API with the phone number on the account at the financial institution. 100 is a perfect match and 0 is a no match. If the account contains multiple owners, the maximum match score is filled."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#phone_number_match_score"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     score: Optional[int] = Field(default=None, description="Match score for normalized phone number. 100 is a perfect match and 0 is a no match. If the phone number is missing from either the API or financial institution, this is empty.")
 

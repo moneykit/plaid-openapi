@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Pay(BaseModel):
     """An object representing a monetary amount."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pay"
-            }
-        }
 
     amount: Optional[float] = Field(default=None, description="A numerical amount of a specific currency.")
     currency: Optional[str] = Field(default=None, description="Currency code, e.g. USD")

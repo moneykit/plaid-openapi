@@ -20,12 +20,7 @@ class ExternalPaymentRefundDetails(BaseModel):
     """Details about external payment refund"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#external_payment_refund_details"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     name: str = Field( description="The name of the account holder.")
     iban: Optional[str] = Field(default=None, description="The International Bank Account Number (IBAN) for the account.")

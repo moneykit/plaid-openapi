@@ -20,12 +20,7 @@ class TransferUserInRequestDeprecated(BaseModel):
     """The legal name and other information for the account holder."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_user_in_request_deprecated"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     legal_name: Optional[str] = Field(default=None, description="The user's legal name.")
     phone_number: Optional[str] = Field(default=None, description="The user's phone number.")

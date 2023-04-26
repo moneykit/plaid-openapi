@@ -20,12 +20,7 @@ class TransferAuthorizationGuaranteeDecisionRationale(BaseModel):
     """The rationale for Plaid's decision to not guarantee a transfer. Will be `null` unless `guarantee_decision` is `NOT_GUARANTEED`."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_authorization_guarantee_decision_rationale"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     code: TransferAuthorizationGuaranteeDecisionRationaleCode = Field()
     description: str = Field( description="A human-readable description of why the transfer cannot be guaranteed.")

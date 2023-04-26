@@ -21,12 +21,6 @@ from plaid_skel.models.payment_consent_periodic_interval import PaymentConsentPe
 class PaymentConsentPeriodicAmount(BaseModel):
     """Defines consent payments limitations per period."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_consent_periodic_amount"
-            }
-        }
 
     amount: PaymentConsentPeriodicAmountAmount = Field()
     interval: PaymentConsentPeriodicInterval = Field()

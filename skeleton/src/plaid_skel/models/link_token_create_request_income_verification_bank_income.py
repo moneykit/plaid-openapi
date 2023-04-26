@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestIncomeVerificationBankIncome(BaseModel):
     """Specifies options for initializing Link for use with Bank Income. This field is required if `income_verification` is included in the `products` array and `bank` is specified in `income_source_types`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_income_verification_bank_income"
-            }
-        }
 
     days_requested: int = Field( description="The number of days of data to request for the Bank Income product")
     enable_multiple_items: Optional[bool] = Field(default=None, description="Whether to enable multiple Items to be added in the Link session")

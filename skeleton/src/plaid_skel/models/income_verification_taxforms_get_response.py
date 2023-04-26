@@ -21,12 +21,6 @@ from plaid_skel.models.taxform import Taxform
 class IncomeVerificationTaxformsGetResponse(BaseModel):
     """IncomeVerificationTaxformsGetResponse defines the response schema for `/income/verification/taxforms/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_taxforms_get_response"
-            }
-        }
 
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     document_metadata: List[DocumentMetadata] = Field()

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class RiskSignalDocumentReference(BaseModel):
     """Object containing metadata for the document"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_signal_document_reference"
-            }
-        }
 
     document_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")
     document_name: Optional[str] = Field(default=None, description="The name of the document")

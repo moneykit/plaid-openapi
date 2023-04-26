@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PlatformIds(BaseModel):
     """An object containing a set of ids related to an employee"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#platform_ids"
-            }
-        }
 
     employee_id: Optional[str] = Field(default=None, description="The ID of an employee as given by their employer")
     payroll_id: Optional[str] = Field(default=None, description="The ID of an employee as given by their payroll")

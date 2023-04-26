@@ -23,12 +23,6 @@ from plaid_skel.models.products import Products
 class Institution(BaseModel):
     """Details relating to a specific financial institution"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institution"
-            }
-        }
 
     institution_id: str = Field( description="Unique identifier for the institution")
     name: str = Field( description="The official name of the institution")

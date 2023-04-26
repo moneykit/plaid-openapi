@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Email(BaseModel):
     """An object representing an email address"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#email"
-            }
-        }
 
     data: str = Field( description="The email address.")
     primary: bool = Field( description="When `true`, identifies the email address as the primary email on an account.")

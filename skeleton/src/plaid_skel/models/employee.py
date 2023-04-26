@@ -20,12 +20,6 @@ from plaid_skel.models.taxpayer_id import TaxpayerID
 class Employee(BaseModel):
     """Data about the employee."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employee"
-            }
-        }
 
     address: PaystubAddress = Field()
     name: Optional[str] = Field(default=None, description="The name of the employee.")

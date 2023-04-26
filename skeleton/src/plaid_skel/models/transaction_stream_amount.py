@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransactionStreamAmount(BaseModel):
     """Object with data pertaining to an amount on the transaction stream."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transaction_stream_amount"
-            }
-        }
 
     amount: Optional[float] = Field(default=None, description="Represents the numerical value of an amount.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO-4217 currency code of the amount. Always `null` if `unofficial_currency_code` is non-`null`.  See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `iso_currency_code`s.")

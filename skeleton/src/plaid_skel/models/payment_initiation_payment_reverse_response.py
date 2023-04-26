@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_transaction_status import WalletTransactionStatus
 class PaymentInitiationPaymentReverseResponse(BaseModel):
     """PaymentInitiationPaymentReverseResponse defines the response schema for `/payment_initation/payment/reverse`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment_reverse_response"
-            }
-        }
 
     refund_id: str = Field( description="A unique ID identifying the refund")
     status: WalletTransactionStatus = Field()

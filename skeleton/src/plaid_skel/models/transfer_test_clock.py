@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferTestClock(BaseModel):
     """Defines the test clock for a transfer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_test_clock"
-            }
-        }
 
     test_clock_id: str = Field( description="Plaid’s unique identifier for a test clock.")
     virtual_time: datetime = Field( description="The virtual timestamp on the test clock. This will be of the form `2006-01-02T15:04:05Z`.")

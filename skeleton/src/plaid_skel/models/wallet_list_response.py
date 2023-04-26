@@ -19,12 +19,6 @@ from plaid_skel.models.wallet import Wallet
 class WalletListResponse(BaseModel):
     """WalletListResponse defines the response schema for `/wallet/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_list_response"
-            }
-        }
 
     wallets: List[Wallet] = Field( description="An array of e-wallets")
     next_cursor: Optional[str] = Field(default=None, description="Cursor used for fetching e-wallets created before the latest e-wallet provided in this response")

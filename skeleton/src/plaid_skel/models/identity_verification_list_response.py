@@ -19,12 +19,6 @@ from plaid_skel.models.identity_verification import IdentityVerification
 class IdentityVerificationListResponse(BaseModel):
     """Paginated list of Plaid sessions."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_list_response"
-            }
-        }
 
     identity_verifications: List[IdentityVerification] = Field( description="List of Plaid sessions")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

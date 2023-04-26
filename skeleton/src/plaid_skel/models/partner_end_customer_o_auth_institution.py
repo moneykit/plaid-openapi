@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer_o_auth_institution_environments impo
 class PartnerEndCustomerOAuthInstitution(BaseModel):
     """The OAuth registration information for an institution."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_o_auth_institution"
-            }
-        }
 
     name: Optional[str] = Field(default=None,)
     institution_id: Optional[str] = Field(default=None,)

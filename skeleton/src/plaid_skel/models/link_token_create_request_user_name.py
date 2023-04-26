@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestUserName(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_user_name"
-            }
-        }
 
     given_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")
     family_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")

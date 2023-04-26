@@ -20,12 +20,6 @@ from plaid_skel.models.fdx_hateoas_link_action import FDXHateoasLinkAction
 class FDXHateoasLink(BaseModel):
     """REST application constraint (Hypermedia As The Engine Of Application State)"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fdx_hateoas_link"
-            }
-        }
 
     href: str = Field( description="URL to invoke the action on the resource")
     action: Optional[FDXHateoasLinkAction] = Field(default=None,)

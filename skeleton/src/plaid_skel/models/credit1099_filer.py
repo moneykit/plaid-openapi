@@ -19,12 +19,6 @@ from plaid_skel.models.credit_pay_stub_address import CreditPayStubAddress
 class Credit1099Filer(BaseModel):
     """An object representing a filer used by 1099-K tax documents."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit1099_filer"
-            }
-        }
 
     address: Optional[CreditPayStubAddress] = Field(default=None,)
     name: Optional[str] = Field(default=None, description="Name of filer.")

@@ -20,12 +20,6 @@ from plaid_skel.models.product_access import ProductAccess
 class Scopes(BaseModel):
     """The scopes object"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#scopes"
-            }
-        }
 
     product_access: Optional[ProductAccess] = Field(default=None,)
     accounts: Optional[List[AccountAccess]] = Field(default=None,)

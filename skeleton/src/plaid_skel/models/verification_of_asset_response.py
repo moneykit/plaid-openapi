@@ -19,12 +19,6 @@ from plaid_skel.models.assets import Assets
 class VerificationOfAssetResponse(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#verification_of_asset_response"
-            }
-        }
 
     assets: Assets = Field()
 

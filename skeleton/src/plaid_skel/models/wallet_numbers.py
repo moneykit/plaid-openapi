@@ -20,12 +20,6 @@ from plaid_skel.models.recipient_bacs import RecipientBACS
 class WalletNumbers(BaseModel):
     """An object representing the e-wallet account numbers"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_numbers"
-            }
-        }
 
     bacs: Optional[RecipientBACS] = Field(default=None,)
     international: Optional[NumbersInternationalIBAN] = Field(default=None,)

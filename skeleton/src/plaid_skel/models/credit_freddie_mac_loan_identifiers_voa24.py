@@ -19,12 +19,6 @@ from plaid_skel.models.loan_identifier import LoanIdentifier
 class CreditFreddieMacLoanIdentifiersVOA24(BaseModel):
     """Collection of current and previous identifiers for this loan."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_loan_identifiers_voa24"
-            }
-        }
 
     loan_identifier: List[LoanIdentifier] = Field()
 

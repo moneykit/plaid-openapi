@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatu
 class WatchlistScreeningIndividualGetResponse(BaseModel):
     """The screening object allows you to represent a customer in your system, update their profile, and search for them on various watchlists. Note: Rejected customers will not receive new hits, regardless of program configuration."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_get_response"
-            }
-        }
 
     id: str = Field( description="ID of the associated screening.")
     search_terms: WatchlistScreeningSearchTerms = Field()

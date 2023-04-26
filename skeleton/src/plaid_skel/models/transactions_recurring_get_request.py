@@ -19,12 +19,6 @@ from plaid_skel.models.transactions_recurring_get_request_options import Transac
 class TransactionsRecurringGetRequest(BaseModel):
     """TransactionsRecurringGetRequest defines the request schema for `/transactions/recurring/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_recurring_get_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")

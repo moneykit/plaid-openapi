@@ -23,12 +23,6 @@ from plaid_skel.models.form1099_type import Form1099Type
 class Credit1099(BaseModel):
     """An object representing an end user's 1099 tax form"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit1099"
-            }
-        }
 
     document_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")
     document_metadata: Optional[CreditDocumentMetadata] = Field(default=None,)

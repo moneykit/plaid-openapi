@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AssetReportUser(BaseModel):
     """The user object allows you to provide additional information about the user to be appended to the Asset Report. All fields are optional. The `first_name`, `last_name`, and `ssn` fields are required if you would like the Report to be eligible for Fannie Mae’s Day 1 Certainty™ program."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_user"
-            }
-        }
 
     client_user_id: Optional[str] = Field(default=None, description="An identifier you determine and submit for the user.")
     first_name: Optional[str] = Field(default=None, description="The user's first name. Required for the Fannie Mae Day 1 Certainty™ program.")

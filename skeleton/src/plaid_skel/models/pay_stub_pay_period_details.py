@@ -20,12 +20,6 @@ from plaid_skel.models.pay_stub_distribution_breakdown import PayStubDistributio
 class PayStubPayPeriodDetails(BaseModel):
     """Details about the pay period."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pay_stub_pay_period_details"
-            }
-        }
 
     pay_amount: Optional[float] = Field(default=None, description="The amount of the paycheck.")
     distribution_breakdown: List[PayStubDistributionBreakdown] = Field()

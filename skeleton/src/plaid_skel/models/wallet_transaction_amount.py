@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_iso_currency_code import WalletISOCurrencyCode
 class WalletTransactionAmount(BaseModel):
     """The amount and currency of a transaction"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_amount"
-            }
-        }
 
     iso_currency_code: WalletISOCurrencyCode = Field()
     value: float = Field( description="The amount of the transaction. Must contain at most two digits of precision e.g. `1.23`.")

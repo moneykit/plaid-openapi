@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatu
 class WatchlistScreeningEntityUpdateResponse(BaseModel):
     """The entity screening object allows you to represent an entity in your system, update its profile, and search for it on various watchlists. Note: Rejected entity screenings will not receive new hits, regardless of entity program configuration."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_entity_update_response"
-            }
-        }
 
     id: str = Field( description="ID of the associated entity screening.")
     search_terms: EntityWatchlistScreeningSearchTerms = Field()

@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer import PartnerEndCustomer
 class PartnerCustomerGetResponse(BaseModel):
     """Response schema for `/partner/customer/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_customer_get_response"
-            }
-        }
 
     end_customer: Optional[PartnerEndCustomer] = Field(default=None,)
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -19,12 +19,6 @@ from plaid_skel.models.loan_identifier_type import LoanIdentifierType
 class LoanIdentifier(BaseModel):
     """The information used to identify this loan by various parties to the transaction or other organizations."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#loan_identifier"
-            }
-        }
 
     loan_identifier: Optional[str] = Field(default=None, description="The value of the identifier for the specified type.")
     loan_identifier_type: Optional[LoanIdentifierType] = Field(default=None,)

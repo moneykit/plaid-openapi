@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ServicerAddressData(BaseModel):
     """The address of the student loan servicer. This is generally the remittance address to which payments should be sent."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#servicer_address_data"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The full city name")
     region: Optional[str] = Field(default=None, description="The region or state Example: `\"NC\"`")

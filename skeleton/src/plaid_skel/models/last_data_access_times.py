@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LastDataAccessTimes(BaseModel):
     """Describes the last time each datatype was accessed by an application."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#last_data_access_times"
-            }
-        }
 
     application_id: str = Field( description="ID of the application accessing data.")
     account_balance_info: Optional[datetime] = Field(default=None, description="The last time account_balance_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")

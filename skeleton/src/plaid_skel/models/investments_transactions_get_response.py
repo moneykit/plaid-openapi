@@ -22,12 +22,6 @@ from plaid_skel.models.security import Security
 class InvestmentsTransactionsGetResponse(BaseModel):
     """InvestmentsTransactionsGetResponse defines the response schema for `/investments/transactions/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investments_transactions_get_response"
-            }
-        }
 
     item: Item = Field()
     accounts: List[AccountBase] = Field( description="The accounts for which transaction history is being fetched.")

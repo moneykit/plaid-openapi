@@ -21,12 +21,6 @@ from plaid_skel.models.liabilities_object import LiabilitiesObject
 class LiabilitiesGetResponse(BaseModel):
     """LiabilitiesGetResponse defines the response schema for `/liabilities/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#liabilities_get_response"
-            }
-        }
 
     accounts: List[AccountBase] = Field( description="An array of accounts associated with the Item")
     item: Item = Field()

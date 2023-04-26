@@ -23,12 +23,7 @@ class PhysicalDocumentExtractedDataAnalysis(BaseModel):
     """Analysis of the data extracted from the submitted document."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#physical_document_extracted_data_analysis"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     name: DocumentNameMatchCode = Field()
     date_of_birth: DocumentDateOfBirthMatchCode = Field()

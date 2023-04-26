@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ItemImportResponse(BaseModel):
     """ItemImportResponse defines the response schema for `/item/import`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_import_response"
-            }
-        }
 
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

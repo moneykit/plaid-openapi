@@ -21,12 +21,6 @@ from plaid_skel.models.student_loan import StudentLoan
 class LiabilitiesObject(BaseModel):
     """An object containing liability accounts"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#liabilities_object"
-            }
-        }
 
     credit: Optional[List[CreditCardLiability]] = Field(default=None, description="The credit accounts returned.")
     mortgage: Optional[List[MortgageLiability]] = Field(default=None, description="The mortgage accounts returned.")

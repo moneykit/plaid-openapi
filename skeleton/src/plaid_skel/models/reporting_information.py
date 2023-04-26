@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ReportingInformation(BaseModel):
     """Information about an report identifier and a report name."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#reporting_information"
-            }
-        }
 
     reporting_information_identifier: str = Field( description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
 

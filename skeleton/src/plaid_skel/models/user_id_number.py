@@ -20,12 +20,7 @@ class UserIDNumber(BaseModel):
     """ID number submitted by the user, currently used only for the Identity Verification product. If the user has not submitted this data yet, this field will be `null`. Otherwise, both fields are guaranteed to be filled."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#user_id_number"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     value: str = Field( description="Value of identity document value typed in by user. Alpha-numeric, with all formatting characters stripped.")
     type: IDNumberType = Field()

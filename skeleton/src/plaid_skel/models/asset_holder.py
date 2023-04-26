@@ -19,12 +19,6 @@ from plaid_skel.models.asset_holder_name import AssetHolderName
 class AssetHolder(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_holder"
-            }
-        }
 
     name: AssetHolderName = Field()
 

@@ -20,12 +20,6 @@ from plaid_skel.models.plaid_error import PlaidError
 class LinkDeliveryCallbackWebhook(BaseModel):
     """Webhook containing metadata proxied over from Link callback e.g `onEvent`, `onExit`, `onSuccess`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_callback_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`LINK_DELIVERY`")
     webhook_code: str = Field( description="`LINK_CALLBACK`")

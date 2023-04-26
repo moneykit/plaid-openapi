@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditBankIncomeGetRequestOptions(BaseModel):
     """An optional object for `/credit/bank_income/get` request options."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_get_request_options"
-            }
-        }
 
     count: Optional[int] = Field(default=None, description="How many Bank Income Reports should be fetched. Multiple reports may be available if the report has been re-created or refreshed. If more than one report is available, the most recent reports will be returned first.")
 

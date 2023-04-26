@@ -20,12 +20,6 @@ from plaid_skel.models.fdx_party_type import FDXPartyType
 class FDXParty(BaseModel):
     """FDX Participant - an entity or person that is a part of a FDX API transaction"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fdx_party"
-            }
-        }
 
     name: str = Field( description="Human recognizable common name")
     type: FDXPartyType = Field()

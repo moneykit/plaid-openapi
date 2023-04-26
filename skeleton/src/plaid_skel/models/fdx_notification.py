@@ -25,12 +25,6 @@ from plaid_skel.models.fdx_party import FDXParty
 class FDXNotification(BaseModel):
     """Provides the base fields of a notification. Clients will read the `type` property to determine the expected notification payload"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fdx_notification"
-            }
-        }
 
     notification_id: str = Field( description="Id of notification")
     type: FDXNotificationType = Field()

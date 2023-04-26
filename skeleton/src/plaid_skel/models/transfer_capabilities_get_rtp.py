@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferCapabilitiesGetRTP(BaseModel):
     """Contains the supported service types in RTP"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_capabilities_get_rtp"
-            }
-        }
 
     credit: Optional[bool] = Field(default=None, description="When `true`, the linked Item's institution supports RTP credit transfer.")
 

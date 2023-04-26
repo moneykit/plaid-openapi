@@ -21,12 +21,6 @@ from plaid_skel.models.payment_initiation_consent_status import PaymentInitiatio
 class PaymentInitiationConsent(BaseModel):
     """PaymentInitiationConsent defines a payment initiation consent."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_consent"
-            }
-        }
 
     consent_id: str = Field( description="The consent ID.")
     status: PaymentInitiationConsentStatus = Field()

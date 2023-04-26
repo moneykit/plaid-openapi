@@ -19,12 +19,6 @@ from plaid_skel.models.deposit_switch_address_data import DepositSwitchAddressDa
 class DepositSwitchTargetUser(BaseModel):
     """The deposit switch target user"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_target_user"
-            }
-        }
 
     given_name: str = Field( description="The given name (first name) of the user.")
     family_name: str = Field( description="The family name (last name) of the user.")

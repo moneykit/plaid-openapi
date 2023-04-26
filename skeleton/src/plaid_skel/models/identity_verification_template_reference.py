@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IdentityVerificationTemplateReference(BaseModel):
     """The resource ID and version number of the template configuring the behavior of a given identity verification."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_template_reference"
-            }
-        }
 
     id: str = Field( description="ID of the associated Identity Verification template.")
     version: float = Field( description="Version of the associated Identity Verification template.")

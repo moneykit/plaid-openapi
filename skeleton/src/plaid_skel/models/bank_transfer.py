@@ -25,12 +25,6 @@ from plaid_skel.models.bank_transfer_user import BankTransferUser
 class BankTransfer(BaseModel):
     """Represents a bank transfer within the Bank Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer"
-            }
-        }
 
     id: str = Field( description="Plaid’s unique identifier for a bank transfer.")
     ach_class: ACHClass = Field()

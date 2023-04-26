@@ -19,12 +19,6 @@ from plaid_skel.models.detailed_originator import DetailedOriginator
 class TransferOriginatorGetResponse(BaseModel):
     """Defines the response schema for `/transfer/originator/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_originator_get_response"
-            }
-        }
 
     originator: DetailedOriginator = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

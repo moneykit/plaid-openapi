@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditAmountWithCurrency(BaseModel):
     """This contains an amount, denominated in the currency specified by either `iso_currency_code` or `unofficial_currency_code`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_amount_with_currency"
-            }
-        }
 
     amount: Optional[float] = Field(default=None, description="Value of amount with up to 2 decimal places.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO 4217 currency code of the amount or balance.")

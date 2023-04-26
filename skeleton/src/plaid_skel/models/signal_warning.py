@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SignalWarning(BaseModel):
     """Conveys information about the errors causing missing or stale bank data used to construct the /signal/evaluate scores and response"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#signal_warning"
-            }
-        }
 
     warning_type: Optional[str] = Field(default=None, description="Broad categorization of the warning.")
     warning_code: Optional[str] = Field(default=None, description="The particular warning code.")

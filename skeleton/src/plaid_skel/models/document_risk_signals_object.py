@@ -20,12 +20,6 @@ from plaid_skel.models.single_document_risk_signal import SingleDocumentRiskSign
 class DocumentRiskSignalsObject(BaseModel):
     """Object containing fraud risk data for a set of income documents."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_risk_signals_object"
-            }
-        }
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")
     single_document_risk_signals: List[SingleDocumentRiskSignal] = Field( description="Array of document metadata and associated risk signals per document")

@@ -20,12 +20,6 @@ from plaid_skel.models.match_summary import MatchSummary
 class EntityScreeningHitEmailsItems(BaseModel):
     """Analyzed emails for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hit_emails_items"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[EntityScreeningHitEmails] = Field(default=None,)

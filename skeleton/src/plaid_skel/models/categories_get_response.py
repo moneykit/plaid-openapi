@@ -19,12 +19,6 @@ from plaid_skel.models.category import Category
 class CategoriesGetResponse(BaseModel):
     """CategoriesGetResponse defines the response schema for `/categories/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#categories_get_response"
-            }
-        }
 
     categories: List[Category] = Field( description="An array of all of the transaction categories used by Plaid.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

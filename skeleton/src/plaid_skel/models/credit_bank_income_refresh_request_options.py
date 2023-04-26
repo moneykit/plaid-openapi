@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditBankIncomeRefreshRequestOptions(BaseModel):
     """An optional object for `/credit/bank_income/refresh` request options."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_refresh_request_options"
-            }
-        }
 
     days_requested: Optional[int] = Field(default=None, description="How many days of data to include in the refresh. If not specified, this will default to the days requested in the most recently generated bank income report for the user.")
     webhook: Optional[str] = Field(default=None, description="The URL where Plaid will send the bank income webhook.")

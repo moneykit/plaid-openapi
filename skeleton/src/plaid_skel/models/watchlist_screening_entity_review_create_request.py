@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class WatchlistScreeningEntityReviewCreateRequest(BaseModel):
     """Request input for creating a review for an entity screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_entity_review_create_request"
-            }
-        }
 
     confirmed_hits: List[str] = Field( description="Hits to mark as a true positive after thorough manual review. These hits will never recur or be updated once dismissed. In most cases, confirmed hits indicate that the customer should be rejected.")
     dismissed_hits: List[str] = Field( description="Hits to mark as a false positive after thorough manual review. These hits will never recur or be updated once dismissed.")

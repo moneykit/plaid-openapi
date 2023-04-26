@@ -22,12 +22,6 @@ from plaid_skel.models.phone_number_match_score import PhoneNumberMatchScore
 class AccountIdentityMatchScoreAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#account_identity_match_score_all_of"
-            }
-        }
 
     legal_name: Optional[NameMatchScore] = Field(default=None,)
     phone_number: Optional[PhoneNumberMatchScore] = Field(default=None,)

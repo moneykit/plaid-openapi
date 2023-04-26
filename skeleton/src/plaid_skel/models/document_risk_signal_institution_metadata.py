@@ -19,12 +19,7 @@ class DocumentRiskSignalInstitutionMetadata(BaseModel):
     """An object which contains additional metadata about the institution used to compute the verification attribute"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_risk_signal_institution_metadata"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
 

@@ -21,12 +21,6 @@ from plaid_skel.models.credit_freddie_mac_services_voe25 import CreditFreddieMac
 class CreditFreddieVerificationOfEmploymentDealVOE25(BaseModel):
     """An object representing a Verification of Employment report."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_verification_of_employment_deal_voe25"
-            }
-        }
 
     loans: CreditFreddieMacLoansVOA24 = Field()
     parties: CreditFreddieMacPartiesVOA24 = Field()

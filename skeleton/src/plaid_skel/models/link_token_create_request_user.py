@@ -21,12 +21,6 @@ from plaid_skel.models.user_id_number import UserIDNumber
 class LinkTokenCreateRequestUser(BaseModel):
     """An object specifying information about the end user who will be linking their account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_user"
-            }
-        }
 
     client_user_id: str = Field( description="A unique ID representing the end user. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`. It is currently used as a means of searching logs for the given user in the Plaid Dashboard.")
     legal_name: Optional[str] = Field(default=None, description="The user's full legal name, used for [micro-deposit based verification flows](https://plaid.com/docs/auth/coverage/). For a small number of customers on legacy flows, providing this field is required to enable micro-deposit-based flows. For all other customers, this field is optional, but providing the user's name in this field when using micro-deposit-based verification will enable certain risk checks and can reduce micro-deposit fraud.")

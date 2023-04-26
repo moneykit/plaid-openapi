@@ -20,12 +20,6 @@ from plaid_skel.models.item_status_nullable import ItemStatusNullable
 class ItemGetResponse(BaseModel):
     """ItemGetResponse defines the response schema for `/item/get` and `/item/webhook/update`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_get_response"
-            }
-        }
 
     item: Item = Field()
     status: Optional[ItemStatusNullable] = Field(default=None,)

@@ -19,12 +19,6 @@ from plaid_skel.models.paystub_address import PaystubAddress
 class PaystubEmployer(BaseModel):
     """Information about the employer on the paystub"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_employer"
-            }
-        }
 
     address: Optional[PaystubAddress] = Field(default=None,)
     name: Optional[str] = Field(default=None, description="The name of the employer on the paystub.")

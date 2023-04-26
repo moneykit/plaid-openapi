@@ -21,12 +21,6 @@ from plaid_skel.models.wallet_transaction_status import WalletTransactionStatus
 class WalletTransactionGetResponse(BaseModel):
     """WalletTransactionGetResponse defines the response schema for `/wallet/transaction/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_get_response"
-            }
-        }
 
     transaction_id: str = Field( description="A unique ID identifying the transaction")
     wallet_id: str = Field( description="The EMI (E-Money Institution) wallet that this payment is associated with, if any. This wallet is used as an intermediary account to enable Plaid to reconcile the settlement of funds for Payment Initiation requests.")

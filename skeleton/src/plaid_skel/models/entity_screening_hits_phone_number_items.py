@@ -20,12 +20,6 @@ from plaid_skel.models.match_summary import MatchSummary
 class EntityScreeningHitsPhoneNumberItems(BaseModel):
     """Analyzed phone numbers for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hits_phone_number_items"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[EntityScreeningHitPhoneNumbers] = Field(default=None,)

@@ -22,12 +22,6 @@ from plaid_skel.models.screening_hit_names_items import ScreeningHitNamesItems
 class ScreeningHitData(BaseModel):
     """Information associated with the watchlist hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_hit_data"
-            }
-        }
 
     dates_of_birth: Optional[List[ScreeningHitDateOfBirthItem]] = Field(default=None, description="Dates of birth associated with the watchlist hit")
     documents: Optional[List[ScreeningHitDocumentsItems]] = Field(default=None, description="Documents associated with the watchlist hit")

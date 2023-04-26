@@ -21,12 +21,6 @@ from plaid_skel.models.transfer_authorization_decision_rationale import Transfer
 class TransferRecurringCreateResponse(BaseModel):
     """Defines the response schema for `/transfer/recurring/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_recurring_create_response"
-            }
-        }
 
     recurring_transfer: Optional[RecurringTransferNullable] = Field(default=None,)
     decision: TransferAuthorizationDecision = Field()

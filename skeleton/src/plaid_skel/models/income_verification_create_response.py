@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IncomeVerificationCreateResponse(BaseModel):
     """IncomeVerificationCreateResponse defines the response schema for `/income/verification/create`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_create_response"
-            }
-        }
 
     income_verification_id: str = Field( description="ID of the verification. This ID is persisted throughout the lifetime of the verification.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

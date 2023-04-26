@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_loan_identifiers_voa24 import CreditFr
 class CreditFreddieMacLoanVOA24(BaseModel):
     """Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_loan_voa24"
-            }
-        }
 
     loan_identifiers: CreditFreddieMacLoanIdentifiersVOA24 = Field()
     loan_role_type: str = Field( description="Type of loan. The value can only be \"SubjectLoan\"")

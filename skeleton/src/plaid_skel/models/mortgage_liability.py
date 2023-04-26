@@ -20,12 +20,6 @@ from plaid_skel.models.mortgage_property_address import MortgagePropertyAddress
 class MortgageLiability(BaseModel):
     """Contains details about a mortgage account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#mortgage_liability"
-            }
-        }
 
     account_id: str = Field( description="The ID of the account that this liability belongs to.")
     account_number: str = Field( description="The account number of the loan.")

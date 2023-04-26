@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferDevice(BaseModel):
     """Information about the device being used to initiate the authorization."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_device"
-            }
-        }
 
     ip_address: str = Field( description="The IP address of the device being used to initiate the authorization.")
     user_agent: str = Field( description="The user agent of the device being used to initiate the authorization.")

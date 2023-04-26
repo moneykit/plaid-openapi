@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatu
 class WatchlistScreeningIndividualUpdateRequest(BaseModel):
     """Request input for editing an individual watchlist screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_update_request"
-            }
-        }
 
     watchlist_screening_id: str = Field( description="ID of the associated screening.")
     search_terms: Optional[UpdateIndividualScreeningRequestSearchTerms] = Field(default=None,)

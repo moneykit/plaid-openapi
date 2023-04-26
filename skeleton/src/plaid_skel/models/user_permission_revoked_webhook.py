@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class UserPermissionRevokedWebhook(BaseModel):
     """The `USER_PERMISSION_REVOKED` webhook is fired when an end user has used either the [my.plaid.com portal](https://my.plaid.com) or the financial institution’s consent portal to revoke the permission that they previously granted to access an Item. Once access to an Item has been revoked, it cannot be restored. If the user subsequently returns to your application, a new Item must be created for the user."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#user_permission_revoked_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`USER_PERMISSION_REVOKED`")

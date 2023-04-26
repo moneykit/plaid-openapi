@@ -22,12 +22,6 @@ from plaid_skel.models.ownership_type import OwnershipType
 class AccountAssetsAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#account_assets_all_of"
-            }
-        }
 
     days_available: Optional[float] = Field(default=None, description="The duration of transaction history available for this Item, typically defined as the time since the date of the earliest transaction in that account. Only returned by Assets endpoints.")
     transactions: Optional[List[AssetReportTransaction]] = Field(default=None, description="Transaction history associated with the account. Only returned by Assets endpoints. Transaction history returned by endpoints such as `/transactions/get` or `/investments/transactions/get` will be returned in the top-level `transactions` field instead.")

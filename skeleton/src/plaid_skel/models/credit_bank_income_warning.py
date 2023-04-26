@@ -21,12 +21,6 @@ from plaid_skel.models.credit_bank_income_warning_type import CreditBankIncomeWa
 class CreditBankIncomeWarning(BaseModel):
     """The warning associated with the data that was unavailable for the Bank Income Report."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_warning"
-            }
-        }
 
     warning_type: Optional[CreditBankIncomeWarningType] = Field(default=None,)
     warning_code: Optional[CreditBankIncomeWarningCode] = Field(default=None,)

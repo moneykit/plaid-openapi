@@ -19,12 +19,6 @@ from plaid_skel.models.party import Party
 class Parties(BaseModel):
     """A collection of objects that define specific parties to a deal. This includes the direct participating parties, such as borrower and seller and the indirect parties such as the credit report provider."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#parties"
-            }
-        }
 
     party: List[Party] = Field()
 

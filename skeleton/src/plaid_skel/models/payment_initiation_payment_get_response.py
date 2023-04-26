@@ -25,12 +25,6 @@ from plaid_skel.models.sender_bacs_nullable import SenderBACSNullable
 class PaymentInitiationPaymentGetResponse(BaseModel):
     """PaymentInitiationPaymentGetResponse defines the response schema for `/payment_initation/payment/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment_get_response"
-            }
-        }
 
     payment_id: str = Field( description="The ID of the payment. Like all Plaid identifiers, the `payment_id` is case sensitive.")
     amount: PaymentAmount = Field()

@@ -19,12 +19,6 @@ from plaid_skel.models.asset_owner import AssetOwner
 class AssetOwners(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_owners"
-            }
-        }
 
     asset_owner: List[AssetOwner] = Field( description="Multiple Occurances of Account Owners Full Name up to 4.")
 

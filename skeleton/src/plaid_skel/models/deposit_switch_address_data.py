@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DepositSwitchAddressData(BaseModel):
     """The user's address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_address_data"
-            }
-        }
 
     city: str = Field( description="The full city name")
     region: str = Field( description="The region or state Example: `\"NC\"`")

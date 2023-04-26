@@ -21,12 +21,6 @@ from plaid_skel.models.transaction_counterparty import TransactionCounterparty
 class TransactionAllOf(BaseModel):
     """"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transaction_all_of"
-            }
-        }
 
     authorized_date: Optional[date] = Field(default=None, description="The date that the transaction was authorized. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DD` ).")
     authorized_datetime: Optional[datetime] = Field(default=None, description="Date and time when a transaction was authorized in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")

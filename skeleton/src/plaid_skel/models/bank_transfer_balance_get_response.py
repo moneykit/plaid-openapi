@@ -19,12 +19,6 @@ from plaid_skel.models.bank_transfer_balance import BankTransferBalance
 class BankTransferBalanceGetResponse(BaseModel):
     """Defines the response schema for `/bank_transfer/balance/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_balance_get_response"
-            }
-        }
 
     balance: BankTransferBalance = Field()
     origination_account_id: Optional[str] = Field(default=None, description="The ID of the origination account that this balance belongs to.")

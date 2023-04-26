@@ -19,12 +19,6 @@ from plaid_skel.models.service_product_fulfillment_identifier import ServiceProd
 class ServiceProductFulfillmentDetail(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#service_product_fulfillment_detail"
-            }
-        }
 
     vendor_order_identifier: Optional[str] = Field(default=None, description="A string that uniquely identifies a type of order Verification of Asset.")
     service_product_fulfillment_identifier: ServiceProductFulfillmentIdentifier = Field()

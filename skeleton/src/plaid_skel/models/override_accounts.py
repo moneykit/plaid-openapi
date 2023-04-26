@@ -29,12 +29,6 @@ from plaid_skel.models.transaction_override import TransactionOverride
 class OverrideAccounts(BaseModel):
     """Data to use to set values of test accounts. Some values cannot be specified in the schema and will instead will be calculated from other test data in order to achieve more consistent, realistic test data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#override_accounts"
-            }
-        }
 
     type: OverrideAccountType = Field()
     subtype: Optional[AccountSubtype] = Field(default=None,)

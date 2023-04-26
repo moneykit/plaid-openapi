@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class EntityWatchlistSearchTerms(BaseModel):
     """Search inputs for creating an entity watchlist screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_watchlist_search_terms"
-            }
-        }
 
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")
     legal_name: str = Field( description="The name of the organization being screened.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxOauthSelectAccountsRequest(BaseModel):
     """Defines the request schema for `sandbox/oauth/select_accounts`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_oauth_select_accounts_request"
-            }
-        }
 
     oauth_state_id: str = Field()
     accounts: List[str] = Field()

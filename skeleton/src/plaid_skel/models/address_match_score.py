@@ -19,12 +19,7 @@ class AddressMatchScore(BaseModel):
     """Score found by matching address provided by the API with the address on the account at the financial institution. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the account contains multiple owners, the maximum match score is filled."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#address_match_score"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     score: Optional[int] = Field(default=None, description="Match score for address. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the address is missing from either the API or financial institution, this is empty.")
     is_postal_code_match: Optional[bool] = Field(default=None, description="postal code was provided for both and was a match")

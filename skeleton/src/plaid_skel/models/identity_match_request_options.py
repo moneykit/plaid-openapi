@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class IdentityMatchRequestOptions(BaseModel):
     """An optional object to filter /identity/match results"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_match_request_options"
-            }
-        }
 
     account_ids: Optional[List[str]] = Field(default=None, description="An array of `account_ids` to perform fuzzy match")
 

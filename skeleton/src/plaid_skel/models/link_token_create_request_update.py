@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestUpdate(BaseModel):
     """Specifies options for initializing Link for [update mode](https://plaid.com/docs/link/update-mode)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_update"
-            }
-        }
 
     account_selection_enabled: Optional[bool] = Field(default=None, description="If `true`, enables [update mode with Account Select](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts).")
 

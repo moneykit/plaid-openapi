@@ -20,12 +20,6 @@ from plaid_skel.models.statuses import Statuses
 class CreditFreddieMacServiceVOE25(BaseModel):
     """A collection of details related to a fulfillment service or product in terms of request, process and result."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_service_voe25"
-            }
-        }
 
     verification_of_asset: List[CreditFreddieMacVerificationOfAssetVOE25] = Field()
     statuses: Statuses = Field()

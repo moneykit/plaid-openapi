@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_intent_create import TransferIntentCreate
 class TransferIntentCreateResponse(BaseModel):
     """Defines the response schema for `/transfer/intent/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_intent_create_response"
-            }
-        }
 
     transfer_intent: TransferIntentCreate = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

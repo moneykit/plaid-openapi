@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class JWTHeader(BaseModel):
     """A JWT Header, used for webhook validation"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#jwt_header"
-            }
-        }
 
     id: str = Field()
 

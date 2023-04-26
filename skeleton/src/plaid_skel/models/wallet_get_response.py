@@ -21,12 +21,6 @@ from plaid_skel.models.wallet_status import WalletStatus
 class WalletGetResponse(BaseModel):
     """WalletGetResponse defines the response schema for `/wallet/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_get_response"
-            }
-        }
 
     wallet_id: str = Field( description="A unique ID identifying the e-wallet")
     balance: WalletBalance = Field()

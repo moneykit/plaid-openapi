@@ -19,12 +19,6 @@ from plaid_skel.models.products import Products
 class InstitutionsGetRequestOptions(BaseModel):
     """An optional object to filter `/institutions/get` results."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_get_request_options"
-            }
-        }
 
     products: Optional[List[Products]] = Field(default=None, description="Filter the Institutions based on which products they support. ")
     routing_numbers: Optional[List[str]] = Field(default=None, description="Specify an array of routing numbers to filter institutions. The response will only return institutions that match all of the routing numbers in the array. Routing number records used for this matching are not comprehensive; failure to match a given routing number to an institution does not mean that the institution is unsupported by Plaid.")

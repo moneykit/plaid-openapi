@@ -20,12 +20,7 @@ class CreditFreddieVerificationOfEmploymentVOE25(BaseModel):
     """Verification of Employment Report"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_verification_of_employment_voe25"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     deal: CreditFreddieVerificationOfEmploymentDealVOE25 = Field()
     schema_version: float = Field( description="The Verification Of Employment (VOE) schema version.")

@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_assets_voe25 import CreditFreddieMacAs
 class CreditFreddieMacVerificationOfAssetResponseVOE25(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_verification_of_asset_response_voe25"
-            }
-        }
 
     assets: CreditFreddieMacAssetsVOE25 = Field()
 

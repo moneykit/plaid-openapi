@@ -21,12 +21,6 @@ from plaid_skel.models.recurrence import Recurrence
 class Enrichments(BaseModel):
     """A grouping of the Plaid produced transaction enrichment fields."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#enrichments"
-            }
-        }
 
     check_number: Optional[str] = Field(default=None, description="The check number of the transaction. This field is only populated for check transactions.")
     counterparties: List[Counterparty] = Field( description="The counterparties present in the transaction. Counterparties, such as the merchant or the financial institution, are extracted by Plaid from the raw description.")

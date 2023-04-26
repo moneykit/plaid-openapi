@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Numbers(BaseModel):
     """Account and bank identifier number data used to configure the test account. All values are optional."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers"
-            }
-        }
 
     account: Optional[str] = Field(default=None, description="Will be used for the account number.")
     ach_routing: Optional[str] = Field(default=None, description="Must be a valid ACH routing number.")

@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class VerificationExpiredWebhook(BaseModel):
     """Fired when an Item was not verified via automated micro-deposits after seven days since the automated micro-deposit was made."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#verification_expired_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`AUTH`")
     webhook_code: str = Field( description="`VERIFICATION_EXPIRED`")

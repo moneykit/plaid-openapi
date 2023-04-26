@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ItemPublicTokenCreateResponse(BaseModel):
     """ItemPublicTokenCreateResponse defines the response schema for `/item/public_token/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_public_token_create_response"
-            }
-        }
 
     public_token: str = Field( description="A `public_token` for the particular Item corresponding to the specified `access_token`")
     expiration: Optional[datetime] = Field(default=None,)

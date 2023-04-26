@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class BankTransferUser(BaseModel):
     """The legal name and other information for the account holder."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_user"
-            }
-        }
 
     legal_name: str = Field( description="The account holder’s full legal name. If the transfer `ach_class` is `ccd`, this should be the business name of the account holder.")
     email_address: Optional[str] = Field(default=None, description="The account holder’s email.")

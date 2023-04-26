@@ -20,12 +20,7 @@ class AuthMetadata(BaseModel):
     """Metadata that captures information about the Auth features of an institution."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#auth_metadata"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     supported_methods: Optional[AuthSupportedMethods] = Field(default=None,)
 

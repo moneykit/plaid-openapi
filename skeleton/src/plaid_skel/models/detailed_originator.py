@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_diligence_status import TransferDiligenceStatus
 class DetailedOriginator(BaseModel):
     """Originator and their status."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#detailed_originator"
-            }
-        }
 
     client_id: str = Field( description="Originator’s client ID.")
     transfer_diligence_status: TransferDiligenceStatus = Field()

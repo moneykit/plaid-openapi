@@ -20,12 +20,6 @@ from plaid_skel.models.watchlist_screening_document import WatchlistScreeningDoc
 class ScreeningHitDocumentsItems(BaseModel):
     """Analyzed document information for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_hit_documents_items"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[WatchlistScreeningDocument] = Field(default=None,)

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class NumbersEFT(BaseModel):
     """Identifying information for transferring money to or from a Canadian bank account via EFT."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_eft"
-            }
-        }
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")
     account: str = Field( description="The EFT account number for the account")

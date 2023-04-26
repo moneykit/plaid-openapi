@@ -25,12 +25,6 @@ from plaid_skel.models.ytd_net_income_summary_field_number import YTDNetIncomeSu
 class IncomeSummary(BaseModel):
     """The verified fields from a paystub verification. All fields are provided as reported on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_summary"
-            }
-        }
 
     employer_name: EmployerIncomeSummaryFieldString = Field()
     employee_name: EmployeeIncomeSummaryFieldString = Field()

@@ -20,12 +20,6 @@ from plaid_skel.models.credit_bank_employment_warning import CreditBankEmploymen
 class CreditBankEmploymentReport(BaseModel):
     """The report of the Bank Employment data for an end user."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_employment_report"
-            }
-        }
 
     bank_employment_report_id: str = Field( description="The unique identifier associated with the Bank Employment Report.")
     generated_time: datetime = Field( description="The time when the Bank Employment Report was generated, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (e.g. \"2018-04-12T03:32:11Z\").")

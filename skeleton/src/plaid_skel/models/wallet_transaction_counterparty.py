@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_transaction_counterparty_numbers import WalletTran
 class WalletTransactionCounterparty(BaseModel):
     """An object representing the e-wallet transaction's counterparty"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_counterparty"
-            }
-        }
 
     name: str = Field( description="The name of the counterparty")
     numbers: WalletTransactionCounterpartyNumbers = Field()

@@ -22,12 +22,7 @@ class ItemStatusNullable(BaseModel):
     """Information about the last successful and failed transactions update for the Item."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_status_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     investments: Optional[ItemStatusInvestments] = Field(default=None,)
     transactions: Optional[ItemStatusTransactions] = Field(default=None,)

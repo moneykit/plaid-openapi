@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkDeliveryCreateResponse(BaseModel):
     """LinkDeliveryCreateResponse defines the response schema for `/link_delivery/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_create_response"
-            }
-        }
 
     link_delivery_url: str = Field( description="The URL to the Link Delivery session, which will be delivered by the specified delivery method.")
     link_delivery_session_id: str = Field( description="The ID for the Link Delivery session. Same as the `link_token` string excluding the \"link-{env}-\" prefix.")

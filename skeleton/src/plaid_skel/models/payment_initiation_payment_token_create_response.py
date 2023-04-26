@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaymentInitiationPaymentTokenCreateResponse(BaseModel):
     """PaymentInitiationPaymentTokenCreateResponse defines the response schema for `/payment_initiation/payment/token/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment_token_create_response"
-            }
-        }
 
     payment_token: str = Field( description="A `payment_token` that can be provided to Link initialization to enter the payment initiation flow")
     payment_token_expiration_time: datetime = Field( description="The date and time at which the token will expire, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format. A `payment_token` expires after 15 minutes.")

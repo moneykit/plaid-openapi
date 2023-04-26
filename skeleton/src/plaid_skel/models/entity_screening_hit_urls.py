@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class EntityScreeningHitUrls(BaseModel):
     """URLs associated with the entity screening hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hit_urls"
-            }
-        }
 
     url: AnyUrl = Field( description="An 'http' or 'https' URL (must begin with either of those).")
 

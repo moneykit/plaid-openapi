@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class TransferOriginatorCreateResponse(BaseModel):
     """Defines the response schema for `/transfer/originator/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_originator_create_response"
-            }
-        }
 
     originator_client_id: str = Field( description="Client ID of the originator. This identifier will be used when creating transfers and should be stored associated with end user information.")
     company_name: str = Field( description="The company name of the end customer.")

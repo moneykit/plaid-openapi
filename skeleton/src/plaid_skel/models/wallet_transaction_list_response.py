@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_transaction import WalletTransaction
 class WalletTransactionListResponse(BaseModel):
     """WalletTransactionListResponse defines the response schema for `/wallet/transaction/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_list_response"
-            }
-        }
 
     transactions: List[WalletTransaction] = Field( description="An array of transactions of an e-wallet, associated with the given `wallet_id`")
     next_cursor: Optional[str] = Field(default=None, description="Cursor used for fetching transactions created before the latest transaction provided in this response")

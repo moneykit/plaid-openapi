@@ -22,12 +22,6 @@ from plaid_skel.models.link_token_create_request_user_stated_income_source impor
 class LinkTokenCreateRequestIncomeVerification(BaseModel):
     """Specifies options for initializing Link for use with the Income product. This field is required if `income_verification` is included in the `products` array."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_income_verification"
-            }
-        }
 
     income_verification_id: Optional[str] = Field(default=None, description="The `income_verification_id` of the verification instance, as provided by `/income/verification/create`.")
     asset_report_id: Optional[str] = Field(default=None, description="The `asset_report_id` of an asset report associated with the user, as provided by `/asset_report/create`. Providing an `asset_report_id` is optional and can be used to verify the user through a streamlined flow. If provided, the bank linking flow will be skipped.")

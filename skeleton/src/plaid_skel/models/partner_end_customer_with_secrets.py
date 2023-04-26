@@ -20,12 +20,6 @@ from plaid_skel.models.partner_end_customer_status import PartnerEndCustomerStat
 class PartnerEndCustomerWithSecrets(BaseModel):
     """The details for the newly created end customer, including secrets for non-Production environments."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_with_secrets"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None,)
     company_name: Optional[str] = Field(default=None,)

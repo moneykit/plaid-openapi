@@ -19,12 +19,6 @@ from plaid_skel.models.enhancements import Enhancements
 class ClientProvidedEnhancedTransaction(BaseModel):
     """A client-provided transaction that Plaid has enhanced."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#client_provided_enhanced_transaction"
-            }
-        }
 
     id: str = Field( description="Unique transaction identifier to tie transactions back to clients' systems.")
     description: str = Field( description="The raw description of the transaction.")

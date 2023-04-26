@@ -20,12 +20,6 @@ from plaid_skel.models.asset_transaction_type import AssetTransactionType
 class AssetTransactionDetail(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_transaction_detail"
-            }
-        }
 
     asset_transaction_unique_identifier: str = Field( description="A vendor created unique Identifier.")
     asset_transaction_amount: float = Field( description="Asset Transaction Amount.")

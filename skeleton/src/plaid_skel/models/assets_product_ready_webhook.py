@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class AssetsProductReadyWebhook(BaseModel):
     """Fired when the Asset Report has been generated and `/asset_report/get` is ready to be called.  If you attempt to retrieve an Asset Report before this webhook has fired, you’ll receive a response with the HTTP status code 400 and a Plaid error code of `PRODUCT_NOT_READY`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#assets_product_ready_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ASSETS`")
     webhook_code: str = Field( description="`PRODUCT_READY`")

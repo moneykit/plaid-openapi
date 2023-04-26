@@ -19,12 +19,6 @@ from plaid_skel.models.credit_employment_item import CreditEmploymentItem
 class CreditEmploymentGetResponse(BaseModel):
     """CreditEmploymentGetResponse defines the response schema for `/credit/employment/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_employment_get_response"
-            }
-        }
 
     items: List[CreditEmploymentItem] = Field( description="Array of employment items.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

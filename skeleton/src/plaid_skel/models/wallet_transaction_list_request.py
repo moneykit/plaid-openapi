@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_transaction_list_request_options import WalletTran
 class WalletTransactionListRequest(BaseModel):
     """WalletTransactionListRequest defines the request schema for `/wallet/transaction/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_list_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")

@@ -19,12 +19,7 @@ class ItemStatusLastWebhook(BaseModel):
     """Information about the last webhook fired for the Item."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_status_last_webhook"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     sent_at: Optional[datetime] = Field(default=None, description="[ISO 8601](https://wikipedia.org/wiki/ISO_8601) timestamp of when the webhook was fired. ")
     code_sent: Optional[str] = Field(default=None, description="The last webhook code sent.")

@@ -20,12 +20,6 @@ from plaid_skel.models.item import Item
 class AccountsGetResponse(BaseModel):
     """AccountsGetResponse defines the response schema for `/accounts/get` and `/accounts/balance/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#accounts_get_response"
-            }
-        }
 
     accounts: List[AccountBase] = Field( description="An array of financial institution accounts associated with the Item. If `/accounts/balance/get` was called, each account will include real-time balance information.")
     item: Item = Field()

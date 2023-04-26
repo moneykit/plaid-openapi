@@ -22,12 +22,6 @@ from plaid_skel.models.student_loan_status import StudentLoanStatus
 class LiabilityOverride(BaseModel):
     """Used to configure Sandbox test data for the Liabilities product"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#liability_override"
-            }
-        }
 
     type: str = Field( description="The type of the liability object, either `credit` or `student`. Mortgages are not currently supported in the custom Sandbox.")
     purchase_apr: float = Field( description="The purchase APR percentage value. For simplicity, this is the only interest rate used to calculate interest charges. Can only be set if `type` is `credit`.")

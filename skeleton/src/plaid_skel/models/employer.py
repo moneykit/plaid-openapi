@@ -19,12 +19,6 @@ from plaid_skel.models.address_data_nullable import AddressDataNullable
 class Employer(BaseModel):
     """Data about the employer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employer"
-            }
-        }
 
     employer_id: str = Field( description="Plaid's unique identifier for the employer.")
     name: str = Field( description="The name of the employer")

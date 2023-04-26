@@ -19,12 +19,7 @@ class WalletTransactionListRequestOptions(BaseModel):
     """Additional wallet transaction options"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_list_request_options"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     start_time: Optional[datetime] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDThh:mm:ssZ) for filtering transactions, inclusive of the provided date.")
     end_time: Optional[datetime] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDThh:mm:ssZ) for filtering transactions, inclusive of the provided date.")

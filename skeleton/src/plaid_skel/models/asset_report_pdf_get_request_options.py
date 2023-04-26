@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AssetReportPDFGetRequestOptions(BaseModel):
     """An optional object to filter or add data to `/asset_report/get` results. If provided, must be non-`null`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_pdf_get_request_options"
-            }
-        }
 
     days_to_include: Optional[int] = Field(default=None, description="The maximum integer number of days of history to include in the Asset Report.")
 

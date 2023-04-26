@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_asset_transaction_voa24 import CreditF
 class CreditFreddieMacAssetTransactionsVOA24(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_asset_transactions_voa24"
-            }
-        }
 
     asset_transaction: List[CreditFreddieMacAssetTransactionVOA24] = Field()
 

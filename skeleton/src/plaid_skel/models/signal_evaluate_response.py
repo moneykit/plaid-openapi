@@ -21,12 +21,6 @@ from plaid_skel.models.signal_warning import SignalWarning
 class SignalEvaluateResponse(BaseModel):
     """SignalEvaluateResponse defines the response schema for `/signal/income/evaluate`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#signal_evaluate_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     scores: SignalScores = Field()

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class Application(BaseModel):
     """Metadata about the application"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#application"
-            }
-        }
 
     application_id: str = Field( description="This field will map to the application ID that is returned from /item/applications/list, or provided to the institution in an oauth redirect.")
     name: str = Field( description="The name of the application")

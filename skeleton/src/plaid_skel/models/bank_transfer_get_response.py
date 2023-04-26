@@ -19,12 +19,6 @@ from plaid_skel.models.bank_transfer import BankTransfer
 class BankTransferGetResponse(BaseModel):
     """Defines the response schema for `/bank_transfer/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_get_response"
-            }
-        }
 
     bank_transfer: BankTransfer = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -23,12 +23,6 @@ from plaid_skel.models.transfer_authorization_proposed_transfer import TransferA
 class TransferAuthorization(BaseModel):
     """Contains the authorization decision for a proposed transfer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_authorization"
-            }
-        }
 
     id: str = Field( description="Plaid’s unique identifier for a transfer authorization.")
     created: datetime = Field( description="The datetime representing when the authorization was created, in the format `2006-01-02T15:04:05Z`.")

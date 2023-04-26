@@ -19,12 +19,6 @@ from plaid_skel.models.loan_identifier import LoanIdentifier
 class LoanIdentifiers(BaseModel):
     """Collection of current and previous identifiers for this loan."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#loan_identifiers"
-            }
-        }
 
     loan_identifier: LoanIdentifier = Field()
 

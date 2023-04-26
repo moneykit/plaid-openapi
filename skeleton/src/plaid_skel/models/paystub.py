@@ -28,12 +28,6 @@ from plaid_skel.models.paystub_ytd_details import PaystubYTDDetails
 class Paystub(BaseModel):
     """An object representing data extracted from the end user's paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub"
-            }
-        }
 
     deductions: Deductions = Field()
     doc_id: str = Field( description="An identifier of the document referenced by the document metadata.")

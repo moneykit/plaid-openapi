@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenInvestments(BaseModel):
     """Configuration parameters for the Investments product"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_investments"
-            }
-        }
 
     allow_unverified_crypto_wallets: Optional[bool] = Field(default=None, description="If `true`, allow self-custody crypto wallets to be added without requiring signature verification. Defaults to `false`.")
 

@@ -19,12 +19,6 @@ from plaid_skel.models.income_verification_precheck_confidence import IncomeVeri
 class CreditPayrollIncomePrecheckResponse(BaseModel):
     """Defines the response schema for `/credit/payroll_income/precheck`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_payroll_income_precheck_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     confidence: IncomeVerificationPrecheckConfidence = Field()

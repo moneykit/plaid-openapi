@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditPayStubNetPay(BaseModel):
     """An object representing information about the net pay amount on the pay stub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub_net_pay"
-            }
-        }
 
     current_amount: Optional[float] = Field(default=None, description="Raw amount of the net pay for the pay period.")
     description: Optional[str] = Field(default=None, description="Description of the net pay.")

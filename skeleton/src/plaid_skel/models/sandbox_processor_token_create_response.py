@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxProcessorTokenCreateResponse(BaseModel):
     """SandboxProcessorTokenCreateResponse defines the response schema for `/sandbox/processor_token/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_processor_token_create_response"
-            }
-        }
 
     processor_token: str = Field( description="A processor token that can be used to call the `/processor/` endpoints.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

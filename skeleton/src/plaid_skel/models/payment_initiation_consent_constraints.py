@@ -21,12 +21,6 @@ from plaid_skel.models.payment_consent_valid_date_time import PaymentConsentVali
 class PaymentInitiationConsentConstraints(BaseModel):
     """Limitations that will be applied to payments initiated using the payment consent."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_consent_constraints"
-            }
-        }
 
     valid_date_time: Optional[PaymentConsentValidDateTime] = Field(default=None,)
     max_payment_amount: PaymentConsentMaxPaymentAmount = Field()

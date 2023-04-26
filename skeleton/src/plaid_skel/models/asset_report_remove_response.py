@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class AssetReportRemoveResponse(BaseModel):
     """AssetReportRemoveResponse defines the response schema for `/asset_report/remove`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_remove_response"
-            }
-        }
 
     removed: bool = Field( description="`true` if the Asset Report was successfully removed.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_document_type import WatchlistScreeni
 class WatchlistScreeningDocument(BaseModel):
     """An official document, usually issued by a governing body or institution, with an associated identifier."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_document"
-            }
-        }
 
     type: WatchlistScreeningDocumentType = Field()
     number: str = Field( description="The numeric or alphanumeric identifier associated with this document.")

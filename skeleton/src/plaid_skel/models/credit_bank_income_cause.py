@@ -19,12 +19,6 @@ from plaid_skel.models.credit_bank_income_error_type import CreditBankIncomeErro
 class CreditBankIncomeCause(BaseModel):
     """An error object and associated `item_id` used to identify a specific Item and error when a batch operation operating on multiple Items has encountered an error in one of the Items."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_cause"
-            }
-        }
 
     error_type: CreditBankIncomeErrorType = Field()
     error_code: str = Field( description="We use standard HTTP response codes for success and failure notifications, and our errors are further classified by `error_type`. In general, 200 HTTP codes correspond to success, 40X codes are for developer- or user-related failures, and 50X codes are for Plaid-related issues. Error fields will be `null` if no error has occurred.")

@@ -19,12 +19,6 @@ from plaid_skel.models.credit_freddie_mac_individual_name_voa24 import CreditFre
 class CreditFreddieMacPartyIndividualVOA24(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_party_individual_voa24"
-            }
-        }
 
     name: CreditFreddieMacIndividualNameVOA24 = Field()
 

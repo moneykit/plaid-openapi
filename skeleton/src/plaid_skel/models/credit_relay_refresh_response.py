@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditRelayRefreshResponse(BaseModel):
     """CreditRelayRefreshResponse defines the response schema for `/credit/relay/refresh`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_relay_refresh_response"
-            }
-        }
 
     relay_token: str = Field()
     asset_report_id: Optional[str] = Field(default=None, description="A unique ID identifying an Asset Report. Like all Plaid identifiers, this ID is case sensitive.")

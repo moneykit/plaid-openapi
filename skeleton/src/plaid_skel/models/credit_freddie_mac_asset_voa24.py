@@ -23,12 +23,6 @@ from plaid_skel.models.validation_sources import ValidationSources
 class CreditFreddieMacAssetVOA24(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_asset_voa24"
-            }
-        }
 
     asset_detail: AssetDetail = Field()
     asset_owners: AssetOwners = Field()

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class EmployerVerification(BaseModel):
     """An object containing employer data."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employer_verification"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="Name of employer.")
 

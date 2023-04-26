@@ -22,12 +22,6 @@ from plaid_skel.models.numbers_international_nullable import NumbersInternationa
 class ProcessorNumber(BaseModel):
     """An object containing identifying numbers used for making electronic transfers to and from the `account`. The identifying number type (ACH, EFT, IBAN, or BACS) used will depend on the country of the account. An account may have more than one number type. If a particular identifying number type is not used by the `account` for which auth data has been requested, a null value will be returned."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#processor_number"
-            }
-        }
 
     ach: Optional[NumbersACHNullable] = Field(default=None,)
     eft: Optional[NumbersEFTNullable] = Field(default=None,)

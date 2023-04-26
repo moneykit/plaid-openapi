@@ -20,12 +20,7 @@ class IncomeVerificationPrecheckUser(BaseModel):
     """Information about the user whose eligibility is being evaluated."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_precheck_user"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     first_name: Optional[str] = Field(default=None, description="The user's first name")
     last_name: Optional[str] = Field(default=None, description="The user's last name")

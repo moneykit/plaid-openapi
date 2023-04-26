@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ProductStatusBreakdown(BaseModel):
     """A detailed breakdown of the institution's performance for a request type. The values for `success`, `error_plaid`, and `error_institution` sum to 1. The time range used for calculating the breakdown may range from the most recent few minutes to the past six hours. In general, smaller institutions will show status that was calculated over a longer period of time. For Investment updates, which are refreshed less frequently, the period assessed may be 24 hours or more. For more details, see [Institution status details](https://plaid.com/docs/account/activity/#institution-status-details)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#product_status_breakdown"
-            }
-        }
 
     success: float = Field( description="The percentage of login attempts that are successful, expressed as a decimal.")
     error_plaid: float = Field( description="The percentage of logins that are failing due to an internal Plaid issue, expressed as a decimal. ")

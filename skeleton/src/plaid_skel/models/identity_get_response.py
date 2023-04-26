@@ -20,12 +20,6 @@ from plaid_skel.models.item import Item
 class IdentityGetResponse(BaseModel):
     """IdentityGetResponse defines the response schema for `/identity/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_get_response"
-            }
-        }
 
     accounts: List[AccountIdentity] = Field( description="The accounts for which Identity data has been requested")
     item: Item = Field()

@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class FallbackAuthMicrodepositVerificationExpiredWebhook(BaseModel):
     """Fires when an account has an expired verification when using micro-deposits"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fallback_auth_microdeposit_verification_expired_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`AUTH`")
     webhook_code: str = Field( description="`VERIFICATION_EXPIRED`")

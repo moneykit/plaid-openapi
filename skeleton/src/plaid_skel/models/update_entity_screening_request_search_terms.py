@@ -19,12 +19,7 @@ class UpdateEntityScreeningRequestSearchTerms(BaseModel):
     """Search terms for editing an entity watchlist screening"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#update_entity_screening_request_search_terms"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")
     legal_name: Optional[str] = Field(default=None, description="The name of the organization being screened.")

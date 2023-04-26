@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class WalletTransactionStatusUpdateWebhook(BaseModel):
     """Fired when the status of a wallet transaction has changed."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_status_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`WALLET`")
     webhook_code: str = Field( description="`WALLET_TRANSACTION_STATUS_UPDATE`")

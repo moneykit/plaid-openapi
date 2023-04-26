@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer_status import PartnerEndCustomerStat
 class PartnerEndCustomer(BaseModel):
     """The details for an end customer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None,)
     company_name: Optional[str] = Field(default=None,)

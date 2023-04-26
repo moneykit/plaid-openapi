@@ -19,12 +19,6 @@ from plaid_skel.models.earnings_breakdown_canonical_description import EarningsB
 class EarningsBreakdown(BaseModel):
     """An object representing the earnings line items for the pay period."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#earnings_breakdown"
-            }
-        }
 
     canonical_description: Optional[EarningsBreakdownCanonicalDescription] = Field(default=None,)
     current_amount: Optional[float] = Field(default=None, description="Raw amount of the earning line item.")

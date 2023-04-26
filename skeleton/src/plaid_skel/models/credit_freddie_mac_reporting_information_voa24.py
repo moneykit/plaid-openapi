@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditFreddieMacReportingInformationVOA24(BaseModel):
     """Information about an report identifier and a report name."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_reporting_information_voa24"
-            }
-        }
 
     report_date_time: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
     report_identifier_type: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac. The value can only be \"ReportID\"")

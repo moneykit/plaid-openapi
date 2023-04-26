@@ -19,12 +19,6 @@ from plaid_skel.models.loan import Loan
 class Loans(BaseModel):
     """A collection of loans that are part of a single deal."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#loans"
-            }
-        }
 
     loan: Loan = Field()
 

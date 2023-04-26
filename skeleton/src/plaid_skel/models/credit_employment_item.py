@@ -19,12 +19,6 @@ from plaid_skel.models.credit_employment_verification import CreditEmploymentVer
 class CreditEmploymentItem(BaseModel):
     """The object containing employment items."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_employment_item"
-            }
-        }
 
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
     employments: List[CreditEmploymentVerification] = Field()

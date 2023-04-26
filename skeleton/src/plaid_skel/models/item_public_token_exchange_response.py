@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ItemPublicTokenExchangeResponse(BaseModel):
     """ItemPublicTokenExchangeResponse defines the response schema for `/item/public_token/exchange`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_public_token_exchange_response"
-            }
-        }
 
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     item_id: str = Field( description="The `item_id` value of the Item associated with the returned `access_token`")

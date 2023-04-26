@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class WatchlistScreeningSearchTerms(BaseModel):
     """Search terms for creating an individual watchlist screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_search_terms"
-            }
-        }
 
     watchlist_program_id: str = Field( description="ID of the associated program.")
     legal_name: str = Field( description="The legal name of the individual being screened.")

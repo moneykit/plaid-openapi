@@ -25,12 +25,6 @@ from plaid_skel.models.sender_bacs_nullable import SenderBACSNullable
 class PaymentInitiationPayment(BaseModel):
     """PaymentInitiationPayment defines a payment initiation payment"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_initiation_payment"
-            }
-        }
 
     payment_id: str = Field( description="The ID of the payment. Like all Plaid identifiers, the `payment_id` is case sensitive.")
     amount: PaymentAmount = Field()

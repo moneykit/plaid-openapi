@@ -20,12 +20,7 @@ class PhysicalDocumentExtractedData(BaseModel):
     """Data extracted from a user-submitted document."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#physical_document_extracted_data"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")
     category: PhysicalDocumentCategory = Field()

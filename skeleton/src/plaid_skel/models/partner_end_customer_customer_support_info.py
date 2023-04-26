@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerCustomerSupportInfo(BaseModel):
     """This information is public. Users of your app will see this information when managing connections between your app and their bank accounts in Plaid Portal. Defaults to partner's customer support info if omitted."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_customer_support_info"
-            }
-        }
 
     email: Optional[str] = Field(default=None,)
     phone_number: Optional[str] = Field(default=None,)

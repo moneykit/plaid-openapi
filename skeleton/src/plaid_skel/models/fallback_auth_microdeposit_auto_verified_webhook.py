@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class FallbackAuthMicrodepositAutoVerifiedWebhook(BaseModel):
     """Fires when an account is automatically verified using micro-deposits"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#fallback_auth_microdeposit_auto_verified_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`AUTH`")
     webhook_code: str = Field( description="`AUTOMATICALLY_VERIFIED`")

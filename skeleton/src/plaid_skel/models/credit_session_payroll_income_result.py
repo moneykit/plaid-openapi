@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditSessionPayrollIncomeResult(BaseModel):
     """The details of a digital payroll income verification in Link"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_payroll_income_result"
-            }
-        }
 
     num_paystubs_retrieved: Optional[int] = Field(default=None, description="The number of paystubs retrieved from a payroll provider.")
     num_w2s_retrieved: Optional[int] = Field(default=None, description="The number of w2s retrieved from a payroll provider.")

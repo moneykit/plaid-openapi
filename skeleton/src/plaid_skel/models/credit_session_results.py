@@ -23,12 +23,6 @@ from plaid_skel.models.credit_session_payroll_income_result import CreditSession
 class CreditSessionResults(BaseModel):
     """The set of results for a Link session."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_results"
-            }
-        }
 
     item_add_results: Optional[List[CreditSessionItemAddResult]] = Field(default=None, description="The set of Item adds for the Link session.")
     bank_income_results: Optional[List[CreditSessionBankIncomeResult]] = Field(default=None, description="The set of bank income verifications for the Link session.")

@@ -19,12 +19,7 @@ class AddressDataNullable(BaseModel):
     """Data about the components comprising an address."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#address_data_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     city: Optional[str] = Field(default=None, description="The full city name")
     region: Optional[str] = Field(default=None, description="The region or state. In API versions 2018-05-22 and earlier, this field is called `state`. Example: `\"NC\"`")

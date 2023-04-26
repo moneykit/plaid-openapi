@@ -21,12 +21,6 @@ from plaid_skel.models.taxpayer_identifiers import TaxpayerIdentifiers
 class Party(BaseModel):
     """A collection of information about a single party to a transaction. Included direct participants like the borrower and seller as well as indirect participants such as the flood certificate provider."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#party"
-            }
-        }
 
     individual: PartyIndividual = Field()
     roles: Roles = Field()

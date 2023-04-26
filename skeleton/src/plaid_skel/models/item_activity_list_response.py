@@ -20,12 +20,6 @@ from plaid_skel.models.last_data_access_times import LastDataAccessTimes
 class ItemActivityListResponse(BaseModel):
     """Describes a historical log of user consent events."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_activity_list_response"
-            }
-        }
 
     request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     activities: List[Activity] = Field( description="A list of activities.")

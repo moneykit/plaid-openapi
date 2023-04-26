@@ -19,12 +19,6 @@ from plaid_skel.models.account_subtype import AccountSubtype
 class InstitutionsSearchAccountFilter(BaseModel):
     """An account filter to apply to institutions search requests"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_search_account_filter"
-            }
-        }
 
     loan: Optional[List[AccountSubtype]] = Field(default=None,)
     depository: Optional[List[AccountSubtype]] = Field(default=None,)

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditFreddieMacIndividualNameVOA24(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_individual_name_voa24"
-            }
-        }
 
     first_name: str = Field( description="The first name of the individual represented by the parent object.")
     last_name: str = Field( description="The last name of the individual represented by the parent object.")

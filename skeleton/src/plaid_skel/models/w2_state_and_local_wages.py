@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class W2StateAndLocalWages(BaseModel):
     """W2 state and local wages"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#w2_state_and_local_wages"
-            }
-        }
 
     state: Optional[str] = Field(default=None, description="State associated with the wage.")
     employer_state_id_number: Optional[str] = Field(default=None, description="State identification number of the employer.")

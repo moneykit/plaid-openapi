@@ -20,12 +20,6 @@ from plaid_skel.models.asset_transaction_type import AssetTransactionType
 class CreditFreddieMacAssetTransactionDetailVOE25(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_asset_transaction_detail_voe25"
-            }
-        }
 
     asset_transaction_unique_identifier: str = Field( description="A vendor created unique Identifier.")
     asset_transaction_date: date = Field( description="Asset Transaction Date.")

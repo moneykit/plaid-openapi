@@ -19,12 +19,6 @@ from plaid_skel.models.credit_session_bank_employment_status import CreditSessio
 class CreditSessionBankEmploymentResult(BaseModel):
     """The details of a bank employment verification in Link."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_bank_employment_result"
-            }
-        }
 
     status: Optional[CreditSessionBankEmploymentStatus] = Field(default=None,)
     item_id: Optional[str] = Field(default=None, description="The Plaid Item ID. The `item_id` is always unique; linking the same account at the same institution twice will result in two Items with different `item_id` values. Like all Plaid identifiers, the `item_id` is case-sensitive.")

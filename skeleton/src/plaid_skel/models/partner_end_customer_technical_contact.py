@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerTechnicalContact(BaseModel):
     """The technical contact for the end customer. Defaults to partner's technical contact if omitted."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_technical_contact"
-            }
-        }
 
     given_name: Optional[str] = Field(default=None,)
     family_name: Optional[str] = Field(default=None,)

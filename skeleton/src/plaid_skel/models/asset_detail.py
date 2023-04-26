@@ -19,12 +19,6 @@ from plaid_skel.models.asset_type import AssetType
 class AssetDetail(BaseModel):
     """Details about an asset."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_detail"
-            }
-        }
 
     asset_unique_identifier: str = Field( description="A vendor created unique Identifier.")
     asset_account_identifier: str = Field( description="A unique alphanumeric string identifying an asset.")

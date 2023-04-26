@@ -20,12 +20,6 @@ from plaid_skel.models.credit_bank_income_transaction import CreditBankIncomeTra
 class CreditBankIncomeHistoricalSummary(BaseModel):
     """The end user's monthly summary for the income source(s)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_historical_summary"
-            }
-        }
 
     total_amount: Optional[float] = Field(default=None, description="Total amount of earnings for the income source(s) of the user for the month in the summary. This may return an incorrect value if the summary includes income sources in multiple currencies. Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-items-bank-income-sources-historical-summary-total-amounts) instead.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO 4217 currency code of the amount or balance. Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-items-bank-income-sources-historical-summary-total-amounts) instead.")

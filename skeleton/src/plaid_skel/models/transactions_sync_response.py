@@ -20,12 +20,6 @@ from plaid_skel.models.transaction import Transaction
 class TransactionsSyncResponse(BaseModel):
     """TransactionsSyncResponse defines the response schema for `/transactions/sync`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_sync_response"
-            }
-        }
 
     added: List[Transaction] = Field( description="Transactions that have been added to the Item since `cursor` ordered by ascending last modified time.")
     modified: List[Transaction] = Field( description="Transactions that have been modified on the Item since `cursor` ordered by ascending last modified time.")

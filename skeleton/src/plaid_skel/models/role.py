@@ -19,12 +19,6 @@ from plaid_skel.models.role_detail import RoleDetail
 class Role(BaseModel):
     """ADocumentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#role"
-            }
-        }
 
     role_detail: RoleDetail = Field()
 

@@ -22,12 +22,6 @@ from plaid_skel.models.physical_document_images import PhysicalDocumentImages
 class DocumentaryVerificationDocument(BaseModel):
     """Images, extracted data, and analysis from a user's identity document"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#documentary_verification_document"
-            }
-        }
 
     status: DocumentStatus = Field()
     attempt: float = Field( description="The `attempt` field begins with 1 and increments with each subsequent document upload.")

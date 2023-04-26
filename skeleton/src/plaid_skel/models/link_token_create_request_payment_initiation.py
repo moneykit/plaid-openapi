@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateRequestPaymentInitiation(BaseModel):
     """Specifies options for initializing Link for use with the Payment Initiation (Europe) product. This field is required if `payment_initiation` is included in the `products` array. Either `payment_id` or `consent_id` must be provided."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_payment_initiation"
-            }
-        }
 
     payment_id: Optional[str] = Field(default=None, description="The `payment_id` provided by the `/payment_initiation/payment/create` endpoint.")
     consent_id: Optional[str] = Field(default=None, description="The `consent_id` provided by the `/payment_initiation/consent/create` endpoint.")

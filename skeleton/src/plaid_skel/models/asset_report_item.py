@@ -19,12 +19,6 @@ from plaid_skel.models.account_assets import AccountAssets
 class AssetReportItem(BaseModel):
     """A representation of an Item within an Asset Report."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_report_item"
-            }
-        }
 
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
     institution_name: str = Field( description="The full financial institution name associated with the Item.")

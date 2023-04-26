@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class WalletTransactionCounterpartyBACS(BaseModel):
     """The account number and sort code of the counterparty's account"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_counterparty_bacs"
-            }
-        }
 
     account: Optional[str] = Field(default=None, description="The account number of the account. Maximum of 10 characters.")
     sort_code: Optional[str] = Field(default=None, description="The 6-character sort code of the account.")

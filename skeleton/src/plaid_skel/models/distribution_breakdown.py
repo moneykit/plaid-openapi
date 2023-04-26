@@ -19,12 +19,6 @@ from plaid_skel.models.pay import Pay
 class DistributionBreakdown(BaseModel):
     """Information about the accounts that the payment was distributed to."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#distribution_breakdown"
-            }
-        }
 
     account_name: Optional[str] = Field(default=None, description="Name of the account for the given distribution.")
     bank_name: Optional[str] = Field(default=None, description="The name of the bank that the payment is being deposited to.")

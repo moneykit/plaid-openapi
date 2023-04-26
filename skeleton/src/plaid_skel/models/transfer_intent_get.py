@@ -28,12 +28,6 @@ from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
 class TransferIntentGet(BaseModel):
     """Represents a transfer intent within Transfer UI."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_intent_get"
-            }
-        }
 
     id: str = Field( description="Plaid's unique identifier for a transfer intent object.")
     created: datetime = Field( description="The datetime the transfer was created. This will be of the form `2006-01-02T15:04:05Z`.")

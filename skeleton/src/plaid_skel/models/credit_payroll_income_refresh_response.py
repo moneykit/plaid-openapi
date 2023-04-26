@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditPayrollIncomeRefreshResponse(BaseModel):
     """CreditPayrollIncomeRefreshResponse defines the response schema for `/credit/payroll_income/refresh`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_payroll_income_refresh_response"
-            }
-        }
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     verification_refresh_status: str = Field( description="The verification refresh status. One of the following:  `\"USER_PRESENCE_REQUIRED\"` User presence is required to refresh an income verification. `\"SUCCESSFUL\"` The income verification refresh was successful. `\"NOT_FOUND\"` No new data was found after the income verification refresh.")

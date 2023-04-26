@@ -25,12 +25,6 @@ from plaid_skel.models.pay_stub_pay_period_details import PayStubPayPeriodDetail
 class CreditPayStub(BaseModel):
     """An object representing an end user's pay stub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub"
-            }
-        }
 
     deductions: CreditPayStubDeductions = Field()
     document_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")

@@ -19,12 +19,6 @@ from plaid_skel.models.partner_end_customer_o_auth_institution_application_statu
 class PartnerEndCustomerOAuthInstitutionEnvironments(BaseModel):
     """Registration statuses by environment."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_o_auth_institution_environments"
-            }
-        }
 
     development: Optional[PartnerEndCustomerOAuthInstitutionApplicationStatus] = Field(default=None,)
     production: Optional[PartnerEndCustomerOAuthInstitutionApplicationStatus] = Field(default=None,)

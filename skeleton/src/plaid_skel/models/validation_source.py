@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ValidationSource(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#validation_source"
-            }
-        }
 
     validation_source_name: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
     validation_source_reference_identifier: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")

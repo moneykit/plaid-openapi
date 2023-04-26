@@ -20,12 +20,6 @@ from plaid_skel.models.transactions_rule_type import TransactionsRuleType
 class TransactionsRuleDetails(BaseModel):
     """A representation of transactions rule details."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_rule_details"
-            }
-        }
 
     field: TransactionsRuleField = Field()
     type: TransactionsRuleType = Field()

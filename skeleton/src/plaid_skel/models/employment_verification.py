@@ -21,12 +21,6 @@ from plaid_skel.models.platform_ids import PlatformIds
 class EmploymentVerification(BaseModel):
     """An object containing proof of employment data for an individual"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#employment_verification"
-            }
-        }
 
     status: Optional[EmploymentVerificationStatus] = Field(default=None,)
     start_date: Optional[date] = Field(default=None, description="Start of employment in ISO 8601 format (YYYY-MM-DD).")

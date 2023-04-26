@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class CreditSessionError(BaseModel):
     """The details of a Link error."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_error"
-            }
-        }
 
     error_type: Optional[str] = Field(default=None, description="A broad categorization of the error.")
     error_code: Optional[str] = Field(default=None, description="The particular error code.")

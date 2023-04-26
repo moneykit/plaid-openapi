@@ -20,12 +20,6 @@ from plaid_skel.models.credit_freddie_verification_of_employment_voe25 import Cr
 class CreditFreddieMacReportsGetResponse(BaseModel):
     """CreditFreddieMacReportsGetResponse defines the response schema for `/credit/freddie_mac/reports/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_freddie_mac_reports_get_response"
-            }
-        }
 
     voa: Optional[CreditFreddieMacVerificationOfAssetsVOA24] = Field(default=None,)
     voe: Optional[CreditFreddieVerificationOfEmploymentVOE25] = Field(default=None,)

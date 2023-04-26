@@ -19,12 +19,6 @@ from plaid_skel.models.doc_type import DocType
 class DocumentMetadata(BaseModel):
     """An object representing metadata from the end user's uploaded document."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_metadata"
-            }
-        }
 
     name: Optional[str] = Field(default=None, description="The name of the document.")
     status: Optional[str] = Field(default=None, description="The processing status of the document.  `PROCESSING_COMPLETE`: The document was successfully processed.  `DOCUMENT_ERROR`: The document could not be processed. Possible causes include: The document was an unacceptable document type such as an offer letter or bank statement, the document image was cropped or blurry, or the document was corrupted.  `UNKNOWN` or `null`: An internal error occured. If this happens repeatedly, contact support or your Plaid account manager.")

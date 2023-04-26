@@ -20,12 +20,6 @@ from plaid_skel.models.watchlist_screening_hit_locations import WatchlistScreeni
 class GenericScreeningHitLocationItems(BaseModel):
     """Analyzed location information for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#generic_screening_hit_location_items"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[WatchlistScreeningHitLocations] = Field(default=None,)

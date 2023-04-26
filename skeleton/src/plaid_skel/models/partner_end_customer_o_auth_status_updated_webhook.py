@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class PartnerEndCustomerOAuthStatusUpdatedWebhook(BaseModel):
     """The webhook of type `PARTNER` and code `END_CUSTOMER_OAUTH_STATUS_UPDATED` will be fired when a partner's end customer has an update on their OAuth registration status with an institution."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_o_auth_status_updated_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`PARTNER`")
     webhook_code: str = Field( description="`END_CUSTOMER_OAUTH_STATUS_UPDATED`")

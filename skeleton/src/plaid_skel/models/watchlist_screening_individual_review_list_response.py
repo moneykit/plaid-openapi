@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_review import WatchlistScreeningRevie
 class WatchlistScreeningIndividualReviewListResponse(BaseModel):
     """Paginated list of screening reviews"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_review_list_response"
-            }
-        }
 
     watchlist_screening_reviews: List[WatchlistScreeningReview] = Field( description="List of screening reviews")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

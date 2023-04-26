@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatu
 class WatchlistScreeningEntityUpdateRequest(BaseModel):
     """Request input for editing an entity watchlist screening"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_entity_update_request"
-            }
-        }
 
     entity_watchlist_screening_id: str = Field( description="ID of the associated entity screening.")
     search_terms: Optional[UpdateEntityScreeningRequestSearchTerms] = Field(default=None,)

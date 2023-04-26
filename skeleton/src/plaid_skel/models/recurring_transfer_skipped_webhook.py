@@ -21,12 +21,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class RecurringTransferSkippedWebhook(BaseModel):
     """Fired when Plaid is unable to originate a new ACH transaction of the recurring transfer on the planned date."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurring_transfer_skipped_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`TRANSFER`")
     webhook_code: str = Field( description="`RECURRING_TRANSFER_SKIPPED`")

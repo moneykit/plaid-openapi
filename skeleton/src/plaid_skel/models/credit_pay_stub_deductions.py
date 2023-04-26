@@ -20,12 +20,6 @@ from plaid_skel.models.pay_stub_deductions_total import PayStubDeductionsTotal
 class CreditPayStubDeductions(BaseModel):
     """An object with the deduction information found on a pay stub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub_deductions"
-            }
-        }
 
     breakdown: List[PayStubDeductionsBreakdown] = Field()
     total: PayStubDeductionsTotal = Field()

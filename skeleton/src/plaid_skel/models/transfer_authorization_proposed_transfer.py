@@ -21,12 +21,6 @@ from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
 class TransferAuthorizationProposedTransfer(BaseModel):
     """Details regarding the proposed transfer."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_authorization_proposed_transfer"
-            }
-        }
 
     ach_class: Optional[ACHClass] = Field(default=None,)
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` for the account that will be debited or credited.")

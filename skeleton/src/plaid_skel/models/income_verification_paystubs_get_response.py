@@ -21,12 +21,6 @@ from plaid_skel.models.plaid_error import PlaidError
 class IncomeVerificationPaystubsGetResponse(BaseModel):
     """IncomeVerificationPaystubsGetResponse defines the response schema for `/income/verification/paystubs/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#income_verification_paystubs_get_response"
-            }
-        }
 
     document_metadata: Optional[List[DocumentMetadata]] = Field(default=None, description="Metadata for an income document.")
     paystubs: List[Paystub] = Field()

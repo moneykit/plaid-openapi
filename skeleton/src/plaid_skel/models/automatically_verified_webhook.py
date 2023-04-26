@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class AutomaticallyVerifiedWebhook(BaseModel):
     """Fired when an Item is verified via automated micro-deposits. We recommend communicating to your users when this event is received to notify them that their account is verified and ready for use."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#automatically_verified_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`AUTH`")
     webhook_code: str = Field( description="`AUTOMATICALLY_VERIFIED`")

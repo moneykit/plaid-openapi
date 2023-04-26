@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaystubDeduction(BaseModel):
     """Deduction on the paystub"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_deduction"
-            }
-        }
 
     type: Optional[str] = Field(default=None, description="The description of the deduction, as provided on the paystub. For example: `\"401(k)\"`, `\"FICA MED TAX\"`.")
     is_pretax: Optional[bool] = Field(default=None, description="`true` if the deduction is pre-tax; `false` otherwise.")

@@ -19,12 +19,6 @@ from plaid_skel.models.identity_verification_request_user import IdentityVerific
 class IdentityVerificationCreateRequest(BaseModel):
     """Request schema for '/identity_verification/create'"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_create_request"
-            }
-        }
 
     is_shareable: bool = Field( description="A flag specifying whether you would like Plaid to expose a shareable URL for the verification being created.")
     template_id: str = Field( description="ID of the associated Identity Verification template.")

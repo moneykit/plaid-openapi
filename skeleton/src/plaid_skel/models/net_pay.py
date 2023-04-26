@@ -19,12 +19,6 @@ from plaid_skel.models.total import Total
 class NetPay(BaseModel):
     """An object representing information about the net pay amount on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#net_pay"
-            }
-        }
 
     current_amount: Optional[float] = Field(default=None, description="Raw amount of the net pay for the pay period")
     description: Optional[str] = Field(default=None, description="Description of the net pay")

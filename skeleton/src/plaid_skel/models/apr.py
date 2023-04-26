@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class APR(BaseModel):
     """Information about the APR on the account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#apr"
-            }
-        }
 
     apr_percentage: float = Field( description="Annual Percentage Rate applied. ")
     apr_type: str = Field( description="The type of balance to which the APR applies.")

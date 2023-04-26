@@ -20,12 +20,6 @@ from plaid_skel.models.total_canonical_description import TotalCanonicalDescript
 class Total(BaseModel):
     """An object representing both the current pay period and year to date amount for a category."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#total"
-            }
-        }
 
     canonical_description: Optional[TotalCanonicalDescription] = Field(default=None,)
     description: Optional[str] = Field(default=None, description="Text of the line item as printed on the paystub.")

@@ -21,12 +21,6 @@ from plaid_skel.models.credit_bank_income_warning_code import CreditBankIncomeWa
 class CreditBankEmploymentWarning(BaseModel):
     """The warning associated with the data that was unavailable for the Bank Employment Report."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_employment_warning"
-            }
-        }
 
     warning_type: CreditBankEmploymentWarningType = Field()
     warning_code: CreditBankIncomeWarningCode = Field()

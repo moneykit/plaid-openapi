@@ -19,12 +19,6 @@ from plaid_skel.models.paystub_pay_frequency import PaystubPayFrequency
 class PaystubDetails(BaseModel):
     """An object representing details that can be found on the paystub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_details"
-            }
-        }
 
     pay_period_start_date: Optional[date] = Field(default=None, description="Beginning date of the pay period on the paystub in the 'YYYY-MM-DD' format.")
     pay_period_end_date: Optional[date] = Field(default=None, description="Ending date of the pay period on the paystub in the 'YYYY-MM-DD' format.")

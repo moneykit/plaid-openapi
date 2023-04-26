@@ -19,12 +19,6 @@ from plaid_skel.models.depository_account_subtype import DepositoryAccountSubtyp
 class DepositoryFilter(BaseModel):
     """A filter to apply to `depository`-type accounts"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#depository_filter"
-            }
-        }
 
     account_subtypes: List[DepositoryAccountSubtype] = Field( description="An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). ")
 

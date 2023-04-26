@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_refund import TransferRefund
 class TransferRefundCreateResponse(BaseModel):
     """Defines the response schema for `/transfer/refund/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_refund_create_response"
-            }
-        }
 
     refund: TransferRefund = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

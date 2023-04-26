@@ -19,12 +19,6 @@ from plaid_skel.models.validation_source import ValidationSource
 class ValidationSources(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#validation_sources"
-            }
-        }
 
     validation_source: List[ValidationSource] = Field( description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
 

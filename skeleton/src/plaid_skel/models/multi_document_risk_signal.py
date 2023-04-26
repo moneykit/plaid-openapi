@@ -20,12 +20,6 @@ from plaid_skel.models.risk_signal_document_reference import RiskSignalDocumentR
 class MultiDocumentRiskSignal(BaseModel):
     """Object containing risk signals and relevant metadata for a set of uploaded documents"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#multi_document_risk_signal"
-            }
-        }
 
     document_references: List[RiskSignalDocumentReference] = Field( description="Array of objects containing attributes that could indicate if a document is fraudulent")
     risk_signals: List[DocumentRiskSignal] = Field( description="Array of attributes that indicate whether or not there is fraud risk with a set of documents")

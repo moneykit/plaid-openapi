@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxItemFireWebhookResponse(BaseModel):
     """SandboxItemFireWebhookResponse defines the response schema for `/sandbox/item/fire_webhook`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_item_fire_webhook_response"
-            }
-        }
 
     webhook_fired: bool = Field( description="Value is `true`  if the test` webhook_code`  was successfully fired.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

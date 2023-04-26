@@ -20,12 +20,6 @@ from plaid_skel.models.investment_transaction_type import InvestmentTransactionT
 class InvestmentTransaction(BaseModel):
     """A transaction within an investment account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investment_transaction"
-            }
-        }
 
     investment_transaction_id: str = Field( description="The ID of the Investment transaction, unique across all Plaid transactions. Like all Plaid identifiers, the `investment_transaction_id` is case sensitive.")
     cancel_transaction_id: Optional[str] = Field(default=None, description="A legacy field formerly used internally by Plaid to identify certain canceled transactions.")

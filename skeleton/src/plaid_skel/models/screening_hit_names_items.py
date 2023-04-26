@@ -20,12 +20,6 @@ from plaid_skel.models.match_summary import MatchSummary
 class ScreeningHitNamesItems(BaseModel):
     """Analyzed name information for the associated hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#screening_hit_names_items"
-            }
-        }
 
     analysis: Optional[MatchSummary] = Field(default=None,)
     data: Optional[IndividualScreeningHitNames] = Field(default=None,)

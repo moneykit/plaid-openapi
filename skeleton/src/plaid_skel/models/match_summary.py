@@ -19,12 +19,6 @@ from plaid_skel.models.match_summary_code import MatchSummaryCode
 class MatchSummary(BaseModel):
     """Summary object reflecting the match result of the associated data"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#match_summary"
-            }
-        }
 
     summary: MatchSummaryCode = Field()
 

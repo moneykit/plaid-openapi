@@ -25,12 +25,7 @@ class RiskCheckEmail(BaseModel):
     """Result summary object specifying values for `email` attributes of risk check."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#risk_check_email"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()
     breach_count: Optional[int] = Field(default=None, description="Count of all known breaches of this email address if known.")

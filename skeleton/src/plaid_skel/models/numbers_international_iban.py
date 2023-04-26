@@ -19,12 +19,7 @@ class NumbersInternationalIBAN(BaseModel):
     """Account numbers using the International Bank Account Number and BIC/SWIFT code format."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_international_iban"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     iban: str = Field( description="International Bank Account Number (IBAN).")
     bic: str = Field( description="The Business Identifier Code, also known as SWIFT code, for this bank account.")

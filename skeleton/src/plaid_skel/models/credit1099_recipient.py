@@ -19,12 +19,6 @@ from plaid_skel.models.credit_pay_stub_address import CreditPayStubAddress
 class Credit1099Recipient(BaseModel):
     """An object representing a recipient used in both 1099-K and 1099-MISC tax documents."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit1099_recipient"
-            }
-        }
 
     address: Optional[CreditPayStubAddress] = Field(default=None,)
     name: Optional[str] = Field(default=None, description="Name of recipient.")

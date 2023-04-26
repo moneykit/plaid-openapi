@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_capabilities_get_rtp import TransferCapabilities
 class InstitutionSupportedNetworks(BaseModel):
     """Contains the RTP network and types supported by the linked Item's institution."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institution_supported_networks"
-            }
-        }
 
     rtp: TransferCapabilitiesGetRTP = Field()
 

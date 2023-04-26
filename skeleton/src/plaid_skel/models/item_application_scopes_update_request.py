@@ -20,12 +20,6 @@ from plaid_skel.models.scopes_context import ScopesContext
 class ItemApplicationScopesUpdateRequest(BaseModel):
     """ItemApplicationScopesUpdateRequest defines the request schema for `/item/application/scopes/update`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_application_scopes_update_request"
-            }
-        }
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")

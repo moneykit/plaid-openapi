@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class IdentityVerificationStepUpdatedWebhook(BaseModel):
     """Fired when an end user has completed a step of the Identity Verification process."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_step_updated_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`IDENTITY_VERIFICATION`")
     webhook_code: str = Field( description="`STEP_UPDATED`")

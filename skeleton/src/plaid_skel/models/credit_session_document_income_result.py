@@ -19,12 +19,7 @@ class CreditSessionDocumentIncomeResult(BaseModel):
     """The details of a document income verification in Link"""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_session_document_income_result"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     num_paystubs_uploaded: int = Field( description="The number of paystubs uploaded by the user.")
     num_w2s_uploaded: int = Field( description="The number of w2s uploaded by the user.")

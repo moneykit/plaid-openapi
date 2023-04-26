@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class UserCreateResponse(BaseModel):
     """UserCreateResponse defines the response schema for `/user/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#user_create_response"
-            }
-        }
 
     user_token: str = Field( description="The user token associated with the User data is being requested for.")
     user_id: str = Field( description="The Plaid `user_id` of the User associated with this webhook, warning, or error.")

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class BankTransferBalance(BaseModel):
     """Information about the balance of a bank transfer"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_balance"
-            }
-        }
 
     available: str = Field( description="The total available balance - the sum of all successful debit transfer amounts minus all credit transfer amounts.")
     transactable: str = Field( description="The transactable balance shows the amount in your account that you are able to use for transfers, and is essentially your available balance minus your minimum balance.")

@@ -19,12 +19,6 @@ from plaid_skel.models.institution import Institution
 class InstitutionsGetResponse(BaseModel):
     """InstitutionsGetResponse defines the response schema for `/institutions/get`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_get_response"
-            }
-        }
 
     institutions: List[Institution] = Field( description="A list of Plaid institutions")
     total: int = Field( description="The total number of institutions available via this endpoint")

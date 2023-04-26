@@ -19,12 +19,6 @@ from plaid_skel.models.match_summary_code import MatchSummaryCode
 class KYCCheckDateOfBirthSummary(BaseModel):
     """Result summary object specifying how the `date_of_birth` field matched."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#kyc_check_date_of_birth_summary"
-            }
-        }
 
     summary: MatchSummaryCode = Field()
 

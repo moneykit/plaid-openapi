@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ItemImportRequestOptions(BaseModel):
     """An optional object to configure `/item/import` request."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_import_request_options"
-            }
-        }
 
     webhook: Optional[str] = Field(default=None, description="Specifies a webhook URL to associate with an Item. Plaid fires a webhook if credentials fail. ")
 

@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class ProductAccess(BaseModel):
     """The product access being requested. Used to or disallow product access across all accounts. If unset, defaults to all products allowed."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#product_access"
-            }
-        }
 
     statements: Optional[bool] = Field(default=None, description="Allow access to statements. Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")
     identity: Optional[bool] = Field(default=None, description="Allow access to the Identity product (name, email, phone, address). Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")

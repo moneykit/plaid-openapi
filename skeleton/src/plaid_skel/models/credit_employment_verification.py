@@ -20,12 +20,6 @@ from plaid_skel.models.credit_platform_ids import CreditPlatformIds
 class CreditEmploymentVerification(BaseModel):
     """The object containing proof of employment data for an individual."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_employment_verification"
-            }
-        }
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")
     status: Optional[str] = Field(default=None, description="Current employment status.")

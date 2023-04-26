@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PartnerEndCustomerAddress(BaseModel):
     """The end customer's address."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_end_customer_address"
-            }
-        }
 
     city: Optional[str] = Field(default=None,)
     street: Optional[str] = Field(default=None,)

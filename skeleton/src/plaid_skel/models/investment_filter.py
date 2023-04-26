@@ -19,12 +19,6 @@ from plaid_skel.models.investment_account_subtype import InvestmentAccountSubtyp
 class InvestmentFilter(BaseModel):
     """A filter to apply to `investment`-type accounts (or `brokerage`-type accounts for API versions 2018-05-22 and earlier)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investment_filter"
-            }
-        }
 
     account_subtypes: List[InvestmentAccountSubtype] = Field( description="An array of account subtypes to display in Link. If not specified, all account subtypes will be shown. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema). ")
 

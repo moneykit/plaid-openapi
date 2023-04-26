@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class SandboxProcessorTokenCreateRequestOptions(BaseModel):
     """An optional set of options to be used when configuring the Item. If specified, must not be `null`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#sandbox_processor_token_create_request_options"
-            }
-        }
 
     override_username: Optional[str] = Field(default=None, description="Test username to use for the creation of the Sandbox Item. Default value is `user_good`.")
     override_password: Optional[str] = Field(default=None, description="Test password to use for the creation of the Sandbox Item. Default value is `pass_good`.")

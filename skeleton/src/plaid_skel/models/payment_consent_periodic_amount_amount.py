@@ -19,12 +19,6 @@ from plaid_skel.models.payment_amount_currency import PaymentAmountCurrency
 class PaymentConsentPeriodicAmountAmount(BaseModel):
     """Maximum cumulative amount for all payments in the specified interval."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#payment_consent_periodic_amount_amount"
-            }
-        }
 
     currency: PaymentAmountCurrency = Field()
     value: float = Field( description="The amount of the payment. Must contain at most two digits of precision e.g. `1.23`. Minimum accepted value is `1`.")

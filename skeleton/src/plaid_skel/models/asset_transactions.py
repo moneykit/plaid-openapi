@@ -19,12 +19,6 @@ from plaid_skel.models.asset_transaction import AssetTransaction
 class AssetTransactions(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#asset_transactions"
-            }
-        }
 
     asset_transaction: List[AssetTransaction] = Field()
 

@@ -19,12 +19,7 @@ class NumbersEFTNullable(BaseModel):
     """Identifying information for transferring money to or from a Canadian bank account via EFT."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_eft_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")
     account: str = Field( description="The EFT account number for the account")

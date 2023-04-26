@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class LinkTokenCreateInstitutionData(BaseModel):
     """A map containing data used to highlight institutions in Link."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_institution_data"
-            }
-        }
 
     routing_number: Optional[str] = Field(default=None, description="The routing number of the bank to highlight.")
 

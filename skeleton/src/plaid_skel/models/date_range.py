@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DateRange(BaseModel):
     """A date range with a start and end date"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#date_range"
-            }
-        }
 
     beginning: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     ending: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")

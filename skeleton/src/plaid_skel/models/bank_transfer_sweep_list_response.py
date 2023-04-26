@@ -19,12 +19,6 @@ from plaid_skel.models.bank_transfer_sweep import BankTransferSweep
 class BankTransferSweepListResponse(BaseModel):
     """BankTransferSweepListResponse defines the response schema for `/bank_transfer/sweep/list`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfer_sweep_list_response"
-            }
-        }
 
     sweeps: List[BankTransferSweep] = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

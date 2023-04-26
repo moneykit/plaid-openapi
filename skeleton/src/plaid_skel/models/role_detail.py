@@ -19,12 +19,6 @@ from plaid_skel.models.party_role_type import PartyRoleType
 class RoleDetail(BaseModel):
     """Documentation not found in the MISMO model viewer and not provided by Freddie Mac."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#role_detail"
-            }
-        }
 
     party_role_type: PartyRoleType = Field()
 

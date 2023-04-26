@@ -19,12 +19,7 @@ class TransactionData(BaseModel):
     """Information about the matched direct deposit transaction used to verify a user's payroll information."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transaction_data"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     description: str = Field( description="The description of the transaction.")
     amount: float = Field( description="The amount of the transaction.")

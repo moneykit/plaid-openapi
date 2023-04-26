@@ -19,12 +19,6 @@ from plaid_skel.models.watchlist_screening_hit import WatchlistScreeningHit
 class WatchlistScreeningIndividualHitListResponse(BaseModel):
     """Paginated list of individual watchlist screening hits"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#watchlist_screening_individual_hit_list_response"
-            }
-        }
 
     watchlist_screening_hits: List[WatchlistScreeningHit] = Field( description="List of individual watchlist screening hits")
     next_cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

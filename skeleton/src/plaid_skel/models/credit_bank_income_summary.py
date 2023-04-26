@@ -20,12 +20,6 @@ from plaid_skel.models.credit_bank_income_historical_summary import CreditBankIn
 class CreditBankIncomeSummary(BaseModel):
     """Summary for bank income across all income sources and items (max history of 730 days)."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_bank_income_summary"
-            }
-        }
 
     total_amount: Optional[float] = Field(default=None, description="Total amount of earnings across all the income sources in the end user's Items for the days requested by the client. This may return an incorrect value if the summary includes income sources in multiple currencies. Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-bank-income-summary-total-amounts) instead.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO 4217 currency code of the amount or balance. Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-bank-income-summary-total-amounts) instead.")

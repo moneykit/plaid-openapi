@@ -19,12 +19,6 @@ from plaid_skel.models.phone_type import PhoneType
 class EntityScreeningHitPhoneNumbers(BaseModel):
     """Phone number information associated with the entity screening hit"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_screening_hit_phone_numbers"
-            }
-        }
 
     type: PhoneType = Field()
     phone_number: str = Field( description="A phone number in E.164 format.")

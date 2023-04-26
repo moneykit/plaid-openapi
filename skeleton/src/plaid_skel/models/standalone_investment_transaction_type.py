@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class StandaloneInvestmentTransactionType(BaseModel):
     """Valid values for investment transaction types and subtypes. Note that transactions representing inflow of cash will appear as negative amounts, outflow of cash will appear as positive amounts."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#standalone_investment_transaction_type"
-            }
-        }
 
     buy: str = Field( description="Buying an investment")
     sell: str = Field( description="Selling an investment")

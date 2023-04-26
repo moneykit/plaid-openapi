@@ -19,12 +19,6 @@ from plaid_skel.models.pay import Pay
 class EarningsTotal(BaseModel):
     """An object representing both the current pay period and year to date amount for an earning category."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#earnings_total"
-            }
-        }
 
     current_amount: Optional[float] = Field(default=None, description="Total amount of the earnings for this pay period")
     current_pay: Optional[Pay] = Field(default=None,)

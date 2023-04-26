@@ -20,12 +20,6 @@ from plaid_skel.models.verification_of_asset import VerificationOfAsset
 class Service(BaseModel):
     """A collection of details related to a fulfillment service or product in terms of request, process and result."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#service"
-            }
-        }
 
     verification_of_asset: VerificationOfAsset = Field()
     statuses: Statuses = Field()

@@ -19,12 +19,6 @@ from plaid_skel.models.client_provided_enhanced_transaction import ClientProvide
 class TransactionsEnhanceGetResponse(BaseModel):
     """TransactionsEnhanceGetResponse defines the response schema for `/beta/transactions/v1/enhance`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transactions_enhance_get_response"
-            }
-        }
 
     enhanced_transactions: List[ClientProvidedEnhancedTransaction] = Field( description="An array of enhanced transactions.")
 

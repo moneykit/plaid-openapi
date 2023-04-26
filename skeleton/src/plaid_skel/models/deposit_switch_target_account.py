@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DepositSwitchTargetAccount(BaseModel):
     """The deposit switch destination account"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_target_account"
-            }
-        }
 
     account_number: str = Field( description="Account number for deposit switch destination")
     routing_number: str = Field( description="Routing number for deposit switch destination")

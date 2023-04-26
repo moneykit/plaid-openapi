@@ -19,12 +19,6 @@ from plaid_skel.models.transfer_schedule_interval_unit import TransferScheduleIn
 class TransferRecurringSchedule(BaseModel):
     """The schedule that the recurring transfer will be executed on."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transfer_recurring_schedule"
-            }
-        }
 
     interval_unit: TransferScheduleIntervalUnit = Field()
     interval_count: int = Field( description="The number of recurring `interval_units` between originations. The recurring interval(before holiday adjustment) is calculated by multiplying `interval_unit` and `interval_count`. For instance, to schedule a recurring transfer which originates once every two weeks, set `interval_unit` = `week` and `interval_count` = 2.")

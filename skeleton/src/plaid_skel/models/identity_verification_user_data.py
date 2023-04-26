@@ -21,12 +21,6 @@ from plaid_skel.models.user_id_number import UserIDNumber
 class IdentityVerificationUserData(BaseModel):
     """The identity data that was either collected from the user or provided via API in order to perform an identity verification."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_user_data"
-            }
-        }
 
     phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
     date_of_birth: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")

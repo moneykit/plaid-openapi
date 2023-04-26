@@ -21,12 +21,6 @@ from plaid_skel.models.partner_end_customer_questionnaire_status import PartnerE
 class PartnerCustomerOAuthInstitutionsGetResponse(BaseModel):
     """Response schema for `/partner/customer/oauth_institutions/get`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#partner_customer_o_auth_institutions_get_response"
-            }
-        }
 
     flowdown_status: Optional[PartnerEndCustomerFlowdownStatus] = Field(default=None,)
     questionnaire_status: Optional[PartnerEndCustomerQuestionnaireStatus] = Field(default=None,)

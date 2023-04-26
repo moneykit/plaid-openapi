@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class PendingExpirationWebhook(BaseModel):
     """Fired when an Item’s access consent is expiring in 7 days. Some Items have explicit expiration times and we try to relay this when possible to reduce service disruption. This can be resolved by having the user go through Link’s update mode."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pending_expiration_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`PENDING_EXPIRATION`")

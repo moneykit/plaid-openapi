@@ -19,12 +19,6 @@ from plaid_skel.models.security_override import SecurityOverride
 class InvestmentsTransactionsOverride(BaseModel):
     """Specify the list of investments transactions on the account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#investments_transactions_override"
-            }
-        }
 
     date: date = Field( description="Posting date for the transaction. Must be formatted as an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) date.")
     name: str = Field( description="The institution's description of the transaction.")

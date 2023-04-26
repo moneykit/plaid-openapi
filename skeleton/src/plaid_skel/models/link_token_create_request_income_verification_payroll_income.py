@@ -19,12 +19,6 @@ from plaid_skel.models.income_verification_payroll_flow_type import IncomeVerifi
 class LinkTokenCreateRequestIncomeVerificationPayrollIncome(BaseModel):
     """Specifies options for initializing Link for use with Payroll Income."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_token_create_request_income_verification_payroll_income"
-            }
-        }
 
     flow_types: Optional[List[IncomeVerificationPayrollFlowType]] = Field(default=None, description="The types of payroll income verification to enable for the Link session. If none are specified, then users will see both document and digital payroll income.")
     is_update_mode: Optional[bool] = Field(default=None, description="An identifier to indicate whether the income verification Link token will be used for an update or not")

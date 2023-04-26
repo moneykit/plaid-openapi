@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PhoneNumber(BaseModel):
     """A phone number"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#phone_number"
-            }
-        }
 
     data: str = Field( description="The phone number.")
     primary: bool = Field( description="When `true`, identifies the phone number as the primary number on an account.")

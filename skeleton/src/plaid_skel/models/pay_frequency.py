@@ -21,12 +21,7 @@ class PayFrequency(BaseModel):
     """The frequency of the pay period."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#pay_frequency"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     value: PayFrequencyValue = Field()
     verification_status: VerificationStatus = Field()

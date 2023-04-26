@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class ItemProductReadyWebhook(BaseModel):
     """Fired once Plaid calculates income from an Item."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#item_product_ready_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`INCOME`")
     webhook_code: str = Field( description="`PRODUCT_READY`")

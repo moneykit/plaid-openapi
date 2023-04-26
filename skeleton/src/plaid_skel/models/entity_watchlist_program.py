@@ -21,12 +21,6 @@ from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreening
 class EntityWatchlistProgram(BaseModel):
     """A program that configures the active lists, search parameters, and other behavior for initial and ongoing screening of entities."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#entity_watchlist_program"
-            }
-        }
 
     id: str = Field( description="ID of the associated entity program.")
     created_at: datetime = Field( description="An ISO8601 formatted timestamp.")

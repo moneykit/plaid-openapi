@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DepositSwitchTokenCreateResponse(BaseModel):
     """DepositSwitchTokenCreateResponse defines the response schema for `/deposit_switch/token/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_token_create_response"
-            }
-        }
 
     deposit_switch_token: str = Field( description="Deposit switch token, used to initialize Link for the Deposit Switch product")
     deposit_switch_token_expiration_time: str = Field( description="Expiration time of the token, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format")

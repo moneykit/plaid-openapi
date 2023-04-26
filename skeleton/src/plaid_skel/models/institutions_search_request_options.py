@@ -19,12 +19,6 @@ from plaid_skel.models.institutions_search_payment_initiation_options import Ins
 class InstitutionsSearchRequestOptions(BaseModel):
     """An optional object to filter `/institutions/search` results."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#institutions_search_request_options"
-            }
-        }
 
     oauth: Optional[bool] = Field(default=None, description="Limit results to institutions with or without mandatory OAuth login flows. Note that institutions will only have `oauth` set to `true` if *all* Items associated with that institution are required to use OAuth flows; institutions in a state of migration to OAuth may have the `oauth` attribute set to `false` even if they support OAuth.")
     include_optional_metadata: Optional[bool] = Field(default=None, description="When true, return the institution's homepage URL, logo and primary brand color.")

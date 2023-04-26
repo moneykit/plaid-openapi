@@ -19,12 +19,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class BankTransfersEventsUpdateWebhook(BaseModel):
     """Fired when new bank transfer events are available. Receiving this webhook indicates you should fetch the new events from `/bank_transfer/event/sync`."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#bank_transfers_events_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`BANK_TRANSFERS`")
     webhook_code: str = Field( description="`BANK_TRANSFERS_EVENTS_UPDATE`")

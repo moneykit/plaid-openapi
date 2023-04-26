@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class DepositSwitchCreateResponse(BaseModel):
     """DepositSwitchCreateResponse defines the response schema for `/deposit_switch/create`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#deposit_switch_create_response"
-            }
-        }
 
     deposit_switch_id: str = Field( description="ID of the deposit switch. This ID is persisted throughout the lifetime of the deposit switch.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

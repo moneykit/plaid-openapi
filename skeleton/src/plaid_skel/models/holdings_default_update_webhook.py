@@ -20,12 +20,6 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 class HoldingsDefaultUpdateWebhook(BaseModel):
     """Fired when new or updated holdings have been detected on an investment account. The webhook typically fires in response to any newly added holdings or price changes to existing holdings, most commonly after market close."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#holdings_default_update_webhook"
-            }
-        }
 
     webhook_type: str = Field( description="`HOLDINGS`")
     webhook_code: str = Field( description="`DEFAULT_UPDATE`")

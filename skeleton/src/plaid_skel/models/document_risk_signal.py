@@ -20,12 +20,7 @@ class DocumentRiskSignal(BaseModel):
     """Details about a certain reason as to why a document could potentially be fraudulent."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#document_risk_signal"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     type: Optional[str] = Field(default=None, description="The result from the risk signal check.")
     field: Optional[str] = Field(default=None, description="The field which the risk signal was computed for")

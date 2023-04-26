@@ -19,12 +19,7 @@ class NumbersInternationalNullable(BaseModel):
     """Identifying information for transferring money to or from an international bank account via wire transfer."""
 
     class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#numbers_international_nullable"
-            }
-            , "nullable": True,
-        }
+        schema_extra = {"nullable": True}
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")
     iban: str = Field( description="The International Bank Account Number (IBAN) for the account")

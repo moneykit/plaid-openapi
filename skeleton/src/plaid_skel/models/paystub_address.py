@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class PaystubAddress(BaseModel):
     """Address on the paystub"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#paystub_address"
-            }
-        }
 
     city: Optional[str] = Field(default=None, description="The full city name.")
     country: Optional[str] = Field(default=None, description="The ISO 3166-1 alpha-2 country code.")

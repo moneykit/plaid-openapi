@@ -19,12 +19,6 @@ from plaid_skel.models.link_delivery_delivery_method import LinkDeliveryDelivery
 class LinkDeliveryCommunicationMethod(BaseModel):
     """The communication method containing both the type and address to send the URL."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#link_delivery_communication_method"
-            }
-        }
 
     method: Optional[LinkDeliveryDeliveryMethod] = Field(default=None,)
     address: Optional[str] = Field(default=None, description="The phone number / email address that link delivery sessions are delivered to. Phone numbers must be in E.164 format.")

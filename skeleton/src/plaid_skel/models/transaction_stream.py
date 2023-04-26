@@ -22,12 +22,6 @@ from plaid_skel.models.transaction_stream_status import TransactionStreamStatus
 class TransactionStream(BaseModel):
     """A grouping of related transactions"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#transaction_stream"
-            }
-        }
 
     account_id: str = Field( description="The ID of the account to which the stream belongs")
     stream_id: str = Field( description="A unique id for the stream")

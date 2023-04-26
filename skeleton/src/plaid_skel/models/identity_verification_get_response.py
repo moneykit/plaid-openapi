@@ -25,12 +25,6 @@ from plaid_skel.models.risk_check_details import RiskCheckDetails
 class IdentityVerificationGetResponse(BaseModel):
     """A identity verification attempt represents a customer's attempt to verify their identity, reflecting the required steps for completing the session, the results for each step, and information collected in the process."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#identity_verification_get_response"
-            }
-        }
 
     id: str = Field( description="ID of the associated Identity Verification attempt.")
     client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")

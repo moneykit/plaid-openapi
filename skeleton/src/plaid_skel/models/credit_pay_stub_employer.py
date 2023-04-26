@@ -19,12 +19,6 @@ from plaid_skel.models.credit_pay_stub_address import CreditPayStubAddress
 class CreditPayStubEmployer(BaseModel):
     """Information about the employer on the pay stub."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#credit_pay_stub_employer"
-            }
-        }
 
     address: CreditPayStubAddress = Field()
     name: Optional[str] = Field(default=None, description="The name of the employer on the pay stub.")

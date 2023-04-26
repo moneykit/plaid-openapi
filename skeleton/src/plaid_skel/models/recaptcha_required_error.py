@@ -18,12 +18,6 @@ from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 class RecaptchaRequiredError(BaseModel):
     """The request was flagged by Plaid's fraud system, and requires additional verification to ensure they are not a bot."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recaptcha_required_error"
-            }
-        }
 
     error_type: str = Field( description="RECAPTCHA_ERROR")
     error_code: str = Field( description="RECAPTCHA_REQUIRED")

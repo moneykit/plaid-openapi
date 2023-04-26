@@ -24,12 +24,6 @@ from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
 class RecurringTransfer(BaseModel):
     """Represents a recurring transfer within the Transfers API."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#recurring_transfer"
-            }
-        }
 
     recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
     created: datetime = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")

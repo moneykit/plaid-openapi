@@ -19,12 +19,6 @@ from plaid_skel.models.security_override import SecurityOverride
 class HoldingsOverride(BaseModel):
     """Specify the holdings on the account."""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#holdings_override"
-            }
-        }
 
     institution_price: float = Field( description="The last price given by the institution for this security")
     institution_price_as_of: Optional[date] = Field(default=None, description="The date at which `institution_price` was current. Must be formatted as an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) date.")

@@ -19,12 +19,6 @@ from plaid_skel.models.wallet_transaction_status import WalletTransactionStatus
 class WalletTransactionExecuteResponse(BaseModel):
     """WalletTransactionExecuteResponse defines the response schema for `/wallet/transaction/execute`"""
 
-    class Config:
-        schema_extra = {
-            "externalDocs": {
-                "url": "https://plaid.com/docs/api/accounts/#wallet_transaction_execute_response"
-            }
-        }
 
     transaction_id: str = Field( description="A unique ID identifying the transaction")
     status: WalletTransactionStatus = Field()
