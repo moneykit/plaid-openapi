@@ -99,6 +99,15 @@ def remove_unsupported_properties(spec: dict) -> None:
             "counterparties",
             "personal_finance_category_icon_url",
         ],
+        "InstitutionsGetByIdRequest": [
+            "country_codes",
+        ],
+        "InstitutionsGetByIdRequestOptions": [
+            "include_optional_metadata",
+            "include_status",
+            "include_auth_metadata",
+            "include_payment_initiation_metadata",
+        ],
         "Institution": [
             "products",
             "logo",
