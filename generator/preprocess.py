@@ -99,6 +99,16 @@ def remove_unsupported_properties(spec: dict) -> None:
             "counterparties",
             "personal_finance_category_icon_url",
         ],
+        "Institution": [
+            "products",
+            "logo",
+            "routing_numbers",
+            "dtc_numbers",
+            "oauth",
+            "status",
+            "payment_initiation_metadata",
+            "auth_metadata",
+        ],
     }
 
     for schema_name, properties_to_remove in remove_properties.items():

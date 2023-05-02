@@ -11,11 +11,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
-from plaid_skel.models.auth_metadata import AuthMetadata
 from plaid_skel.models.country_code import CountryCode
-from plaid_skel.models.institution_status import InstitutionStatus
-from plaid_skel.models.payment_initiation_metadata import PaymentInitiationMetadata
-from plaid_skel.models.products import Products
 
 
 
@@ -26,16 +22,8 @@ class Institution(BaseModel):
 
     institution_id: str = Field( description="Unique identifier for the institution")
     name: str = Field( description="The official name of the institution")
-    products: List[Products] = Field( description="A list of the Plaid products supported by the institution. Note that only institutions that support Instant Auth will return `auth` in the product array; institutions that do not list `auth` may still support other Auth methods such as Instant Match or Automated Micro-deposit Verification. To identify institutions that support those methods, use the `auth_metadata` object. For more details, see [Full Auth coverage](https://plaid.com/docs/auth/coverage/).")
     country_codes: List[CountryCode] = Field( description="A list of the country codes supported by the institution.")
     url: Optional[str] = Field(default=None, description="The URL for the institution's website")
     primary_color: Optional[str] = Field(default=None, description="Hexadecimal representation of the primary color used by the institution")
-    logo: Optional[str] = Field(default=None, description="Base64 encoded representation of the institution's logo, returned as a base64 encoded 152x152 PNG. Not all institutions' logos are available.")
-    routing_numbers: List[str] = Field( description="A partial list of routing numbers associated with the institution. This list is provided for the purpose of looking up institutions by routing number. It is not comprehensive and should never be used as a complete list of routing numbers for an institution.")
-    dtc_numbers: Optional[List[str]] = Field(default=None, description="A partial list of DTC numbers associated with the institution.")
-    oauth: bool = Field( description="Indicates that the institution has a mandatory OAuth login flow. Note that `oauth` may be `false` even for institutions that support OAuth, if the institution is in the process of migrating to OAuth and some active Items still exist that do not use OAuth.")
-    status: Optional[InstitutionStatus] = Field(default=None,)
-    payment_initiation_metadata: Optional[PaymentInitiationMetadata] = Field(default=None,)
-    auth_metadata: Optional[AuthMetadata] = Field(default=None,)
 
 Institution.update_forward_refs()
