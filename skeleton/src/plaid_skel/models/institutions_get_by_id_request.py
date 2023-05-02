@@ -11,8 +11,6 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
-from plaid_skel.models.country_code import CountryCode
-from plaid_skel.models.institutions_get_by_id_request_options import InstitutionsGetByIdRequestOptions
 
 
 
@@ -24,8 +22,7 @@ class InstitutionsGetByIdRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     institution_id: str = Field( description="The ID of the institution to get details about")
-    country_codes: List[CountryCode] = Field( description="Specify an array of Plaid-supported country codes this institution supports, using the ISO-3166-1 alpha-2 country code standard. In API versions 2019-05-29 and earlier, the `country_codes` parameter is an optional parameter within the `options` object and will default to `[US]` if it is not supplied. ")
-    options: Optional[InstitutionsGetByIdRequestOptions] = Field(default=None,)
+    options: Optional[Dict[str, Any]] = Field(default=None, description="Specifies optional parameters for `/institutions/get_by_id`. If provided, must not be `null`.")
 
     @validator("institution_id")
     def institution_id_min_length(cls, value):

@@ -5,6 +5,6 @@ from enum import Enum
 
 
 class CountryCode(str, Enum):
-    US = "US"
-    GB = "GB"
     CA = "CA"
+    GB = "GB"
+    US = "US"
