@@ -11,7 +11,7 @@ def expose_only_supported_products(spec: dict) -> None:
     path = "components/schemas/Products/enum"
     available: set[str] = set(dpath.get(spec, path))
     assert available, f"Missing {path}"
-    supported = set(["assets", "auth", "balance", "identity", "transactions"])
+    supported = set(["auth", "balance", "identity", "transactions"])
     assert supported.issubset(available)
     dpath.set(spec, path, list(supported))
 
@@ -74,19 +74,30 @@ def remove_unsupported_properties(spec: dict) -> None:
             "type",
         ],
         "TransactionsGetRequestOptions": [
-            "include_original_description",
             "include_personal_finance_category_beta",
             "include_logo_and_counterparty_beta",
         ],
-        "Transaction": [
-            "pending_transaction_id",
+        "TransactionsSyncRequestOptions": [
+            "include_logo_and_counterparty_beta",
+        ],
+        "TransactionBase": [
             "unofficial_currency_code",
+            "check_number",
             "location",
             "payment_meta",
-            "payment_channel",
+            "pending_transaction_id",
             "account_owner",
+            "transaction_type",
+            "logo_url",
+            "website",
+        ],
+        "Transaction/allOf/[1]": [
+            "payment_channel",
             "authorized_date",
             "authorized_datetime",
+            "transaction_code",
+            "counterparties",
+            "personal_finance_category_icon_url",
         ],
     }
 

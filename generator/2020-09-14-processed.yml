@@ -903,8 +903,27 @@ paths:
                       datetime: '2017-01-27T11:00:00Z'
                       authorized_date: '2017-01-27'
                       authorized_datetime: '2017-01-27T10:34:50Z'
+                      location:
+                        address: 300 Post St
+                        city: San Francisco
+                        region: CA
+                        postal_code: '94108'
+                        country: US
+                        lat: 40.740352
+                        lon: -74.001761
+                        store_number: '1235'
                       name: Apple Store
                       merchant_name: Apple
+                      payment_meta:
+                        by_order_of: null
+                        payee: null
+                        payer: null
+                        payment_method: null
+                        payment_processor: null
+                        ppd_id: null
+                        reason: null
+                        reference_number: null
+                      payment_channel: in store
                       pending: false
                       pending_transaction_id: null
                       account_owner: null
@@ -1211,8 +1230,27 @@ paths:
                       datetime: '2022-02-03T11:00:00Z'
                       authorized_date: '2022-02-03'
                       authorized_datetime: '2022-02-03T10:34:50Z'
+                      location:
+                        address: 300 Post St
+                        city: San Francisco
+                        region: CA
+                        postal_code: '94108'
+                        country: US
+                        lat: 40.740352
+                        lon: -74.001761
+                        store_number: '1235'
                       name: Apple Store
                       merchant_name: Apple
+                      payment_meta:
+                        by_order_of: null
+                        payee: null
+                        payer: null
+                        payment_method: null
+                        payment_processor: null
+                        ppd_id: null
+                        reason: null
+                        reference_number: null
+                      payment_channel: in store
                       pending: false
                       pending_transaction_id: null
                       account_owner: null
@@ -1233,8 +1271,27 @@ paths:
                       datetime: '2022-02-28T11:00:00Z'
                       authorized_date: '2022-02-28'
                       authorized_datetime: '2022-02-28T10:34:50Z'
+                      location:
+                        address: null
+                        city: null
+                        region: null
+                        postal_code: null
+                        country: null
+                        lat: null
+                        lon: null
+                        store_number: null
                       name: ConEd Bill Payment
                       merchant_name: ConEd
+                      payment_meta:
+                        by_order_of: null
+                        payee: null
+                        payer: null
+                        payment_method: null
+                        payment_processor: null
+                        ppd_id: null
+                        reason: null
+                        reference_number: null
+                      payment_channel: online
                       pending: false
                       pending_transaction_id: null
                       account_owner: null
@@ -1350,8 +1407,18 @@ paths:
                           website: walmart.com
                           entity_id: O5W5j4dN9OR3E6ypQmjdkWZZRoXEzVMz2ByWM
                         entity_id: O5W5j4dN9OR3E6ypQmjdkWZZRoXEzVMz2ByWM
+                        location:
+                          address: 13425 Community Rd
+                          city: Poway
+                          region: CA
+                          postal_code: '92064'
+                          country: US
+                          store_number: '1700'
+                          lat: null
+                          lon: null
                         logo_url: https://plaid-merchant-logos.plaid.com/walmart_1100.png
                         merchant_name: Walmart
+                        payment_channel: in store
                         personal_finance_category:
                           detailed: GENERAL_MERCHANDISE_SUPERSTORES
                           primary: GENERAL_MERCHANDISE
@@ -1376,9 +1443,19 @@ paths:
                           logo_url: https://plaid-merchant-logos.plaid.com/burger_king_155.png
                           website: burgerking.com
                           entity_id: mVrw538wamwdm22mK8jqpp7qd5br0eeV9o4a1
+                        location:
+                          address: null
+                          city: null
+                          region: null
+                          postal_code: null
+                          country: null
+                          store_number: null
+                          lat: null
+                          lon: null
                         entity_id: mVrw538wamwdm22mK8jqpp7qd5br0eeV9o4a1
                         logo_url: https://plaid-merchant-logos.plaid.com/burger_king_155.png
                         merchant_name: Burger King
+                        payment_channel: online
                         personal_finance_category:
                           detailed: FOOD_AND_DRINK_FAST_FOOD
                           primary: FOOD_AND_DRINK
@@ -11033,9 +11110,19 @@ paths:
                           type: merchant
                           logo_url: https://plaid-merchant-logos.plaid.com/apple_63.png
                           website: apple.com
+                        location:
+                          address: 300 Post St
+                          city: San Francisco
+                          region: CA
+                          postal_code: '94108'
+                          country: US
+                          lat: 40.740352
+                          lon: -74.001761
+                          store_number: '1235'
                         merchant_name: Apple
                         website: apple.com
                         logo_url: https://plaid-merchant-logos.plaid.com/apple_63.png
+                        payment_channel: in store
                         personal_finance_category:
                           primary: GENERAL_MERCHANDISE
                           detailed: ELECTRONICS
@@ -11854,12 +11941,6 @@ components:
             or submit a [Support request](https://dashboard.plaid.com/support/new/product-and-development/product-troubleshooting/product-functionality)
             .
           nullable: true
-        include_personal_finance_category_beta:
-          type: boolean
-          default: false
-          description: Please use [`include_personal_finance_category`](https://plaid.com/docs/api/products/transactions/#transactions-get-request-options-include-personal-finance-category)
-            instead.
-          deprecated: true
         include_personal_finance_category:
           type: boolean
           default: false
@@ -11870,13 +11951,6 @@ components:
             \ the `personal_finance_category` for a transaction based on your users\u2019\
             \ needs. When rules are set, the selected category will override the Plaid\
             \ provided category. To learn more, send a note to transactions-feedback@plaid.com."
-        include_logo_and_counterparty_beta:
-          type: boolean
-          default: false
-          description: Include counterparties and extran merchant fields in the transaction.
-            This field is disabled by default. If you need this information in addition
-            to the parsed data provided, contact your Plaid Account Manager.
-          x-hidden-from-docs: true
     TransactionsGetResponse:
       type: object
       additionalProperties: true
@@ -12146,13 +12220,6 @@ components:
             \ the `personal_finance_category` for a transaction based on your users\u2019\
             \ needs. When rules are set, the selected category will override the Plaid\
             \ provided category. To learn more, send a note to transactions-feedback@plaid.com."
-        include_logo_and_counterparty_beta:
-          type: boolean
-          default: false
-          description: Include counterparties and extra merchant fields in the transaction.
-            This field is disabled by default. If you need this information in addition
-            to the parsed data provided, contact your Plaid Account Manager.
-          x-hidden-from-docs: true
     TransactionsSyncResponse:
       type: object
       additionalProperties: true
@@ -15048,14 +15115,6 @@ components:
             Used when launching Link in update mode, when completing the Same-day
             (manual) Micro-deposit flow, or (optionally) when initializing Link for
             a returning user as part of the Transfer UI flow.
-        link_customization_name:
-          type: string
-          description: The name of the Link customization from the Plaid Dashboard
-            to be applied to Link. If not specified, the `default` customization will
-            be used. When using a Link customization, the language in the customization
-            must match the language selected via the `language` parameter, and the
-            countries in the customization should match the country codes selected
-            via `country_codes`.
         redirect_uri:
           type: string
           description: A URI indicating the destination where a user should be forwarded
@@ -15068,46 +15127,6 @@ components:
             dashboard](https://dashboard.plaid.com/team/api). If initializing on Android,
             `android_package_name` must be specified instead and `redirect_uri` should
             be left blank.
-        android_package_name:
-          type: string
-          description: The name of your app's Android package. Required if using the
-            `link_token` to initialize Link on Android. Any package name specified
-            here must also be added to the Allowed Android package names setting on
-            the [developer dashboard](https://dashboard.plaid.com/team/api). When
-            creating a `link_token` for initializing Link on other platforms, `android_package_name`
-            must be left blank and `redirect_uri` should be used instead.
-        institution_data:
-          $ref: '#/components/schemas/LinkTokenCreateInstitutionData'
-        account_filters:
-          $ref: '#/components/schemas/LinkTokenAccountFilters'
-        eu_config:
-          $ref: '#/components/schemas/LinkTokenEUConfig'
-        institution_id:
-          type: string
-          description: Used for certain Europe-only configurations, as well as certain
-            legacy use cases in other regions.
-        payment_initiation:
-          $ref: '#/components/schemas/LinkTokenCreateRequestPaymentInitiation'
-        deposit_switch:
-          $ref: '#/components/schemas/LinkTokenCreateRequestDepositSwitch'
-        employment:
-          $ref: '#/components/schemas/LinkTokenCreateRequestEmployment'
-        income_verification:
-          $ref: '#/components/schemas/LinkTokenCreateRequestIncomeVerification'
-        auth:
-          $ref: '#/components/schemas/LinkTokenCreateRequestAuth'
-        transfer:
-          $ref: '#/components/schemas/LinkTokenCreateRequestTransfer'
-        update:
-          $ref: '#/components/schemas/LinkTokenCreateRequestUpdate'
-        identity_verification:
-          $ref: '#/components/schemas/LinkTokenCreateRequestIdentityVerification'
-        user_token:
-          type: string
-          description: A user token generated using `/user/create`. Any Item created
-            during the Link session will be associated with the user.
-        investments:
-          $ref: '#/components/schemas/LinkTokenInvestments'
       required:
       - client_name
       - language
@@ -15320,20 +15339,6 @@ components:
             such as an email address or phone number, should not be used in the `client_user_id`.
             It is currently used as a means of searching logs for the given user in
             the Plaid Dashboard.
-        legal_name:
-          type: string
-          description: The user's full legal name, used for [micro-deposit based verification
-            flows](https://plaid.com/docs/auth/coverage/). For a small number of customers
-            on legacy flows, providing this field is required to enable micro-deposit-based
-            flows. For all other customers, this field is optional, but providing
-            the user's name in this field when using micro-deposit-based verification
-            will enable certain risk checks and can reduce micro-deposit fraud.
-        name:
-          allOf:
-          - $ref: '#/components/schemas/IdentityVerificationRequestUserName'
-          - description: The user's full name. Optional if using the [Identity Verification](https://plaid.com/docs/api/products/identity-verification)
-              product; if not using Identity Verification, this field is not allowed.
-              Users will not be asked for their name when this field is provided.
         phone_number:
           type: string
           description: The user's phone number in [E.164](https://en.wikipedia.org/wiki/E.164)
@@ -15369,20 +15374,6 @@ components:
             \ If you have performed verification but don\u2019t have the time, you\
             \ may supply a signal value of the start of the UNIX epoch.\n\n Example:\
             \ `2020-01-01T00:00:00Z`"
-        ssn:
-          type: string
-          deprecated: true
-          description: To be provided in the format "ddd-dd-dddd". Not currently used.
-        date_of_birth:
-          type: string
-          nullable: true
-          format: date
-          deprecated: true
-          description: To be provided in the format "yyyy-mm-dd". Not currently used.
-        address:
-          $ref: '#/components/schemas/UserAddress'
-        id_number:
-          $ref: '#/components/schemas/UserIDNumber'
       required:
       - client_user_id
     LinkTokenCreateRequestUpdate:
@@ -15769,44 +15760,10 @@ components:
           type: string
           description: The name of the account, either assigned by the user or by
             the financial institution itself
-        official_name:
-          type: string
-          nullable: true
-          description: The official name of the account as given by the financial
-            institution
         type:
           $ref: '#/components/schemas/AccountType'
         subtype:
           $ref: '#/components/schemas/AccountSubtype'
-        verification_status:
-          type: string
-          enum:
-          - automatically_verified
-          - pending_automatic_verification
-          - pending_manual_verification
-          - manually_verified
-          - verification_expired
-          - verification_failed
-          description: "The current verification status of an Auth Item initiated\
-            \ through Automated or Manual micro-deposits.  Returned for Auth Items\
-            \ only.\n\n`pending_automatic_verification`: The Item is pending automatic\
-            \ verification\n\n`pending_manual_verification`: The Item is pending manual\
-            \ micro-deposit verification. Items remain in this state until the user\
-            \ successfully verifies the two amounts.\n\n`automatically_verified`:\
-            \ The Item has successfully been automatically verified\t\n\n`manually_verified`:\
-            \ The Item has successfully been manually verified\n\n`verification_expired`:\
-            \ Plaid was unable to automatically verify the deposit within 7 calendar\
-            \ days and will no longer attempt to validate the Item. Users may retry\
-            \ by submitting their information again through Link.\n\n`verification_failed`:\
-            \ The Item failed manual micro-deposit verification because the user exhausted\
-            \ all 3 verification attempts. Users may retry by submitting their information\
-            \ again through Link.\t\n\t"
-        persistent_account_id:
-          type: string
-          description: A unique and persistent identifier for accounts that can be
-            used to trace multiple instances of the same account across different
-            Items for depository accounts. This is currently an opt-in field and only
-            supported for Chase Items.
       required:
       - account_id
       - balances
@@ -15904,29 +15861,6 @@ components:
           type: string
           description: The ISO-4217 currency code of the balance. Always null if `unofficial_currency_code`
             is non-null.
-          nullable: true
-        unofficial_currency_code:
-          type: string
-          description: 'The unofficial currency code associated with the balance.
-            Always null if `iso_currency_code` is non-null. Unofficial currency codes
-            are used for currencies that do not have official ISO currency codes,
-            such as cryptocurrencies and the currencies of certain countries.
-
-
-            See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema)
-            for a full listing of supported `unofficial_currency_code`s.'
-          nullable: true
-        last_updated_datetime:
-          type: string
-          format: date-time
-          description: 'Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601)
-            format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the last time that the balance
-            for the given account has been updated
-
-
-            This is currently only provided when the `min_last_updated_datetime` is
-            passed when calling `/accounts/balance/get` for `ins_128026` (Capital
-            One).'
           nullable: true
       required:
       - available
@@ -16202,16 +16136,6 @@ components:
           type: string
           description: The wire transfer routing number for the account, if available
           nullable: true
-        can_transfer_in:
-          type: boolean
-          description: Whether the account supports ACH transfers into the account
-          nullable: true
-          x-hidden-from-docs: true
-        can_transfer_out:
-          type: boolean
-          description: Whether the account supports ACH transfers out of the account
-          nullable: true
-          x-hidden-from-docs: true
       required:
       - account_id
       - account
@@ -16497,17 +16421,6 @@ components:
           description: The ISO-4217 currency code of the transaction. Always `null`
             if `unofficial_currency_code` is non-null.
           nullable: true
-        unofficial_currency_code:
-          type: string
-          description: 'The unofficial currency code associated with the transaction.
-            Always `null` if `iso_currency_code` is non-`null`. Unofficial currency
-            codes are used for currencies that do not have official ISO currency codes,
-            such as cryptocurrencies and the currencies of certain countries.
-
-
-            See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema)
-            for a full listing of supported `iso_currency_code`s.'
-          nullable: true
         category:
           type: array
           description: 'A hierarchical array of the categories to which this transaction
@@ -16529,11 +16442,6 @@ components:
             `/asset_report/get/` or `/asset_report/pdf/get`, this field will only
             appear in an Asset Report with Insights.'
           type: string
-          nullable: true
-        check_number:
-          type: string
-          description: The check number of the transaction. This field is only populated
-            for check transactions.
           nullable: true
         date:
           type: string
@@ -16573,55 +16481,10 @@ components:
           description: When `true`, identifies the transaction as pending or unsettled.
             Pending transaction details (name, type, amount, category ID) may change
             before they are settled.
-        pending_transaction_id:
-          type: string
-          description: The ID of a posted transaction's associated pending transaction,
-            where applicable.
-          nullable: true
-        account_owner:
-          type: string
-          description: The name of the account owner. This field is not typically
-            populated and only relevant when dealing with sub-accounts.
-          nullable: true
         transaction_id:
           type: string
           description: The unique ID of the transaction. Like all Plaid identifiers,
             the `transaction_id` is case sensitive.
-        transaction_type:
-          type: string
-          enum:
-          - digital
-          - place
-          - special
-          - unresolved
-          description: 'Please use the `payment_channel` field, `transaction_type`
-            will be deprecated in the future.
-
-
-            `digital:` transactions that took place online.
-
-
-            `place:` transactions that were made at a physical location.
-
-
-            `special:` transactions that relate to banks, e.g. fees or deposits.
-
-
-            `unresolved:` transactions that do not fit into the other three types.
-
-            '
-          deprecated: true
-        logo_url:
-          type: string
-          description: The logo associated with the merchant, if available. Formatted
-            as a 100x100 pixels PNG file path.
-          nullable: true
-          x-hidden-from-docs: true
-        website:
-          type: string
-          description: The website associated with the merchant, if available.
-          nullable: true
-          x-hidden-from-docs: true
       required:
       - transaction_id
       - pending
@@ -16639,26 +16502,6 @@ components:
       - type: object
         additionalProperties: true
         properties:
-          authorized_date:
-            type: string
-            format: date
-            description: The date that the transaction was authorized. Dates are returned
-              in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DD`
-              ).
-            nullable: true
-          authorized_datetime:
-            type: string
-            format: date-time
-            description: 'Date and time when a transaction was authorized in [ISO
-              8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ`
-              ).
-
-
-              This field is returned for select financial institutions and comes as
-              provided by the institution. It may contain default time values (such
-              as 00:00:00). This field is only populated in API version 2019-05-29
-              and later.'
-            nullable: true
           datetime:
             type: string
             format: date-time
@@ -16673,21 +16516,6 @@ components:
             nullable: true
           personal_finance_category:
             $ref: '#/components/schemas/PersonalFinanceCategory'
-          transaction_code:
-            $ref: '#/components/schemas/TransactionCode'
-          personal_finance_category_icon_url:
-            type: string
-            description: A link to the icon associated with the primary personal finance
-              category. The logo will always be 100x100 pixels.
-            x-hidden-from-docs: true
-          counterparties:
-            type: array
-            description: The counterparties present in the transaction. Counterparties,
-              such as the financial institutions, are extracted by Plaid from the
-              raw description.
-            items:
-              $ref: '#/components/schemas/TransactionCounterparty'
-            x-hidden-from-docs: true
         required:
         - account_owner
         - pending_transaction_id
@@ -17942,13 +17770,6 @@ components:
           type: boolean
           description: When `true`, identifies the email address as the primary email
             on an account.
-        type:
-          type: string
-          enum:
-          - primary
-          - secondary
-          - other
-          description: The type of email account as described by the financial institution.
       required:
       - data
       - primary
@@ -19100,11 +18921,10 @@ components:
     Products:
       title: Products
       enum:
+      - balance
+      - auth
       - identity
       - transactions
-      - assets
-      - auth
-      - balance
       description: A list of products that an institution can support. All Items must
         be initialized with at least one product. The Balance product is always available
         and does not need to be specified during initialization.
@@ -33298,6 +33118,8 @@ components:
         iso_currency_code:
           type: string
           description: The ISO-4217 currency code of the transaction e.g. USD.
+        location:
+          $ref: '#/components/schemas/ClientProvidedTransactionLocation'
         mcc:
           type: string
           description: Merchant category codes (MCCs) are four-digit numbers that
@@ -33520,6 +33342,8 @@ components:
           description: The check number of the transaction. This field is only populated
             for check transactions.
           nullable: true
+        payment_channel:
+          $ref: '#/components/schemas/PaymentChannel'
         category_id:
           description: The ID of the category to which this transaction belongs. For
             a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).
@@ -33531,6 +33355,8 @@ components:
             belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).
           items:
             type: string
+        location:
+          $ref: '#/components/schemas/Location'
         personal_finance_category:
           $ref: '#/components/schemas/PersonalFinanceCategory'
         personal_finance_category_icon_url:
@@ -33594,6 +33420,8 @@ components:
             to obtain the best results.'
           items:
             type: string
+        location:
+          $ref: '#/components/schemas/Location'
         logo_url:
           type: string
           description: The URL of a logo associated with this transaction, if available.
@@ -33604,6 +33432,8 @@ components:
           description: The name of the primary counterparty, such as the merchant
             or the financial institution, as extracted by Plaid from the raw description.
           nullable: true
+        payment_channel:
+          $ref: '#/components/schemas/PaymentChannel'
         personal_finance_category:
           $ref: '#/components/schemas/PersonalFinanceCategory'
         personal_finance_category_icon_url:
@@ -40622,31 +40452,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Products'
-        consent_expiration_time:
-          description: "The RFC 3339 timestamp after which the consent provided by\
-            \ the end user will expire. Upon consent expiration, the item will enter\
-            \ the `ITEM_LOGIN_REQUIRED` error state. To circumvent the `ITEM_LOGIN_REQUIRED`\
-            \ error and maintain continuous consent, the end user can reauthenticate\
-            \ via Link\u2019s update mode in advance of the consent expiration time.\n\
-            \nNote - This is only relevant for certain OAuth-based institutions. For\
-            \ all other institutions, this field will be null.\n"
-          type: string
-          format: date-time
-          nullable: true
-        update_type:
-          type: string
-          description: 'Indicates whether an Item requires user interaction to be
-            updated, which can be the case for Items with some forms of two-factor
-            authentication.
-
-
-            `background` - Item can be updated in the background
-
-
-            `user_present_required` - Item requires user interaction to be updated'
-          enum:
-          - background
-          - user_present_required
       required:
       - item_id
       - webhook

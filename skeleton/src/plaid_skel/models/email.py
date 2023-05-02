@@ -21,6 +21,5 @@ class Email(BaseModel):
 
     data: str = Field( description="The email address.")
     primary: bool = Field( description="When `true`, identifies the email address as the primary email on an account.")
-    type: str = Field( description="The type of email account as described by the financial institution.")
 
 Email.update_forward_refs()

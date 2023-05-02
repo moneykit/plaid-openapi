@@ -12,6 +12,8 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.counterparty import Counterparty
+from plaid_skel.models.location import Location
+from plaid_skel.models.payment_channel import PaymentChannel
 from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
 
 
@@ -25,8 +27,10 @@ class Enhancements(BaseModel):
     website: Optional[str] = Field(default=None, description="The website associated with this transaction, if available.")
     logo_url: Optional[str] = Field(default=None, description="The URL of a logo associated with this transaction, if available. The logo is formatted as a 100x100 pixel PNG file.")
     check_number: Optional[str] = Field(default=None, description="The check number of the transaction. This field is only populated for check transactions.")
+    payment_channel: PaymentChannel = Field()
     category_id: Optional[str] = Field(default=None, description="The ID of the category to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).")
     category: List[str] = Field( description="A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).")
+    location: Location = Field()
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
     personal_finance_category_icon_url: Optional[str] = Field(default=None, description="A link to the icon associated with the primary personal finance category. The logo will always be 100x100 pixels.")
     counterparties: Optional[List[Counterparty]] = Field(default=None, description="The counterparties present in the transaction. Counterparties, such as the merchant or the financial institution, are extracted by Plaid from the raw description.")

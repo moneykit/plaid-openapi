@@ -12,19 +12,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.country_code import CountryCode
-from plaid_skel.models.link_token_account_filters import LinkTokenAccountFilters
-from plaid_skel.models.link_token_create_institution_data import LinkTokenCreateInstitutionData
-from plaid_skel.models.link_token_create_request_auth import LinkTokenCreateRequestAuth
-from plaid_skel.models.link_token_create_request_deposit_switch import LinkTokenCreateRequestDepositSwitch
-from plaid_skel.models.link_token_create_request_employment import LinkTokenCreateRequestEmployment
-from plaid_skel.models.link_token_create_request_identity_verification import LinkTokenCreateRequestIdentityVerification
-from plaid_skel.models.link_token_create_request_income_verification import LinkTokenCreateRequestIncomeVerification
-from plaid_skel.models.link_token_create_request_payment_initiation import LinkTokenCreateRequestPaymentInitiation
-from plaid_skel.models.link_token_create_request_transfer import LinkTokenCreateRequestTransfer
-from plaid_skel.models.link_token_create_request_update import LinkTokenCreateRequestUpdate
 from plaid_skel.models.link_token_create_request_user import LinkTokenCreateRequestUser
-from plaid_skel.models.link_token_eu_config import LinkTokenEUConfig
-from plaid_skel.models.link_token_investments import LinkTokenInvestments
 from plaid_skel.models.products import Products
 
 
@@ -44,22 +32,6 @@ class LinkTokenCreateRequest(BaseModel):
     additional_consented_products: Optional[List[Products]] = Field(default=None, description="(Beta) This field has no effect unless you are participating in the Product Scope Transparency beta program. List of additional Plaid product(s) you wish to collect consent for. These products will not be billed until you start using them by calling the relevant endpoints.  `balance` is *not* a valid value, the Balance product does not require explicit initialization and will automatically have consent collected.  Institutions that do not support these products will still be shown in Link")
     webhook: Optional[str] = Field(default=None, description="The destination URL to which any webhooks should be sent. Note that webhooks for Payment Initiation (e-wallet transactions only), Transfer, Bank Transfer (including Auth micro-deposit notification webhooks) and Identity Verification are configured via the Dashboard instead.")
     access_token: Optional[str] = Field(default=None, description="The `access_token` associated with the Item to update or reference, used when updating, modifying, or accessing an existing `access_token`. Used when launching Link in update mode, when completing the Same-day (manual) Micro-deposit flow, or (optionally) when initializing Link for a returning user as part of the Transfer UI flow.")
-    link_customization_name: Optional[str] = Field(default=None, description="The name of the Link customization from the Plaid Dashboard to be applied to Link. If not specified, the `default` customization will be used. When using a Link customization, the language in the customization must match the language selected via the `language` parameter, and the countries in the customization should match the country codes selected via `country_codes`.")
     redirect_uri: Optional[str] = Field(default=None, description="A URI indicating the destination where a user should be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or via a webview. The `redirect_uri` should not contain any query parameters. When used in Production or Development, must be an https URI. To specify any subdomain, use `*` as a wildcard character, e.g. `https://*.example.com/oauth.html`. Note that any redirect URI must also be added to the Allowed redirect URIs list in the [developer dashboard](https://dashboard.plaid.com/team/api). If initializing on Android, `android_package_name` must be specified instead and `redirect_uri` should be left blank.")
-    android_package_name: Optional[str] = Field(default=None, description="The name of your app's Android package. Required if using the `link_token` to initialize Link on Android. Any package name specified here must also be added to the Allowed Android package names setting on the [developer dashboard](https://dashboard.plaid.com/team/api). When creating a `link_token` for initializing Link on other platforms, `android_package_name` must be left blank and `redirect_uri` should be used instead.")
-    institution_data: Optional[LinkTokenCreateInstitutionData] = Field(default=None,)
-    account_filters: Optional[LinkTokenAccountFilters] = Field(default=None,)
-    eu_config: Optional[LinkTokenEUConfig] = Field(default=None,)
-    institution_id: Optional[str] = Field(default=None, description="Used for certain Europe-only configurations, as well as certain legacy use cases in other regions.")
-    payment_initiation: Optional[LinkTokenCreateRequestPaymentInitiation] = Field(default=None,)
-    deposit_switch: Optional[LinkTokenCreateRequestDepositSwitch] = Field(default=None,)
-    employment: Optional[LinkTokenCreateRequestEmployment] = Field(default=None,)
-    income_verification: Optional[LinkTokenCreateRequestIncomeVerification] = Field(default=None,)
-    auth: Optional[LinkTokenCreateRequestAuth] = Field(default=None,)
-    transfer: Optional[LinkTokenCreateRequestTransfer] = Field(default=None,)
-    update: Optional[LinkTokenCreateRequestUpdate] = Field(default=None,)
-    identity_verification: Optional[LinkTokenCreateRequestIdentityVerification] = Field(default=None,)
-    user_token: Optional[str] = Field(default=None, description="A user token generated using `/user/create`. Any Item created during the Link session will be associated with the user.")
-    investments: Optional[LinkTokenInvestments] = Field(default=None,)
 
 LinkTokenCreateRequest.update_forward_refs()

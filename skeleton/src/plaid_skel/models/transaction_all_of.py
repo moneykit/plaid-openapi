@@ -12,8 +12,6 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
-from plaid_skel.models.transaction_code import TransactionCode
-from plaid_skel.models.transaction_counterparty import TransactionCounterparty
 
 
 
@@ -22,12 +20,7 @@ class TransactionAllOf(BaseModel):
     """"""
 
 
-    authorized_date: Optional[date] = Field(default=None, description="The date that the transaction was authorized. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DD` ).")
-    authorized_datetime: Optional[datetime] = Field(default=None, description="Date and time when a transaction was authorized in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
     datetime: Optional[datetime] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
-    transaction_code: Optional[TransactionCode] = Field(default=None,)
-    personal_finance_category_icon_url: Optional[str] = Field(default=None, description="A link to the icon associated with the primary personal finance category. The logo will always be 100x100 pixels.")
-    counterparties: Optional[List[TransactionCounterparty]] = Field(default=None, description="The counterparties present in the transaction. Counterparties, such as the financial institutions, are extracted by Plaid from the raw description.")
 
 TransactionAllOf.update_forward_refs()
