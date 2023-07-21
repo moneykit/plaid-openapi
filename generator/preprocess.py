@@ -128,6 +128,25 @@ def remove_unsupported_properties(spec: dict) -> None:
         print(f"Deleted {count} properties from {path}")
 
 
+def add_properties_as_required(spec: dict) -> None:
+    required_properties = {
+        "LinkTokenCreateRequest": [
+            "redirect_uri",
+        ],
+    }
+
+    for schema_name, required_properties in required_properties.items():
+        path = f"components/schemas/{schema_name}/required"
+        count = 0
+        for prop in required_properties:
+            existing_req_props: set[str] = set(dpath.get(spec, path))
+            assert existing_req_props, f"Missing {path}"
+            existing_req_props.add(prop)
+            dpath.set(spec, path, list(existing_req_props))
+        count += len(prop)
+        print(f"Added {count} properties as required to {path}")
+
+
 def main() -> None:
     print("reading yaml")
     if len(sys.argv) != 3:
@@ -143,6 +162,7 @@ def main() -> None:
     expose_only_supported_products(spec)
     expose_only_supported_country_codes(spec)
     remove_unsupported_properties(spec)
+    add_properties_as_required(spec)
 
     print("writing yaml")
     with open(openapi_output_file, "w") as f:
