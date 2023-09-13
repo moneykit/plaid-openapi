@@ -18,7 +18,7 @@ def fix_enums():
             vals: list[str] = [v for v in model_data['enum'] if v]
 
             def clean(varStr):
-                return re.sub('\W|^(?=\d)','_', varStr)
+                return re.sub('\\W|^(?=\\d)','_', varStr)
             names = [clean(v.upper()) for v in vals]
 
             assert model_type == "string", "Not setup to handle other enum types"
@@ -38,7 +38,7 @@ def fix_enums():
                 fixed_enum += textwrap.dedent("""
                 # Nullable OpenAPI enum
                     @classmethod
-                    def __modify_schema__(cls, field_schema: dict) -> None:
+                    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
                         field_schema["nullable"] = True
                 """)
 
