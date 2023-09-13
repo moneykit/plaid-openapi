@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.external_payment_initiation_consent_options import ExternalPaymentInitiationConsentOptions
 from plaid_skel.models.payment_initiation_consent_constraints import PaymentInitiationConsentConstraints
 from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
@@ -30,12 +30,14 @@ class PaymentInitiationConsentCreateRequest(BaseModel):
     constraints: PaymentInitiationConsentConstraints = Field()
     options: Optional[ExternalPaymentInitiationConsentOptions] = Field(default=None,)
 
-    @validator("reference")
+    @field_validator("reference")
+    @classmethod
     def reference_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("reference")
+    @field_validator("reference")
+    @classmethod
     def reference_max_length(cls, value):
         assert len(value) <= 18
         return value

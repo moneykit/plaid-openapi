@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -25,12 +25,14 @@ class PaymentInitiationPaymentListRequest(BaseModel):
     cursor: Optional[datetime] = Field(default=None, description="A string in RFC 3339 format (i.e. \"2019-12-06T22:35:49Z\"). Only payments created before the cursor will be returned.")
     consent_id: Optional[str] = Field(default=None, description="The consent ID. If specified, only payments, executed using this consent, will be returned.")
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 200
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value

@@ -10,25 +10,25 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class WalletTransactionCounterpartyInternational(BaseModel):
     """International Bank Account Number for a Wallet Transaction"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     iban: Optional[str] = Field(default=None, description="International Bank Account Number (IBAN).")
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_min_length(cls, value):
         assert len(value) >= 15
         return value
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_max_length(cls, value):
         assert len(value) <= 34
         return value

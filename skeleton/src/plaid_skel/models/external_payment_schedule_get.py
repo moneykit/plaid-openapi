@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 
@@ -18,9 +18,7 @@ from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 class ExternalPaymentScheduleGet(BaseModel):
     """The schedule that the payment will be executed on. If a schedule is provided, the payment is automatically set up as a standing order. If no schedule is specified, the payment will be executed only once."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     interval: PaymentScheduleInterval = Field()
     interval_execution_day: int = Field( description="The day of the interval on which to schedule the payment.  If the payment interval is weekly, `interval_execution_day` should be an integer from 1 (Monday) to 7 (Sunday).  If the payment interval is monthly, `interval_execution_day` should be an integer indicating which day of the month to make the payment on. Integers from 1 to 28 can be used to make a payment on that day of the month. Negative integers from -1 to -5 can be used to make a payment relative to the end of the month. To make a payment on the last day of the month, use -1; to make the payment on the second-to-last day, use -2, and so on.")

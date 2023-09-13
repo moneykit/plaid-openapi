@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.bank_transfer_direction import BankTransferDirection
 from plaid_skel.models.bank_transfer_event_type import BankTransferEventType
 from plaid_skel.models.bank_transfer_failure import BankTransferFailure
@@ -35,7 +35,8 @@ class BankTransferEvent(BaseModel):
     failure_reason: Optional[BankTransferFailure] = Field(default=None,)
     direction: Optional[BankTransferDirection] = Field(default=None,)
 
-    @validator("event_id")
+    @field_validator("event_id")
+    @classmethod
     def event_id_min(cls, value):
         assert value >= 0
         return value

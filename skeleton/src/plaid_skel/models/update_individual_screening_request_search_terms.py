@@ -10,16 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class UpdateIndividualScreeningRequestSearchTerms(BaseModel):
     """Search terms for editing an individual watchlist screening"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     watchlist_program_id: Optional[str] = Field(default=None, description="ID of the associated program.")
     legal_name: Optional[str] = Field(default=None, description="The legal name of the individual being screened.")
@@ -27,17 +25,20 @@ class UpdateIndividualScreeningRequestSearchTerms(BaseModel):
     document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document.")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
 
-    @validator("legal_name")
+    @field_validator("legal_name")
+    @classmethod
     def legal_name_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("document_number")
+    @field_validator("document_number")
+    @classmethod
     def document_number_min_length(cls, value):
         assert len(value) >= 4
         return value
 
-    @validator("country")
+    @field_validator("country")
+    @classmethod
     def country_min_length(cls, value):
         assert len(value) >= 2
         return value

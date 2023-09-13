@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -24,7 +24,8 @@ class TransferRepaymentReturn(BaseModel):
     amount: str = Field( description="The value of the returned transfer.")
     iso_currency_code: str = Field( description="The currency of the repayment, e.g. \"USD\".")
 
-    @validator("event_id")
+    @field_validator("event_id")
+    @classmethod
     def event_id_min(cls, value):
         assert value >= 0
         return value

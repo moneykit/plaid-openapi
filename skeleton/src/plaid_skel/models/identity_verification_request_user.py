@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.identity_verification_request_user_name import IdentityVerificationRequestUserName
 from plaid_skel.models.user_address import UserAddress
 from plaid_skel.models.user_id_number import UserIDNumber
@@ -30,7 +30,8 @@ class IdentityVerificationRequestUser(BaseModel):
     address: Optional[UserAddress] = Field(default=None,)
     id_number: Optional[UserIDNumber] = Field(default=None,)
 
-    @validator("client_user_id")
+    @field_validator("client_user_id")
+    @classmethod
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value

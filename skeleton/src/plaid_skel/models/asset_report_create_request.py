@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.asset_report_create_request_options import AssetReportCreateRequestOptions
 
 
@@ -27,12 +27,14 @@ class AssetReportCreateRequest(BaseModel):
     days_requested: int = Field( description="The maximum integer number of days of history to include in the Asset Report. If using Fannie Mae Day 1 Certainty, `days_requested` must be at least 61 for new originations or at least 31 for refinancings.  An Asset Report requested with \"Additional History\" (that is, with more than 61 days of transaction history) will incur an Additional History fee.")
     options: Optional[AssetReportCreateRequestOptions] = Field(default=None,)
 
-    @validator("days_requested")
+    @field_validator("days_requested")
+    @classmethod
     def days_requested_max(cls, value):
         assert value <= 731
         return value
 
-    @validator("days_requested")
+    @field_validator("days_requested")
+    @classmethod
     def days_requested_min(cls, value):
         assert value >= 0
         return value

@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -27,17 +27,20 @@ class TransferRecurringListRequest(BaseModel):
     offset: Optional[int] = Field(default=None, description="The number of recurring transfers to skip before returning results.")
     funding_account_id: Optional[str] = Field(default=None, description="Filter recurring transfers to only those with the specified `funding_account_id`.")
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 25
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value
 
-    @validator("offset")
+    @field_validator("offset")
+    @classmethod
     def offset_min(cls, value):
         assert value >= 0
         return value

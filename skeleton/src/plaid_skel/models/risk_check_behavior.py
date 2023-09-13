@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.risk_check_behavior_bot_detected_label import RiskCheckBehaviorBotDetectedLabel
 from plaid_skel.models.risk_check_behavior_fraud_ring_detected_label import RiskCheckBehaviorFraudRingDetectedLabel
 from plaid_skel.models.risk_check_behavior_user_interactions_label import RiskCheckBehaviorUserInteractionsLabel
@@ -20,9 +20,7 @@ from plaid_skel.models.risk_check_behavior_user_interactions_label import RiskCh
 
 class RiskCheckBehavior(BaseModel):
     """Result summary object specifying values for `behavior` attributes of risk check, when available."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     user_interactions: RiskCheckBehaviorUserInteractionsLabel = Field()
     fraud_ring_detected: RiskCheckBehaviorFraudRingDetectedLabel = Field()

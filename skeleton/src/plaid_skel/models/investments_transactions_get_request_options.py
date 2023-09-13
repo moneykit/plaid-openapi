@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -23,17 +23,20 @@ class InvestmentsTransactionsGetRequestOptions(BaseModel):
     count: Optional[int] = Field(default=None, description="The number of transactions to fetch. ")
     offset: Optional[int] = Field(default=None, description="The number of transactions to skip when fetching transaction history")
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 500
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value
 
-    @validator("offset")
+    @field_validator("offset")
+    @classmethod
     def offset_min(cls, value):
         assert value >= 0
         return value

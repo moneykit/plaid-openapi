@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -23,7 +23,8 @@ class WalletTransactionGetRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     transaction_id: str = Field( description="The ID of the transaction to fetch")
 
-    @validator("transaction_id")
+    @field_validator("transaction_id")
+    @classmethod
     def transaction_id_min_length(cls, value):
         assert len(value) >= 1
         return value

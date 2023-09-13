@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.credit_freddie_mac_verification_of_assets_deal_voa24 import CreditFreddieMacVerificationOfAssetsDealVOA24
 
 
@@ -18,9 +18,7 @@ from plaid_skel.models.credit_freddie_mac_verification_of_assets_deal_voa24 impo
 
 class CreditFreddieMacVerificationOfAssetsVOA24(BaseModel):
     """Verification of Assets Report"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     deal: CreditFreddieMacVerificationOfAssetsDealVOA24 = Field()
     schema_version: float = Field( description="The Verification Of Assets (VOA) schema version.")

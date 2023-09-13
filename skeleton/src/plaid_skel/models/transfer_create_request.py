@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_network import TransferNetwork
 from plaid_skel.models.transfer_type import TransferType
@@ -40,12 +40,14 @@ class TransferCreateRequest(BaseModel):
     origination_account_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for the origination account for this transfer. If you have more than one origination account, this value must be specified. Otherwise, this field should be left blank.")
     iso_currency_code: Optional[str] = Field(default=None, description="The currency of the transfer amount. The default value is \"USD\".")
 
-    @validator("idempotency_key")
+    @field_validator("idempotency_key")
+    @classmethod
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 50
         return value
 
-    @validator("description")
+    @field_validator("description")
+    @classmethod
     def description_max_length(cls, value):
         assert len(value) <= 10
         return value

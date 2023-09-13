@@ -10,16 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class IdentityVerificationResponseUserName(BaseModel):
     """The full name provided by the user. If the user has not submitted their name, this field will be null. Otherwise, both fields are guaranteed to be filled."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     given_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")
     family_name: str = Field( description="A string with at least one non-whitespace character, with a max length of 100 characters.")

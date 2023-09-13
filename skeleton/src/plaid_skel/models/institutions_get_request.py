@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.country_code import CountryCode
 from plaid_skel.models.institutions_get_request_options import InstitutionsGetRequestOptions
 
@@ -28,17 +28,20 @@ class InstitutionsGetRequest(BaseModel):
     country_codes: List[CountryCode] = Field( description="Specify an array of Plaid-supported country codes this institution supports, using the ISO-3166-1 alpha-2 country code standard.  In API versions 2019-05-29 and earlier, the `country_codes` parameter is an optional parameter within the `options` object and will default to `[US]` if it is not supplied. ")
     options: Optional[InstitutionsGetRequestOptions] = Field(default=None,)
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 500
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value
 
-    @validator("offset")
+    @field_validator("offset")
+    @classmethod
     def offset_min(cls, value):
         assert value >= 0
         return value

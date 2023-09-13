@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.identity_verification_step_status import IdentityVerificationStepStatus
 from plaid_skel.models.risk_check_behavior import RiskCheckBehavior
 from plaid_skel.models.risk_check_device import RiskCheckDevice
@@ -22,9 +22,7 @@ from plaid_skel.models.risk_check_phone import RiskCheckPhone
 
 class RiskCheckDetails(BaseModel):
     """Additional information for the `risk_check` step."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     status: IdentityVerificationStepStatus = Field()
     behavior: Optional[RiskCheckBehavior] = Field(default=None,)

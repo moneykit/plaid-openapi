@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -21,12 +21,14 @@ class AssetReportGetRequestOptions(BaseModel):
 
     days_to_include: Optional[int] = Field(default=None, description="The maximum number of days of history to include in the Asset Report.")
 
-    @validator("days_to_include")
+    @field_validator("days_to_include")
+    @classmethod
     def days_to_include_max(cls, value):
         assert value <= 731
         return value
 
-    @validator("days_to_include")
+    @field_validator("days_to_include")
+    @classmethod
     def days_to_include_min(cls, value):
         assert value >= 0
         return value

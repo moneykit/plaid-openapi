@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_initiation_address import PaymentInitiationAddress
 from plaid_skel.models.recipient_bacs_nullable import RecipientBACSNullable
 
@@ -28,17 +28,20 @@ class PaymentInitiationRecipientCreateRequest(BaseModel):
     bacs: Optional[RecipientBACSNullable] = Field(default=None,)
     address: Optional[PaymentInitiationAddress] = Field(default=None,)
 
-    @validator("name")
+    @field_validator("name")
+    @classmethod
     def name_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_min_length(cls, value):
         assert len(value) >= 15
         return value
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_max_length(cls, value):
         assert len(value) <= 34
         return value

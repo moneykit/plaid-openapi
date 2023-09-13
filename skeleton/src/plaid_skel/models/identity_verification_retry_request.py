@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.identity_verification_retry_request_steps_object import IdentityVerificationRetryRequestStepsObject
 from plaid_skel.models.strategy import Strategy
 
@@ -28,7 +28,8 @@ class IdentityVerificationRetryRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
 
-    @validator("client_user_id")
+    @field_validator("client_user_id")
+    @classmethod
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value

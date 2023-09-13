@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.bank_transfer_network import BankTransferNetwork
 from plaid_skel.models.bank_transfer_type import BankTransferType
@@ -38,17 +38,20 @@ class ProcessorBankTransferCreateRequest(BaseModel):
     metadata: Optional[Dict[str, str]] = Field(default=None, description="The Metadata object is a mapping of client-provided string fields to any string value. The following limitations apply: The JSON values must be Strings (no nested JSON objects allowed) Only ASCII characters may be used Maximum of 50 key/value pairs Maximum key length of 40 characters Maximum value length of 500 characters ")
     origination_account_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for the origination account for this transfer. If you have more than one origination account, this value must be specified.")
 
-    @validator("idempotency_key")
+    @field_validator("idempotency_key")
+    @classmethod
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 50
         return value
 
-    @validator("description")
+    @field_validator("description")
+    @classmethod
     def description_max_length(cls, value):
         assert len(value) <= 10
         return value
 
-    @validator("custom_tag")
+    @field_validator("custom_tag")
+    @classmethod
     def custom_tag_max_length(cls, value):
         assert len(value) <= 100
         return value

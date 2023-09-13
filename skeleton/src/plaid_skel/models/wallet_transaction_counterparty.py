@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.wallet_transaction_counterparty_numbers import WalletTransactionCounterpartyNumbers
 
 
@@ -23,7 +23,8 @@ class WalletTransactionCounterparty(BaseModel):
     name: str = Field( description="The name of the counterparty")
     numbers: WalletTransactionCounterpartyNumbers = Field()
 
-    @validator("name")
+    @field_validator("name")
+    @classmethod
     def name_min_length(cls, value):
         assert len(value) >= 1
         return value

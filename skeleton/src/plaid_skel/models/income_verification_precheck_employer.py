@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.income_verification_precheck_employer_address import IncomeVerificationPrecheckEmployerAddress
 
 
@@ -18,9 +18,7 @@ from plaid_skel.models.income_verification_precheck_employer_address import Inco
 
 class IncomeVerificationPrecheckEmployer(BaseModel):
     """Information about the end user's employer"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     name: Optional[str] = Field(default=None, description="The employer's name")
     address: Optional[IncomeVerificationPrecheckEmployerAddress] = Field(default=None,)

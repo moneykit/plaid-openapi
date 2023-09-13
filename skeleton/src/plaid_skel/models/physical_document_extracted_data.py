@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.physical_document_category import PhysicalDocumentCategory
 
 
@@ -18,9 +18,7 @@ from plaid_skel.models.physical_document_category import PhysicalDocumentCategor
 
 class PhysicalDocumentExtractedData(BaseModel):
     """Data extracted from a user-submitted document."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")
     category: PhysicalDocumentCategory = Field()
@@ -28,7 +26,8 @@ class PhysicalDocumentExtractedData(BaseModel):
     issuing_country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
     issuing_region: Optional[str] = Field(default=None, description="An ISO 3166-2 subdivision code. Related terms would be \"state\", \"province\", \"prefecture\", \"zone\", \"subdivision\", etc.")
 
-    @validator("issuing_country")
+    @field_validator("issuing_country")
+    @classmethod
     def issuing_country_min_length(cls, value):
         assert len(value) >= 2
         return value

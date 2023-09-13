@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_initiation_consent_constraints import PaymentInitiationConsentConstraints
 from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
 from plaid_skel.models.payment_initiation_consent_status import PaymentInitiationConsentStatus
@@ -30,12 +30,14 @@ class PaymentInitiationConsent(BaseModel):
     constraints: PaymentInitiationConsentConstraints = Field()
     scopes: List[PaymentInitiationConsentScope] = Field( description="An array of payment consent scopes.")
 
-    @validator("consent_id")
+    @field_validator("consent_id")
+    @classmethod
     def consent_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("recipient_id")
+    @field_validator("recipient_id")
+    @classmethod
     def recipient_id_min_length(cls, value):
         assert len(value) >= 1
         return value

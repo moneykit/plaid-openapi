@@ -10,16 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class IdentityVerificationUserAddress(BaseModel):
     """Even if an address has been collected, some fields may be null depending on the region's addressing system. For example:  Addresses from the United Kingdom will not include a region  Addresses from Hong Kong will not include postal code"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     street: Optional[str] = Field(default=None, description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")
     street2: Optional[str] = Field(default=None, description="Extra street information, like an apartment or suite number.")
@@ -28,7 +26,8 @@ class IdentityVerificationUserAddress(BaseModel):
     postal_code: Optional[str] = Field(default=None, description="The postal code for the associated address. Between 2 and 10 alphanumeric characters. For US-based addresses this must be 5 numeric digits.")
     country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
 
-    @validator("country")
+    @field_validator("country")
+    @classmethod
     def country_min_length(cls, value):
         assert len(value) >= 2
         return value

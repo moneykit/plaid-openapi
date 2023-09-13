@@ -10,16 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class TransferUserAddressInResponse(BaseModel):
     """The address associated with the account holder."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     street: Optional[str] = Field(default=None, description="The street number and name (i.e., \"100 Market St.\").")
     city: Optional[str] = Field(default=None, description="Ex. \"San Francisco\"")

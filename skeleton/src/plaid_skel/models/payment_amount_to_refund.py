@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_amount_currency import PaymentAmountCurrency
 
 
@@ -23,7 +23,8 @@ class PaymentAmountToRefund(BaseModel):
     currency: PaymentAmountCurrency = Field()
     value: float = Field( description="The amount of the payment. Must contain at most two digits of precision e.g. `1.23`.")
 
-    @validator("value")
+    @field_validator("value")
+    @classmethod
     def value_min(cls, value):
         assert value >= 0.01
         return value

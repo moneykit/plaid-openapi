@@ -10,36 +10,38 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class RecipientBACSNullable(BaseModel):
     """An object containing a BACS account number and sort code. If an IBAN is not provided or if this recipient needs to accept domestic GBP-denominated payments, BACS data is required."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     account: Optional[str] = Field(default=None, description="The account number of the account. Maximum of 10 characters.")
     sort_code: Optional[str] = Field(default=None, description="The 6-character sort code of the account.")
 
-    @validator("account")
+    @field_validator("account")
+    @classmethod
     def account_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("account")
+    @field_validator("account")
+    @classmethod
     def account_max_length(cls, value):
         assert len(value) <= 10
         return value
 
-    @validator("sort_code")
+    @field_validator("sort_code")
+    @classmethod
     def sort_code_min_length(cls, value):
         assert len(value) >= 6
         return value
 
-    @validator("sort_code")
+    @field_validator("sort_code")
+    @classmethod
     def sort_code_max_length(cls, value):
         assert len(value) <= 6
         return value

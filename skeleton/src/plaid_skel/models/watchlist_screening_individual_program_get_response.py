@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.individual_watchlist_code import IndividualWatchlistCode
 from plaid_skel.models.program_name_sensitivity import ProgramNameSensitivity
 from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreeningAuditTrail
@@ -32,7 +32,8 @@ class WatchlistScreeningIndividualProgramGetResponse(BaseModel):
     is_archived: bool = Field( description="Archived programs are read-only and cannot screen new customers nor participate in ongoing monitoring.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-    @validator("name")
+    @field_validator("name")
+    @classmethod
     def name_min_length(cls, value):
         assert len(value) >= 1
         return value

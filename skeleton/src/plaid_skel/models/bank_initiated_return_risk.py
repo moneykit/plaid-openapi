@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -22,22 +22,26 @@ class BankInitiatedReturnRisk(BaseModel):
     score: int = Field( description="A score from 1-99 that indicates the transaction return risk: a higher risk score suggests a higher return likelihood.")
     risk_tier: int = Field( description="In the `bank_initiated_return_risk` object, there are eight risk tiers corresponding to the scores:   1: Predicted bank-initiated return incidence rate between 0.0% - 0.5%   2: Predicted bank-initiated return incidence rate between 0.5% - 1.5%   3: Predicted bank-initiated return incidence rate between 1.5% - 3%   4: Predicted bank-initiated return incidence rate between 3% - 5%   5: Predicted bank-initiated return incidence rate between 5% - 10%   6: Predicted bank-initiated return incidence rate between 10% - 15%   7: Predicted bank-initiated return incidence rate between 15% and 50%   8: Predicted bank-initiated return incidence rate greater than 50% ")
 
-    @validator("score")
+    @field_validator("score")
+    @classmethod
     def score_max(cls, value):
         assert value <= 99
         return value
 
-    @validator("score")
+    @field_validator("score")
+    @classmethod
     def score_min(cls, value):
         assert value >= 1
         return value
 
-    @validator("risk_tier")
+    @field_validator("risk_tier")
+    @classmethod
     def risk_tier_max(cls, value):
         assert value <= 8
         return value
 
-    @validator("risk_tier")
+    @field_validator("risk_tier")
+    @classmethod
     def risk_tier_min(cls, value):
         assert value >= 1
         return value

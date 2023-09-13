@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_initiation_optional_restriction_bacs import PaymentInitiationOptionalRestrictionBacs
 from plaid_skel.models.payment_scheme import PaymentScheme
 
@@ -19,21 +19,21 @@ from plaid_skel.models.payment_scheme import PaymentScheme
 
 class ExternalPaymentOptions(BaseModel):
     """Additional payment options"""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     request_refund_details: Optional[bool] = Field(default=None, description="When `true`, Plaid will attempt to request refund details from the payee's financial institution.  Support varies between financial institutions and will not always be available.  If refund details could be retrieved, they will be available in the `/payment_initiation/payment/get` response.")
     iban: Optional[str] = Field(default=None, description="The International Bank Account Number (IBAN) for the payer's account. Where possible, the end user will be able to send payments only from the specified bank account if provided.")
     bacs: Optional[PaymentInitiationOptionalRestrictionBacs] = Field(default=None,)
     scheme: Optional[PaymentScheme] = Field(default=None,)
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_min_length(cls, value):
         assert len(value) >= 15
         return value
 
-    @validator("iban")
+    @field_validator("iban")
+    @classmethod
     def iban_max_length(cls, value):
         assert len(value) <= 34
         return value

@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_device import TransferDevice
 from plaid_skel.models.transfer_network import TransferNetwork
@@ -43,7 +43,8 @@ class TransferRecurringCreateRequest(BaseModel):
     user: TransferUserInRequest = Field()
     device: TransferDevice = Field()
 
-    @validator("idempotency_key")
+    @field_validator("idempotency_key")
+    @classmethod
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 50
         return value

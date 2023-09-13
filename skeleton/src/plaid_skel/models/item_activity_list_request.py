@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -25,12 +25,14 @@ class ItemActivityListRequest(BaseModel):
     cursor: Optional[str] = Field(default=None, description="Cursor used for pagination.")
     count: Optional[int] = Field(default=None,)
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 50
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value

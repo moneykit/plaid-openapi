@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.transfer_user_address_in_request import TransferUserAddressInRequest
 
 
@@ -18,9 +18,7 @@ from plaid_skel.models.transfer_user_address_in_request import TransferUserAddre
 
 class TransferUserInRequestDeprecated(BaseModel):
     """The legal name and other information for the account holder."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     legal_name: Optional[str] = Field(default=None, description="The user's legal name.")
     phone_number: Optional[str] = Field(default=None, description="The user's phone number.")

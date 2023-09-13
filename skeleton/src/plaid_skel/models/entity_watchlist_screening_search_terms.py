@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -28,17 +28,20 @@ class EntityWatchlistScreeningSearchTerms(BaseModel):
     url: Optional[AnyUrl] = Field(default=None, description="An 'http' or 'https' URL (must begin with either of those).")
     version: float = Field( description="The current version of the search terms. Starts at `1` and increments with each edit to `search_terms`.")
 
-    @validator("legal_name")
+    @field_validator("legal_name")
+    @classmethod
     def legal_name_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("document_number")
+    @field_validator("document_number")
+    @classmethod
     def document_number_min_length(cls, value):
         assert len(value) >= 4
         return value
 
-    @validator("country")
+    @field_validator("country")
+    @classmethod
     def country_min_length(cls, value):
         assert len(value) >= 2
         return value

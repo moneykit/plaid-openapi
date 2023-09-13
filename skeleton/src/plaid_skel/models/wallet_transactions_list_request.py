@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.wallet_transaction_list_request_options import WalletTransactionListRequestOptions
 
 
@@ -27,22 +27,26 @@ class WalletTransactionsListRequest(BaseModel):
     count: Optional[int] = Field(default=None, description="The number of transactions to fetch")
     options: Optional[WalletTransactionListRequestOptions] = Field(default=None,)
 
-    @validator("wallet_id")
+    @field_validator("wallet_id")
+    @classmethod
     def wallet_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @validator("cursor")
+    @field_validator("cursor")
+    @classmethod
     def cursor_max_length(cls, value):
         assert len(value) <= 256
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_max(cls, value):
         assert value <= 200
         return value
 
-    @validator("count")
+    @field_validator("count")
+    @classmethod
     def count_min(cls, value):
         assert value >= 1
         return value

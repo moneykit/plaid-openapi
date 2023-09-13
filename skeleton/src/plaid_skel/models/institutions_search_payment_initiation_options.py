@@ -10,16 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class InstitutionsSearchPaymentInitiationOptions(BaseModel):
     """Additional options that will be used to filter institutions by various Payment Initiation configurations."""
-
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     payment_id: Optional[str] = Field(default=None, description="A unique ID identifying the payment")
     consent_id: Optional[str] = Field(default=None, description="A unique ID identifying the payment consent")

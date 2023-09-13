@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.entity_watchlist_screening_search_terms import EntityWatchlistScreeningSearchTerms
 from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreeningAuditTrail
 from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatus
@@ -30,7 +30,8 @@ class WatchlistScreeningEntityUpdateResponse(BaseModel):
     audit_trail: WatchlistScreeningAuditTrail = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-    @validator("client_user_id")
+    @field_validator("client_user_id")
+    @classmethod
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value
