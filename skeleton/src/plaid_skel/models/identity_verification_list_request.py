@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -25,8 +25,7 @@ class IdentityVerificationListRequest(BaseModel):
     client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
     cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")
 
-    @field_validator("client_user_id")
-    @classmethod
+    @validator("client_user_id")
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value

@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.verification_status import VerificationStatus
 
 
@@ -18,7 +18,7 @@ from plaid_skel.models.verification_status import VerificationStatus
 
 class IncomeSummaryFieldNumber(BaseModel):
     """Field number for income summary"""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     value: float = Field( description="The value of the field.")
     verification_status: VerificationStatus = Field()

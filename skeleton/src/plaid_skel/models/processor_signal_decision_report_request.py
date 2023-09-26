@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.signal_decision_outcome import SignalDecisionOutcome
 from plaid_skel.models.signal_payment_method import SignalPaymentMethod
 
@@ -31,20 +31,17 @@ class ProcessorSignalDecisionReportRequest(BaseModel):
     payment_method: Optional[SignalPaymentMethod] = Field(default=None,)
     amount_instantly_available: Optional[float] = Field(default=None, description="The amount (in USD) made available to your customers instantly following the debit transaction. It could be a partial amount of the requested transaction (example: 102.05).")
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_max_length(cls, value):
         assert len(value) <= 36
         return value
 
-    @field_validator("days_funds_on_hold")
-    @classmethod
+    @validator("days_funds_on_hold")
     def days_funds_on_hold_min(cls, value):
         assert value >= 0
         return value

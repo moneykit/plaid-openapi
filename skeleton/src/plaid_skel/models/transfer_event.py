@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.transfer_event_type import TransferEventType
 from plaid_skel.models.transfer_failure import TransferFailure
 from plaid_skel.models.transfer_type import TransferType
@@ -37,8 +37,7 @@ class TransferEvent(BaseModel):
     refund_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a refund. A non-null value indicates the event is for the associated refund of the transfer.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of the transfer that this event applies to. Only present if the transfer was created on behalf of another client as a third-party sender (TPS).")
 
-    @field_validator("event_id")
-    @classmethod
+    @validator("event_id")
     def event_id_min(cls, value):
         assert value >= 0
         return value

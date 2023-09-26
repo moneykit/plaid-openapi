@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.wallet_transaction_amount import WalletTransactionAmount
 from plaid_skel.models.wallet_transaction_counterparty import WalletTransactionCounterparty
 
@@ -29,32 +29,27 @@ class WalletTransactionExecuteRequest(BaseModel):
     amount: WalletTransactionAmount = Field()
     reference: str = Field( description="A reference for the transaction. This must be an alphanumeric string with 6 to 18 characters and must not contain any special characters or spaces. Ensure that the `reference` field is unique for each transaction.")
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 128
         return value
 
-    @field_validator("wallet_id")
-    @classmethod
+    @validator("wallet_id")
     def wallet_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("reference")
-    @classmethod
+    @validator("reference")
     def reference_min_length(cls, value):
         assert len(value) >= 6
         return value
 
-    @field_validator("reference")
-    @classmethod
+    @validator("reference")
     def reference_max_length(cls, value):
         assert len(value) <= 18
         return value

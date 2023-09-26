@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.payment_amount import PaymentAmount
 
 
@@ -26,14 +26,12 @@ class PaymentInitiationConsentPaymentExecuteRequest(BaseModel):
     amount: PaymentAmount = Field()
     idempotency_key: str = Field( description="A random key provided by the client, per unique consent payment. Maximum of 128 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. If a request to execute a consent payment fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single payment is created. If the request was successfully processed, it will prevent any payment that uses the same idempotency key, and was received within 24 hours of the first request, from being processed.")
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 128
         return value

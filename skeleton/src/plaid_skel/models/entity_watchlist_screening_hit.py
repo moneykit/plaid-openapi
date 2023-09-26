@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.entity_screening_hit_analysis import EntityScreeningHitAnalysis
 from plaid_skel.models.entity_screening_hit_data import EntityScreeningHitData
 from plaid_skel.models.entity_watchlist_code import EntityWatchlistCode
@@ -34,8 +34,7 @@ class EntityWatchlistScreeningHit(BaseModel):
     analysis: Optional[EntityScreeningHitAnalysis] = Field(default=None,)
     data: Optional[EntityScreeningHitData] = Field(default=None,)
 
-    @field_validator("source_uid")
-    @classmethod
+    @validator("source_uid")
     def source_uid_min_length(cls, value):
         assert len(value) >= 1
         return value

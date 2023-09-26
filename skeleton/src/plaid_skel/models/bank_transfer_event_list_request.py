@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.bank_transfer_event_list_bank_transfer_type import BankTransferEventListBankTransferType
 from plaid_skel.models.bank_transfer_event_list_direction import BankTransferEventListDirection
 from plaid_skel.models.bank_transfer_event_type import BankTransferEventType
@@ -35,20 +35,17 @@ class BankTransferEventListRequest(BaseModel):
     origination_account_id: Optional[str] = Field(default=None, description="The origination account ID to get events for transfers from a specific origination account.")
     direction: Optional[BankTransferEventListDirection] = Field(default=None,)
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_max(cls, value):
         assert value <= 25
         return value
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_min(cls, value):
         assert value >= 1
         return value
 
-    @field_validator("offset")
-    @classmethod
+    @validator("offset")
     def offset_min(cls, value):
         assert value >= 0
         return value

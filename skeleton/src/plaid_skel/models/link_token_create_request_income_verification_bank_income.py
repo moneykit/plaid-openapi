@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -22,14 +22,12 @@ class LinkTokenCreateRequestIncomeVerificationBankIncome(BaseModel):
     days_requested: int = Field( description="The number of days of data to request for the Bank Income product")
     enable_multiple_items: Optional[bool] = Field(default=None, description="Whether to enable multiple Items to be added in the Link session")
 
-    @field_validator("days_requested")
-    @classmethod
+    @validator("days_requested")
     def days_requested_max(cls, value):
         assert value <= 731
         return value
 
-    @field_validator("days_requested")
-    @classmethod
+    @validator("days_requested")
     def days_requested_min(cls, value):
         assert value >= 1
         return value

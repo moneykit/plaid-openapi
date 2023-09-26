@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -24,20 +24,17 @@ class BankTransferEventSyncRequest(BaseModel):
     after_id: int = Field( description="The latest (largest) `event_id` fetched via the sync endpoint, or 0 initially.")
     count: Optional[int] = Field(default=None, description="The maximum number of bank transfer events to return.")
 
-    @field_validator("after_id")
-    @classmethod
+    @validator("after_id")
     def after_id_min(cls, value):
         assert value >= 0
         return value
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_max(cls, value):
         assert value <= 25
         return value
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_min(cls, value):
         assert value >= 1
         return value

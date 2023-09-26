@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreeningAuditTrail
 
 
@@ -26,8 +26,7 @@ class EntityWatchlistScreeningReview(BaseModel):
     comment: Optional[str] = Field(default=None, description="A comment submitted by a team member as part of reviewing a watchlist screening.")
     audit_trail: WatchlistScreeningAuditTrail = Field()
 
-    @field_validator("comment")
-    @classmethod
+    @validator("comment")
     def comment_min_length(cls, value):
         assert len(value) >= 1
         return value

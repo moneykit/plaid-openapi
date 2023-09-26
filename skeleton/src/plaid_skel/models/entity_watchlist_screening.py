@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.entity_watchlist_screening_search_terms import EntityWatchlistScreeningSearchTerms
 from plaid_skel.models.watchlist_screening_audit_trail import WatchlistScreeningAuditTrail
 from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatus
@@ -29,8 +29,7 @@ class EntityWatchlistScreening(BaseModel):
     client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
     audit_trail: WatchlistScreeningAuditTrail = Field()
 
-    @field_validator("client_user_id")
-    @classmethod
+    @validator("client_user_id")
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value

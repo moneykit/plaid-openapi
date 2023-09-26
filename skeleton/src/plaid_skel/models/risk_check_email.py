@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.risk_check_email_domain_is_custom import RiskCheckEmailDomainIsCustom
 from plaid_skel.models.risk_check_email_domain_is_disposable import RiskCheckEmailDomainIsDisposable
 from plaid_skel.models.risk_check_email_domain_is_free_provider import RiskCheckEmailDomainIsFreeProvider
@@ -23,7 +23,7 @@ from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
 
 class RiskCheckEmail(BaseModel):
     """Result summary object specifying values for `email` attributes of risk check."""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()
     breach_count: Optional[int] = Field(default=None, description="Count of all known breaches of this email address if known.")

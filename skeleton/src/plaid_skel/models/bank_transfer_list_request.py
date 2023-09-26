@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.bank_transfer_direction import BankTransferDirection
 
 
@@ -29,20 +29,17 @@ class BankTransferListRequest(BaseModel):
     origination_account_id: Optional[str] = Field(default=None, description="Filter bank transfers to only those originated through the specified origination account.")
     direction: Optional[BankTransferDirection] = Field(default=None,)
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_max(cls, value):
         assert value <= 25
         return value
 
-    @field_validator("count")
-    @classmethod
+    @validator("count")
     def count_min(cls, value):
         assert value >= 1
         return value
 
-    @field_validator("offset")
-    @classmethod
+    @validator("offset")
     def offset_min(cls, value):
         assert value >= 0
         return value

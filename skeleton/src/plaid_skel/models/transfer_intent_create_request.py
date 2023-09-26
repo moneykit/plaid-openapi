@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_intent_create_mode import TransferIntentCreateMode
 from plaid_skel.models.transfer_intent_create_network import TransferIntentCreateNetwork
@@ -38,14 +38,12 @@ class TransferIntentCreateRequest(BaseModel):
     iso_currency_code: Optional[str] = Field(default=None, description="The currency of the transfer amount, e.g. \"USD\"")
     require_guarantee: Optional[bool] = Field(default=None, description="When `true`, the transfer requires a `GUARANTEED` decision by Plaid to proceed (Guarantee customers only).")
 
-    @field_validator("description")
-    @classmethod
+    @validator("description")
     def description_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("description")
-    @classmethod
+    @validator("description")
     def description_max_length(cls, value):
         assert len(value) <= 8
         return value

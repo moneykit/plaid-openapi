@@ -10,14 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class SignalPersonName(BaseModel):
     """The user's legal name"""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     prefix: Optional[str] = Field(default=None, description="The user's name prefix (e.g. \"Mr.\")")
     given_name: Optional[str] = Field(default=None, description="The user's given name. If the user has a one-word name, it should be provided in this field.")

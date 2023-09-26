@@ -15088,11 +15088,11 @@ components:
             `android_package_name` must be specified instead and `redirect_uri` should
             be left blank.
       required:
-      - user
       - language
-      - redirect_uri
-      - country_codes
       - client_name
+      - redirect_uri
+      - user
+      - country_codes
     LinkTokenAccountFilters:
       description: 'By default, Link will provide limited account filtering: it will
         only display Institutions that are compatible with all products supplied in
@@ -18843,9 +18843,9 @@ components:
       title: Products
       enum:
       - transactions
-      - identity
-      - auth
       - balance
+      - auth
+      - identity
       description: A list of products that an institution can support. All Items must
         be initialized with at least one product. The Balance product is always available
         and does not need to be specified during initialization.

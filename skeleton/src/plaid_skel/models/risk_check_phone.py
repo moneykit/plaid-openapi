@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
 
 
@@ -18,7 +18,7 @@ from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
 
 class RiskCheckPhone(BaseModel):
     """Result summary object specifying values for `phone` attributes of risk check."""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     linked_services: list[RiskCheckLinkedService] = Field()
 

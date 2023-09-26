@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -25,8 +25,7 @@ class TransferRefundCreateRequest(BaseModel):
     amount: str = Field( description="The amount of the refund (decimal string with two digits of precision e.g. \"10.00\").")
     idempotency_key: str = Field( description="A random key provided by the client, per unique refund. Maximum of 50 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. For example, if a request to create a refund fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single refund is created.")
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 50
         return value

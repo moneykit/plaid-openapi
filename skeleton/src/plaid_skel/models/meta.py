@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -24,20 +24,17 @@ class Meta(BaseModel):
     limit: float = Field( description="The account's limit")
     mask: str = Field( description="The account's mask. Should be a string of 2-4 alphanumeric characters. This allows you to model a mask which does not match the account number (such as with a virtual account number).")
 
-    @field_validator("mask")
-    @classmethod
+    @validator("mask")
     def mask_min_length(cls, value):
         assert len(value) >= 2
         return value
 
-    @field_validator("mask")
-    @classmethod
+    @validator("mask")
     def mask_max_length(cls, value):
         assert len(value) <= 4
         return value
 
-    @field_validator("mask")
-    @classmethod
+    @validator("mask")
     def mask_pattern(cls, value):
         assert value is not None and re.match(r"^[A-Za-z0-9]{2,4}$", value)
         return value

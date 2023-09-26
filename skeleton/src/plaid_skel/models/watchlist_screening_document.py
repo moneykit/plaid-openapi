@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.watchlist_screening_document_type import WatchlistScreeningDocumentType
 
 
@@ -23,8 +23,7 @@ class WatchlistScreeningDocument(BaseModel):
     type: WatchlistScreeningDocumentType = Field()
     number: str = Field( description="The numeric or alphanumeric identifier associated with this document.")
 
-    @field_validator("number")
-    @classmethod
+    @validator("number")
     def number_min_length(cls, value):
         assert len(value) >= 4
         return value

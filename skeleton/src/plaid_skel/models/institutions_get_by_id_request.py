@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -24,8 +24,7 @@ class InstitutionsGetByIdRequest(BaseModel):
     institution_id: str = Field( description="The ID of the institution to get details about")
     options: Optional[Dict[str, Any]] = Field(default=None, description="Specifies optional parameters for `/institutions/get_by_id`. If provided, must not be `null`.")
 
-    @field_validator("institution_id")
-    @classmethod
+    @validator("institution_id")
     def institution_id_min_length(cls, value):
         assert len(value) >= 1
         return value
