@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.signal_device import SignalDevice
 from plaid_skel.models.signal_user import SignalUser
 
@@ -34,20 +34,17 @@ class SignalEvaluateRequest(BaseModel):
     user: Optional[SignalUser] = Field(default=None,)
     device: Optional[SignalDevice] = Field(default=None,)
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_max_length(cls, value):
         assert len(value) <= 36
         return value
 
-    @field_validator("client_user_id")
-    @classmethod
+    @validator("client_user_id")
     def client_user_id_max_length(cls, value):
         assert len(value) <= 36
         return value

@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
@@ -26,14 +26,12 @@ class ProcessorSignalReturnReportRequest(BaseModel):
     return_code: str = Field( description="Must be a valid ACH return code (e.g. \"R01\")  If formatted incorrectly, this will result in an [`INVALID_FIELD`](/docs/errors/invalid-request/#invalid_field) error.")
     returned_at: Optional[datetime] = Field(default=None, description="Date and time when you receive the returns from your payment processors, in ISO 8601 format (`YYYY-MM-DDTHH:mm:ssZ`).")
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("client_transaction_id")
-    @classmethod
+    @validator("client_transaction_id")
     def client_transaction_id_max_length(cls, value):
         assert len(value) <= 36
         return value

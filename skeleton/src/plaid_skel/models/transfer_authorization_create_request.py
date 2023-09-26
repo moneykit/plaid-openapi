@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_authorization_device import TransferAuthorizationDevice
 from plaid_skel.models.transfer_authorization_user_in_request import TransferAuthorizationUserInRequest
@@ -44,8 +44,7 @@ class TransferAuthorizationCreateRequest(BaseModel):
     beacon_session_id: Optional[str] = Field(default=None, description="The unique identifier returned by Plaid's [beacon](https://plaid.com/docs/transfer/guarantee/#using-a-beacon) when it is run on your webpage. Required for Guarantee customers who are not using [Transfer UI](https://plaid.com/docs/transfer/using-transfer-ui/) and have a web checkout experience.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only needed if creating transfers on behalf of another client as a third-party sender (TPS).")
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 50
         return value

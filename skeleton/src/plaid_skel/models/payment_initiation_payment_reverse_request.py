@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.payment_amount_to_refund import PaymentAmountToRefund
 
 
@@ -27,26 +27,22 @@ class PaymentInitiationPaymentReverseRequest(BaseModel):
     reference: str = Field( description="A reference for the refund. This must be an alphanumeric string with 6 to 18 characters and must not contain any special characters or spaces.")
     amount: Optional[PaymentAmountToRefund] = Field(default=None,)
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("idempotency_key")
-    @classmethod
+    @validator("idempotency_key")
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 128
         return value
 
-    @field_validator("reference")
-    @classmethod
+    @validator("reference")
     def reference_min_length(cls, value):
         assert len(value) >= 6
         return value
 
-    @field_validator("reference")
-    @classmethod
+    @validator("reference")
     def reference_max_length(cls, value):
         assert len(value) <= 18
         return value

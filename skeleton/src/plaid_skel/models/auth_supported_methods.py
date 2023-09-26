@@ -10,14 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class AuthSupportedMethods(BaseModel):
     """Metadata specifically related to which auth methods an institution supports."""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     instant_auth: bool = Field( description="Indicates if instant auth is supported.")
     instant_match: bool = Field( description="Indicates if instant match is supported.")

@@ -10,14 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class IncomeVerificationPrecheckEmployerAddress(BaseModel):
     """The address of the employer"""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     city: Optional[str] = Field(default=None, description="The full city name")
     country: Optional[str] = Field(default=None, description="The ISO 3166-1 alpha-2 country code")

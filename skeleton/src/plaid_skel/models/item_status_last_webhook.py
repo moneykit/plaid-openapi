@@ -10,14 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class ItemStatusLastWebhook(BaseModel):
     """Information about the last webhook fired for the Item."""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     sent_at: Optional[datetime] = Field(default=None, description="[ISO 8601](https://wikipedia.org/wiki/ISO_8601) timestamp of when the webhook was fired. ")
     code_sent: Optional[str] = Field(default=None, description="The last webhook code sent.")

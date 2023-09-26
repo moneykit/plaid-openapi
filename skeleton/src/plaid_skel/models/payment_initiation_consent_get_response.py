@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.payment_initiation_consent_constraints import PaymentInitiationConsentConstraints
 from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
 from plaid_skel.models.payment_initiation_consent_status import PaymentInitiationConsentStatus
@@ -31,14 +31,12 @@ class PaymentInitiationConsentGetResponse(BaseModel):
     scopes: List[PaymentInitiationConsentScope] = Field( description="An array of payment consent scopes.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-    @field_validator("consent_id")
-    @classmethod
+    @validator("consent_id")
     def consent_id_min_length(cls, value):
         assert len(value) >= 1
         return value
 
-    @field_validator("recipient_id")
-    @classmethod
+    @validator("recipient_id")
     def recipient_id_min_length(cls, value):
         assert len(value) >= 1
         return value

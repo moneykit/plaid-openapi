@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.update_individual_screening_request_search_terms import UpdateIndividualScreeningRequestSearchTerms
 from plaid_skel.models.watchlist_screening_individual_update_request_resettable_field import WatchlistScreeningIndividualUpdateRequestResettableField
 from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatus
@@ -31,8 +31,7 @@ class WatchlistScreeningIndividualUpdateRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     reset_fields: Optional[List[WatchlistScreeningIndividualUpdateRequestResettableField]] = Field(default=None, description="A list of fields to reset back to null")
 
-    @field_validator("client_user_id")
-    @classmethod
+    @validator("client_user_id")
     def client_user_id_min_length(cls, value):
         assert len(value) >= 1
         return value

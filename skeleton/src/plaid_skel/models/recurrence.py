@@ -10,14 +10,14 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 
 
 
 
 class Recurrence(BaseModel):
     """Insights relating to expenses and deposits that are predicted to occur on a scheduled basis, such as biweekly, monthly, or annually.  Common examples include loan payments, bill payments, subscriptions, and payroll income.  This is a beta field, available to all users."""
-    model_config = ConfigDict(json_schema_extra={"nullable": True})
+
 
     is_recurring: Optional[bool] = Field(default=None, description="Whether or not the transaction is periodically recurring.")
 
