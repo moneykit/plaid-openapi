@@ -11,7 +11,7 @@ packages = [{include = "plaid_skel", from = "skeleton/src"}]
 python = "^3.10"
 dpath = "^2.1.5"
 pyyaml = "^6.0"
-pydantic = "^2.3.0"
+pydantic = "^2.4.0"
 
 
 [build-system]
