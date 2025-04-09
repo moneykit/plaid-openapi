@@ -22,7 +22,7 @@ class DashboardUser(BaseModel):
 
 
     id: str = Field( description="ID of the associated user.")
-    created_at: datetime = Field( description="An ISO8601 formatted timestamp.")
+    created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     email_address: EmailStr = Field( description="A valid email address.")
     status: DashboardUserStatus = Field()
 

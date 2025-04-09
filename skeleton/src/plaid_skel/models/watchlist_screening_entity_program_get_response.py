@@ -24,7 +24,7 @@ class WatchlistScreeningEntityProgramGetResponse(BaseModel):
 
 
     id: str = Field( description="ID of the associated entity program.")
-    created_at: datetime = Field( description="An ISO8601 formatted timestamp.")
+    created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     is_rescanning_enabled: bool = Field( description="Indicator specifying whether the program is enabled and will perform daily rescans.")
     lists_enabled: list[EntityWatchlistCode] = Field( description="Watchlists enabled for the associated program")
     name: str = Field( description="A name for the entity program to define its purpose. For example, \"High Risk Organizations\" or \"Applicants\".")

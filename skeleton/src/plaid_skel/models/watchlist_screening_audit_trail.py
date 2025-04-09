@@ -23,6 +23,6 @@ class WatchlistScreeningAuditTrail(BaseModel):
 
     source: Source = Field()
     dashboard_user_id: Optional[str] = Field(default=None, description="ID of the associated user.")
-    timestamp: datetime = Field( description="An ISO8601 formatted timestamp.")
+    timestamp: datetime_ = Field( description="An ISO8601 formatted timestamp.")
 
 WatchlistScreeningAuditTrail.update_forward_refs()

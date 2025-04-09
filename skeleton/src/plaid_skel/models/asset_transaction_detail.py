@@ -24,8 +24,8 @@ class AssetTransactionDetail(BaseModel):
 
     asset_transaction_unique_identifier: str = Field( description="A vendor created unique Identifier.")
     asset_transaction_amount: float = Field( description="Asset Transaction Amount.")
-    asset_transaction_date: date = Field( description="Asset Transaction Date.")
-    asset_transaction_post_date: date = Field( description="Asset Transaction Post Date.")
+    asset_transaction_date: date_ = Field( description="Asset Transaction Date.")
+    asset_transaction_post_date: date_ = Field( description="Asset Transaction Post Date.")
     asset_transaction_type: AssetTransactionType = Field()
     asset_transaction_paid_by_name: Optional[str] = Field(default=None, description="Populate with who did the transaction.")
     asset_transaction_type_additional_description: Optional[str] = Field(default=None, description="FI Provided - examples are atm, cash, check, credit, debit, deposit, directDebit, directDeposit, dividend, fee, interest, other, payment, pointOfSale, repeatPayment, serviceCharge, transfer.")

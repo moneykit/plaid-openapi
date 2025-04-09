@@ -24,7 +24,7 @@ class WatchlistScreeningIndividualProgramGetResponse(BaseModel):
 
 
     id: str = Field( description="ID of the associated program.")
-    created_at: datetime = Field( description="An ISO8601 formatted timestamp.")
+    created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     is_rescanning_enabled: bool = Field( description="Indicator specifying whether the program is enabled and will perform daily rescans.")
     lists_enabled: list[IndividualWatchlistCode] = Field( description="Watchlists enabled for the associated program")
     name: str = Field( description="A name for the program to define its purpose. For example, \"High Risk Individuals\", \"US Cardholders\", or \"Applicants\".")

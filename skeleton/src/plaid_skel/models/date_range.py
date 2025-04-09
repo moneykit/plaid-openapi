@@ -20,7 +20,7 @@ class DateRange(BaseModel):
     """A date range with a start and end date"""
 
 
-    beginning: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    ending: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    beginning: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    ending: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
 
 DateRange.update_forward_refs()

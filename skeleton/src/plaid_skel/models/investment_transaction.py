@@ -26,7 +26,7 @@ class InvestmentTransaction(BaseModel):
     cancel_transaction_id: Optional[str] = Field(default=None, description="A legacy field formerly used internally by Plaid to identify certain canceled transactions.")
     account_id: str = Field( description="The `account_id` of the account against which this transaction posted.")
     security_id: Optional[str] = Field(default=None, description="The `security_id` to which this transaction is related.")
-    date: date = Field( description="The [ISO 8601](https://wikipedia.org/wiki/ISO_8601) posting date for the transaction.")
+    date: date_ = Field( description="The [ISO 8601](https://wikipedia.org/wiki/ISO_8601) posting date for the transaction.")
     name: str = Field( description="The institution’s description of the transaction.")
     quantity: float = Field( description="The number of units of the security involved in this transaction. Positive for buy transactions; negative for sell transactions.")
     amount: float = Field( description="The complete value of the transaction. Positive values when cash is debited, e.g. purchases of stock; negative values when cash is credited, e.g. sales of stock. Treatment remains the same for cash-only movements unassociated with securities.")

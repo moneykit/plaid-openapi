@@ -39,7 +39,7 @@ class Transfer(BaseModel):
     user: TransferUserInResponse = Field()
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
     description: str = Field( description="The description of the transfer.")
-    created: datetime = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
+    created: datetime_ = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
     status: TransferStatus = Field()
     sweep_status: Optional[TransferSweepStatus] = Field(default=None,)
     network: TransferNetwork = Field()

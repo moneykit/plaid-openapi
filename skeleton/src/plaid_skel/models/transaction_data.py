@@ -22,7 +22,7 @@ class TransactionData(BaseModel):
 
     description: str = Field( description="The description of the transaction.")
     amount: float = Field( description="The amount of the transaction.")
-    date: date = Field( description="The date of the transaction, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    date: date_ = Field( description="The date of the transaction, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     account_id: str = Field( description="A unique identifier for the end user's account.")
     transaction_id: str = Field( description="A unique identifier for the transaction.")
 

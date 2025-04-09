@@ -27,7 +27,7 @@ class ConnectedApplication(BaseModel):
     logo_url: Optional[str] = Field(default=None, description="A URL that links to the application logo image.")
     application_url: Optional[str] = Field(default=None, description="The URL for the application's website")
     reason_for_access: Optional[str] = Field(default=None, description="A string provided by the connected app stating why they use their respective enabled products.")
-    created_at: date = Field( description="The date this application was linked in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
+    created_at: date_ = Field( description="The date this application was linked in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
     scopes: Optional[ScopesNullable] = Field(default=None,)
 
 ConnectedApplication.update_forward_refs()

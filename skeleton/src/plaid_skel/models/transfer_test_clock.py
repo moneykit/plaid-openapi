@@ -21,6 +21,6 @@ class TransferTestClock(BaseModel):
 
 
     test_clock_id: str = Field( description="Plaid’s unique identifier for a test clock.")
-    virtual_time: datetime = Field( description="The virtual timestamp on the test clock. This will be of the form `2006-01-02T15:04:05Z`.")
+    virtual_time: datetime_ = Field( description="The virtual timestamp on the test clock. This will be of the form `2006-01-02T15:04:05Z`.")
 
 TransferTestClock.update_forward_refs()

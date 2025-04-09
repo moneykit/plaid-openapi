@@ -25,7 +25,7 @@ class PaymentInitiationConsent(BaseModel):
 
     consent_id: str = Field( description="The consent ID.")
     status: PaymentInitiationConsentStatus = Field()
-    created_at: datetime = Field( description="Consent creation timestamp, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    created_at: datetime_ = Field( description="Consent creation timestamp, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     recipient_id: str = Field( description="The ID of the recipient the payment consent is for.")
     reference: str = Field( description="A reference for the payment consent.")
     constraints: PaymentInitiationConsentConstraints = Field()

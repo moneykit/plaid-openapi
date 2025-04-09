@@ -26,7 +26,7 @@ class WatchlistScreeningHit(BaseModel):
 
     id: str = Field( description="ID of the associated screening hit.")
     review_status: WatchlistScreeningHitStatus = Field()
-    first_active: datetime = Field( description="An ISO8601 formatted timestamp.")
+    first_active: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     inactive_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
     historical_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
     list_code: IndividualWatchlistCode = Field()

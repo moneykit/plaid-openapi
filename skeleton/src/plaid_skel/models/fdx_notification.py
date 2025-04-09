@@ -29,7 +29,7 @@ class FDXNotification(BaseModel):
 
     notification_id: str = Field( description="Id of notification")
     type: FDXNotificationType = Field()
-    sent_on: datetime = Field( description="ISO 8601 date-time in format 'YYYY-MM-DDThh:mm:ss.nnn[Z|[+|-]hh:mm]' according to [IETF RFC3339](https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14)")
+    sent_on: datetime_ = Field( description="ISO 8601 date-time in format 'YYYY-MM-DDThh:mm:ss.nnn[Z|[+|-]hh:mm]' according to [IETF RFC3339](https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14)")
     category: FDXNotificationCategory = Field()
     severity: Optional[FDXNotificationSeverity] = Field(default=None,)
     priority: Optional[FDXNotificationPriority] = Field(default=None,)
