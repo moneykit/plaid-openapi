@@ -28,9 +28,9 @@ class RiskCheckEmail(BaseModel):
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()
     breach_count: Optional[int] = Field(default=None, description="Count of all known breaches of this email address if known.")
-    first_breached_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    last_breached_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    domain_registered_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    first_breached_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    last_breached_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    domain_registered_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     domain_is_free_provider: RiskCheckEmailDomainIsFreeProvider = Field()
     domain_is_custom: RiskCheckEmailDomainIsCustom = Field()
     domain_is_disposable: RiskCheckEmailDomainIsDisposable = Field()

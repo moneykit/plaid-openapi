@@ -25,6 +25,6 @@ class SimulatedTransferSweep(BaseModel):
     created: datetime_ = Field( description="The datetime when the sweep occurred, in RFC 3339 format.")
     amount: str = Field( description="Signed decimal amount of the sweep as it appears on your sweep account ledger (e.g. \"-10.00\")  If amount is not present, the sweep was net-settled to zero and outstanding debits and credits between the sweep account and Plaid are balanced.")
     iso_currency_code: str = Field( description="The currency of the sweep, e.g. \"USD\".")
-    settled: Optional[date] = Field(default=None, description="The date when the sweep settled, in the YYYY-MM-DD format.")
+    settled: Optional[date_] = Field(default=None, description="The date when the sweep settled, in the YYYY-MM-DD format.")
 
 SimulatedTransferSweep.update_forward_refs()

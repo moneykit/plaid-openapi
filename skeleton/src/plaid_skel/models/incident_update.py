@@ -22,6 +22,6 @@ class IncidentUpdate(BaseModel):
 
     description: Optional[str] = Field(default=None, description="The content of the update.")
     status: Optional[str] = Field(default=None, description="The status of the incident.")
-    updated_date: Optional[datetime] = Field(default=None, description="The date when the update was published, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2020-10-30T15:26:48Z\"`.")
+    updated_date: Optional[datetime_] = Field(default=None, description="The date when the update was published, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2020-10-30T15:26:48Z\"`.")
 
 IncidentUpdate.update_forward_refs()

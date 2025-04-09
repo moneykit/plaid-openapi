@@ -20,7 +20,7 @@ class StudentLoanStatus(BaseModel):
     """An object representing the status of the student loan"""
 
 
-    end_date: Optional[date] = Field(default=None, description="The date until which the loan will be in its current status. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). ")
+    end_date: Optional[date_] = Field(default=None, description="The date until which the loan will be in its current status. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). ")
     type: Optional[str] = Field(default=None, description="The status type of the student loan")
 
 StudentLoanStatus.update_forward_refs()

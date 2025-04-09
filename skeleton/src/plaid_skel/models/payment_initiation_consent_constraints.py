@@ -23,7 +23,7 @@ class PaymentInitiationConsentConstraints(BaseModel):
     """Limitations that will be applied to payments initiated using the payment consent."""
 
 
-    valid_date_time: Optional[PaymentConsentValidDateTime] = Field(default=None,)
+    valid_date_time: Optional[PaymentConsentValiddatetime_] = Field(default=None,)
     max_payment_amount: PaymentConsentMaxPaymentAmount = Field()
     periodic_amounts: List[PaymentConsentPeriodicAmount] = Field( description="A list of amount limitations per period of time.")
 

@@ -24,7 +24,7 @@ class IdentityVerificationUserData(BaseModel):
 
 
     phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
-    date_of_birth: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     ip_address: Optional[str] = Field(default=None, description="An IPv4 or IPV6 address.")
     email_address: Optional[EmailStr] = Field(default=None, description="A valid email address.")
     name: Optional[IdentityVerificationResponseUserName] = Field(default=None,)

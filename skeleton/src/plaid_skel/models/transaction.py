@@ -32,7 +32,7 @@ class Transaction(BaseModel):
     original_description: Optional[str] = Field(default=None, description="The string returned by the financial institution to describe the transaction. For transactions returned by `/transactions/get`, this field is in beta and will be omitted unless the client is both enrolled in the closed beta program and has set `options.include_original_description` to `true`.")
     pending: bool = Field( description="When `true`, identifies the transaction as pending or unsettled. Pending transaction details (name, type, amount, category ID) may change before they are settled.")
     transaction_id: str = Field( description="The unique ID of the transaction. Like all Plaid identifiers, the `transaction_id` is case sensitive.")
-    datetime: Optional[datetime] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
+    datetime: Optional[datetime_] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
 
 Transaction.update_forward_refs()

@@ -29,6 +29,6 @@ class DocumentaryVerificationDocument(BaseModel):
     images: PhysicalDocumentImages = Field()
     extracted_data: Optional[PhysicalDocumentExtractedData] = Field(default=None,)
     analysis: DocumentAnalysis = Field()
-    redacted_at: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    redacted_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
 
 DocumentaryVerificationDocument.update_forward_refs()

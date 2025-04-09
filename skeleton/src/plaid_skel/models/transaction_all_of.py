@@ -21,7 +21,7 @@ class TransactionAllOf(BaseModel):
     """"""
 
 
-    datetime: Optional[datetime] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
+    datetime: Optional[datetime_] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
 
 TransactionAllOf.update_forward_refs()

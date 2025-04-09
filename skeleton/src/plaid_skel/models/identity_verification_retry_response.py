@@ -30,7 +30,7 @@ class IdentityVerificationRetryResponse(BaseModel):
     id: str = Field( description="ID of the associated Identity Verification attempt.")
     client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
     created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
-    completed_at: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    completed_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
     previous_attempt_id: Optional[str] = Field(default=None, description="The ID for the Identity Verification preceding this session. This field will only be filled if the current Identity Verification is a retry of a previous attempt.")
     shareable_url: Optional[str] = Field(default=None, description="A shareable URL that can be sent directly to the user to complete verification")
     template: IdentityVerificationTemplateReference = Field()
@@ -41,7 +41,7 @@ class IdentityVerificationRetryResponse(BaseModel):
     kyc_check: Optional[KYCCheckDetails] = Field(default=None,)
     risk_check: Optional[RiskCheckDetails] = Field(default=None,)
     watchlist_screening_id: Optional[str] = Field(default=None, description="ID of the associated screening.")
-    redacted_at: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    redacted_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
     @field_validator("client_user_id")

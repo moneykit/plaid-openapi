@@ -21,7 +21,7 @@ class ItemPublicTokenCreateResponse(BaseModel):
 
 
     public_token: str = Field( description="A `public_token` for the particular Item corresponding to the specified `access_token`")
-    expiration: Optional[datetime] = Field(default=None,)
+    expiration: Optional[datetime_] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 ItemPublicTokenCreateResponse.update_forward_refs()

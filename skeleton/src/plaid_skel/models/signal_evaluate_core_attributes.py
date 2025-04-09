@@ -48,7 +48,7 @@ class SignalEvaluateCoreAttributes(BaseModel):
     p10_eod_balance_90d: Optional[float] = Field(default=None, description="The 10th percentile of the end-of-day available balance over the past 90 days of the account that will be debited")
     available_balance: Optional[float] = Field(default=None, description="Available balance, as of the `balance_last_updated` time. The available balance is the current balance less any outstanding holds or debits that have not yet posted to the account.")
     current_balance: Optional[float] = Field(default=None, description="Current balance, as of the `balance_last_updated` time. The current balance is the total amount of funds in the account.")
-    balance_last_updated: Optional[datetime] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the balance for the given account has been updated.")
+    balance_last_updated: Optional[datetime_] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the balance for the given account has been updated.")
     phone_change_count_28d: Optional[int] = Field(default=None, description="The number of times the account's phone numbers on file have changed over the past 28 days")
     phone_change_count_90d: Optional[int] = Field(default=None, description="The number of times the account's phone numbers on file have changed over the past 90 days")
     email_change_count_28d: Optional[int] = Field(default=None, description="The number of times the account's email addresses on file have changed over the past 28 days")
@@ -84,6 +84,6 @@ class SignalEvaluateCoreAttributes(BaseModel):
     p90_eod_balance_61d_to_90d: Optional[float] = Field(default=None, description="The 90th percentile of the end-of-day available balance between day 61 and day 90 over the past 60 days of the account that will be debited")
     p10_eod_balance_31d_to_60d: Optional[float] = Field(default=None, description="The 10th percentile of the end-of-day available balance between day 31 and day 60 over the past 60 days of the account that will be debited")
     p10_eod_balance_61d_to_90d: Optional[float] = Field(default=None, description="The 10th percentile of the end-of-day available balance between day 61 and day 90 over the past 60 days of the account that will be debited")
-    transactions_last_updated: Optional[datetime] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the transactions for the given account have been updated.")
+    transactions_last_updated: Optional[datetime_] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the transactions for the given account have been updated.")
 
 SignalEvaluateCoreAttributes.update_forward_refs()

@@ -22,8 +22,8 @@ class LinkTokenGetResponse(BaseModel):
 
 
     link_token: str = Field( description="A `link_token`, which can be supplied to Link in order to initialize it and receive a `public_token`, which can be exchanged for an `access_token`.")
-    created_at: Optional[datetime] = Field(default=None, description="The creation timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
-    expiration: Optional[datetime] = Field(default=None, description="The expiration timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    created_at: Optional[datetime_] = Field(default=None, description="The creation timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    expiration: Optional[datetime_] = Field(default=None, description="The expiration timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     metadata: LinkTokenGetMetadataResponse = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

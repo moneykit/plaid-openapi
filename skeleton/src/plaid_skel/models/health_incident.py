@@ -22,8 +22,8 @@ class HealthIncident(BaseModel):
 
 
     start_date: datetime_ = Field( description="The start date of the incident, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2020-10-30T15:26:48Z\"`.")
-    end_date: Optional[datetime] = Field(default=None, description="The end date of the incident, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2020-10-30T15:26:48Z\"`.")
+    end_date: Optional[datetime_] = Field(default=None, description="The end date of the incident, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2020-10-30T15:26:48Z\"`.")
     title: str = Field( description="The title of the incident")
-    incident_updates: List[IncidentUpdate] = Field( description="Updates on the health incident.")
+    incident_updates: List[IncidentUpdate_] = Field( description="Updates on the health incident.")
 
 HealthIncident.update_forward_refs()
