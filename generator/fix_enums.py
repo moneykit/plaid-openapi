@@ -26,13 +26,21 @@ def fix_enums():
             fixed_enum = code[0].strip() + textwrap.dedent(f"""
 
             from enum import Enum
+            """)
 
-            from pydantic import GetJsonSchemaHandler
-            from pydantic.json_schema import JsonSchemaValue
+            if nullable:
+                fixed_enum += textwrap.dedent(f"""
+
+                            from pydantic import GetJsonSchemaHandler
+                            from pydantic.json_schema import JsonSchemaValue
+                            """)
+
+            fixed_enum += textwrap.dedent(f"""
 
 
             class {name}(str, Enum):
             """)
+
             for name, value in zip(names, vals):
                 assert name.isidentifier(), f"{name} is not a valid identifier"
                 fixed_enum += f'    {name} = "{value}"\n'

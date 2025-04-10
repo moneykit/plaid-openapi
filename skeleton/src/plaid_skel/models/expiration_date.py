@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class ExpirationDate(str, Enum):
     NOT_EXPIRED = "not_expired"

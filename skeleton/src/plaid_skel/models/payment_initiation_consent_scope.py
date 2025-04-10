@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class PaymentInitiationConsentScope(str, Enum):
     ME_TO_ME = "ME_TO_ME"
