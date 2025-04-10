@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class FDXPartyType(str, Enum):
     DATA_ACCESS_PLATFORM = "DATA_ACCESS_PLATFORM"

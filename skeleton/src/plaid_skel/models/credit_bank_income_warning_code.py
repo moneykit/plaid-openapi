@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class CreditBankIncomeWarningCode(str, Enum):
     IDENTITY_UNAVAILABLE = "IDENTITY_UNAVAILABLE"

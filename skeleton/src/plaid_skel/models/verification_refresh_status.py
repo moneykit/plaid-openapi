@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class VerificationRefreshStatus(str, Enum):
     VERIFICATION_REFRESH_STATUS_USER_PRESENCE_REQUIRED = "VERIFICATION_REFRESH_STATUS_USER_PRESENCE_REQUIRED"

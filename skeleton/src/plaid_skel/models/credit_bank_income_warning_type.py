@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class CreditBankIncomeWarningType(str, Enum):
     BANK_INCOME_WARNING = "BANK_INCOME_WARNING"

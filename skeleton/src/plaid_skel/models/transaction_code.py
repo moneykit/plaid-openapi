@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class TransactionCode(str, Enum):
     ADJUSTMENT = "adjustment"
@@ -20,5 +23,7 @@ class TransactionCode(str, Enum):
 
     # Nullable OpenAPI enum
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
-        field_schema["nullable"] = True
+    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
+        schema = handler(field_schema)
+        schema["nullable"] = True
+        return schema

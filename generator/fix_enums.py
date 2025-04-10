@@ -27,6 +27,9 @@ def fix_enums():
 
             from enum import Enum
 
+            from pydantic import GetJsonSchemaHandler
+            from pydantic.json_schema import JsonSchemaValue
+
 
             class {name}(str, Enum):
             """)
@@ -36,10 +39,12 @@ def fix_enums():
 
             if nullable:
                 fixed_enum += textwrap.dedent("""
-                # Nullable OpenAPI enum
+                    # Nullable OpenAPI enum
                     @classmethod
-                    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
-                        field_schema["nullable"] = True
+                    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
+                        schema = handler(field_schema)
+                        schema["nullable"] = True
+                        return schema
                 """)
 
             p.write_text(fixed_enum)

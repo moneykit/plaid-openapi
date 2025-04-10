@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class LinkDeliveryWebhookCallbackType(str, Enum):
     ON_SUCCESS = "ON_SUCCESS"

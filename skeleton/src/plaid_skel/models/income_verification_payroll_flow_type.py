@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class IncomeVerificationPayrollFlowType(str, Enum):
     PAYROLL_DIGITAL_INCOME = "payroll_digital_income"
