@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class IndividualWatchlistCode(str, Enum):
     AU_CON = "AU_CON"

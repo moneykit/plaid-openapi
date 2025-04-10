@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class FDXContentTypes(str, Enum):
     APPLICATION_PDF = "application/pdf"

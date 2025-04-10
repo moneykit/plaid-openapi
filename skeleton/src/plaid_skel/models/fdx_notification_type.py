@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class FDXNotificationType(str, Enum):
     CONSENT_REVOKED = "CONSENT_REVOKED"

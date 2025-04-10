@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class LinkEventName(str, Enum):
     BANK_INCOME_INSIGHTS_COMPLETED = "BANK_INCOME_INSIGHTS_COMPLETED"
