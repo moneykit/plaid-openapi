@@ -10,7 +10,7 @@ class PaymentScheme(str, Enum):
     SEPA_CREDIT_TRANSFER = "SEPA_CREDIT_TRANSFER"
     SEPA_CREDIT_TRANSFER_INSTANT = "SEPA_CREDIT_TRANSFER_INSTANT"
 
-# Nullable OpenAPI enum
+    # Nullable OpenAPI enum
     @classmethod
     def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
         field_schema["nullable"] = True

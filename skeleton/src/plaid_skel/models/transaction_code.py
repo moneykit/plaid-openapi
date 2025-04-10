@@ -18,7 +18,7 @@ class TransactionCode(str, Enum):
     STANDING_ORDER = "standing order"
     TRANSFER = "transfer"
 
-# Nullable OpenAPI enum
+    # Nullable OpenAPI enum
     @classmethod
     def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
         field_schema["nullable"] = True
