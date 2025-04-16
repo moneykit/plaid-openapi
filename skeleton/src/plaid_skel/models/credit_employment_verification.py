@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -23,12 +24,12 @@ class CreditEmploymentVerification(BaseModel):
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")
     status: Optional[str] = Field(default=None, description="Current employment status.")
-    start_date: Optional[date] = Field(default=None, description="Start of employment in ISO 8601 format (YYYY-MM-DD).")
-    end_date: Optional[date] = Field(default=None, description="End of employment, if applicable. Provided in ISO 8601 format (YYY-MM-DD).")
+    start_date: Optional[date_] = Field(default=None, description="Start of employment in ISO 8601 format (YYYY-MM-DD).")
+    end_date: Optional[date_] = Field(default=None, description="End of employment, if applicable. Provided in ISO 8601 format (YYY-MM-DD).")
     employer: CreditEmployerVerification = Field()
     title: Optional[str] = Field(default=None, description="Current title of employee.")
     platform_ids: CreditPlatformIds = Field()
     employee_type: Optional[str] = Field(default=None, description="The type of employment for the individual. `\"FULL_TIME\"`: A full-time employee. `\"PART_TIME\"`: A part-time employee. `\"CONTRACTOR\"`: An employee typically hired externally through a contracting group. `\"TEMPORARY\"`: A temporary employee. `\"OTHER\"`: The employee type is not one of the above defined types.")
-    last_paystub_date: Optional[date] = Field(default=None, description="The date of the employee's most recent paystub in ISO 8601 format (YYYY-MM-DD).")
+    last_paystub_date: Optional[date_] = Field(default=None, description="The date of the employee's most recent paystub in ISO 8601 format (YYYY-MM-DD).")
 
 CreditEmploymentVerification.update_forward_refs()

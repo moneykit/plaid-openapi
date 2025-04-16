@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -25,7 +26,7 @@ class AssetReportTransaction(BaseModel):
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO-4217 currency code of the transaction. Always `null` if `unofficial_currency_code` is non-null.")
     category: Optional[List[str]] = Field(default=None, description="A hierarchical array of the categories to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).  If the `transactions` object was returned by an Assets endpoint such as `/asset_report/get/` or `/asset_report/pdf/get`, this field will only appear in an Asset Report with Insights.")
     category_id: Optional[str] = Field(default=None, description="The ID of the category to which this transaction belongs. For a full list of categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).  If the `transactions` object was returned by an Assets endpoint such as `/asset_report/get/` or `/asset_report/pdf/get`, this field will only appear in an Asset Report with Insights.")
-    date: date = Field( description="For pending transactions, the date that the transaction occurred; for posted transactions, the date that the transaction posted. Both dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DD` ).")
+    date: date_ = Field( description="For pending transactions, the date that the transaction occurred; for posted transactions, the date that the transaction posted. Both dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DD` ).")
     name: Optional[str] = Field(default=None, description="The merchant name or transaction description.  If the `transactions` object was returned by a Transactions endpoint such as `/transactions/get`, this field will always appear. If the `transactions` object was returned by an Assets endpoint such as `/asset_report/get/` or `/asset_report/pdf/get`, this field will only appear in an Asset Report with Insights.")
     merchant_name: Optional[str] = Field(default=None, description="The merchant name, as enriched by Plaid from the `name` field. This is typically a more human-readable version of the merchant counterparty in the transaction. For some bank transactions (such as checks or account transfers) where there is no meaningful merchant name, this value will be `null`.")
     original_description: Optional[str] = Field(default=None, description="The string returned by the financial institution to describe the transaction. For transactions returned by `/transactions/get`, this field is in beta and will be omitted unless the client is both enrolled in the closed beta program and has set `options.include_original_description` to `true`.")

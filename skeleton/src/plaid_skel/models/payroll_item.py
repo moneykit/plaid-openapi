@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -28,6 +29,6 @@ class PayrollItem(BaseModel):
     accounts: List[PayrollIncomeAccountData] = Field()
     payroll_income: List[PayrollIncomeObject] = Field()
     status: Optional[PayrollItemStatus] = Field(default=None,)
-    updated_at: Optional[datetime] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the Item was updated.")
+    updated_at: Optional[datetime_] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the Item was updated.")
 
 PayrollItem.update_forward_refs()

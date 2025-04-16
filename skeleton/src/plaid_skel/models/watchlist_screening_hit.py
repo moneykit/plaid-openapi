@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -25,9 +26,9 @@ class WatchlistScreeningHit(BaseModel):
 
     id: str = Field( description="ID of the associated screening hit.")
     review_status: WatchlistScreeningHitStatus = Field()
-    first_active: datetime = Field( description="An ISO8601 formatted timestamp.")
-    inactive_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
-    historical_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    first_active: datetime_ = Field( description="An ISO8601 formatted timestamp.")
+    inactive_since: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    historical_since: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
     list_code: IndividualWatchlistCode = Field()
     plaid_uid: str = Field( description="A universal identifier for a watchlist individual that is stable across searches and updates.")
     source_uid: Optional[str] = Field(default=None, description="The identifier provided by the source sanction or watchlist. When one is not provided by the source, this is `null`.")

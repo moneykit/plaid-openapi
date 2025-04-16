@@ -3,6 +3,9 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class SignalPaymentMethod(str, Enum):
     SAME_DAY_ACH = "SAME_DAY_ACH"
@@ -12,7 +15,9 @@ class SignalPaymentMethod(str, Enum):
     DEBIT_CARD = "DEBIT_CARD"
     MULTIPLE_PAYMENT_METHODS = "MULTIPLE_PAYMENT_METHODS"
 
-# Nullable OpenAPI enum
+    # Nullable OpenAPI enum
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
-        field_schema["nullable"] = True
+    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
+        schema = handler(field_schema)
+        schema["nullable"] = True
+        return schema

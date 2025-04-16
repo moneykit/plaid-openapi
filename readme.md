@@ -25,3 +25,4 @@ It's a python package.  Import models from it.
 - x-hidden-from-docs (include_in_schema)
 - min/max/length/pattern (le, ge, etc.)
 - fix externalDocs url, which is currently bogus
+- upgrade openapi version https://github.com/plaid/plaid-openapi/issues/183

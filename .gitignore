@@ -2,3 +2,6 @@ generator/tmp/
 
 .DS_Store
 __pycache__/
+
+# Pycharm Cache
+.idea

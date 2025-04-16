@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -30,9 +31,9 @@ class PaymentStatusUpdateWebhook(BaseModel):
     old_payment_status: PaymentInitiationPaymentStatus = Field()
     original_reference: Optional[str] = Field(default=None, description="The original value of the reference when creating the payment.")
     adjusted_reference: Optional[str] = Field(default=None, description="The value of the reference sent to the bank after adjustment to pass bank validation rules.")
-    original_start_date: Optional[date] = Field(default=None, description="The original value of the `start_date` provided during the creation of a standing order. If the payment is not a standing order, this field will be `null`.")
-    adjusted_start_date: Optional[date] = Field(default=None, description="The start date sent to the bank after adjusting for holidays or weekends.  Will be provided in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). If the start date did not require adjustment, or if the payment is not a standing order, this field will be `null`.")
-    timestamp: datetime = Field( description="The timestamp of the update, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2017-09-14T14:42:19.350Z\"`")
+    original_start_date: Optional[date_] = Field(default=None, description="The original value of the `start_date` provided during the creation of a standing order. If the payment is not a standing order, this field will be `null`.")
+    adjusted_start_date: Optional[date_] = Field(default=None, description="The start date sent to the bank after adjusting for holidays or weekends.  Will be provided in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). If the start date did not require adjustment, or if the payment is not a standing order, this field will be `null`.")
+    timestamp: datetime_ = Field( description="The timestamp of the update, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2017-09-14T14:42:19.350Z\"`")
     error: Optional[PlaidError] = Field(default=None,)
     environment: WebhookEnvironmentValues = Field()
 

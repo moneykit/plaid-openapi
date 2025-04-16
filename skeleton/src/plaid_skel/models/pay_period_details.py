@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -22,11 +23,11 @@ class PayPeriodDetails(BaseModel):
 
     check_amount: Optional[float] = Field(default=None, description="The amount of the paycheck.")
     distribution_breakdown: Optional[List[DistributionBreakdown]] = Field(default=None,)
-    end_date: Optional[date] = Field(default=None, description="The pay period end date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
+    end_date: Optional[date_] = Field(default=None, description="The pay period end date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
     gross_earnings: Optional[float] = Field(default=None, description="Total earnings before tax/deductions.")
-    pay_date: Optional[date] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    pay_date: Optional[date_] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     pay_frequency: Optional[str] = Field(default=None, description="The frequency at which an individual is paid.")
-    pay_day: Optional[date] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
-    start_date: Optional[date] = Field(default=None, description="The pay period start date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
+    pay_day: Optional[date_] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    start_date: Optional[date_] = Field(default=None, description="The pay period start date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
 
 PayPeriodDetails.update_forward_refs()

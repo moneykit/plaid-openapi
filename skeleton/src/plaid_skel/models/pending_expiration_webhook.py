@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -23,7 +24,7 @@ class PendingExpirationWebhook(BaseModel):
     webhook_type: str = Field( description="`ITEM`")
     webhook_code: str = Field( description="`PENDING_EXPIRATION`")
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
-    consent_expiration_time: datetime = Field( description="The date and time at which the Item's access consent will expire, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format")
+    consent_expiration_time: datetime_ = Field( description="The date and time at which the Item's access consent will expire, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format")
     environment: WebhookEnvironmentValues = Field()
 
 PendingExpirationWebhook.update_forward_refs()

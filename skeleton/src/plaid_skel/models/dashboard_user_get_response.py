@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -21,7 +22,7 @@ class DashboardUserGetResponse(BaseModel):
 
 
     id: str = Field( description="ID of the associated user.")
-    created_at: datetime = Field( description="An ISO8601 formatted timestamp.")
+    created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     email_address: EmailStr = Field( description="A valid email address.")
     status: DashboardUserStatus = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")

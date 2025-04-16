@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -21,6 +22,6 @@ class EmploymentDetails(BaseModel):
 
 
     annual_salary: Optional[Pay] = Field(default=None,)
-    hire_date: Optional[date] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
+    hire_date: Optional[date_] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
 
 EmploymentDetails.update_forward_refs()

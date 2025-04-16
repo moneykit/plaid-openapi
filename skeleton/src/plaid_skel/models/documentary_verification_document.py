@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -28,6 +29,6 @@ class DocumentaryVerificationDocument(BaseModel):
     images: PhysicalDocumentImages = Field()
     extracted_data: Optional[PhysicalDocumentExtractedData] = Field(default=None,)
     analysis: DocumentAnalysis = Field()
-    redacted_at: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    redacted_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
 
 DocumentaryVerificationDocument.update_forward_refs()

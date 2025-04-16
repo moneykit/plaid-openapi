@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -24,10 +25,10 @@ class CreditCardLiability(BaseModel):
     aprs: List[APR] = Field( description="The various interest rates that apply to the account. APR information is not provided by all card issuers; if APR data is not available, this array will be empty.")
     is_overdue: Optional[bool] = Field(default=None, description="true if a payment is currently overdue. Availability for this field is limited.")
     last_payment_amount: Optional[float] = Field(default=None, description="The amount of the last payment.")
-    last_payment_date: Optional[date] = Field(default=None, description="The date of the last payment. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). Availability for this field is limited.")
-    last_statement_issue_date: Optional[date] = Field(default=None, description="The date of the last statement. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
+    last_payment_date: Optional[date_] = Field(default=None, description="The date of the last payment. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). Availability for this field is limited.")
+    last_statement_issue_date: Optional[date_] = Field(default=None, description="The date of the last statement. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     last_statement_balance: Optional[float] = Field(default=None, description="The total amount owed as of the last statement issued")
     minimum_payment_amount: Optional[float] = Field(default=None, description="The minimum payment due for the next billing cycle.")
-    next_payment_due_date: Optional[date] = Field(default=None, description="The due date for the next payment. The due date is `null` if a payment is not expected. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
+    next_payment_due_date: Optional[date_] = Field(default=None, description="The due date for the next payment. The due date is `null` if a payment is not expected. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
 
 CreditCardLiability.update_forward_refs()

@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -19,7 +20,7 @@ class TransferExpectedSettlementScheduleItem(BaseModel):
     """Defines an expected sweep date and amount."""
 
 
-    settlement_date: date = Field( description="The settlement date of a sweep for this transfer.")
+    settlement_date: date_ = Field( description="The settlement date of a sweep for this transfer.")
     settled_amount: str = Field( description="The accumulated amount that have been swept by `settlement_date`.")
 
 TransferExpectedSettlementScheduleItem.update_forward_refs()

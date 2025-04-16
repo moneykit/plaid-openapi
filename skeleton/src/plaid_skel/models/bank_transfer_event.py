@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -24,7 +25,7 @@ class BankTransferEvent(BaseModel):
 
 
     event_id: int = Field( description="Plaid’s unique identifier for this event. IDs are sequential unsigned 64-bit integers.")
-    timestamp: datetime = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")
+    timestamp: datetime_ = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")
     event_type: BankTransferEventType = Field()
     account_id: str = Field( description="The account ID associated with the bank transfer.")
     bank_transfer_id: str = Field( description="Plaid’s unique identifier for a bank transfer.")

@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -23,7 +24,7 @@ class SignalReturnReportRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_transaction_id: str = Field( description="Must be the same as the `client_transaction_id` supplied when calling `/signal/evaluate`")
     return_code: str = Field( description="Must be a valid ACH return code (e.g. \"R01\")  If formatted incorrectly, this will result in an [`INVALID_FIELD`](/docs/errors/invalid-request/#invalid_field) error.")
-    returned_at: Optional[datetime] = Field(default=None, description="Date and time when you receive the returns from your payment processors, in ISO 8601 format (`YYYY-MM-DDTHH:mm:ssZ`).")
+    returned_at: Optional[datetime_] = Field(default=None, description="Date and time when you receive the returns from your payment processors, in ISO 8601 format (`YYYY-MM-DDTHH:mm:ssZ`).")
 
     @field_validator("client_transaction_id")
     @classmethod

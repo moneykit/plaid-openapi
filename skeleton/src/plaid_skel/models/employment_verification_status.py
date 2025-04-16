@@ -3,12 +3,17 @@
 
 from enum import Enum
 
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+
 
 class EmploymentVerificationStatus(str, Enum):
     EMPLOYMENT_STATUS_ACTIVE = "EMPLOYMENT_STATUS_ACTIVE"
     EMPLOYMENT_STATUS_INACTIVE = "EMPLOYMENT_STATUS_INACTIVE"
 
-# Nullable OpenAPI enum
+    # Nullable OpenAPI enum
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
-        field_schema["nullable"] = True
+    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
+        schema = handler(field_schema)
+        schema["nullable"] = True
+        return schema

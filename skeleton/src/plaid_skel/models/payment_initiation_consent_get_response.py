@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -24,7 +25,7 @@ class PaymentInitiationConsentGetResponse(BaseModel):
 
     consent_id: str = Field( description="The consent ID.")
     status: PaymentInitiationConsentStatus = Field()
-    created_at: datetime = Field( description="Consent creation timestamp, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    created_at: datetime_ = Field( description="Consent creation timestamp, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     recipient_id: str = Field( description="The ID of the recipient the payment consent is for.")
     reference: str = Field( description="A reference for the payment consent.")
     constraints: PaymentInitiationConsentConstraints = Field()

@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -25,7 +26,7 @@ class TransferAuthorization(BaseModel):
 
 
     id: str = Field( description="Plaid’s unique identifier for a transfer authorization.")
-    created: datetime = Field( description="The datetime representing when the authorization was created, in the format `2006-01-02T15:04:05Z`.")
+    created: datetime_ = Field( description="The datetime representing when the authorization was created, in the format `2006-01-02T15:04:05Z`.")
     decision: TransferAuthorizationDecision = Field()
     decision_rationale: Optional[TransferAuthorizationDecisionRationale] = Field(default=None,)
     guarantee_decision: Optional[TransferAuthorizationGuaranteeDecision] = Field(default=None,)

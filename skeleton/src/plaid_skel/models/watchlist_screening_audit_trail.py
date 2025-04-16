@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -22,6 +23,6 @@ class WatchlistScreeningAuditTrail(BaseModel):
 
     source: Source = Field()
     dashboard_user_id: Optional[str] = Field(default=None, description="ID of the associated user.")
-    timestamp: datetime = Field( description="An ISO8601 formatted timestamp.")
+    timestamp: datetime_ = Field( description="An ISO8601 formatted timestamp.")
 
 WatchlistScreeningAuditTrail.update_forward_refs()

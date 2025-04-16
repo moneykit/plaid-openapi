@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -28,7 +29,7 @@ class WalletTransactionStatusUpdateWebhook(BaseModel):
     wallet_id: Optional[str] = Field(default=None, description="The EMI (E-Money Institution) wallet that this payment is associated with. This wallet is used as an intermediary account to enable Plaid to reconcile the settlement of funds for Payment Initiation requests.")
     new_status: WalletTransactionStatus = Field()
     old_status: WalletTransactionStatus = Field()
-    timestamp: datetime = Field( description="The timestamp of the update, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2017-09-14T14:42:19.350Z\"`")
+    timestamp: datetime_ = Field( description="The timestamp of the update, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format, e.g. `\"2017-09-14T14:42:19.350Z\"`")
     environment: WebhookEnvironmentValues = Field()
 
 WalletTransactionStatusUpdateWebhook.update_forward_refs()

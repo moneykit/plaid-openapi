@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -20,7 +21,7 @@ class CreditBankIncomeTransaction(BaseModel):
 
 
     amount: Optional[float] = Field(default=None, description="The settled value of the transaction, denominated in the transactions's currency as stated in `iso_currency_code` or `unofficial_currency_code`. Positive values when money moves out of the account; negative values when money moves in. For example, credit card purchases are positive; credit card payment, direct deposits, and refunds are negative.")
-    date: Optional[date] = Field(default=None, description="For pending transactions, the date that the transaction occurred; for posted transactions, the date that the transaction posted. Both dates are returned in an ISO 8601 format (YYYY-MM-DD).")
+    date: Optional[date_] = Field(default=None, description="For pending transactions, the date that the transaction occurred; for posted transactions, the date that the transaction posted. Both dates are returned in an ISO 8601 format (YYYY-MM-DD).")
     name: Optional[str] = Field(default=None, description="The merchant name or transaction description.")
     original_description: Optional[str] = Field(default=None, description="The string returned by the financial institution to describe the transaction.")
     pending: Optional[bool] = Field(default=None, description="When true, identifies the transaction as pending or unsettled. Pending transaction details (name, type, amount, category ID) may change before they are settled.")

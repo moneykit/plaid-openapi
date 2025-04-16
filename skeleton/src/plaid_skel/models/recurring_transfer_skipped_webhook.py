@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -27,7 +28,7 @@ class RecurringTransferSkippedWebhook(BaseModel):
     recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
     authorization_decision: TransferAuthorizationDecision = Field()
     authorization_decision_rationale_code: Optional[TransferAuthorizationDecisionRationaleCode] = Field(default=None,)
-    skipped_origination_date: date = Field( description="The planned date on which Plaid is unable to originate a new ACH transaction of the recurring transfer. This will be of the form YYYY-MM-DD.")
+    skipped_origination_date: date_ = Field( description="The planned date on which Plaid is unable to originate a new ACH transaction of the recurring transfer. This will be of the form YYYY-MM-DD.")
     environment: WebhookEnvironmentValues = Field()
 
 RecurringTransferSkippedWebhook.update_forward_refs()

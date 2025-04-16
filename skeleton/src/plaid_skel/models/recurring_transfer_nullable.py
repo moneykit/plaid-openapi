@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -26,8 +27,8 @@ class RecurringTransferNullable(BaseModel):
 
 
     recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
-    created: datetime = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
-    next_origination_date: date = Field( description="A date in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).  The next transfer origination date after bank holiday adjustment.")
+    created: datetime_ = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
+    next_origination_date: date_ = Field( description="A date in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).  The next transfer origination date after bank holiday adjustment.")
     test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock.")
     type: TransferType = Field()
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")

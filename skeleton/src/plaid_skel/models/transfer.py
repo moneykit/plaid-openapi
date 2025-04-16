@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -38,7 +39,7 @@ class Transfer(BaseModel):
     user: TransferUserInResponse = Field()
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
     description: str = Field( description="The description of the transfer.")
-    created: datetime = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
+    created: datetime_ = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
     status: TransferStatus = Field()
     sweep_status: Optional[TransferSweepStatus] = Field(default=None,)
     network: TransferNetwork = Field()
@@ -49,9 +50,9 @@ class Transfer(BaseModel):
     guarantee_decision: Optional[TransferAuthorizationGuaranteeDecision] = Field(default=None,)
     guarantee_decision_rationale: Optional[TransferAuthorizationGuaranteeDecisionRationale] = Field(default=None,)
     iso_currency_code: str = Field( description="The currency of the transfer amount, e.g. \"USD\"")
-    standard_return_window: Optional[date] = Field(default=None, description="The date 3 business days from settlement date indicating the following ACH returns can no longer happen: R01, R02, R03, R29. This will be of the form YYYY-MM-DD.")
-    unauthorized_return_window: Optional[date] = Field(default=None, description="The date 61 business days from settlement date indicating the following ACH returns can no longer happen: R05, R07, R10, R11, R51, R33, R37, R38, R51, R52, R53. This will be of the form YYYY-MM-DD.")
-    expected_settlement_date: Optional[date] = Field(default=None, description="The expected date when the full amount of the transfer settles at the consumers’ account, if the transfer is credit; or at the customer's business checking account, if the transfer is debit. Only set for ACH transfers and is null for non-ACH transfers. Only set for ACH transfers. This will be of the form YYYY-MM-DD.")
+    standard_return_window: Optional[date_] = Field(default=None, description="The date 3 business days from settlement date indicating the following ACH returns can no longer happen: R01, R02, R03, R29. This will be of the form YYYY-MM-DD.")
+    unauthorized_return_window: Optional[date_] = Field(default=None, description="The date 61 business days from settlement date indicating the following ACH returns can no longer happen: R05, R07, R10, R11, R51, R33, R37, R38, R51, R52, R53. This will be of the form YYYY-MM-DD.")
+    expected_settlement_date: Optional[date_] = Field(default=None, description="The expected date when the full amount of the transfer settles at the consumers’ account, if the transfer is credit; or at the customer's business checking account, if the transfer is debit. Only set for ACH transfers and is null for non-ACH transfers. Only set for ACH transfers. This will be of the form YYYY-MM-DD.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a third-party sender (TPS).")
     refunds: List[TransferRefund] = Field( description="A list of refunds associated with this transfer.")
     recurring_transfer_id: Optional[str] = Field(default=None, description="The id of the recurring transfer if this transfer belongs to a recurring transfer.")

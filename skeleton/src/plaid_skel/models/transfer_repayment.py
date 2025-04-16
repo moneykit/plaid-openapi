@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -20,7 +21,7 @@ class TransferRepayment(BaseModel):
 
 
     repayment_id: str = Field( description="Identifier of the repayment.")
-    created: datetime = Field( description="The datetime when the repayment occurred, in RFC 3339 format.")
+    created: datetime_ = Field( description="The datetime when the repayment occurred, in RFC 3339 format.")
     amount: str = Field( description="Decimal amount of the repayment as it appears on your account ledger.")
     iso_currency_code: str = Field( description="The currency of the repayment, e.g. \"USD\".")
 

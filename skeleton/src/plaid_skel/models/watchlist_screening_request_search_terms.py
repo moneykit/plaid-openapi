@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -21,7 +22,7 @@ class WatchlistScreeningRequestSearchTerms(BaseModel):
 
     watchlist_program_id: str = Field( description="ID of the associated program.")
     legal_name: str = Field( description="The legal name of the individual being screened.")
-    date_of_birth: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document.")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
 

@@ -5,7 +5,8 @@
 
 
 from __future__ import annotations
-from datetime import date, datetime  # noqa: F401
+from datetime import date as date_  # noqa: F401
+from datetime import datetime as datetime_  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -23,7 +24,7 @@ class CreditBankIncomeItem(BaseModel):
 
     bank_income_accounts: Optional[List[CreditBankIncomeAccount]] = Field(default=None, description="The Item's accounts that have Bank Income data.")
     bank_income_sources: Optional[List[CreditBankIncomeSource]] = Field(default=None, description="The income sources for this Item. Each entry in the array is a single income source.")
-    last_updated_time: Optional[datetime] = Field(default=None, description="The time when this Item's data was last retrieved from the financial institution.")
+    last_updated_time: Optional[datetime_] = Field(default=None, description="The time when this Item's data was last retrieved from the financial institution.")
     institution_id: Optional[str] = Field(default=None, description="The unique identifier of the institution associated with the Item.")
     institution_name: Optional[str] = Field(default=None, description="The name of the institution associated with the Item.")
     item_id: Optional[str] = Field(default=None, description="The unique identifier for the Item.")
