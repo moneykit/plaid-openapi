@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.employee import Employee
 from plaid_skel.models.paystub_employer import PaystubEmployer
 from plaid_skel.models.w2_box12 import W2Box12

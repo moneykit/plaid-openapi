@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.income_verification_source_type import IncomeVerificationSourceType
 from plaid_skel.models.sandbox_public_token_create_request_income_verification_bank_income import SandboxPublicTokenCreateRequestIncomeVerificationBankIncome
 

@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.reporting_information import ReportingInformation
 from plaid_skel.models.service_product_fulfillment import ServiceProductFulfillment
 from plaid_skel.models.verification_of_asset_response import VerificationOfAssetResponse

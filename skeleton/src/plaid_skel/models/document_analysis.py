@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.document_authenticity_match_code import DocumentAuthenticityMatchCode
 from plaid_skel.models.image_quality import ImageQuality
 from plaid_skel.models.physical_document_extracted_data_analysis import PhysicalDocumentExtractedDataAnalysis

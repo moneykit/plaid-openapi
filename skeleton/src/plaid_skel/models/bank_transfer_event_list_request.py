@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic.v1 import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.bank_transfer_event_list_bank_transfer_type import BankTransferEventListBankTransferType
 from plaid_skel.models.bank_transfer_event_list_direction import BankTransferEventListDirection
 from plaid_skel.models.bank_transfer_event_type import BankTransferEventType

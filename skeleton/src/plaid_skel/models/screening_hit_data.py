@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.generic_screening_hit_location_items import GenericScreeningHitLocationItems
 from plaid_skel.models.screening_hit_date_of_birth_item import ScreeningHitDateOfBirthItem
 from plaid_skel.models.screening_hit_documents_items import ScreeningHitDocumentsItems

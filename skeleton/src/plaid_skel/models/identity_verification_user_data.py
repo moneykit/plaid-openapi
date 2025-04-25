@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.identity_verification_response_user_name import IdentityVerificationResponseUserName
 from plaid_skel.models.identity_verification_user_address import IdentityVerificationUserAddress
 from plaid_skel.models.user_id_number import UserIDNumber

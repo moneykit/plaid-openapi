@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.risk_check_email_domain_is_custom import RiskCheckEmailDomainIsCustom
 from plaid_skel.models.risk_check_email_domain_is_disposable import RiskCheckEmailDomainIsDisposable
 from plaid_skel.models.risk_check_email_domain_is_free_provider import RiskCheckEmailDomainIsFreeProvider

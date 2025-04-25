@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.payment_consent_max_payment_amount import PaymentConsentMaxPaymentAmount
 from plaid_skel.models.payment_consent_periodic_amount import PaymentConsentPeriodicAmount
 from plaid_skel.models.payment_consent_valid_date_time import PaymentConsentValidDateTime

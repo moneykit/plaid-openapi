@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.credit_freddie_mac_verification_of_assets_voa24 import CreditFreddieMacVerificationOfAssetsVOA24
 from plaid_skel.models.credit_freddie_verification_of_employment_voe25 import CreditFreddieVerificationOfEmploymentVOE25
 

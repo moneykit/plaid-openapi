@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic.v1 import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.transfer_event_type import TransferEventType
 from plaid_skel.models.transfer_failure import TransferFailure
 from plaid_skel.models.transfer_type import TransferType

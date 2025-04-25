@@ -10,7 +10,7 @@ from datetime import date, datetime  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic.v1 import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
 from plaid_skel.models.credit_bank_income_cause import CreditBankIncomeCause
 from plaid_skel.models.credit_bank_income_warning_code import CreditBankIncomeWarningCode
 from plaid_skel.models.credit_bank_income_warning_type import CreditBankIncomeWarningType
