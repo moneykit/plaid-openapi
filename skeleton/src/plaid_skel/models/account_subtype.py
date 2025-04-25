@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class AccountSubtype(str, Enum):
     _401A = "401a"
@@ -82,9 +79,7 @@ class AccountSubtype(str, Enum):
     SARSEP = "sarsep"
     PAYROLL = "payroll"
 
-    # Nullable OpenAPI enum
+# Nullable OpenAPI enum
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
-        schema = handler(field_schema)
-        schema["nullable"] = True
-        return schema
+    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
+        field_schema["nullable"] = True

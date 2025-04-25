@@ -5,8 +5,7 @@
 
 
 from __future__ import annotations
-from datetime import date as date_  # noqa: F401
-from datetime import datetime as datetime_  # noqa: F401
+from datetime import date, datetime  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -20,7 +19,7 @@ class DateRange(BaseModel):
     """A date range with a start and end date"""
 
 
-    beginning: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    ending: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    beginning: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    ending: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
 
 DateRange.update_forward_refs()

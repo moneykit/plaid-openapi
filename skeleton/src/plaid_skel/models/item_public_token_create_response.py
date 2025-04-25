@@ -5,8 +5,7 @@
 
 
 from __future__ import annotations
-from datetime import date as date_  # noqa: F401
-from datetime import datetime as datetime_  # noqa: F401
+from datetime import date, datetime  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -21,7 +20,7 @@ class ItemPublicTokenCreateResponse(BaseModel):
 
 
     public_token: str = Field( description="A `public_token` for the particular Item corresponding to the specified `access_token`")
-    expiration: Optional[datetime_] = Field(default=None,)
+    expiration: Optional[datetime] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 ItemPublicTokenCreateResponse.update_forward_refs()

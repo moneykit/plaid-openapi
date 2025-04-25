@@ -3,9 +3,6 @@
 
 from enum import Enum
 
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
-
 
 class TransferSweepStatus(str, Enum):
     UNSWEPT = "unswept"
@@ -13,9 +10,7 @@ class TransferSweepStatus(str, Enum):
     SWEPT_SETTLED = "swept_settled"
     RETURN_SWEPT = "return_swept"
 
-    # Nullable OpenAPI enum
+# Nullable OpenAPI enum
     @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
-        schema = handler(field_schema)
-        schema["nullable"] = True
-        return schema
+    def __get_pydantic_json_schema__(cls, field_schema: dict) -> None:
+        field_schema["nullable"] = True

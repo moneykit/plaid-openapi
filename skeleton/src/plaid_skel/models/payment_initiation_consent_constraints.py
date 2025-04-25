@@ -5,8 +5,7 @@
 
 
 from __future__ import annotations
-from datetime import date as date_  # noqa: F401
-from datetime import datetime as datetime_  # noqa: F401
+from datetime import date, datetime  # noqa: F401
 
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
@@ -23,7 +22,7 @@ class PaymentInitiationConsentConstraints(BaseModel):
     """Limitations that will be applied to payments initiated using the payment consent."""
 
 
-    valid_date_time: Optional[PaymentConsentValiddatetime_] = Field(default=None,)
+    valid_date_time: Optional[PaymentConsentValidDateTime] = Field(default=None,)
     max_payment_amount: PaymentConsentMaxPaymentAmount = Field()
     periodic_amounts: List[PaymentConsentPeriodicAmount] = Field( description="A list of amount limitations per period of time.")
 
