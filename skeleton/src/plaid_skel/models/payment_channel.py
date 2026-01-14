@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PaymentChannel(str, Enum):
     ONLINE = "online"
     IN_STORE = "in store"

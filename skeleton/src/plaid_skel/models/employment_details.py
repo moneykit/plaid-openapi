@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.pay import Pay
 
 
@@ -22,6 +22,6 @@ class EmploymentDetails(BaseModel):
 
 
     annual_salary: Optional[Pay] = Field(default=None,)
-    hire_date: Optional[date_] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
+    hire_date: Optional[date] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
 
 EmploymentDetails.update_forward_refs()

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class FDXNotificationPayloadIdType(str, Enum):
     ACCOUNT = "ACCOUNT"
     CUSTOMER = "CUSTOMER"

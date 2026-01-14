@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.bank_transfer_direction import BankTransferDirection
 from plaid_skel.models.bank_transfer_failure import BankTransferFailure
@@ -35,7 +35,7 @@ class BankTransfer(BaseModel):
     amount: str = Field( description="The amount of the bank transfer (decimal string with two digits of precision e.g. \"10.00\").")
     iso_currency_code: str = Field( description="The currency of the transfer amount, e.g. \"USD\"")
     description: str = Field( description="The description of the transfer.")
-    created: datetime_ = Field( description="The datetime when this bank transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
+    created: datetime = Field( description="The datetime when this bank transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
     status: BankTransferStatus = Field()
     network: BankTransferNetwork = Field()
     cancellable: bool = Field( description="When `true`, you can still cancel this bank transfer.")

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferScheduleIntervalUnit(str, Enum):
     WEEK = "week"
     MONTH = "month"

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class FDXNotificationPriority(str, Enum):
     HIGH = "HIGH"
     MEDIUM = "MEDIUM"

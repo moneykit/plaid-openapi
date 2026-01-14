@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.credit_bank_employer import CreditBankEmployer
 
 
@@ -24,7 +24,7 @@ class CreditBankEmployment(BaseModel):
     bank_employment_id: str = Field( description="A unique identifier for the bank employment.")
     account_id: str = Field( description="Plaid's unique identifier for the account.")
     employer: CreditBankEmployer = Field()
-    latest_deposit_date: date_ = Field( description="The date of the most recent deposit from this employer.")
-    earliest_deposit_date: date_ = Field( description="The date of the earliest deposit from this employer from within the period of the days requested.")
+    latest_deposit_date: date = Field( description="The date of the most recent deposit from this employer.")
+    earliest_deposit_date: date = Field( description="The date of the earliest deposit from this employer from within the period of the days requested.")
 
 CreditBankEmployment.update_forward_refs()

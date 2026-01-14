@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class BankTransferStatus(str, Enum):
     PENDING = "pending"
     POSTED = "posted"

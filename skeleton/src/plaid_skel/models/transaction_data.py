@@ -11,18 +11,19 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class TransactionData(BaseModel):
     """Information about the matched direct deposit transaction used to verify a user's payroll information."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     description: str = Field( description="The description of the transaction.")
     amount: float = Field( description="The amount of the transaction.")
-    date: date_ = Field( description="The date of the transaction, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    date: date = Field( description="The date of the transaction, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     account_id: str = Field( description="A unique identifier for the end user's account.")
     transaction_id: str = Field( description="A unique identifier for the transaction.")
 

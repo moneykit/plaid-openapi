@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.credit_freddie_mac_reporting_information_voa24 import CreditFreddieMacReportingInformationVOA24
 from plaid_skel.models.credit_freddie_mac_verification_of_asset_response_voa24 import CreditFreddieMacVerificationOfAssetResponseVOA24
 from plaid_skel.models.service_product_fulfillment import ServiceProductFulfillment

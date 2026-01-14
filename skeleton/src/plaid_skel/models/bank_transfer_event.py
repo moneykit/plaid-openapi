@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.bank_transfer_direction import BankTransferDirection
 from plaid_skel.models.bank_transfer_event_type import BankTransferEventType
 from plaid_skel.models.bank_transfer_failure import BankTransferFailure
@@ -25,7 +25,7 @@ class BankTransferEvent(BaseModel):
 
 
     event_id: int = Field( description="Plaid’s unique identifier for this event. IDs are sequential unsigned 64-bit integers.")
-    timestamp: datetime_ = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")
+    timestamp: datetime = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")
     event_type: BankTransferEventType = Field()
     account_id: str = Field( description="The account ID associated with the bank transfer.")
     bank_transfer_id: str = Field( description="Plaid’s unique identifier for a bank transfer.")

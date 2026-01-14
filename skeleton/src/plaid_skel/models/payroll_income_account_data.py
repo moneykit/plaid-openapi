@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payroll_income_rate_of_pay import PayrollIncomeRateOfPay
 
 
@@ -19,6 +19,7 @@ from plaid_skel.models.payroll_income_rate_of_pay import PayrollIncomeRateOfPay
 
 class PayrollIncomeAccountData(BaseModel):
     """An object containing account level data."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     account_id: Optional[str] = Field(default=None, description="ID of the payroll provider account.")

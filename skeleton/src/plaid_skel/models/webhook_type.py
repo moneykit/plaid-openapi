@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class WebhookType(str, Enum):
     AUTH = "AUTH"
     HOLDINGS = "HOLDINGS"

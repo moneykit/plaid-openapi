@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferDiligenceStatus(str, Enum):
     UNDER_REVIEW = "under_review"
     APPROVED = "approved"

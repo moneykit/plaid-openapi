@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class WalletISOCurrencyCode(str, Enum):
     GBP = "GBP"
     EUR = "EUR"

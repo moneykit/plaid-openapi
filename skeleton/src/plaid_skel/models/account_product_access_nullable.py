@@ -11,13 +11,14 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class AccountProductAccessNullable(BaseModel):
     """Allow the application to access specific products on this account"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     account_data: Optional[bool] = Field(default=None, description="Allow the application to access account data. Only used by certain partners. If relevant to the partner and unset, defaults to `true`.")

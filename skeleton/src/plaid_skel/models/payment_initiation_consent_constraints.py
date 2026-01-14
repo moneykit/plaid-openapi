@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_consent_max_payment_amount import PaymentConsentMaxPaymentAmount
 from plaid_skel.models.payment_consent_periodic_amount import PaymentConsentPeriodicAmount
 from plaid_skel.models.payment_consent_valid_date_time import PaymentConsentValidDateTime
@@ -23,7 +23,7 @@ class PaymentInitiationConsentConstraints(BaseModel):
     """Limitations that will be applied to payments initiated using the payment consent."""
 
 
-    valid_date_time: Optional[PaymentConsentValiddatetime_] = Field(default=None,)
+    valid_date_time: Optional[PaymentConsentValidDateTime] = Field(default=None,)
     max_payment_amount: PaymentConsentMaxPaymentAmount = Field()
     periodic_amounts: List[PaymentConsentPeriodicAmount] = Field( description="A list of amount limitations per period of time.")
 

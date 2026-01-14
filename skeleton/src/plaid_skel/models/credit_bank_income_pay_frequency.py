@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CreditBankIncomePayFrequency(str, Enum):
     WEEKLY = "WEEKLY"
     BIWEEKLY = "BIWEEKLY"

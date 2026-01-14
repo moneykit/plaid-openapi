@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.security_override import SecurityOverride
 
 
@@ -21,7 +21,7 @@ class InvestmentsTransactionsOverride(BaseModel):
     """Specify the list of investments transactions on the account."""
 
 
-    date: date_ = Field( description="Posting date for the transaction. Must be formatted as an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) date.")
+    date: date = Field( description="Posting date for the transaction. Must be formatted as an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) date.")
     name: str = Field( description="The institution's description of the transaction.")
     quantity: float = Field( description="The number of units of the security involved in this transaction. Must be positive if the type is a buy and negative if the type is a sell.")
     price: float = Field( description="The price of the security at which this transaction occurred.")

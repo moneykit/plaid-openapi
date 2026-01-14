@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.item_status_investments import ItemStatusInvestments
 from plaid_skel.models.item_status_last_webhook import ItemStatusLastWebhook
 from plaid_skel.models.item_status_transactions import ItemStatusTransactions
@@ -21,6 +21,7 @@ from plaid_skel.models.item_status_transactions import ItemStatusTransactions
 
 class ItemStatus(BaseModel):
     """An object with information about the status of the Item."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     investments: Optional[ItemStatusInvestments] = Field(default=None,)

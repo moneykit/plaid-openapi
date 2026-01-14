@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class PaymentInitiationAddress(BaseModel):
     """The optional address of the payment recipient. Required by most institutions outside of the UK."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     street: List[str] = Field( description="An array of length 1-2 representing the street address where the recipient is located. Maximum of 70 characters.")

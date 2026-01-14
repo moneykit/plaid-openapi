@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PlaidErrorType(str, Enum):
     INVALID_REQUEST = "INVALID_REQUEST"
     INVALID_RESULT = "INVALID_RESULT"

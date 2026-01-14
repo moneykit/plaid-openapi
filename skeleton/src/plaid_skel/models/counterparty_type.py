@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CounterpartyType(str, Enum):
     MERCHANT = "merchant"
     FINANCIAL_INSTITUTION = "financial_institution"

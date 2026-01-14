@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.address import Address
 from plaid_skel.models.pslf_status import PSLFStatus
 from plaid_skel.models.student_loan_repayment_model import StudentLoanRepaymentModel
@@ -32,12 +32,12 @@ class LiabilityOverride(BaseModel):
     last_payment_amount: float = Field( description="Override the `last_payment_amount` field. Can only be set if `type` is `credit`.")
     minimum_payment_amount: float = Field( description="Override the `minimum_payment_amount` field. Can only be set if `type` is `credit` or `student`.")
     is_overdue: bool = Field( description="Override the `is_overdue` field")
-    origination_date: date_ = Field( description="The date on which the loan was initially lent, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format. Can only be set if `type` is `student`.")
+    origination_date: date = Field( description="The date on which the loan was initially lent, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format. Can only be set if `type` is `student`.")
     principal: float = Field( description="The original loan principal. Can only be set if `type` is `student`.")
     nominal_apr: float = Field( description="The interest rate on the loan as a percentage. Can only be set if `type` is `student`.")
     interest_capitalization_grace_period_months: float = Field( description="If set, interest capitalization begins at the given number of months after loan origination. By default interest is never capitalized. Can only be set if `type` is `student`.")
     repayment_model: StudentLoanRepaymentModel = Field()
-    expected_payoff_date: date_ = Field( description="Override the `expected_payoff_date` field. Can only be set if `type` is `student`.")
+    expected_payoff_date: date = Field( description="Override the `expected_payoff_date` field. Can only be set if `type` is `student`.")
     guarantor: str = Field( description="Override the `guarantor` field. Can only be set if `type` is `student`.")
     is_federal: bool = Field( description="Override the `is_federal` field. Can only be set if `type` is `student`.")
     loan_name: str = Field( description="Override the `loan_name` field. Can only be set if `type` is `student`.")

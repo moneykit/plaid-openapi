@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CreditBankIncomeCategory(str, Enum):
     SALARY = "SALARY"
     UNEMPLOYMENT = "UNEMPLOYMENT"

@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.credit_bank_income_category import CreditBankIncomeCategory
 from plaid_skel.models.credit_bank_income_historical_summary import CreditBankIncomeHistoricalSummary
 from plaid_skel.models.credit_bank_income_pay_frequency import CreditBankIncomePayFrequency
@@ -27,8 +27,8 @@ class CreditBankIncomeSource(BaseModel):
     income_description: Optional[str] = Field(default=None, description="The most common name or original description for the underlying income transactions.")
     income_category: Optional[CreditBankIncomeCategory] = Field(default=None,)
     account_id: Optional[str] = Field(default=None, description="Plaid's unique identifier for the account.")
-    start_date: Optional[date_] = Field(default=None, description="Minimum of all dates within the specific income sources in the user's bank account for days requested by the client. The date will be returned in an ISO 8601 format (YYYY-MM-DD).")
-    end_date: Optional[date_] = Field(default=None, description="Maximum of all dates within the specific income sources in the user’s bank account for days requested by the client. The date will be returned in an ISO 8601 format (YYYY-MM-DD).")
+    start_date: Optional[date] = Field(default=None, description="Minimum of all dates within the specific income sources in the user's bank account for days requested by the client. The date will be returned in an ISO 8601 format (YYYY-MM-DD).")
+    end_date: Optional[date] = Field(default=None, description="Maximum of all dates within the specific income sources in the user’s bank account for days requested by the client. The date will be returned in an ISO 8601 format (YYYY-MM-DD).")
     pay_frequency: Optional[CreditBankIncomePayFrequency] = Field(default=None,)
     total_amount: Optional[float] = Field(default=None, description="Total amount of earnings in the user’s bank account for the specific income source for days requested by the client.")
     transaction_count: Optional[int] = Field(default=None, description="Number of transactions for the income source within the start and end date.")

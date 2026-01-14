@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -21,13 +21,13 @@ class LastDataAccessTimes(BaseModel):
 
 
     application_id: str = Field( description="ID of the application accessing data.")
-    account_balance_info: Optional[datetime_] = Field(default=None, description="The last time account_balance_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    account_routing_number: Optional[datetime_] = Field(default=None, description="The last time account_routing_number was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    contact_details: Optional[datetime_] = Field(default=None, description="The last time contact_details was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    transactions: Optional[datetime_] = Field(default=None, description="The last time transactions was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    credit_and_loans: Optional[datetime_] = Field(default=None, description="The last time credit_and_loans was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    investments: Optional[datetime_] = Field(default=None, description="The last time investments was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    payroll_info: Optional[datetime_] = Field(default=None, description="The last time payroll_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
-    transaction_risk_info: Optional[datetime_] = Field(default=None, description="The last time transaction_risk_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    account_balance_info: Optional[datetime] = Field(default=None, description="The last time account_balance_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    account_routing_number: Optional[datetime] = Field(default=None, description="The last time account_routing_number was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    contact_details: Optional[datetime] = Field(default=None, description="The last time contact_details was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    transactions: Optional[datetime] = Field(default=None, description="The last time transactions was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    credit_and_loans: Optional[datetime] = Field(default=None, description="The last time credit_and_loans was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    investments: Optional[datetime] = Field(default=None, description="The last time investments was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    payroll_info: Optional[datetime] = Field(default=None, description="The last time payroll_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
+    transaction_risk_info: Optional[datetime] = Field(default=None, description="The last time transaction_risk_info was accessed by this application in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format in UTC. null if never accessed.")
 
 LastDataAccessTimes.update_forward_refs()

@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.transfer_event_list_transfer_type import TransferEventListTransferType
 from plaid_skel.models.transfer_event_type import TransferEventType
 
@@ -24,8 +24,8 @@ class TransferEventListRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    start_date: Optional[datetime_] = Field(default=None, description="The start datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
-    end_date: Optional[datetime_] = Field(default=None, description="The end datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
+    start_date: Optional[datetime] = Field(default=None, description="The start datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
+    end_date: Optional[datetime] = Field(default=None, description="The end datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
     transfer_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a transfer.")
     account_id: Optional[str] = Field(default=None, description="The account ID to get events for all transactions to/from an account.")
     transfer_type: Optional[TransferEventListTransferType] = Field(default=None,)

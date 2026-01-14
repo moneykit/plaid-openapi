@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.risk_check_email_domain_is_custom import RiskCheckEmailDomainIsCustom
 from plaid_skel.models.risk_check_email_domain_is_disposable import RiskCheckEmailDomainIsDisposable
 from plaid_skel.models.risk_check_email_domain_is_free_provider import RiskCheckEmailDomainIsFreeProvider
@@ -24,13 +24,14 @@ from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
 
 class RiskCheckEmail(BaseModel):
     """Result summary object specifying values for `email` attributes of risk check."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()
     breach_count: Optional[int] = Field(default=None, description="Count of all known breaches of this email address if known.")
-    first_breached_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    last_breached_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    domain_registered_at: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    first_breached_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    last_breached_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    domain_registered_at: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     domain_is_free_provider: RiskCheckEmailDomainIsFreeProvider = Field()
     domain_is_custom: RiskCheckEmailDomainIsCustom = Field()
     domain_is_disposable: RiskCheckEmailDomainIsDisposable = Field()

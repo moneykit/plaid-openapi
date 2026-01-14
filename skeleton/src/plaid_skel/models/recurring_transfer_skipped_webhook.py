@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.transfer_authorization_decision import TransferAuthorizationDecision
 from plaid_skel.models.transfer_authorization_decision_rationale_code import TransferAuthorizationDecisionRationaleCode
 from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
@@ -28,7 +28,7 @@ class RecurringTransferSkippedWebhook(BaseModel):
     recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
     authorization_decision: TransferAuthorizationDecision = Field()
     authorization_decision_rationale_code: Optional[TransferAuthorizationDecisionRationaleCode] = Field(default=None,)
-    skipped_origination_date: date_ = Field( description="The planned date on which Plaid is unable to originate a new ACH transaction of the recurring transfer. This will be of the form YYYY-MM-DD.")
+    skipped_origination_date: date = Field( description="The planned date on which Plaid is unable to originate a new ACH transaction of the recurring transfer. This will be of the form YYYY-MM-DD.")
     environment: WebhookEnvironmentValues = Field()
 
 RecurringTransferSkippedWebhook.update_forward_refs()

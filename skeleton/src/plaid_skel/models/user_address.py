@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class UserAddress(BaseModel):
     """Home address for the user."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     street: str = Field( description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")

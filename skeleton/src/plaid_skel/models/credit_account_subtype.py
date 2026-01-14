@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CreditAccountSubtype(str, Enum):
     CREDIT_CARD = "credit card"
     PAYPAL = "paypal"

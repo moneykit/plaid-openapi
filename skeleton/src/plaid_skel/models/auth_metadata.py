@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.auth_supported_methods import AuthSupportedMethods
 
 
@@ -19,6 +19,7 @@ from plaid_skel.models.auth_supported_methods import AuthSupportedMethods
 
 class AuthMetadata(BaseModel):
     """Metadata that captures information about the Auth features of an institution."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     supported_methods: Optional[AuthSupportedMethods] = Field(default=None,)

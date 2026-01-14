@@ -11,13 +11,14 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class AddressMatchScore(BaseModel):
     """Score found by matching address provided by the API with the address on the account at the financial institution. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the account contains multiple owners, the maximum match score is filled."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     score: Optional[int] = Field(default=None, description="Match score for address. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the address is missing from either the API or financial institution, this is empty.")

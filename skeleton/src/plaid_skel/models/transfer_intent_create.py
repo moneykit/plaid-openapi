@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_intent_create_mode import TransferIntentCreateMode
 from plaid_skel.models.transfer_intent_create_network import TransferIntentCreateNetwork
@@ -26,7 +26,7 @@ class TransferIntentCreate(BaseModel):
 
 
     id: str = Field( description="Plaid's unique identifier for the transfer intent object.")
-    created: datetime_ = Field( description="The datetime the transfer was created. This will be of the form `2006-01-02T15:04:05Z`.")
+    created: datetime = Field( description="The datetime the transfer was created. This will be of the form `2006-01-02T15:04:05Z`.")
     status: TransferIntentStatus = Field()
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited. Returned only if `account_id` was set on intent creation.")
     origination_account_id: str = Field( description="Plaid’s unique identifier for the origination account for the intent. If not provided, the default account will be used.")

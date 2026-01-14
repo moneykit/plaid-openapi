@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 
@@ -19,6 +19,7 @@ from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 class PaymentInitiationStandingOrderMetadata(BaseModel):
     """Metadata specifically related to valid Payment Initiation standing order configurations for the institution."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     supports_standing_order_end_date: bool = Field( description="Indicates whether the institution supports closed-ended standing orders by providing an end date.")

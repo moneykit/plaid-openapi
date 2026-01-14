@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.client_provided_transaction_location import ClientProvidedTransactionLocation
 from plaid_skel.models.enrich_transaction_direction import EnrichTransactionDirection
 
@@ -29,6 +29,6 @@ class ClientProvidedTransaction(BaseModel):
     iso_currency_code: str = Field( description="The ISO-4217 currency code of the transaction e.g. USD.")
     location: Optional[ClientProvidedTransactionLocation] = Field(default=None,)
     mcc: Optional[str] = Field(default=None, description="Merchant category codes (MCCs) are four-digit numbers that describe a merchant's primary business activities.")
-    date_posted: Optional[date_] = Field(default=None, description="The date the transaction posted, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format.")
+    date_posted: Optional[date] = Field(default=None, description="The date the transaction posted, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format.")
 
 ClientProvidedTransaction.update_forward_refs()

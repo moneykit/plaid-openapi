@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class LinkDeliverySessionStatus(str, Enum):
     CREATED = "CREATED"
     OPENED = "OPENED"

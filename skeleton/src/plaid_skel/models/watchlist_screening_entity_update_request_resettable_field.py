@@ -4,5 +4,6 @@
 from enum import Enum
 
 
+
 class WatchlistScreeningEntityUpdateRequestResettableField(str, Enum):
     ASSIGNEE = "assignee"

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class ActivityType(str, Enum):
     UNKNOWN = "UNKNOWN"
     ITEM_CREATE = "ITEM_CREATE"

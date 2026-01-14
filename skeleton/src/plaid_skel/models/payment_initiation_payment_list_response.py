@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_initiation_payment import PaymentInitiationPayment
 
 
@@ -22,7 +22,7 @@ class PaymentInitiationPaymentListResponse(BaseModel):
 
 
     payments: List[PaymentInitiationPayment] = Field( description="An array of payments that have been created, associated with the given `client_id`.")
-    next_cursor: Optional[datetime_] = Field(default=None, description="The value that, when used as the optional `cursor` parameter to `/payment_initiation/payment/list`, will return the next unreturned payment as its first payment.")
+    next_cursor: Optional[datetime] = Field(default=None, description="The value that, when used as the optional `cursor` parameter to `/payment_initiation/payment/list`, will return the next unreturned payment as its first payment.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 PaymentInitiationPaymentListResponse.update_forward_refs()

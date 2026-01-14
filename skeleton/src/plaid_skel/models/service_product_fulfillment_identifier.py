@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class ServiceProductFulfillmentIdentifier(str, Enum):
     VOA = "VOA"
     VOETRANSACTIONS = "VOETRANSACTIONS"

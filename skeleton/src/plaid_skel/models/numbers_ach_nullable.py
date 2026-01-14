@@ -11,13 +11,14 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class NumbersACHNullable(BaseModel):
     """Identifying information for transferring money to or from a US account via ACH or wire transfer."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     account_id: str = Field( description="The Plaid account ID associated with the account numbers")

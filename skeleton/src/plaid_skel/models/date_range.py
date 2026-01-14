@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -20,7 +20,7 @@ class DateRange(BaseModel):
     """A date range with a start and end date"""
 
 
-    beginning: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    ending: date_ = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    beginning: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    ending: date = Field( description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
 
 DateRange.update_forward_refs()

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PaymentProfileStatus(str, Enum):
     PENDING = "PENDING"
     READY = "READY"

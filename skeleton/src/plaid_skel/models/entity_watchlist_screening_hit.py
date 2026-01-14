@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.entity_screening_hit_analysis import EntityScreeningHitAnalysis
 from plaid_skel.models.entity_screening_hit_data import EntityScreeningHitData
 from plaid_skel.models.entity_watchlist_code import EntityWatchlistCode
@@ -26,9 +26,9 @@ class EntityWatchlistScreeningHit(BaseModel):
 
     id: str = Field( description="ID of the associated entity screening hit.")
     review_status: WatchlistScreeningHitStatus = Field()
-    first_active: datetime_ = Field( description="An ISO8601 formatted timestamp.")
-    inactive_since: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
-    historical_since: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    first_active: datetime = Field( description="An ISO8601 formatted timestamp.")
+    inactive_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    historical_since: Optional[datetime] = Field(default=None, description="An ISO8601 formatted timestamp.")
     list_code: EntityWatchlistCode = Field()
     plaid_uid: str = Field( description="A universal identifier for a watchlist individual that is stable across searches and updates.")
     source_uid: Optional[str] = Field(default=None, description="The identifier provided by the source sanction or watchlist. When one is not provided by the source, this is `null`.")

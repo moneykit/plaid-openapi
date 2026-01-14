@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class AssetReportAddOns(str, Enum):
     INVESTMENTS = "investments"
     FAST_ASSETS = "fast_assets"

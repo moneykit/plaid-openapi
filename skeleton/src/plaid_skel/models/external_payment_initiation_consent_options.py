@@ -19,6 +19,7 @@ from plaid_skel.models.payment_initiation_optional_restriction_bacs import Payme
 
 class ExternalPaymentInitiationConsentOptions(BaseModel):
     """Additional payment consent options"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     request_refund_details: Optional[bool] = Field(default=None, description="When `true`, Plaid will attempt to request refund details from the payee's financial institution.  Support varies between financial institutions and will not always be available.  If refund details could be retrieved, they will be available in the `/payment_initiation/payment/get` response.")

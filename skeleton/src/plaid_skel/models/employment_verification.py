@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.employer_verification import EmployerVerification
 from plaid_skel.models.employment_verification_status import EmploymentVerificationStatus
 from plaid_skel.models.platform_ids import PlatformIds
@@ -24,8 +24,8 @@ class EmploymentVerification(BaseModel):
 
 
     status: Optional[EmploymentVerificationStatus] = Field(default=None,)
-    start_date: Optional[date_] = Field(default=None, description="Start of employment in ISO 8601 format (YYYY-MM-DD).")
-    end_date: Optional[date_] = Field(default=None, description="End of employment, if applicable. Provided in ISO 8601 format (YYY-MM-DD).")
+    start_date: Optional[date] = Field(default=None, description="Start of employment in ISO 8601 format (YYYY-MM-DD).")
+    end_date: Optional[date] = Field(default=None, description="End of employment, if applicable. Provided in ISO 8601 format (YYY-MM-DD).")
     employer: Optional[EmployerVerification] = Field(default=None,)
     title: Optional[str] = Field(default=None, description="Current title of employee.")
     platform_ids: Optional[PlatformIds] = Field(default=None,)
