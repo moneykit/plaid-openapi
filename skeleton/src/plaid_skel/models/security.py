@@ -43,6 +43,6 @@ class Security(BaseModel):
     sector: Optional[str] = Field(default=None, description="The sector classification of the security, such as Finance, Health Technology, etc.  For a complete list of possible values, please refer to the [\"Sectors and Industries\" spreadsheet](https://docs.google.com/spreadsheets/d/1L7aXUdqLhxgM8qe7hK67qqKXiUdQqILpwZ0LpxvCVnc).")
     industry: Optional[str] = Field(default=None, description="The industry classification of the security, such as Biotechnology, Airlines, etc.  For a complete list of possible values, please refer to the [\"Sectors and Industries\" spreadsheet](https://docs.google.com/spreadsheets/d/1L7aXUdqLhxgM8qe7hK67qqKXiUdQqILpwZ0LpxvCVnc).")
     option_contract: Optional[OptionContract] = Field(default=None,)
-    fixed_income: FixedIncome = Field()
+    fixed_income: Optional[FixedIncome] = Field(default=None,)
 
 Security.update_forward_refs()
