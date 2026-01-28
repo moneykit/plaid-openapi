@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -20,7 +20,7 @@ class FDXFiAttribute(BaseModel):
     """Financial Institution provider-specific attribute"""
 
 
-    name: Optional[str] = Field(default=None, description="Name of attribute")
-    value: Optional[str] = Field(default=None, description="Value of attribute")
+    name: str = Field( description="Name of attribute")
+    value: str = Field( description="Value of attribute")
 
 FDXFiAttribute.update_forward_refs()

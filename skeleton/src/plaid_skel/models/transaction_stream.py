@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
 from plaid_skel.models.recurring_transaction_frequency import RecurringTransactionFrequency
 from plaid_skel.models.transaction_stream_amount import TransactionStreamAmount
@@ -26,8 +26,8 @@ class TransactionStream(BaseModel):
 
     account_id: str = Field( description="The ID of the account to which the stream belongs")
     stream_id: str = Field( description="A unique id for the stream")
-    category: List[str] = Field( description="A hierarchical array of the categories to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).")
-    category_id: str = Field( description="The ID of the category to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).")
+    category: List[str] = Field( description="A hierarchical array of the categories to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).  All implementations are encouraged to use the new `personal_finance_category` instead of `category`. `personal_finance_category` provides more meaningful categorization and greater accuracy.")
+    category_id: str = Field( description="The ID of the category to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).  All implementations are encouraged to use the new `personal_finance_category` instead of `category`. `personal_finance_category` provides more meaningful categorization and greater accuracy.")
     description: str = Field( description="A description of the transaction stream.")
     merchant_name: Optional[str] = Field(default=None, description="The merchant associated with the transaction stream.")
     first_date: date_ = Field( description="The posted date of the earliest transaction in the stream.")

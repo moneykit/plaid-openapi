@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PartnerEndCustomerFlowdownStatus(str, Enum):
     NOT_STARTED = "NOT_STARTED"
     IN_REVIEW = "IN_REVIEW"

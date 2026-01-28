@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.pslf_status import PSLFStatus
 from plaid_skel.models.servicer_address_data import ServicerAddressData
 from plaid_skel.models.student_loan_status import StudentLoanStatus
@@ -26,7 +26,7 @@ class StudentLoan(BaseModel):
 
     account_id: Optional[str] = Field(default=None, description="The ID of the account that this liability belongs to.")
     account_number: Optional[str] = Field(default=None, description="The account number of the loan. For some institutions, this may be a masked version of the number (e.g., the last 4 digits instead of the entire number).")
-    disbursement_dates: Optional[List[date_]] = Field(default=None, description="The dates on which loaned funds were disbursed or will be disbursed. These are often in the past. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
+    disbursement_dates: Optional[List[date]] = Field(default=None, description="The dates on which loaned funds were disbursed or will be disbursed. These are often in the past. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     expected_payoff_date: Optional[date_] = Field(default=None, description="The date when the student loan is expected to be paid off. Availability for this field is limited. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     guarantor: Optional[str] = Field(default=None, description="The guarantor of the student loan.")
     interest_rate_percentage: float = Field( description="The interest rate on the loan as a percentage.")

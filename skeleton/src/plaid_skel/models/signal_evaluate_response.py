@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.signal_evaluate_core_attributes import SignalEvaluateCoreAttributes
 from plaid_skel.models.signal_scores import SignalScores
 from plaid_skel.models.signal_warning import SignalWarning
@@ -26,6 +26,6 @@ class SignalEvaluateResponse(BaseModel):
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     scores: SignalScores = Field()
     core_attributes: Optional[SignalEvaluateCoreAttributes] = Field(default=None,)
-    warnings: Optional[List[SignalWarning]] = Field(default=None, description="If bank information was not able to be used as features into the Signal model, this array contains warnings describing why we were missing bank data")
+    warnings: List[SignalWarning] = Field( description="If bank information was not available to be used in the Signal model, this array contains warnings describing why bank data is missing. If you want to receive an API error instead of Signal scores in the case of missing bank data, file a support ticket or contact your Plaid account manager.")
 
 SignalEvaluateResponse.update_forward_refs()

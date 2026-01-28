@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class NumbersInternationalIBAN(BaseModel):
     """Account numbers using the International Bank Account Number and BIC/SWIFT code format."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     iban: str = Field( description="International Bank Account Number (IBAN).")

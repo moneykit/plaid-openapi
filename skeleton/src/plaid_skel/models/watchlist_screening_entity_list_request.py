@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.watchlist_screening_status import WatchlistScreeningStatus
 
 
@@ -24,7 +24,7 @@ class WatchlistScreeningEntityListRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")
-    client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     status: Optional[WatchlistScreeningStatus] = Field(default=None,)
     assignee: Optional[str] = Field(default=None, description="ID of the associated user.")
     cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")

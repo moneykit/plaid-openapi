@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class LinkDeliveryWebhookCallbackType(str, Enum):
     ON_SUCCESS = "ON_SUCCESS"
     ON_EVENT = "ON_EVENT"

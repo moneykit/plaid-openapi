@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class UpdateEntityScreeningRequestSearchTerms(BaseModel):
     """Search terms for editing an entity watchlist screening"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")

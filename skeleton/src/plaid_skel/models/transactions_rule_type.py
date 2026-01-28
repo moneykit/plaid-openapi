@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransactionsRuleType(str, Enum):
     EXACT_MATCH = "EXACT_MATCH"
     SUBSTRING_MATCH = "SUBSTRING_MATCH"

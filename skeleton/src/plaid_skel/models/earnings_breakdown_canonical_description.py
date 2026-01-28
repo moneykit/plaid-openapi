@@ -3,8 +3,10 @@
 
 from enum import Enum
 
+
 from pydantic import GetJsonSchemaHandler
 from pydantic.json_schema import JsonSchemaValue
+
 
 
 class EarningsBreakdownCanonicalDescription(str, Enum):
@@ -18,9 +20,9 @@ class EarningsBreakdownCanonicalDescription(str, Enum):
     BASIC_ALLOWANCE_SUBSISTENCE = "BASIC ALLOWANCE SUBSISTENCE"
     OTHER = "OTHER"
 
-    # Nullable OpenAPI enum
-    @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
-        schema = handler(field_schema)
-        schema["nullable"] = True
-        return schema
+# Nullable OpenAPI enum
+@classmethod
+def __get_pydantic_json_schema__(cls, field_schema: dict, handler: GetJsonSchemaHandler) -> JsonSchemaValue:
+    schema = handler(field_schema)
+    schema["nullable"] = True
+    return schema

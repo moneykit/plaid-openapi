@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class PaymentInitiationOptionalRestrictionBacs(BaseModel):
     """An optional object used to restrict the accounts used for payments. If provided, the end user will be able to send payments only from the specified bank account."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     account: Optional[str] = Field(default=None, description="The account number of the account. Maximum of 10 characters.")

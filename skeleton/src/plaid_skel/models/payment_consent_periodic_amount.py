@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_consent_periodic_alignment import PaymentConsentPeriodicAlignment
 from plaid_skel.models.payment_consent_periodic_amount_amount import PaymentConsentPeriodicAmountAmount
 from plaid_skel.models.payment_consent_periodic_interval import PaymentConsentPeriodicInterval

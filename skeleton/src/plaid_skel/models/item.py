@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.plaid_error import PlaidError
 from plaid_skel.models.products import Products
 
@@ -28,7 +28,7 @@ class Item(BaseModel):
     error: Optional[PlaidError] = Field(default=None,)
     available_products: List[Products] = Field( description="A list of products available for the Item that have not yet been accessed. The contents of this array will be mutually exclusive with `billed_products`.")
     billed_products: List[Products] = Field( description="A list of products that have been billed for the Item. The contents of this array will be mutually exclusive with `available_products`. Note - `billed_products` is populated in all environments but only requests in Production are billed. Also note that products that are billed on a pay-per-call basis rather than a pay-per-Item basis, such as `balance`, will not appear here. ")
-    products: Optional[List[Products]] = Field(default=None, description="A list of authorized products for the Item. ")
-    consented_products: Optional[List[Products]] = Field(default=None, description="Beta: A list of products that have gone through consent collection for the Item. Only present for those enabled in the beta. ")
+    products: Optional[List[Products]] = Field(default=None, description="A list of initialized products for the Item. In almost all cases, this will be the same as the `billed_products` field. For some products, it is possible for the product to be initialized on an Item but not yet billed (e.g. Assets, before `/asset_report/create` has been called), in which case the product may appear in `products` but not in `billed_products`. ")
+    consented_products: Optional[List[Products]] = Field(default=None, description="A list of products that have gone through consent collection for the Item. Only present for those enabled in the [Data Transparency](https://plaid.com/docs/link/data-transparency-messaging-migration-guide) beta. If you are not enrolled in Data Transparency, this field is not used. ")
 
 Item.update_forward_refs()

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PartnerEndCustomerQuestionnaireStatus(str, Enum):
     NOT_STARTED = "NOT_STARTED"
     RECEIVED = "RECEIVED"

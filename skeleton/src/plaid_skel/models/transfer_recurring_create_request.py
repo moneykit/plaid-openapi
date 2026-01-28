@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_device import TransferDevice
 from plaid_skel.models.transfer_network import TransferNetwork
@@ -28,10 +28,10 @@ class TransferRecurringCreateRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    access_token: str = Field( description="The Plaid `access_token` for the account that will be debited or credited. Required if not using `payment_profile_token`.")
+    access_token: str = Field( description="The Plaid `access_token` for the account that will be debited or credited.")
     idempotency_key: str = Field( description="A random key provided by the client, per unique recurring transfer. Maximum of 50 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. For example, if a request to create a recurring fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single recurring transfer is created.")
-    account_id: str = Field( description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited. Returned only if `account_id` was set on intent creation.")
-    funding_account_id: Optional[str] = Field(default=None, description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited. Defaults to the account configured during onboarding.")
+    account_id: str = Field( description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited. Defaults to the account configured during onboarding. You can find your list of `funding_account_id`s in the Accounts page of your Plaid Dashboard, under the \"Account ID\" column.")
     type: TransferType = Field()
     network: TransferNetwork = Field()
     ach_class: Optional[ACHClass] = Field(default=None,)
@@ -39,7 +39,7 @@ class TransferRecurringCreateRequest(BaseModel):
     user_present: Optional[bool] = Field(default=None, description="If the end user is initiating the specific transfer themselves via an interactive UI, this should be `true`; for automatic recurring payments where the end user is not actually initiating each individual transfer, it should be `false`.")
     iso_currency_code: Optional[str] = Field(default=None, description="The currency of the transfer amount. The default value is \"USD\".")
     description: str = Field( description="The description of the recurring transfer.")
-    test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock.")
+    test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock. This field may only be used when using `sandbox` environment. If provided, the created `recurring_transfer` is associated with the `test_clock`. New originations are automatically generated when the associated `test_clock` advances.")
     schedule: TransferRecurringSchedule = Field()
     user: TransferUserInRequest = Field()
     device: TransferDevice = Field()

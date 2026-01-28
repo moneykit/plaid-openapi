@@ -11,13 +11,13 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class TransferUserAddressInRequest(BaseModel):
-    """The address associated with the account holder. Providing this data will improve the likelihood that Plaid will be able to guarantee the transfer, if applicable."""
+    """The address associated with the account holder."""
 
 
     street: Optional[str] = Field(default=None, description="The street number and name (i.e., \"100 Market St.\").")

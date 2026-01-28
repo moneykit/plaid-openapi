@@ -4,9 +4,11 @@
 from enum import Enum
 
 
+
 class PhysicalDocumentCategory(str, Enum):
     DRIVERS_LICENSE = "drivers_license"
     ID_CARD = "id_card"
     PASSPORT = "passport"
     RESIDENCE_PERMIT_CARD = "residence_permit_card"
     RESIDENT_CARD = "resident_card"
+    VISA = "visa"

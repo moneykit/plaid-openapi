@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class LinkDeliveryWebhookDeliveryStatus(str, Enum):
-    SUCCEEDED = "succeeded"
-    FAILED = "failed"
+    SUCCESS = "SUCCESS"
+    FAILURE = "FAILURE"

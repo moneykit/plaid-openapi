@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class AssetType(str, Enum):
     CHECKINGACCOUNT = "CheckingAccount"
     SAVINGSACCOUNT = "SavingsAccount"

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PartnerEndCustomerOAuthStatusUpdatedValues(str, Enum):
     NOT_STARTED = "not-started"
     PROCESSING = "processing"

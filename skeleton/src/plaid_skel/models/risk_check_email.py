@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.risk_check_email_domain_is_custom import RiskCheckEmailDomainIsCustom
 from plaid_skel.models.risk_check_email_domain_is_disposable import RiskCheckEmailDomainIsDisposable
 from plaid_skel.models.risk_check_email_domain_is_free_provider import RiskCheckEmailDomainIsFreeProvider
@@ -24,6 +24,7 @@ from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
 
 class RiskCheckEmail(BaseModel):
     """Result summary object specifying values for `email` attributes of risk check."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     is_deliverable: RiskCheckEmailIsDeliverableStatus = Field()
@@ -35,6 +36,6 @@ class RiskCheckEmail(BaseModel):
     domain_is_custom: RiskCheckEmailDomainIsCustom = Field()
     domain_is_disposable: RiskCheckEmailDomainIsDisposable = Field()
     top_level_domain_is_suspicious: RiskCheckEmailTopLevelDomainIsSuspicious = Field()
-    linked_services: list[RiskCheckLinkedService] = Field()
+    linked_services: list[RiskCheckLinkedService] = Field( description="A list of online services where this email address has been detected to have accounts or other activity.")
 
 RiskCheckEmail.update_forward_refs()

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class AssetTransactionType(str, Enum):
     CREDIT = "Credit"
     DEBIT = "Debit"

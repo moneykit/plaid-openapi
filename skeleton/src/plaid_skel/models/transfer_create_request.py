@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_network import TransferNetwork
 from plaid_skel.models.transfer_type import TransferType
@@ -27,19 +27,19 @@ class TransferCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     idempotency_key: Optional[str] = Field(default=None, description="Deprecated. `authorization_id` is now used as idempotency instead.  A random key provided by the client, per unique transfer. Maximum of 50 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. For example, if a request to create a transfer fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single transfer is created.")
-    access_token: Optional[str] = Field(default=None, description="The Plaid `access_token` for the account that will be debited or credited. Required if not using `payment_profile_token`.")
-    account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited. Returned only if `account_id` was set on intent creation.")
-    payment_profile_token: Optional[str] = Field(default=None, description="The payment profile token associated with the Payment Profile that will be debited or credited. Required if not using `access_token`.")
+    access_token: Optional[str] = Field(default=None, description="The Plaid `access_token` for the account that will be debited or credited.")
+    account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
     authorization_id: str = Field( description="Plaid’s unique identifier for a transfer authorization. This parameter also serves the purpose of acting as an idempotency identifier.")
     type: Optional[TransferType] = Field(default=None,)
     network: Optional[TransferNetwork] = Field(default=None,)
     amount: Optional[str] = Field(default=None, description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
-    description: str = Field( description="The transfer description. Maximum of 10 characters. If reprocessing a returned transfer, please note that the `description` field must be `\"Retry\"` to indicate that it's a retry of a previously returned transfer. You may retry a transfer up to 2 times, within 180 days of creating the original transfer. Only transfers that were returned with code `R01` or `R09` may be retried. For a full listing of ACH return codes, see [Transfer errors](https://plaid.com/docs/errors/transfer/#ach-return-codes).")
+    description: str = Field( description="The transfer description. Maximum of 15 characters. If reprocessing a returned transfer, please note that the `description` field must be `\"Retry\"` to indicate that it's a retry of a previously returned transfer. You may retry a transfer up to 2 times, within 180 days of creating the original transfer. Only transfers that were returned with code `R01` or `R09` may be retried. For a full listing of ACH return codes, see [Transfer errors](https://plaid.com/docs/errors/transfer/#ach-return-codes).")
     ach_class: Optional[ACHClass] = Field(default=None,)
     user: Optional[TransferUserInRequestDeprecated] = Field(default=None,)
     metadata: Optional[Dict[str, str]] = Field(default=None, description="The Metadata object is a mapping of client-provided string fields to any string value. The following limitations apply: The JSON values must be Strings (no nested JSON objects allowed) Only ASCII characters may be used Maximum of 50 key/value pairs Maximum key length of 40 characters Maximum value length of 500 characters ")
     origination_account_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for the origination account for this transfer. If you have more than one origination account, this value must be specified. Otherwise, this field should be left blank.")
     iso_currency_code: Optional[str] = Field(default=None, description="The currency of the transfer amount. The default value is \"USD\".")
+    test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock. This field may only be used when using `sandbox` environment. If provided, the `transfer` is created at the `virtual_time` on the provided `test_clock`.")
 
     @field_validator("idempotency_key")
     @classmethod
@@ -50,7 +50,7 @@ class TransferCreateRequest(BaseModel):
     @field_validator("description")
     @classmethod
     def description_max_length(cls, value):
-        assert len(value) <= 10
+        assert len(value) <= 15
         return value
 
 TransferCreateRequest.update_forward_refs()

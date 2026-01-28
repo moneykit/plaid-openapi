@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -22,6 +22,7 @@ class CreditFreddieMacReportingInformationVOA24(BaseModel):
 
     report_date_time: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
     report_identifier_type: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac. The value can only be \"ReportID\"")
+    reporting_information_parent_identifier: Optional[str] = Field(default=None, description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
     reporting_information_identifier: str = Field( description="Documentation not found in the MISMO model viewer and not provided by Freddie Mac.")
 
 CreditFreddieMacReportingInformationVOA24.update_forward_refs()

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferEventType(str, Enum):
     PENDING = "pending"
     CANCELLED = "cancelled"
@@ -14,3 +15,8 @@ class TransferEventType(str, Enum):
     SWEPT = "swept"
     SWEPT_SETTLED = "swept_settled"
     RETURN_SWEPT = "return_swept"
+    SWEEP_PENDING = "sweep.pending"
+    SWEEP_POSTED = "sweep.posted"
+    SWEEP_SETTLED = "sweep.settled"
+    SWEEP_RETURNED = "sweep.returned"
+    SWEEP_FAILED = "sweep.failed"

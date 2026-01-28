@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferAuthorizationGuaranteeDecisionRationaleCode(str, Enum):
     RETURN_BANK = "RETURN_BANK"
     RETURN_CUSTOMER = "RETURN_CUSTOMER"

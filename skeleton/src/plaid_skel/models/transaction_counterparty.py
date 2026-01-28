@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.counterparty_type import CounterpartyType
 
 
@@ -22,8 +22,10 @@ class TransactionCounterparty(BaseModel):
 
 
     name: str = Field( description="The name of the counterparty, such as the merchant or the financial institution, as extracted by Plaid from the raw description.")
+    entity_id: Optional[str] = Field(default=None, description="A unique, stable, Plaid-generated ID that maps to the counterparty.")
     type: CounterpartyType = Field()
     website: Optional[str] = Field(default=None, description="The website associated with the counterparty.")
-    logo_url: Optional[str] = Field(default=None, description="The URL of a logo associated with the counterparty, if available. The logo is formatted as a 100x100 pixel PNG filepath.")
+    logo_url: Optional[str] = Field(default=None, description="The URL of a logo associated with the counterparty, if available. The logo will always be 100×100 pixel PNG file.")
+    confidence_level: Optional[str] = Field(default=None, description="A description of how confident we are that the provided counterparty is involved in the transaction.  `VERY_HIGH`: We recognize this counterparty and we are more than 98% confident that it is involved in this transaction. `HIGH`: We recognize this counterparty and we are more than 90% confident that it is involved in this transaction. `MEDIUM`: We are moderately confident that this counterparty was involved in this transaction, but some details may differ from our records. `LOW`: We didn’t find a matching counterparty in our records, so we are returning a cleansed name parsed out of the request description. `UNKNOWN`: We don’t know the confidence level for this counterparty.")
 
 TransactionCounterparty.update_forward_refs()

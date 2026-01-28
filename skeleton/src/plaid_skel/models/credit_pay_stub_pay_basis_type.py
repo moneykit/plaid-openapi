@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CreditPayStubPayBasisType(str, Enum):
     SALARY = "SALARY"
     HOURLY = "HOURLY"

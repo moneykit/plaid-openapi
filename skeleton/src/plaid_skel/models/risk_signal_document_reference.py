@@ -11,7 +11,8 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.risk_signal_document_status import RiskSignalDocumentStatus
 
 
 
@@ -22,5 +23,6 @@ class RiskSignalDocumentReference(BaseModel):
 
     document_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")
     document_name: Optional[str] = Field(default=None, description="The name of the document")
+    status: Optional[RiskSignalDocumentStatus] = Field(default=None,)
 
 RiskSignalDocumentReference.update_forward_refs()

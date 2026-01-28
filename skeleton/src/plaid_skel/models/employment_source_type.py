@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class EmploymentSourceType(str, Enum):
     BANK = "bank"
     PAYROLL = "payroll"

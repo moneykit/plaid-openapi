@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class VerificationStatus(str, Enum):
     VERIFIED = "VERIFIED"
     UNVERIFIED = "UNVERIFIED"

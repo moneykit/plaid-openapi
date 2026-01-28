@@ -11,7 +11,8 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.transfer_refund_failure import TransferRefundFailure
 from plaid_skel.models.transfer_refund_status import TransferRefundStatus
 
 
@@ -25,6 +26,7 @@ class TransferRefund(BaseModel):
     transfer_id: str = Field( description="The ID of the transfer to refund.")
     amount: str = Field( description="The amount of the refund (decimal string with two digits of precision e.g. \"10.00\").")
     status: TransferRefundStatus = Field()
+    failure_reason: Optional[TransferRefundFailure] = Field(default=None,)
     created: datetime_ = Field( description="The datetime when this refund was created. This will be of the form `2006-01-02T15:04:05Z`")
 
 TransferRefund.update_forward_refs()

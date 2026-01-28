@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class BankTransferEventType(str, Enum):
     PENDING = "pending"
     CANCELLED = "cancelled"

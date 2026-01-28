@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class RiskCheckBehaviorBotDetectedLabel(str, Enum):
     YES = "yes"
     NO = "no"

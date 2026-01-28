@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class IncomeVerificationPayrollFlowType(str, Enum):
     PAYROLL_DIGITAL_INCOME = "payroll_digital_income"
     PAYROLL_DOCUMENT_INCOME = "payroll_document_income"

@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -20,6 +20,6 @@ class LinkTokenCreateRequestUpdate(BaseModel):
     """Specifies options for initializing Link for [update mode](https://plaid.com/docs/link/update-mode)."""
 
 
-    account_selection_enabled: Optional[bool] = Field(default=None, description="If `true`, enables [update mode with Account Select](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts).")
+    account_selection_enabled: Optional[bool] = Field(default=None, description="If `true`, enables [update mode with Account Select](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts) for institutions that do not use OAuth, or that use OAuth but do not have their own account selection flow. For institutions that have an OAuth account selection flow (i.e. most OAuth-enabled institutions), update mode with Account Select will always be enabled, regardless of the value of this field.")
 
 LinkTokenCreateRequestUpdate.update_forward_refs()

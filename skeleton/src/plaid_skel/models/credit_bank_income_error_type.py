@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class CreditBankIncomeErrorType(str, Enum):
     INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR"
     INSUFFICIENT_CREDENTIALS = "INSUFFICIENT_CREDENTIALS"

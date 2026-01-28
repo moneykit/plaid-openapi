@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.client_provided_transaction_location import ClientProvidedTransactionLocation
 from plaid_skel.models.enrich_transaction_direction import EnrichTransactionDirection
 
@@ -23,6 +23,10 @@ class ClientProvidedTransaction(BaseModel):
 
 
     id: str = Field( description="A unique ID for the transaction used to help you tie data back to your systems.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique user id used to group transactions for a given user, as a unique identifier from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_user_id.")
+    client_account_id: Optional[str] = Field(default=None, description="A unique account id used to group transactions for a given account, as a unique identifier from your application. Personally identifiable information, such as an email address or phone number, should not be used in the client_account_id.")
+    account_type: Optional[str] = Field(default=None, description="The account type associated with the transaction. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema).")
+    account_subtype: Optional[str] = Field(default=None, description="The account subtype associated with the transaction. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema).")
     description: str = Field( description="The raw description of the transaction. If you have location data in available an unstructured format, it may be appended to the `description` field.")
     amount: float = Field( description="The absolute value of the transaction (>= 0). When testing Enrich, note that `amount` data should be realistic. Unrealistic or inaccurate `amount` data may result in reduced quality output.")
     direction: EnrichTransactionDirection = Field()
