@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_intent_create_mode import TransferIntentCreateMode
 from plaid_skel.models.transfer_intent_create_network import TransferIntentCreateNetwork
@@ -27,7 +27,7 @@ class TransferIntentCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
-    funding_account_id: Optional[str] = Field(default=None, description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited. Defaults to the account configured during onboarding.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited. Defaults to the account configured during onboarding. You can find your list of `funding_account_id`s in the Accounts page of your Plaid Dashboard, under the \"Account ID\" column.")
     mode: TransferIntentCreateMode = Field()
     network: Optional[TransferIntentCreateNetwork] = Field(default=None,)
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")

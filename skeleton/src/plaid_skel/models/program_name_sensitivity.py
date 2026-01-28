@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class ProgramNameSensitivity(str, Enum):
     COARSE = "coarse"
     BALANCED = "balanced"

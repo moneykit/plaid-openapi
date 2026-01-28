@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class InvestmentTransactionType(str, Enum):
     BUY = "buy"
     SELL = "sell"

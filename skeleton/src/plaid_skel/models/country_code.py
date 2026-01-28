@@ -4,7 +4,8 @@
 from enum import Enum
 
 
+
 class CountryCode(str, Enum):
-    GB = "GB"
-    US = "US"
     CA = "CA"
+    US = "US"
+    GB = "GB"

@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.fdxfi_attribute import FDXFiAttribute
 from plaid_skel.models.fdx_notification_payload_id_type import FDXNotificationPayloadIdType
 
@@ -24,6 +24,6 @@ class FDXNotificationPayload(BaseModel):
 
     id: Optional[str] = Field(default=None, description="ID for the origination entity related to the notification")
     id_type: Optional[FDXNotificationPayloadIdType] = Field(default=None,)
-    custom_fields: Optional[FDXFiAttribute] = Field(default=None,)
+    custom_fields: Optional[List[FDXFiAttribute]] = Field(default=None,)
 
 FDXNotificationPayload.update_forward_refs()

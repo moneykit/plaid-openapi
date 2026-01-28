@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class UserStatedIncomeSourceCategory(str, Enum):
     OTHER = "OTHER"
     SALARY = "SALARY"

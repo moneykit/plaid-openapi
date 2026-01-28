@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payroll_risk_signals_item import PayrollRiskSignalsItem
 from plaid_skel.models.plaid_error import PlaidError
 
@@ -19,7 +19,7 @@ from plaid_skel.models.plaid_error import PlaidError
 
 
 class CreditPayrollIncomeRiskSignalsGetResponse(BaseModel):
-    """CreditPayrollIncomeRiskSignalsGetRequest defines the response schema for `/beta/credit/payroll_income/risk_signals/get`"""
+    """CreditPayrollIncomeRiskSignalsGetRequest defines the response schema for `/credit/payroll_income/risk_signals/get`"""
 
 
     items: List[PayrollRiskSignalsItem] = Field( description="Array of payroll items.")

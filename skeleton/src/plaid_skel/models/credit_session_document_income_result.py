@@ -11,16 +11,18 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class CreditSessionDocumentIncomeResult(BaseModel):
     """The details of a document income verification in Link"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     num_paystubs_uploaded: int = Field( description="The number of paystubs uploaded by the user.")
     num_w2s_uploaded: int = Field( description="The number of w2s uploaded by the user.")
+    num_bank_statements_uploaded: int = Field( description="The number of bank statements uploaded by the user.")
 
 CreditSessionDocumentIncomeResult.update_forward_refs()

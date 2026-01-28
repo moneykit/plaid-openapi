@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class IncomeVerificationSourceType(str, Enum):
     BANK = "bank"
     PAYROLL = "payroll"

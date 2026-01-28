@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.document_analysis import DocumentAnalysis
 from plaid_skel.models.document_status import DocumentStatus
 from plaid_skel.models.physical_document_extracted_data import PhysicalDocumentExtractedData
@@ -25,7 +25,7 @@ class DocumentaryVerificationDocument(BaseModel):
 
 
     status: DocumentStatus = Field()
-    attempt: float = Field( description="The `attempt` field begins with 1 and increments with each subsequent document upload.")
+    attempt: int = Field( description="The `attempt` field begins with 1 and increments with each subsequent document upload.")
     images: PhysicalDocumentImages = Field()
     extracted_data: Optional[PhysicalDocumentExtractedData] = Field(default=None,)
     analysis: DocumentAnalysis = Field()

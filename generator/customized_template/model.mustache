@@ -16,7 +16,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 {{#models}}
 {{#model}}
 {{#pyImports}}
@@ -34,45 +34,49 @@ class {{classname}}(BaseModel):
     """{{{description}}}"""
 
 {{#isNullable}}
-    class Config:
-        schema_extra = {"nullable": True}
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 {{/isNullable}}
 
 {{#vars}}
-    {{name}}: {{#required}}{{#isNullable}}Optional[{{/isNullable}}{{>model_field_type}}{{#isNullable}}]{{/isNullable}}{{/required}}{{^required}}Optional[{{>model_field_type}}]{{/required}} = Field({{^required}}default=None,{{/required}}{{#required}}{{#isNullable}}default=None,{{/isNullable}}{{/required}}{{#description}} description="{{{description}}}"{{/description}})
+    {{name}}: {{#required}}{{#isNullable}}Optional[{{/isNullable}}{{#isDate}}date_{{/isDate}}{{#isDateTime}}datetime_{{/isDateTime}}{{^isDate}}{{^isDateTime}}{{>model_field_type}}{{/isDateTime}}{{/isDate}}{{#isNullable}}]{{/isNullable}}{{/required}}{{^required}}Optional[{{#isDate}}date_{{/isDate}}{{#isDateTime}}datetime_{{/isDateTime}}{{^isDate}}{{^isDateTime}}{{>model_field_type}}{{/isDateTime}}{{/isDate}}]{{/required}} = Field({{^required}}default=None,{{/required}}{{#required}}{{#isNullable}}default=None,{{/isNullable}}{{/required}}{{#description}} description="{{{description}}}"{{/description}})
 {{/vars}}
 {{#vars}}
 {{#maximum}}
 
-    @validator("{{name}}")
+    @field_validator("{{name}}")
+    @classmethod
     def {{name}}_max(cls, value):
         assert value <= {{maximum}}
         return value
 {{/maximum}}
 {{#minimum}}
 
-    @validator("{{name}}")
+    @field_validator("{{name}}")
+    @classmethod
     def {{name}}_min(cls, value):
         assert value >= {{minimum}}
         return value
 {{/minimum}}
 {{#minLength}}
 
-    @validator("{{name}}")
+    @field_validator("{{name}}")
+    @classmethod
     def {{name}}_min_length(cls, value):
         assert len(value) >= {{minLength}}
         return value
 {{/minLength}}
 {{#maxLength}}
 
-    @validator("{{name}}")
+    @field_validator("{{name}}")
+    @classmethod
     def {{name}}_max_length(cls, value):
         assert len(value) <= {{maxLength}}
         return value
 {{/maxLength}}
 {{#pattern}}
 
-    @validator("{{name}}")
+    @field_validator("{{name}}")
+    @classmethod
     def {{name}}_pattern(cls, value):
         assert value is not None and re.match(r"{{pattern}}", value)
         return value

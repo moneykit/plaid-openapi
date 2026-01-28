@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class EnrichTransactionDirection(str, Enum):
     INFLOW = "INFLOW"
     OUTFLOW = "OUTFLOW"

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class LoanAccountSubtype(str, Enum):
     AUTO = "auto"
     BUSINESS = "business"

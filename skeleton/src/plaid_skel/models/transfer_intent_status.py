@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferIntentStatus(str, Enum):
     PENDING = "PENDING"
     SUCCEEDED = "SUCCEEDED"

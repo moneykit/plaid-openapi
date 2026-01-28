@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PaymentScheduleInterval(str, Enum):
     WEEKLY = "WEEKLY"
     MONTHLY = "MONTHLY"

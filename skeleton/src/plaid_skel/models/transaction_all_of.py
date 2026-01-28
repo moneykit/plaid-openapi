@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.personal_finance_category import PersonalFinanceCategory
 
 
@@ -21,7 +21,8 @@ class TransactionAllOf(BaseModel):
     """"""
 
 
-    datetime: Optional[datetime_] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
+    datetime: Optional[datetime_] = Field(default=None, description="Date and time when a transaction was posted in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format ( `YYYY-MM-DDTHH:mm:ssZ` ). For the date that the transaction was initiated, rather than posted, see the `authorized_datetime` field.  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). This field is only populated in API version 2019-05-29 and later.")
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
+    merchant_entity_id: Optional[str] = Field(default=None, description="A unique, stable, Plaid-generated ID that maps to the merchant.")
 
 TransactionAllOf.update_forward_refs()

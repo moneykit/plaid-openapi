@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.action_state import ActionState
 from plaid_skel.models.activity_type import ActivityType
 from plaid_skel.models.scopes_nullable import ScopesNullable
@@ -24,7 +24,7 @@ class Activity(BaseModel):
 
 
     activity: ActivityType = Field()
-    initiated_date: str = Field( description="The date and time this activity was initiated [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
+    initiated_date: date_ = Field( description="The date this activity was initiated [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
     id: str = Field( description="A unique identifier for the activity")
     initiator: str = Field( description="Application ID of the client who initiated the activity.")
     state: ActionState = Field()

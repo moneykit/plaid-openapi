@@ -11,11 +11,12 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_authorization_guarantee_decision import TransferAuthorizationGuaranteeDecision
 from plaid_skel.models.transfer_authorization_guarantee_decision_rationale import TransferAuthorizationGuaranteeDecisionRationale
-from plaid_skel.models.transfer_expected_settlement_schedule_item import TransferExpectedSettlementScheduleItem
+from plaid_skel.models.transfer_credit_funds_source import TransferCreditFundsSource
+from plaid_skel.models.transfer_expected_sweep_settlement_schedule_item import TransferExpectedSweepSettlementScheduleItem
 from plaid_skel.models.transfer_failure import TransferFailure
 from plaid_skel.models.transfer_network import TransferNetwork
 from plaid_skel.models.transfer_refund import TransferRefund
@@ -32,9 +33,10 @@ class Transfer(BaseModel):
 
 
     id: str = Field( description="Plaid’s unique identifier for a transfer.")
+    authorization_id: str = Field( description="Plaid’s unique identifier for a transfer authorization.")
     ach_class: Optional[ACHClass] = Field(default=None,)
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
-    funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the associated funding account, available in the Plaid Dashboard. If present, this indicates which of your business checking accounts will be credited or debited.")
     type: TransferType = Field()
     user: TransferUserInResponse = Field()
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
@@ -56,7 +58,7 @@ class Transfer(BaseModel):
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a third-party sender (TPS).")
     refunds: List[TransferRefund] = Field( description="A list of refunds associated with this transfer.")
     recurring_transfer_id: Optional[str] = Field(default=None, description="The id of the recurring transfer if this transfer belongs to a recurring transfer.")
-    settled_amount: Optional[str] = Field(default=None, description="The accumulated amount that have been swept to date. This number does not reflect `return_swept` amount if the transfer is returned. Only applies to ACH debit transfers.")
-    expected_settlement_schedule: Optional[List[TransferExpectedSettlementScheduleItem]] = Field(default=None, description="The expected settlement schedule of this transfer, if posted. Only applies to ACH debit transfers.")
+    expected_sweep_settlement_schedule: Optional[List[TransferExpectedSweepSettlementScheduleItem]] = Field(default=None, description="The expected sweep settlement schedule of this transfer, assuming this transfer is not `returned`. Only applies to ACH debit transfers.")
+    credit_funds_source: Optional[TransferCreditFundsSource] = Field(default=None,)
 
 Transfer.update_forward_refs()

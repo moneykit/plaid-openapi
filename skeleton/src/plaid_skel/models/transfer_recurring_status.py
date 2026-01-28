@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferRecurringStatus(str, Enum):
     ACTIVE = "active"
     CANCELLED = "cancelled"

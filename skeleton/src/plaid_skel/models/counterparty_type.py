@@ -4,9 +4,11 @@
 from enum import Enum
 
 
+
 class CounterpartyType(str, Enum):
     MERCHANT = "merchant"
     FINANCIAL_INSTITUTION = "financial_institution"
     PAYMENT_APP = "payment_app"
     MARKETPLACE = "marketplace"
     PAYMENT_TERMINAL = "payment_terminal"
+    INCOME_SOURCE = "income_source"

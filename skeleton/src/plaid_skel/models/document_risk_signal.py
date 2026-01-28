@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.document_risk_signal_institution_metadata import DocumentRiskSignalInstitutionMetadata
 
 
@@ -19,6 +19,7 @@ from plaid_skel.models.document_risk_signal_institution_metadata import Document
 
 class DocumentRiskSignal(BaseModel):
     """Details about a certain reason as to why a document could potentially be fraudulent."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     type: Optional[str] = Field(default=None, description="The result from the risk signal check.")

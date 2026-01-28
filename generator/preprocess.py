@@ -35,7 +35,7 @@ def remove_unsupported_properties(spec: dict) -> None:
             "eu_config",
             "institution_id",
             "payment_initiation",
-            "deposit_switch",
+            # "deposit_switch",
             "employment",
             "income_verification",
             "auth",

@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferIntentCreateMode(str, Enum):
     PAYMENT = "PAYMENT"
     DISBURSEMENT = "DISBURSEMENT"

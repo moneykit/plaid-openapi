@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.country_code import CountryCode
 
 
@@ -21,8 +21,8 @@ class Institution(BaseModel):
     """Details relating to a specific financial institution"""
 
 
-    institution_id: str = Field( description="Unique identifier for the institution")
-    name: str = Field( description="The official name of the institution")
+    institution_id: str = Field( description="Unique identifier for the institution. Note that the same institution may have multiple records, each with different institution IDs; for example, if the institution has migrated to OAuth, there may be separate `institution_id`s for the OAuth and non-OAuth versions of the institution. Institutions that operate in different countries or with multiple login portals may also have separate `institution_id`s for each country or portal.")
+    name: str = Field( description="The official name of the institution.")
     country_codes: List[CountryCode] = Field( description="A list of the country codes supported by the institution.")
     url: Optional[str] = Field(default=None, description="The URL for the institution's website")
     primary_color: Optional[str] = Field(default=None, description="Hexadecimal representation of the primary color used by the institution")

@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -24,6 +24,7 @@ class LinkTokenCreateRequestAuth(BaseModel):
     automated_microdeposits_enabled: Optional[bool] = Field(default=None, description="Specifies whether the Link session is enabled for the Automated Micro-deposits flow.")
     instant_match_enabled: Optional[bool] = Field(default=None, description="Specifies whether the Link session is enabled for the Instant Match flow. As of November 2022, Instant Match will be enabled by default. Instant Match can be disabled by setting this field to `false`.")
     same_day_microdeposits_enabled: Optional[bool] = Field(default=None, description="Specifies whether the Link session is enabled for the Same Day Micro-deposits flow.")
+    reroute_to_credentials: Optional[str] = Field(default=None, description="Specifies what type of [Reroute to Credentials](https://plaid.com/docs/auth/coverage/same-day/#reroute-to-credentials) pane should be used in the Link session for the Same Day Micro-deposits flow. As of October 15 2023, the default setting is `OPTIONAL`.")
     flow_type: Optional[str] = Field(default=None, description="This field has been deprecated in favor of `auth_type_select_enabled`.")
 
 LinkTokenCreateRequestAuth.update_forward_refs()
