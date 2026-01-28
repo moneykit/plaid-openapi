@@ -20,7 +20,7 @@ class TransferExpectedSettlementScheduleItem(BaseModel):
     """Defines an expected sweep date and amount."""
 
 
-    settlement_date: date = Field( description="The settlement date of a sweep for this transfer.")
+    settlement_date: date_ = Field( description="The settlement date of a sweep for this transfer.")
     settled_amount: str = Field( description="The accumulated amount that have been swept by `settlement_date`.")
 
 TransferExpectedSettlementScheduleItem.update_forward_refs()

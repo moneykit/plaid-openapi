@@ -22,7 +22,7 @@ class WatchlistScreeningSearchTerms(BaseModel):
 
     watchlist_program_id: str = Field( description="ID of the associated program.")
     legal_name: str = Field( description="The legal name of the individual being screened.")
-    date_of_birth: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document.")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
     version: float = Field( description="The current version of the search terms. Starts at `1` and increments with each edit to `search_terms`.")

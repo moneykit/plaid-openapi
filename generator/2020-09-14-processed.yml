@@ -15088,11 +15088,11 @@ components:
             `android_package_name` must be specified instead and `redirect_uri` should
             be left blank.
       required:
-      - country_codes
-      - language
+      - user
       - client_name
       - redirect_uri
-      - user
+      - country_codes
+      - language
     LinkTokenAccountFilters:
       description: 'By default, Link will provide limited account filtering: it will
         only display Institutions that are compatible with all products supplied in
@@ -16843,9 +16843,9 @@ components:
       type: string
       title: CountryCode
       enum:
-      - US
-      - GB
       - CA
+      - GB
+      - US
       description: ISO-3166-1 alpha-2 country code standard.
     PaymentMeta:
       title: PaymentMeta
@@ -18842,10 +18842,10 @@ components:
     Products:
       title: Products
       enum:
-      - transactions
       - auth
-      - balance
+      - transactions
       - identity
+      - balance
       description: A list of products that an institution can support. All Items must
         be initialized with at least one product. The Balance product is always available
         and does not need to be specified during initialization.

@@ -24,7 +24,7 @@ class PhysicalDocumentExtractedData(BaseModel):
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")
     category: PhysicalDocumentCategory = Field()
-    expiration_date: Optional[date] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    expiration_date: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     issuing_country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
     issuing_region: Optional[str] = Field(default=None, description="An ISO 3166-2 subdivision code. Related terms would be \"state\", \"province\", \"prefecture\", \"zone\", \"subdivision\", etc.")
 

@@ -23,7 +23,7 @@ class CreditSession(BaseModel):
 
 
     link_session_id: Optional[str] = Field(default=None, description="The unique identifier associated with the Link session. This identifier matches the `link_session_id` returned in the onSuccess/onExit callbacks.")
-    session_start_time: Optional[datetime] = Field(default=None, description="The time when the Link session started")
+    session_start_time: Optional[datetime_] = Field(default=None, description="The time when the Link session started")
     results: Optional[CreditSessionResults] = Field(default=None,)
     errors: Optional[List[CreditSessionError]] = Field(default=None, description="The set of errors that occurred during the Link session.")
 

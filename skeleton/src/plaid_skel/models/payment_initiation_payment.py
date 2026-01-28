@@ -33,7 +33,7 @@ class PaymentInitiationPayment(BaseModel):
     recipient_id: str = Field( description="The ID of the recipient")
     reference: str = Field( description="A reference for the payment.")
     adjusted_reference: Optional[str] = Field(default=None, description="The value of the reference sent to the bank after adjustment to pass bank validation rules.")
-    last_status_update: datetime = Field( description="The date and time of the last time the `status` was updated, in IS0 8601 format")
+    last_status_update: datetime_ = Field( description="The date and time of the last time the `status` was updated, in IS0 8601 format")
     schedule: Optional[ExternalPaymentScheduleGet] = Field(default=None,)
     refund_details: Optional[ExternalPaymentRefundDetails] = Field(default=None,)
     bacs: Optional[SenderBACSNullable] = Field(default=None,)

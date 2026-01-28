@@ -38,7 +38,7 @@ class {{classname}}(BaseModel):
 {{/isNullable}}
 
 {{#vars}}
-    {{name}}: {{#required}}{{#isNullable}}Optional[{{/isNullable}}{{>model_field_type}}{{#isNullable}}]{{/isNullable}}{{/required}}{{^required}}Optional[{{>model_field_type}}]{{/required}} = Field({{^required}}default=None,{{/required}}{{#required}}{{#isNullable}}default=None,{{/isNullable}}{{/required}}{{#description}} description="{{{description}}}"{{/description}})
+    {{name}}: {{#required}}{{#isNullable}}Optional[{{/isNullable}}{{#isDate}}date_{{/isDate}}{{#isDateTime}}datetime_{{/isDateTime}}{{^isDate}}{{^isDateTime}}{{>model_field_type}}{{/isDateTime}}{{/isDate}}{{#isNullable}}]{{/isNullable}}{{/required}}{{^required}}Optional[{{#isDate}}date_{{/isDate}}{{#isDateTime}}datetime_{{/isDateTime}}{{^isDate}}{{^isDateTime}}{{>model_field_type}}{{/isDateTime}}{{/isDate}}]{{/required}} = Field({{^required}}default=None,{{/required}}{{#required}}{{#isNullable}}default=None,{{/isNullable}}{{/required}}{{#description}} description="{{{description}}}"{{/description}})
 {{/vars}}
 {{#vars}}
 {{#maximum}}

@@ -30,8 +30,8 @@ class WalletTransaction(BaseModel):
     amount: WalletTransactionAmount = Field()
     counterparty: WalletTransactionCounterparty = Field()
     status: WalletTransactionStatus = Field()
-    created_at: datetime = Field( description="Timestamp when the transaction was created, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
-    last_status_update: datetime = Field( description="The date and time of the last time the `status` was updated, in IS0 8601 format")
+    created_at: datetime_ = Field( description="Timestamp when the transaction was created, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    last_status_update: datetime_ = Field( description="The date and time of the last time the `status` was updated, in IS0 8601 format")
     payment_id: Optional[str] = Field(default=None, description="The payment id that this transaction is associated with, if any. This is present only for transaction types `PIS_PAY_IN` and `REFUND`.")
 
 WalletTransaction.update_forward_refs()

@@ -23,7 +23,7 @@ class Application(BaseModel):
     application_id: str = Field( description="This field will map to the application ID that is returned from /item/applications/list, or provided to the institution in an oauth redirect.")
     name: str = Field( description="The name of the application")
     display_name: Optional[str] = Field(default=None, description="A human-readable name of the application for display purposes")
-    join_date: date = Field( description="The date this application was granted production access at Plaid in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
+    join_date: date_ = Field( description="The date this application was granted production access at Plaid in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format in UTC.")
     logo_url: Optional[str] = Field(default=None, description="A URL that links to the application logo image.")
     application_url: Optional[str] = Field(default=None, description="The URL for the application's website")
     reason_for_access: Optional[str] = Field(default=None, description="A string provided by the connected app stating why they use their respective enabled products.")

@@ -20,7 +20,7 @@ class PSLFStatus(BaseModel):
     """Information about the student's eligibility in the Public Service Loan Forgiveness program. This is only returned if the institution is FedLoan (`ins_116527`). """
 
 
-    estimated_eligibility_date: Optional[date] = Field(default=None, description="The estimated date borrower will have completed 120 qualifying monthly payments. Returned in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
+    estimated_eligibility_date: Optional[date_] = Field(default=None, description="The estimated date borrower will have completed 120 qualifying monthly payments. Returned in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     payments_made: Optional[float] = Field(default=None, description="The number of qualifying payments that have been made.")
     payments_remaining: Optional[float] = Field(default=None, description="The number of qualifying payments remaining.")
 

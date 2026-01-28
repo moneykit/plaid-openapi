@@ -21,9 +21,9 @@ class PaystubDetails(BaseModel):
     """An object representing details that can be found on the paystub."""
 
 
-    pay_period_start_date: Optional[date] = Field(default=None, description="Beginning date of the pay period on the paystub in the 'YYYY-MM-DD' format.")
-    pay_period_end_date: Optional[date] = Field(default=None, description="Ending date of the pay period on the paystub in the 'YYYY-MM-DD' format.")
-    pay_date: Optional[date] = Field(default=None, description="Pay date on the paystub in the 'YYYY-MM-DD' format.")
+    pay_period_start_date: Optional[date_] = Field(default=None, description="Beginning date of the pay period on the paystub in the 'YYYY-MM-DD' format.")
+    pay_period_end_date: Optional[date_] = Field(default=None, description="Ending date of the pay period on the paystub in the 'YYYY-MM-DD' format.")
+    pay_date: Optional[date_] = Field(default=None, description="Pay date on the paystub in the 'YYYY-MM-DD' format.")
     paystub_provider: Optional[str] = Field(default=None, description="The name of the payroll provider that generated the paystub, e.g. ADP")
     pay_frequency: Optional[PaystubPayFrequency] = Field(default=None,)
 

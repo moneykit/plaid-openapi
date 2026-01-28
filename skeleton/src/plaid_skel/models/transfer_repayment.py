@@ -21,7 +21,7 @@ class TransferRepayment(BaseModel):
 
 
     repayment_id: str = Field( description="Identifier of the repayment.")
-    created: datetime = Field( description="The datetime when the repayment occurred, in RFC 3339 format.")
+    created: datetime_ = Field( description="The datetime when the repayment occurred, in RFC 3339 format.")
     amount: str = Field( description="Decimal amount of the repayment as it appears on your account ledger.")
     iso_currency_code: str = Field( description="The currency of the repayment, e.g. \"USD\".")
 

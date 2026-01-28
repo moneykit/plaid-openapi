@@ -22,6 +22,6 @@ class EmploymentDetails(BaseModel):
 
 
     annual_salary: Optional[Pay] = Field(default=None,)
-    hire_date: Optional[date] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
+    hire_date: Optional[date_] = Field(default=None, description="Date on which the employee was hired, in the YYYY-MM-DD format.")
 
 EmploymentDetails.update_forward_refs()

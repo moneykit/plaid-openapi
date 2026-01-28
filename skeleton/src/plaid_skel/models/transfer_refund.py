@@ -25,6 +25,6 @@ class TransferRefund(BaseModel):
     transfer_id: str = Field( description="The ID of the transfer to refund.")
     amount: str = Field( description="The amount of the refund (decimal string with two digits of precision e.g. \"10.00\").")
     status: TransferRefundStatus = Field()
-    created: datetime = Field( description="The datetime when this refund was created. This will be of the form `2006-01-02T15:04:05Z`")
+    created: datetime_ = Field( description="The datetime when this refund was created. This will be of the form `2006-01-02T15:04:05Z`")
 
 TransferRefund.update_forward_refs()

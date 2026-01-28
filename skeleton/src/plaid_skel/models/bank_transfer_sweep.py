@@ -21,7 +21,7 @@ class BankTransferSweep(BaseModel):
 
 
     id: str = Field( description="Identifier of the sweep.")
-    created_at: datetime = Field( description="The datetime when the sweep occurred, in RFC 3339 format.")
+    created_at: datetime_ = Field( description="The datetime when the sweep occurred, in RFC 3339 format.")
     amount: str = Field( description="The amount of the sweep.")
     iso_currency_code: str = Field( description="The currency of the sweep, e.g. \"USD\".")
 

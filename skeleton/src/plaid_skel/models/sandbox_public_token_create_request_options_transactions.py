@@ -20,7 +20,7 @@ class SandboxPublicTokenCreateRequestOptionsTransactions(BaseModel):
     """An optional set of parameters corresponding to transactions options."""
 
 
-    start_date: Optional[date] = Field(default=None, description="The earliest date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
-    end_date: Optional[date] = Field(default=None, description="The most recent date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
+    start_date: Optional[date_] = Field(default=None, description="The earliest date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
+    end_date: Optional[date_] = Field(default=None, description="The most recent date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
 
 SandboxPublicTokenCreateRequestOptionsTransactions.update_forward_refs()

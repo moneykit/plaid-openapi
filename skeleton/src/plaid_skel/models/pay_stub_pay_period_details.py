@@ -24,13 +24,13 @@ class PayStubPayPeriodDetails(BaseModel):
 
     pay_amount: Optional[float] = Field(default=None, description="The amount of the paycheck.")
     distribution_breakdown: List[PayStubDistributionBreakdown] = Field()
-    end_date: Optional[date] = Field(default=None, description="The date on which the pay period ended, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    end_date: Optional[date_] = Field(default=None, description="The date on which the pay period ended, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     gross_earnings: Optional[float] = Field(default=None, description="Total earnings before tax/deductions.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO-4217 currency code of the net pay. Always `null` if `unofficial_currency_code` is non-null.")
-    pay_date: Optional[date] = Field(default=None, description="The date on which the pay stub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    pay_date: Optional[date_] = Field(default=None, description="The date on which the pay stub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     pay_frequency: Optional[str] = Field(default=None, description="The frequency at which an individual is paid.")
     pay_basis: Optional[CreditPayStubPayBasisType] = Field(default=None,)
-    start_date: Optional[date] = Field(default=None, description="The date on which the pay period started, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
+    start_date: Optional[date_] = Field(default=None, description="The date on which the pay period started, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     unofficial_currency_code: Optional[str] = Field(default=None, description="The unofficial currency code associated with the net pay. Always `null` if `iso_currency_code` is non-`null`. Unofficial currency codes are used for currencies that do not have official ISO currency codes, such as cryptocurrencies and the currencies of certain countries.  See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `iso_currency_code`s.")
 
 PayStubPayPeriodDetails.update_forward_refs()

@@ -25,7 +25,7 @@ class TransactionsGetRequest(BaseModel):
     options: Optional[TransactionsGetRequestOptions] = Field(default=None,)
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    start_date: date = Field( description="The earliest date for which data should be returned. Dates should be formatted as YYYY-MM-DD.")
-    end_date: date = Field( description="The latest date for which data should be returned. Dates should be formatted as YYYY-MM-DD.")
+    start_date: date_ = Field( description="The earliest date for which data should be returned. Dates should be formatted as YYYY-MM-DD.")
+    end_date: date_ = Field( description="The latest date for which data should be returned. Dates should be formatted as YYYY-MM-DD.")
 
 TransactionsGetRequest.update_forward_refs()

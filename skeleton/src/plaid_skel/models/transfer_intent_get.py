@@ -31,7 +31,7 @@ class TransferIntentGet(BaseModel):
 
 
     id: str = Field( description="Plaid's unique identifier for a transfer intent object.")
-    created: datetime = Field( description="The datetime the transfer was created. This will be of the form `2006-01-02T15:04:05Z`.")
+    created: datetime_ = Field( description="The datetime the transfer was created. This will be of the form `2006-01-02T15:04:05Z`.")
     status: TransferIntentStatus = Field()
     transfer_id: Optional[str] = Field(default=None, description="Plaid's unique identifier for the transfer created through the UI. Returned only if the transfer was successfully created. Null value otherwise.")
     failure_reason: Optional[TransferIntentGetFailureReason] = Field(default=None,)

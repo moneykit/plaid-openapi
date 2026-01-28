@@ -23,8 +23,8 @@ class CreditFreddieMacAssetTransactionDetailVOE25(BaseModel):
 
 
     asset_transaction_unique_identifier: str = Field( description="A vendor created unique Identifier.")
-    asset_transaction_date: date = Field( description="Asset Transaction Date.")
-    asset_transaction_post_date: date = Field( description="Asset Transaction Post Date.")
+    asset_transaction_date: date_ = Field( description="Asset Transaction Date.")
+    asset_transaction_post_date: date_ = Field( description="Asset Transaction Post Date.")
     asset_transaction_type: AssetTransactionType = Field()
     asset_transaction_paid_by_name: Optional[str] = Field(default=None, description="Populate with who did the transaction.")
     asset_transaction_paid_to_name: Optional[str] = Field(default=None, description="Populate with for whom the transaction is done.")

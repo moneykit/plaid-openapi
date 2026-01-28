@@ -24,7 +24,7 @@ class CreditBankIncome(BaseModel):
 
 
     bank_income_id: Optional[str] = Field(default=None, description="The unique identifier associated with the Bank Income Report.")
-    generated_time: Optional[datetime] = Field(default=None, description="The time when the Bank Income Report was generated.")
+    generated_time: Optional[datetime_] = Field(default=None, description="The time when the Bank Income Report was generated.")
     days_requested: Optional[int] = Field(default=None, description="The number of days requested by the customer for the Bank Income Report.")
     items: Optional[List[CreditBankIncomeItem]] = Field(default=None, description="The list of Items in the report along with the associated metadata about the Item.")
     bank_income_summary: Optional[CreditBankIncomeSummary] = Field(default=None,)
