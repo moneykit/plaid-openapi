@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class SelfieAnalysisDocumentComparison(str, Enum):
     MATCH = "match"
     NO_MATCH = "no_match"

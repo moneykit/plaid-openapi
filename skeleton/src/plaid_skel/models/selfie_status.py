@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class SelfieStatus(str, Enum):
     SUCCESS = "success"
     FAILED = "failed"

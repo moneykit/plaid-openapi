@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXNotificationSeverity(str, Enum):
     EMERGENCY = "EMERGENCY"
     ALERT = "ALERT"

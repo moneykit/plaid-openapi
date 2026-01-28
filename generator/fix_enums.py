@@ -26,18 +26,18 @@ def fix_enums():
             fixed_enum = code[0].strip() + textwrap.dedent(f"""
 
             from enum import Enum
+            
             """)
 
             if nullable:
                 fixed_enum += textwrap.dedent(f"""
-
                             from pydantic import GetJsonSchemaHandler
                             from pydantic.json_schema import JsonSchemaValue
+
+
                             """)
 
             fixed_enum += textwrap.dedent(f"""
-
-
             class {name}(str, Enum):
             """)
 

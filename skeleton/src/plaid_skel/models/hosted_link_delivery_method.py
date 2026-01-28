@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class HostedLinkDeliveryMethod(str, Enum):
     SMS = "sms"
     EMAIL = "email"

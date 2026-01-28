@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class IndividualWatchlistCode(str, Enum):
     AU_CON = "AU_CON"
     CA_CON = "CA_CON"

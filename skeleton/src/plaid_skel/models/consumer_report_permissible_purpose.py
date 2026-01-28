@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ConsumerReportPermissiblePurpose(str, Enum):
     ACCOUNT_REVIEW_CREDIT = "ACCOUNT_REVIEW_CREDIT"
     ACCOUNT_REVIEW_NON_CREDIT = "ACCOUNT_REVIEW_NON_CREDIT"

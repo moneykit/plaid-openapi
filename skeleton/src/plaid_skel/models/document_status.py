@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class DocumentStatus(str, Enum):
     SUCCESS = "success"
     FAILED = "failed"

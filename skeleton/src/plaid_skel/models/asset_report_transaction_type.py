@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class AssetReportTransactionType(str, Enum):
     DIGITAL = "digital"
     PLACE = "place"

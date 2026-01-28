@@ -4,6 +4,5 @@
 from enum import Enum
 
 
-
 class TransferDocumentPurpose(str, Enum):
     DUE_DILIGENCE = "DUE_DILIGENCE"

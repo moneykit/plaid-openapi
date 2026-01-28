@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class CraBankIncomeCompleteResult(str, Enum):
     SUCCESS = "SUCCESS"
     FAILURE = "FAILURE"

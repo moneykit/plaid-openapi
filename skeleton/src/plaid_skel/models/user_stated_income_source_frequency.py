@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class UserStatedIncomeSourceFrequency(str, Enum):
     UNKNOWN = "UNKNOWN"
     WEEKLY = "WEEKLY"

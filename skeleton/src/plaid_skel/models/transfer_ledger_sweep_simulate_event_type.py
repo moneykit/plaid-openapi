@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferLedgerSweepSimulateEventType(str, Enum):
     SWEEP_POSTED = "sweep.posted"
     SWEEP_SETTLED = "sweep.settled"

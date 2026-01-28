@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PaymentAmountCurrency(str, Enum):
     GBP = "GBP"
     EUR = "EUR"

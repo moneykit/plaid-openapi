@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXPartyRegistry(str, Enum):
     FDX = "FDX"
     GLEIF = "GLEIF"

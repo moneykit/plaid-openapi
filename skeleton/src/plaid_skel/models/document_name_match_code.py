@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class DocumentNameMatchCode(str, Enum):
     MATCH = "match"
     PARTIAL_MATCH = "partial_match"

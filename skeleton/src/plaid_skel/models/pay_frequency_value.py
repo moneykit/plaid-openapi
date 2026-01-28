@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PayFrequencyValue(str, Enum):
     MONTHLY = "monthly"
     SEMIMONTHLY = "semimonthly"

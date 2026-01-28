@@ -18282,8 +18282,6 @@ components:
             dashboard](https://dashboard.plaid.com/team/api). If initializing on Android,
             `android_package_name` must be specified instead and `redirect_uri` should
             be left blank.
-        deposit_switch:
-          $ref: '#/components/schemas/LinkTokenCreateRequestDepositSwitch'
         base_report:
           $ref: '#/components/schemas/LinkTokenCreateRequestBaseReport'
         consumer_report_permissible_purpose:
@@ -18295,10 +18293,10 @@ components:
         hosted_link:
           $ref: '#/components/schemas/LinkTokenCreateHostedLink'
       required:
-      - language
-      - country_codes
-      - redirect_uri
       - user
+      - redirect_uri
+      - country_codes
+      - language
       - client_name
     LinkTokenAccountFilters:
       description: 'By default, Link will provide limited account filtering: it will
@@ -20466,8 +20464,8 @@ components:
       type: string
       title: CountryCode
       enum:
-      - CA
       - US
+      - CA
       - GB
       description: ISO-3166-1 alpha-2 country code standard.
     ConsumerReportPermissiblePurpose:
@@ -22972,8 +22970,8 @@ components:
       title: Products
       enum:
       - auth
-      - balance
       - identity
+      - balance
       - transactions
       description: A list of products that an institution can support. All Items must
         be initialized with at least one product. The Balance product is always available

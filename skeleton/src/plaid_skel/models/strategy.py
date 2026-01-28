@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class Strategy(str, Enum):
     RESET = "reset"
     INCOMPLETE = "incomplete"

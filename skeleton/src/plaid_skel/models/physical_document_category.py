@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PhysicalDocumentCategory(str, Enum):
     DRIVERS_LICENSE = "drivers_license"
     ID_CARD = "id_card"

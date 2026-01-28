@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXPartyType(str, Enum):
     DATA_ACCESS_PLATFORM = "DATA_ACCESS_PLATFORM"
     DATA_PROVIDER = "DATA_PROVIDER"

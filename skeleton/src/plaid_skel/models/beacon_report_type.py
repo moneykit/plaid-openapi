@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class BeaconReportType(str, Enum):
     FIRST_PARTY = "first_party"
     THIRD_PARTY = "third_party"

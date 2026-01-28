@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class WalletTransactionStatus(str, Enum):
     AUTHORISING = "AUTHORISING"
     INITIATED = "INITIATED"

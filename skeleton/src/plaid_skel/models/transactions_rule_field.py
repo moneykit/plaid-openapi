@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransactionsRuleField(str, Enum):
     TRANSACTION_ID = "TRANSACTION_ID"
     NAME = "NAME"

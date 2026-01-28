@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class LinkEventName(str, Enum):
     BANK_INCOME_INSIGHTS_COMPLETED = "BANK_INCOME_INSIGHTS_COMPLETED"
     CLOSE_OAUTH = "CLOSE_OAUTH"

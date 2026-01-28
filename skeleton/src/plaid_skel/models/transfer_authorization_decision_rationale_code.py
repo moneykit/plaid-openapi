@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferAuthorizationDecisionRationaleCode(str, Enum):
     NSF = "NSF"
     RISK = "RISK"

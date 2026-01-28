@@ -4,6 +4,5 @@
 from enum import Enum
 
 
-
 class ISOCurrencyCode(str, Enum):
     USD = "USD"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class IncomeVerificationDocParsingConfig(str, Enum):
     OCR = "ocr"
     FRAUD_RISK = "fraud_risk"

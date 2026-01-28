@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ExpirationDate(str, Enum):
     NOT_EXPIRED = "not_expired"
     EXPIRED = "expired"

@@ -4,6 +4,5 @@
 from enum import Enum
 
 
-
 class CreditBankIncomeWarningType(str, Enum):
     BANK_INCOME_WARNING = "BANK_INCOME_WARNING"

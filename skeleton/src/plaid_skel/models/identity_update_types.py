@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class IdentityUpdateTypes(str, Enum):
     PHONES = "PHONES"
     ADDRESSES = "ADDRESSES"

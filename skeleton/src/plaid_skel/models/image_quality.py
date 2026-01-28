@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ImageQuality(str, Enum):
     HIGH = "high"
     MEDIUM = "medium"

@@ -16,7 +16,6 @@ from plaid_skel.models.consumer_report_permissible_purpose import ConsumerReport
 from plaid_skel.models.country_code import CountryCode
 from plaid_skel.models.link_token_create_hosted_link import LinkTokenCreateHostedLink
 from plaid_skel.models.link_token_create_request_base_report import LinkTokenCreateRequestBaseReport
-from plaid_skel.models.link_token_create_request_deposit_switch import LinkTokenCreateRequestDepositSwitch
 from plaid_skel.models.link_token_create_request_statements import LinkTokenCreateRequestStatements
 from plaid_skel.models.link_token_create_request_user import LinkTokenCreateRequestUser
 from plaid_skel.models.link_token_investments_auth import LinkTokenInvestmentsAuth
@@ -41,7 +40,6 @@ class LinkTokenCreateRequest(BaseModel):
     webhook: Optional[str] = Field(default=None, description="The destination URL to which any webhooks should be sent. Note that webhooks for Payment Initiation (e-wallet transactions only), Transfer, Bank Transfer (including Auth micro-deposit notification webhooks) and Identity Verification are configured via the Dashboard instead.")
     access_token: Optional[str] = Field(default=None, description="The `access_token` associated with the Item to update or reference, used when updating, modifying, or accessing an existing `access_token`. Used when launching Link in update mode, when completing the Same-day (manual) Micro-deposit flow, or (optionally) when initializing Link for a returning user as part of the Transfer UI flow.")
     redirect_uri: str = Field( description="A URI indicating the destination where a user should be forwarded after completing the Link flow; used to support OAuth authentication flows when launching Link in the browser or via a webview. The `redirect_uri` should not contain any query parameters. When used in Production or Development, must be an https URI. To specify any subdomain, use `*` as a wildcard character, e.g. `https://*.example.com/oauth.html`. Note that any redirect URI must also be added to the Allowed redirect URIs list in the [developer dashboard](https://dashboard.plaid.com/team/api). If initializing on Android, `android_package_name` must be specified instead and `redirect_uri` should be left blank.")
-    deposit_switch: Optional[LinkTokenCreateRequestDepositSwitch] = Field(default=None,)
     base_report: Optional[LinkTokenCreateRequestBaseReport] = Field(default=None,)
     consumer_report_permissible_purpose: Optional[ConsumerReportPermissiblePurpose] = Field(default=None,)
     statements: Optional[LinkTokenCreateRequestStatements] = Field(default=None,)

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXContentTypes(str, Enum):
     APPLICATION_PDF = "application/pdf"
     IMAGE_GIF = "image/gif"

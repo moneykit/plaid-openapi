@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class DashboardUserStatus(str, Enum):
     INVITED = "invited"
     ACTIVE = "active"

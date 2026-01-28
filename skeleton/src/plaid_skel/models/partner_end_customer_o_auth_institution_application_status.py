@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PartnerEndCustomerOAuthInstitutionApplicationStatus(str, Enum):
     NOT_STARTED = "NOT_STARTED"
     PROCESSING = "PROCESSING"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class InvestmentAccountSubtype(str, Enum):
     _529 = "529"
     _401A = "401a"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferStatus(str, Enum):
     PENDING = "pending"
     POSTED = "posted"

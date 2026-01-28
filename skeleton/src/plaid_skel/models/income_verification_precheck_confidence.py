@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class IncomeVerificationPrecheckConfidence(str, Enum):
     HIGH = "HIGH"
     LOW = "LOW"

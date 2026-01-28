@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class DocType(str, Enum):
     UNKNOWN = "UNKNOWN"
     DOCUMENT_TYPE_PAYSTUB = "DOCUMENT_TYPE_PAYSTUB"

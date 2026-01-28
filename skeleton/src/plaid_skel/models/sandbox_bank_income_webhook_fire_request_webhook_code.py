@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class SandboxBankIncomeWebhookFireRequestWebhookCode(str, Enum):
     BANK_INCOME_REFRESH_UPDATE = "BANK_INCOME_REFRESH_UPDATE"
     BANK_INCOME_REFRESH_COMPLETE = "BANK_INCOME_REFRESH_COMPLETE"

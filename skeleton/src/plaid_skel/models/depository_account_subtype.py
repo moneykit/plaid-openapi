@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class DepositoryAccountSubtype(str, Enum):
     CHECKING = "checking"
     SAVINGS = "savings"

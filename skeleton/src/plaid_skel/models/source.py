@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class Source(str, Enum):
     DASHBOARD = "dashboard"
     LINK = "link"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferBalanceType(str, Enum):
     PREFUNDED_RTP_CREDITS = "prefunded_rtp_credits"
     PREFUNDED_ACH_CREDITS = "prefunded_ach_credits"

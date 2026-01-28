@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class OriginatorExpectedTransferFrequency(str, Enum):
     ONCE_PER_MONTH = "once_per_month"
     TWICE_PER_MONTH = "twice_per_month"

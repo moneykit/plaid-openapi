@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class AccountType(str, Enum):
     INVESTMENT = "investment"
     CREDIT = "credit"

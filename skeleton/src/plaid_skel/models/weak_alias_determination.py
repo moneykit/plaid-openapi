@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class WeakAliasDetermination(str, Enum):
     NONE = "none"
     SOURCE = "source"

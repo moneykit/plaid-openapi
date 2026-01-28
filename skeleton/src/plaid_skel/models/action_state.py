@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ActionState(str, Enum):
     UNKNOWN = "UNKNOWN"
     ATTEMPT = "ATTEMPT"

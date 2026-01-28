@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class CreditSessionBankEmploymentStatus(str, Enum):
     APPROVED = "APPROVED"
     NO_EMPLOYERS_FOUND = "NO_EMPLOYERS_FOUND"

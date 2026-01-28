@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class WatchlistScreeningHitStatus(str, Enum):
     CONFIRMED = "confirmed"
     PENDING_REVIEW = "pending_review"

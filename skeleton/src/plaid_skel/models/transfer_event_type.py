@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferEventType(str, Enum):
     PENDING = "pending"
     CANCELLED = "cancelled"

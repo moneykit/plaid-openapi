@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class BankTransferType(str, Enum):
     DEBIT = "debit"
     CREDIT = "credit"

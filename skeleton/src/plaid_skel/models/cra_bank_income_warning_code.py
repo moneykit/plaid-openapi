@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class CraBankIncomeWarningCode(str, Enum):
     IDENTITY_UNAVAILABLE = "IDENTITY_UNAVAILABLE"
     TRANSACTIONS_UNAVAILABLE = "TRANSACTIONS_UNAVAILABLE"

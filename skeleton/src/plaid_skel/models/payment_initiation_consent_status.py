@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PaymentInitiationConsentStatus(str, Enum):
     UNAUTHORISED = "UNAUTHORISED"
     AUTHORISED = "AUTHORISED"

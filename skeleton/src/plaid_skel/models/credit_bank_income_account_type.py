@@ -4,6 +4,5 @@
 from enum import Enum
 
 
-
 class CreditBankIncomeAccountType(str, Enum):
     DEPOSITORY = "depository"

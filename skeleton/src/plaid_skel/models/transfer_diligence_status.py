@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransferDiligenceStatus(str, Enum):
     NOT_SUBMITTED = "not_submitted"
     SUBMITTED = "submitted"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXHateoasLinkAction(str, Enum):
     GET = "GET"
     POST = "POST"

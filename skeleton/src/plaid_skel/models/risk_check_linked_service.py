@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class RiskCheckLinkedService(str, Enum):
     APPLE = "apple"
     EBAY = "ebay"

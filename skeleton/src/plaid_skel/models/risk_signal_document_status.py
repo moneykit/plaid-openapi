@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class RiskSignalDocumentStatus(str, Enum):
     PROCESSING = "PROCESSING"
     PROCESSING_COMPLETE = "PROCESSING_COMPLETE"

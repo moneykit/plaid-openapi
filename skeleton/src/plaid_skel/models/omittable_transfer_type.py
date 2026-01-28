@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class OmittableTransferType(str, Enum):
     DEBIT = "debit"
     CREDIT = "credit"

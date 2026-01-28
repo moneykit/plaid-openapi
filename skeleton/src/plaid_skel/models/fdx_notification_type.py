@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXNotificationType(str, Enum):
     CONSENT_REVOKED = "CONSENT_REVOKED"
     CONSENT_UPDATED = "CONSENT_UPDATED"

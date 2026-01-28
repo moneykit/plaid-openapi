@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class InvestmentTransactionSubtype(str, Enum):
     ACCOUNT_FEE = "account fee"
     ADJUSTMENT = "adjustment"

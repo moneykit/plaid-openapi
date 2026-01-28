@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class FDXNotificationCategory(str, Enum):
     SECURITY = "SECURITY"
     MAINTENANCE = "MAINTENANCE"

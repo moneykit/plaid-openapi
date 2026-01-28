@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ACHClass(str, Enum):
     CCD = "ccd"
     PPD = "ppd"

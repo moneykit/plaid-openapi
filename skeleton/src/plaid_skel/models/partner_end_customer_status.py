@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class PartnerEndCustomerStatus(str, Enum):
     UNDER_REVIEW = "UNDER_REVIEW"
     PENDING_ENABLEMENT = "PENDING_ENABLEMENT"

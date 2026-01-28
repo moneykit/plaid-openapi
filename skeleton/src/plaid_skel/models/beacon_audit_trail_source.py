@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class BeaconAuditTrailSource(str, Enum):
     DASHBOARD = "dashboard"
     API = "api"

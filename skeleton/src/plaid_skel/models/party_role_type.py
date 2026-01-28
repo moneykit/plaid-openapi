@@ -4,6 +4,5 @@
 from enum import Enum
 
 
-
 class PartyRoleType(str, Enum):
     BORROWER = "Borrower"

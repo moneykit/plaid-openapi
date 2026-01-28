@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class BeaconUserStatus(str, Enum):
     REJECTED = "rejected"
     PENDING_REVIEW = "pending_review"

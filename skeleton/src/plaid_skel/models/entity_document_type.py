@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class EntityDocumentType(str, Enum):
     BIK = "bik"
     BUSINESS_NUMBER = "business_number"

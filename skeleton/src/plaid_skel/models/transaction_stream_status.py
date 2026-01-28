@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class TransactionStreamStatus(str, Enum):
     UNKNOWN = "UNKNOWN"
     MATURE = "MATURE"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class LinkDeliveryVerificationStatus(str, Enum):
     AUTOMATICALLY_VERIFIED = "automatically_verified"
     PENDING_AUTOMATIC_VERIFICATION = "pending_automatic_verification"

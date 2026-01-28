@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class WatchlistScreeningDocumentType(str, Enum):
     BIRTH_CERTIFICATE = "birth_certificate"
     DRIVERS_LICENSE = "drivers_license"

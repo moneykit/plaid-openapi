@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class RiskCheckEmailIsDeliverableStatus(str, Enum):
     YES = "yes"
     NO = "no"

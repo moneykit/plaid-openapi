@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class IDNumberType(str, Enum):
     AR_DNI = "ar_dni"
     AU_DRIVERS_LICENSE = "au_drivers_license"

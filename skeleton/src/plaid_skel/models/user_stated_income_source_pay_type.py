@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class UserStatedIncomeSourcePayType(str, Enum):
     UNKNOWN = "UNKNOWN"
     GROSS = "GROSS"

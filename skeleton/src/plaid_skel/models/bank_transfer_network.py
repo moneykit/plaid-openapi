@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class BankTransferNetwork(str, Enum):
     ACH = "ach"
     SAME_DAY_ACH = "same-day-ach"

@@ -4,7 +4,6 @@
 from enum import Enum
 
 
-
 class ScopesContext(str, Enum):
     ENROLLMENT = "ENROLLMENT"
     PORTAL = "PORTAL"
