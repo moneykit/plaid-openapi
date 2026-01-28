@@ -25,15 +25,9 @@ class EntityWatchlistScreening(BaseModel):
 
     id: str = Field( description="ID of the associated entity screening.")
     search_terms: EntityWatchlistScreeningSearchTerms = Field()
-    assignee: Optional[str] = Field(default=None, description="ID of the associated user.")
+    assignee: Optional[str] = Field(default=None, description="ID of the associated user. To retrieve the email address or other details of the person corresponding to this id, use `/dashboard_user/get`.")
     status: WatchlistScreeningStatus = Field()
-    client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. Either a `user_id` or the `client_user_id` must be provided. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     audit_trail: WatchlistScreeningAuditTrail = Field()
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_min_length(cls, value):
-        assert len(value) >= 1
-        return value
 
 EntityWatchlistScreening.update_forward_refs()

@@ -13,6 +13,8 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_amount import PaymentAmount
+from plaid_skel.models.payment_initiation_consent_processing_mode import PaymentInitiationConsentProcessingMode
+from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
 
 
 
@@ -25,7 +27,10 @@ class PaymentInitiationConsentPaymentExecuteRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     consent_id: str = Field( description="The consent ID.")
     amount: PaymentAmount = Field()
-    idempotency_key: str = Field( description="A random key provided by the client, per unique consent payment. Maximum of 128 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. If a request to execute a consent payment fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single payment is created. If the request was successfully processed, it will prevent any payment that uses the same idempotency key, and was received within 24 hours of the first request, from being processed.")
+    idempotency_key: str = Field( description="A random key provided by the client, per unique consent payment. Maximum of 128 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. If a request to execute a consent payment fails due to a network connection error, you can retry the request with the same idempotency key to guarantee that only a single payment is created. If the request was successfully processed, it will prevent any payment that uses the same idempotency key, and was received within 48 hours of the first request, from being processed.")
+    reference: Optional[str] = Field(default=None, description="A reference for the payment. This must be an alphanumeric string with at most 18 characters and must not contain any special characters (since not all institutions support them). If not provided, Plaid will automatically fall back to the reference from consent. In order to track settlement via Payment Confirmation, each payment must have a unique reference. If the reference provided through the API is not unique, Plaid will adjust it. Some institutions may limit the reference to less than 18 characters. If necessary, Plaid will adjust the reference by truncating it to fit the institution's requirements. Both the originally provided and automatically adjusted references (if any) can be found in the `reference` and `adjusted_reference` fields, respectively.")
+    scope: Optional[PaymentInitiationConsentScope] = Field(default=None,)
+    processing_mode: Optional[PaymentInitiationConsentProcessingMode] = Field(default=None,)
 
     @field_validator("idempotency_key")
     @classmethod
@@ -37,6 +42,18 @@ class PaymentInitiationConsentPaymentExecuteRequest(BaseModel):
     @classmethod
     def idempotency_key_max_length(cls, value):
         assert len(value) <= 128
+        return value
+
+    @field_validator("reference")
+    @classmethod
+    def reference_min_length(cls, value):
+        assert len(value) >= 1
+        return value
+
+    @field_validator("reference")
+    @classmethod
+    def reference_max_length(cls, value):
+        assert len(value) <= 18
         return value
 
 PaymentInitiationConsentPaymentExecuteRequest.update_forward_refs()

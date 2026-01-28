@@ -24,7 +24,7 @@ class LinkDeliveryCallbackWebhook(BaseModel):
 
     webhook_type: str = Field( description="`LINK_DELIVERY`")
     webhook_code: str = Field( description="`LINK_CALLBACK`")
-    link_delivery_session_id: str = Field( description="The ID of the link delivery session.")
+    link_delivery_session_id: str = Field( description="The ID of the Hosted Link session.")
     timestamp: str = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     error: Optional[PlaidError] = Field(default=None,)
     link_callback_metadata: LinkCallbackMetadata = Field()

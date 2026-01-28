@@ -23,5 +23,7 @@ class CreditSessionDocumentIncomeResult(BaseModel):
 
     num_paystubs_uploaded: int = Field( description="The number of paystubs uploaded by the user.")
     num_w2s_uploaded: int = Field( description="The number of w2s uploaded by the user.")
+    num_bank_statements_uploaded: int = Field( description="The number of bank statements uploaded by the user.")
+    num_1099s_uploaded: int = Field( description="The number of 1099s uploaded by the user")
 
 CreditSessionDocumentIncomeResult.update_forward_refs()

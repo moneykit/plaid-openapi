@@ -24,7 +24,7 @@ class StudentLoan(BaseModel):
     """Contains details about a student loan account"""
 
 
-    account_id: Optional[str] = Field(default=None, description="The ID of the account that this liability belongs to.")
+    account_id: Optional[str] = Field(default=None, description="The ID of the account that this liability belongs to. Each account can only contain one liability.")
     account_number: Optional[str] = Field(default=None, description="The account number of the loan. For some institutions, this may be a masked version of the number (e.g., the last 4 digits instead of the entire number).")
     disbursement_dates: Optional[List[date]] = Field(default=None, description="The dates on which loaned funds were disbursed or will be disbursed. These are often in the past. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     expected_payoff_date: Optional[date_] = Field(default=None, description="The date when the student loan is expected to be paid off. Availability for this field is limited. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
@@ -33,10 +33,11 @@ class StudentLoan(BaseModel):
     is_overdue: Optional[bool] = Field(default=None, description="`true` if a payment is currently overdue. Availability for this field is limited.")
     last_payment_amount: Optional[float] = Field(default=None, description="The amount of the last payment.")
     last_payment_date: Optional[date_] = Field(default=None, description="The date of the last payment. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
+    last_statement_balance: Optional[float] = Field(default=None, description="The total amount owed as of the last statement issued")
     last_statement_issue_date: Optional[date_] = Field(default=None, description="The date of the last statement. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     loan_name: Optional[str] = Field(default=None, description="The type of loan, e.g., \"Consolidation Loans\".")
     loan_status: StudentLoanStatus = Field()
-    minimum_payment_amount: Optional[float] = Field(default=None, description="The minimum payment due for the next billing cycle. There are some exceptions: Some institutions require a minimum payment across all loans associated with an account number. Our API presents that same minimum payment amount on each loan. The institutions that do this are: Great Lakes ( `ins_116861`), Firstmark (`ins_116295`), Commonbond Firstmark Services (`ins_116950`), Nelnet (`ins_116528`), EdFinancial Services (`ins_116304`), Granite State (`ins_116308`), and Oklahoma Student Loan Authority (`ins_116945`). Firstmark (`ins_116295` ) and Navient (`ins_116248`) will display as $0 if there is an autopay program in effect.")
+    minimum_payment_amount: Optional[float] = Field(default=None, description="The minimum payment due for the next billing cycle. There are some exceptions: Some institutions require a minimum payment across all loans associated with an account number. Our API presents that same minimum payment amount on each loan. The institutions that do this are: Great Lakes ( `ins_116861`), Firstmark (`ins_116295`), Commonbond Firstmark Services (`ins_116950`), Granite State (`ins_116308`), and Oklahoma Student Loan Authority (`ins_116945`). Firstmark (`ins_116295` ) and Navient (`ins_116248`) will display as $0 if there is an autopay program in effect.")
     next_payment_due_date: Optional[date_] = Field(default=None, description="The due date for the next payment. The due date is `null` if a payment is not expected. A payment is not expected if `loan_status.type` is `deferment`, `in_school`, `consolidated`, `paid in full`, or `transferred`. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
     origination_date: Optional[date_] = Field(default=None, description="The date on which the loan was initially lent. Dates are returned in an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD). ")
     origination_principal_amount: Optional[float] = Field(default=None, description="The original principal balance of the loan.")

@@ -15,6 +15,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 from plaid_skel.models.risk_check_behavior_bot_detected_label import RiskCheckBehaviorBotDetectedLabel
 from plaid_skel.models.risk_check_behavior_fraud_ring_detected_label import RiskCheckBehaviorFraudRingDetectedLabel
 from plaid_skel.models.risk_check_behavior_user_interactions_label import RiskCheckBehaviorUserInteractionsLabel
+from plaid_skel.models.risk_level_with_no_data import RiskLevelWithNoData
 
 
 
@@ -27,5 +28,6 @@ class RiskCheckBehavior(BaseModel):
     user_interactions: RiskCheckBehaviorUserInteractionsLabel = Field()
     fraud_ring_detected: RiskCheckBehaviorFraudRingDetectedLabel = Field()
     bot_detected: RiskCheckBehaviorBotDetectedLabel = Field()
+    risk_level: Optional[RiskLevelWithNoData] = Field(default=None,)
 
 RiskCheckBehavior.update_forward_refs()

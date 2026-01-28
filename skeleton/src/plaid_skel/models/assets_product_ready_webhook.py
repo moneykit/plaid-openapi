@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.asset_report_type import AssetReportType
 from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
 
 
@@ -24,7 +25,8 @@ class AssetsProductReadyWebhook(BaseModel):
     webhook_type: str = Field( description="`ASSETS`")
     webhook_code: str = Field( description="`PRODUCT_READY`")
     asset_report_id: str = Field( description="The `asset_report_id` corresponding to the Asset Report the webhook has fired for.")
-    report_type: Optional[str] = Field(default=None, description="The report type, indicating whether the Asset Report is a `full` or `fast` report.")
+    user_id: Optional[str] = Field(default=None, description="The `user_id` corresponding to the User ID the webhook has fired for.")
+    report_type: Optional[AssetReportType] = Field(default=None,)
     environment: WebhookEnvironmentValues = Field()
 
 AssetsProductReadyWebhook.update_forward_refs()

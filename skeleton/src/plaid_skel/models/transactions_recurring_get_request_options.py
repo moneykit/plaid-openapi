@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.personal_finance_category_version import PersonalFinanceCategoryVersion
 
 
 
@@ -20,6 +21,7 @@ class TransactionsRecurringGetRequestOptions(BaseModel):
     """An optional object to be used with the request. If specified, `options` must not be `null`."""
 
 
-    include_personal_finance_category: Optional[bool] = Field(default=None, description="Include the [`personal_finance_category`](https://plaid.com/docs/api/products/transactions/#transactions-get-response-transactions-personal-finance-category) object for each transaction stream in the response.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories.")
+    include_personal_finance_category: Optional[bool] = Field(default=None, description="Personal finance categories are now returned by default.")
+    personal_finance_category_version: Optional[PersonalFinanceCategoryVersion] = Field(default=None,)
 
 TransactionsRecurringGetRequestOptions.update_forward_refs()

@@ -20,7 +20,7 @@ class FDXFiAttribute(BaseModel):
     """Financial Institution provider-specific attribute"""
 
 
-    name: Optional[str] = Field(default=None, description="Name of attribute")
-    value: Optional[str] = Field(default=None, description="Value of attribute")
+    name: str = Field( description="Name of attribute")
+    value: str = Field( description="Value of attribute")
 
 FDXFiAttribute.update_forward_refs()

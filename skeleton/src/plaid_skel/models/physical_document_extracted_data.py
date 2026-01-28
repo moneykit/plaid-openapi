@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.identity_verification_document_address_response import IdentityVerificationDocumentAddressResponse
+from plaid_skel.models.identity_verification_document_name_response import IdentityVerificationDocumentNameResponse
 from plaid_skel.models.physical_document_category import PhysicalDocumentCategory
 
 
@@ -24,14 +26,12 @@ class PhysicalDocumentExtractedData(BaseModel):
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")
     category: PhysicalDocumentCategory = Field()
-    expiration_date: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    expiration_date: Optional[date_] = Field(default=None, description="The expiration date of the document in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    issue_date: Optional[date_] = Field(default=None, description="The issue date of the document in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     issuing_country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
-    issuing_region: Optional[str] = Field(default=None, description="An ISO 3166-2 subdivision code. Related terms would be \"state\", \"province\", \"prefecture\", \"zone\", \"subdivision\", etc.")
-
-    @field_validator("issuing_country")
-    @classmethod
-    def issuing_country_min_length(cls, value):
-        assert len(value) >= 2
-        return value
+    issuing_region: Optional[str] = Field(default=None, description="A subdivision code. \"Subdivision\" is a generic term for \"state\", \"province\", \"prefecture\", \"zone\", etc. For the list of valid codes, see [country subdivision codes](https://plaid.com/documents/country_subdivision_codes.json). Country prefixes are omitted, since they are inferred from the `country` field.")
+    date_of_birth: Optional[date_] = Field(default=None, description="A date extracted from the document in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    address: Optional[IdentityVerificationDocumentAddressResponse] = Field(default=None,)
+    name: Optional[IdentityVerificationDocumentNameResponse] = Field(default=None,)
 
 PhysicalDocumentExtractedData.update_forward_refs()

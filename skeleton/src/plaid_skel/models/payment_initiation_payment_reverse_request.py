@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_amount_to_refund import PaymentAmountToRefund
+from plaid_skel.models.payment_initiation_address import PaymentInitiationAddress
 
 
 
@@ -27,6 +28,8 @@ class PaymentInitiationPaymentReverseRequest(BaseModel):
     idempotency_key: str = Field( description="A random key provided by the client, per unique wallet transaction. Maximum of 128 characters.  The API supports idempotency for safely retrying requests without accidentally performing the same operation twice. If a request to execute a wallet transaction fails due to a network connection error, then after a minimum delay of one minute, you can retry the request with the same idempotency key to guarantee that only a single wallet transaction is created. If the request was successfully processed, it will prevent any transaction that uses the same idempotency key, and was received within 24 hours of the first request, from being processed.")
     reference: str = Field( description="A reference for the refund. This must be an alphanumeric string with 6 to 18 characters and must not contain any special characters or spaces.")
     amount: Optional[PaymentAmountToRefund] = Field(default=None,)
+    counterparty_date_of_birth: Optional[date_] = Field(default=None, description="The counterparty's birthdate, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format.")
+    counterparty_address: Optional[PaymentInitiationAddress] = Field(default=None,)
 
     @field_validator("idempotency_key")
     @classmethod

@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.paystub_override_employer_address import PaystubOverrideEmployerAddress
 
 
 
@@ -21,5 +22,6 @@ class PaystubOverrideEmployer(BaseModel):
 
 
     name: Optional[str] = Field(default=None, description="The name of the employer.")
+    address: Optional[PaystubOverrideEmployerAddress] = Field(default=None,)
 
 PaystubOverrideEmployer.update_forward_refs()

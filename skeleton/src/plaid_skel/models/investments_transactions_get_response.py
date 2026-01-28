@@ -30,5 +30,6 @@ class InvestmentsTransactionsGetResponse(BaseModel):
     investment_transactions: List[InvestmentTransaction] = Field( description="The transactions being fetched")
     total_investment_transactions: int = Field( description="The total number of transactions available within the date range specified. If `total_investment_transactions` is larger than the size of the `transactions` array, more transactions are available and can be fetched via manipulating the `offset` parameter.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
+    is_investments_fallback_item: Optional[bool] = Field(default=None, description="When true, this field indicates that the Item's portfolio was manually created with the Investments Fallback flow.")
 
 InvestmentsTransactionsGetResponse.update_forward_refs()

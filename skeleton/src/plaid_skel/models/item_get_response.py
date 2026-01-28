@@ -12,8 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
-from plaid_skel.models.item import Item
 from plaid_skel.models.item_status_nullable import ItemStatusNullable
+from plaid_skel.models.item_with_consent_fields import ItemWithConsentFields
 
 
 
@@ -22,7 +22,7 @@ class ItemGetResponse(BaseModel):
     """ItemGetResponse defines the response schema for `/item/get` and `/item/webhook/update`"""
 
 
-    item: Item = Field()
+    item: ItemWithConsentFields = Field()
     status: Optional[ItemStatusNullable] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

@@ -19,7 +19,7 @@ from plaid_skel.models.plaid_error import PlaidError
 
 
 class CreditPayrollIncomeRiskSignalsGetResponse(BaseModel):
-    """CreditPayrollIncomeRiskSignalsGetRequest defines the response schema for `/beta/credit/payroll_income/risk_signals/get`"""
+    """CreditPayrollIncomeRiskSignalsGetRequest defines the response schema for `/credit/payroll_income/risk_signals/get`"""
 
 
     items: List[PayrollRiskSignalsItem] = Field( description="Array of payroll items.")

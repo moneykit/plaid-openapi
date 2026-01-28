@@ -12,9 +12,9 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.omittable_transfer_type import OmittableTransferType
 from plaid_skel.models.transfer_event_type import TransferEventType
 from plaid_skel.models.transfer_failure import TransferFailure
-from plaid_skel.models.transfer_type import TransferType
 
 
 
@@ -26,17 +26,20 @@ class TransferEvent(BaseModel):
     event_id: int = Field( description="Plaid’s unique identifier for this event. IDs are sequential unsigned 64-bit integers.")
     timestamp: datetime_ = Field( description="The datetime when this event occurred. This will be of the form `2006-01-02T15:04:05Z`.")
     event_type: TransferEventType = Field()
-    account_id: str = Field( description="The account ID associated with the transfer.")
-    funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
-    transfer_id: str = Field( description="Plaid’s unique identifier for a transfer.")
+    account_id: Optional[str] = Field(default=None, description="The account ID associated with the transfer. This field is omitted for Plaid Ledger Sweep events.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the associated funding account, available in the Plaid Dashboard. If present, this indicates which of your business checking accounts will be credited or debited.")
+    ledger_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a Plaid Ledger Balance.")
+    transfer_id: str = Field( description="Plaid's unique identifier for a transfer. This field is an empty string for Plaid Ledger Sweep events.")
     origination_account_id: Optional[str] = Field(default=None, description="The ID of the origination account that this balance belongs to.")
-    transfer_type: TransferType = Field()
-    transfer_amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
+    transfer_type: Optional[OmittableTransferType] = Field(default=None,)
+    transfer_amount: Optional[str] = Field(default=None, description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\"). This field is omitted for Plaid Ledger Sweep events.")
     failure_reason: Optional[TransferFailure] = Field(default=None,)
     sweep_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a sweep.")
     sweep_amount: Optional[str] = Field(default=None, description="A signed amount of how much was `swept` or `return_swept` for this transfer (decimal string with two digits of precision e.g. \"-5.50\").")
     refund_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a refund. A non-null value indicates the event is for the associated refund of the transfer.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of the transfer that this event applies to. Only present if the transfer was created on behalf of another client as a third-party sender (TPS).")
+    intent_id: Optional[str] = Field(default=None, description="The `id` returned by the /transfer/intent/create endpoint, for transfers created via Transfer UI. For transfers not created by Transfer UI, the value is `null`. This will currently only be populated for RfP transfers.")
+    wire_return_fee: Optional[str] = Field(default=None, description="The fee amount deducted from the original transfer during a wire return, if applicable.")
 
     @field_validator("event_id")
     @classmethod

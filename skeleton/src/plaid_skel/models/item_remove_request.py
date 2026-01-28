@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.item_remove_reason_code import ItemRemoveReasonCode
 
 
 
@@ -23,5 +24,13 @@ class ItemRemoveRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
+    reason_code: Optional[ItemRemoveReasonCode] = Field(default=None,)
+    reason_note: Optional[str] = Field(default=None, description="Additional context or details about the reason for removing the item. Personally identifiable information, such as an email address or phone number, should not be included in the `reason_note`.")
+
+    @field_validator("reason_note")
+    @classmethod
+    def reason_note_max_length(cls, value):
+        assert len(value) <= 512
+        return value
 
 ItemRemoveRequest.update_forward_refs()

@@ -11,3 +11,4 @@ class FDXNotificationCategory(str, Enum):
     FRAUD = "FRAUD"
     CONSENT = "CONSENT"
     NEW_DATA = "NEW_DATA"
+    TOKENIZED_ACCOUNT_NUMBER = "TOKENIZED_ACCOUNT_NUMBER"

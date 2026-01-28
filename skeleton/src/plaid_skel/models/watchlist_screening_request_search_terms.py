@@ -21,27 +21,9 @@ class WatchlistScreeningRequestSearchTerms(BaseModel):
 
 
     watchlist_program_id: str = Field( description="ID of the associated program.")
-    legal_name: str = Field( description="The legal name of the individual being screened.")
+    legal_name: str = Field( description="The legal name of the individual being screened. Must have at least one alphabetical character, have a maximum length of 100 characters, and not include leading or trailing spaces.")
     date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document.")
+    document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document. Must be between 4 and 32 characters long, and cannot have leading or trailing spaces.")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
-
-    @field_validator("legal_name")
-    @classmethod
-    def legal_name_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
-    @field_validator("document_number")
-    @classmethod
-    def document_number_min_length(cls, value):
-        assert len(value) >= 4
-        return value
-
-    @field_validator("country")
-    @classmethod
-    def country_min_length(cls, value):
-        assert len(value) >= 2
-        return value
 
 WatchlistScreeningRequestSearchTerms.update_forward_refs()

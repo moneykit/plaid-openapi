@@ -22,6 +22,7 @@ class IndividualWatchlistCode(str, Enum):
     US_ISN = "US_ISN"
     US_MBS = "US_MBS"
     US_PLC = "US_PLC"
+    US_SAM = "US_SAM"
     US_SDN = "US_SDN"
     US_SSI = "US_SSI"
     SG_SOF = "SG_SOF"

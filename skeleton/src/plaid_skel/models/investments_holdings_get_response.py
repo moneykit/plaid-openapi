@@ -29,5 +29,6 @@ class InvestmentsHoldingsGetResponse(BaseModel):
     securities: List[Security] = Field( description="Objects describing the securities held in the accounts associated with the Item. ")
     item: Item = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
+    is_investments_fallback_item: Optional[bool] = Field(default=None, description="When true, this field indicates that the Item's portfolio was manually created with the Investments Fallback flow.")
 
 InvestmentsHoldingsGetResponse.update_forward_refs()

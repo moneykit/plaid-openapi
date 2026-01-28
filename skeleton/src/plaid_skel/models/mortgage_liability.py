@@ -23,7 +23,7 @@ class MortgageLiability(BaseModel):
 
 
     account_id: str = Field( description="The ID of the account that this liability belongs to.")
-    account_number: str = Field( description="The account number of the loan.")
+    account_number: Optional[str] = Field(default=None, description="The account number of the loan.")
     current_late_fee: Optional[float] = Field(default=None, description="The current outstanding amount charged for late payment.")
     escrow_balance: Optional[float] = Field(default=None, description="Total amount held in escrow to pay taxes and insurance on behalf of the borrower.")
     has_pmi: Optional[bool] = Field(default=None, description="Indicates whether the borrower has private mortgage insurance in effect.")

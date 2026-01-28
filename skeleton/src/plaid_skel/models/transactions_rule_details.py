@@ -24,6 +24,6 @@ class TransactionsRuleDetails(BaseModel):
 
     field: TransactionsRuleField = Field()
     type: TransactionsRuleType = Field()
-    query: str = Field( description="For TRANSACTION_ID field, provide transaction_id. For NAME field, provide a string pattern. ")
+    query: str = Field( description="For `TRANSACTION_ID` field, provide `transaction_id`. For `NAME` field, provide a string pattern. ")
 
 TransactionsRuleDetails.update_forward_refs()

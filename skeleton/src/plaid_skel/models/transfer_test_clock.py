@@ -20,7 +20,7 @@ class TransferTestClock(BaseModel):
     """Defines the test clock for a transfer."""
 
 
-    test_clock_id: str = Field( description="Plaid’s unique identifier for a test clock.")
+    test_clock_id: str = Field( description="Plaid’s unique identifier for a test clock. This field is only populated in the Sandbox environment, and only if a `test_clock_id` was included in the `/transfer/recurring/create` request. For more details, see [Simulating recurring transfers](https://plaid.com/docs/transfer/sandbox/#simulating-recurring-transfers).")
     virtual_time: datetime_ = Field( description="The virtual timestamp on the test clock. This will be of the form `2006-01-02T15:04:05Z`.")
 
 TransferTestClock.update_forward_refs()

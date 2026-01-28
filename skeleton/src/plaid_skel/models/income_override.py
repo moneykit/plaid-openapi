@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.paystub_override import PaystubOverride
+from plaid_skel.models.w2_override import W2Override
 
 
 
@@ -22,5 +23,6 @@ class IncomeOverride(BaseModel):
 
 
     paystubs: Optional[List[PaystubOverride]] = Field(default=None, description="A list of paystubs associated with the account.")
+    w2s: Optional[List[W2Override]] = Field(default=None, description="A list of w2s associated with the account.")
 
 IncomeOverride.update_forward_refs()

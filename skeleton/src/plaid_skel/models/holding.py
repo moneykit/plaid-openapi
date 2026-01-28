@@ -26,9 +26,11 @@ class Holding(BaseModel):
     institution_price_as_of: Optional[date_] = Field(default=None, description="The date at which `institution_price` was current.")
     institution_price_datetime: Optional[datetime_] = Field(default=None, description="Date and time at which `institution_price` was current, in ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ).  This field is returned for select financial institutions and comes as provided by the institution. It may contain default time values (such as 00:00:00). ")
     institution_value: float = Field( description="The value of the holding, as reported by the institution.")
-    cost_basis: Optional[float] = Field(default=None, description="The original total value of the holding. This field is calculated by Plaid as the sum of the purchase price of all of the shares in the holding.")
+    cost_basis: Optional[float] = Field(default=None, description="The total cost basis of the holding (e.g., the total amount spent to acquire all assets currently in the holding).")
     quantity: float = Field( description="The total quantity of the asset held, as reported by the financial institution. If the security is an option, `quantity` will reflect the total number of options (typically the number of contracts multiplied by 100), not the number of contracts.")
     iso_currency_code: Optional[str] = Field(default=None, description="The ISO-4217 currency code of the holding. Always `null` if `unofficial_currency_code` is non-`null`.")
     unofficial_currency_code: Optional[str] = Field(default=None, description="The unofficial currency code associated with the holding. Always `null` if `iso_currency_code` is non-`null`. Unofficial currency codes are used for currencies that do not have official ISO currency codes, such as cryptocurrencies and the currencies of certain countries.  See the [currency code schema](https://plaid.com/docs/api/accounts#currency-code-schema) for a full listing of supported `iso_currency_code`s. ")
+    vested_quantity: Optional[float] = Field(default=None, description="The total quantity of vested assets held, as reported by the financial institution. Vested assets are only associated with [equities](https://plaid.com/docs/api/products/investments/#investments-holdings-get-response-securities-type).")
+    vested_value: Optional[float] = Field(default=None, description="The value of the vested holdings as reported by the institution.")
 
 Holding.update_forward_refs()

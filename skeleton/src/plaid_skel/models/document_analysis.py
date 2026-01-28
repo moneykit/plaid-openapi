@@ -12,8 +12,12 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.aamva_analysis import AAMVAAnalysis
 from plaid_skel.models.document_authenticity_match_code import DocumentAuthenticityMatchCode
+from plaid_skel.models.fraud_analysis_details import FraudAnalysisDetails
+from plaid_skel.models.human_review import HumanReview
 from plaid_skel.models.image_quality import ImageQuality
+from plaid_skel.models.image_quality_details import ImageQualityDetails
 from plaid_skel.models.physical_document_extracted_data_analysis import PhysicalDocumentExtractedDataAnalysis
 
 
@@ -26,5 +30,9 @@ class DocumentAnalysis(BaseModel):
     authenticity: DocumentAuthenticityMatchCode = Field()
     image_quality: ImageQuality = Field()
     extracted_data: Optional[PhysicalDocumentExtractedDataAnalysis] = Field(default=None,)
+    fraud_analysis_details: Optional[FraudAnalysisDetails] = Field(default=None,)
+    image_quality_details: Optional[ImageQualityDetails] = Field(default=None,)
+    human_review: Optional[HumanReview] = Field(default=None,)
+    aamva_verification: Optional[AAMVAAnalysis] = Field(default=None,)
 
 DocumentAnalysis.update_forward_refs()

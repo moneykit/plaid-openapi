@@ -22,7 +22,7 @@ class TransferUserInRequest(BaseModel):
 
 
     legal_name: str = Field( description="The user's legal name.")
-    phone_number: Optional[str] = Field(default=None, description="The user's phone number.")
+    phone_number: Optional[str] = Field(default=None, description="The user's phone number. Phone number input may be validated against valid number ranges; number strings that do not match a real-world phone numbering scheme may cause the request to fail, even in the Sandbox test environment.")
     email_address: Optional[str] = Field(default=None, description="The user's email address.")
     address: Optional[TransferUserAddressInRequest] = Field(default=None,)
 

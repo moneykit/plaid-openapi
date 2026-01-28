@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.link_token_get_metadata_response import LinkTokenGetMetadataResponse
+from plaid_skel.models.link_token_get_sessions_response import LinkTokenGetSessionsResponse
 
 
 
@@ -24,7 +25,9 @@ class LinkTokenGetResponse(BaseModel):
     link_token: str = Field( description="A `link_token`, which can be supplied to Link in order to initialize it and receive a `public_token`, which can be exchanged for an `access_token`.")
     created_at: Optional[datetime_] = Field(default=None, description="The creation timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     expiration: Optional[datetime_] = Field(default=None, description="The expiration timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    link_sessions: Optional[List[LinkTokenGetSessionsResponse]] = Field(default=None, description="Information about Link sessions created using this `link_token`. Session data will be provided for up to six hours after the session has ended.")
     metadata: LinkTokenGetMetadataResponse = Field()
+    user_id: Optional[str] = Field(default=None, description="A unique user identifier, created by `/user/create`. Integrations that began using `/user/create` after December 10, 2025 use this field to identify a user instead of the `user_token`. For more details, see [new user APIs](https://plaid.com/docs/api/users/user-apis).")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 LinkTokenGetResponse.update_forward_refs()

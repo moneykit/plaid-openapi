@@ -12,8 +12,10 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.account_base import AccountBase
 from plaid_skel.models.removed_transaction import RemovedTransaction
 from plaid_skel.models.transaction import Transaction
+from plaid_skel.models.transactions_update_status import TransactionsUpdateStatus
 
 
 
@@ -22,10 +24,12 @@ class TransactionsSyncResponse(BaseModel):
     """TransactionsSyncResponse defines the response schema for `/transactions/sync`"""
 
 
+    transactions_update_status: TransactionsUpdateStatus = Field()
+    accounts: List[AccountBase] = Field( description="An array of accounts at a financial institution associated with the transactions in this response. Only accounts that have associated transactions will be shown. For example, `investment`-type accounts will be omitted.")
     added: List[Transaction] = Field( description="Transactions that have been added to the Item since `cursor` ordered by ascending last modified time.")
     modified: List[Transaction] = Field( description="Transactions that have been modified on the Item since `cursor` ordered by ascending last modified time.")
     removed: List[RemovedTransaction] = Field( description="Transactions that have been removed from the Item since `cursor` ordered by ascending last modified time.")
-    next_cursor: str = Field( description="Cursor used for fetching any future updates after the latest update provided in this response. The cursor obtained after all pages have been pulled (indicated by `has_more` being `false`) will be valid for at least 1 year. This cursor should be persisted for later calls. If transactions are not yet available, this will be an empty string.")
+    next_cursor: str = Field( description="Cursor used for fetching any future updates after the latest update provided in this response. The cursor obtained after all pages have been pulled (indicated by `has_more` being `false`) will be valid for at least 1 year. This cursor should be persisted for later calls. If transactions are not yet available, this will be an empty string.  If `account_id` is included in the request, the returned cursor will reflect updates for that specific account.")
     has_more: bool = Field( description="Represents if more than requested count of transaction updates exist. If true, the additional updates can be fetched by making an additional request with `cursor` set to `next_cursor`. If `has_more` is true, it’s important to pull all available pages, to make it less likely for underlying data changes to conflict with pagination.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

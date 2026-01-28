@@ -12,8 +12,12 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.plaid_error import PlaidError
+from plaid_skel.models.wallet_payment_scheme import WalletPaymentScheme
 from plaid_skel.models.wallet_transaction_amount import WalletTransactionAmount
 from plaid_skel.models.wallet_transaction_counterparty import WalletTransactionCounterparty
+from plaid_skel.models.wallet_transaction_failure_reason import WalletTransactionFailureReason
+from plaid_skel.models.wallet_transaction_relation import WalletTransactionRelation
 from plaid_skel.models.wallet_transaction_status import WalletTransactionStatus
 
 
@@ -26,12 +30,16 @@ class WalletTransaction(BaseModel):
     transaction_id: str = Field( description="A unique ID identifying the transaction")
     wallet_id: str = Field( description="The EMI (E-Money Institution) wallet that this payment is associated with, if any. This wallet is used as an intermediary account to enable Plaid to reconcile the settlement of funds for Payment Initiation requests.")
     reference: str = Field( description="A reference for the transaction")
-    type: str = Field( description="The type of the transaction. The supported transaction types that are returned are: `BANK_TRANSFER:` a transaction which credits an e-wallet through an external bank transfer.  `PAYOUT:` a transaction which debits an e-wallet by disbursing funds to a counterparty.  `PIS_PAY_IN:` a payment which credits an e-wallet through Plaid's Payment Initiation Services (PIS) APIs. For more information see the [Payment Initiation endpoints](https://plaid.com/docs/api/products/payment-initiation/).  `REFUND:` a transaction which debits an e-wallet by refunding a previously initiated payment made through Plaid's [PIS APIs](https://plaid.com/docs/api/products/payment-initiation/).  `FUNDS_SWEEP`: an automated transaction which debits funds from an e-wallet to a designated client-owned account.")
+    type: str = Field( description="The type of the transaction. The supported transaction types that are returned are: `BANK_TRANSFER:` a transaction which credits an e-wallet through an external bank transfer.  `PAYOUT:` a transaction which debits an e-wallet by disbursing funds to a counterparty.  `PIS_PAY_IN:` a payment which credits an e-wallet through Plaid's Payment Initiation Services (PIS) APIs. For more information see the [Payment Initiation endpoints](https://plaid.com/docs/api/products/payment-initiation/).  `REFUND:` a transaction which debits an e-wallet by refunding a previously initiated payment made through Plaid's [PIS APIs](https://plaid.com/docs/api/products/payment-initiation/).  `FUNDS_SWEEP`: an automated transaction which debits funds from an e-wallet to a designated client-owned account.  `RETURN`: an automated transaction where a debit transaction was reversed and money moved back to originating account.  `RECALL`: a transaction where the sending bank has requested the return of funds due to a fraud claim, technical error, or other issue associated with the payment.")
+    scheme: Optional[WalletPaymentScheme] = Field(default=None,)
     amount: WalletTransactionAmount = Field()
     counterparty: WalletTransactionCounterparty = Field()
     status: WalletTransactionStatus = Field()
     created_at: datetime_ = Field( description="Timestamp when the transaction was created, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     last_status_update: datetime_ = Field( description="The date and time of the last time the `status` was updated, in IS0 8601 format")
     payment_id: Optional[str] = Field(default=None, description="The payment id that this transaction is associated with, if any. This is present only for transaction types `PIS_PAY_IN` and `REFUND`.")
+    failure_reason: Optional[WalletTransactionFailureReason] = Field(default=None,)
+    error: Optional[PlaidError] = Field(default=None,)
+    related_transactions: Optional[List[WalletTransactionRelation]] = Field(default=None, description="A list of wallet transactions that this transaction is associated with, if any.")
 
 WalletTransaction.update_forward_refs()

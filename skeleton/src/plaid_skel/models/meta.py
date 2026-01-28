@@ -23,24 +23,12 @@ class Meta(BaseModel):
     name: str = Field( description="The account's name")
     official_name: str = Field( description="The account's official name")
     limit: float = Field( description="The account's limit")
-    mask: str = Field( description="The account's mask. Should be a string of 2-4 alphanumeric characters. This allows you to model a mask which does not match the account number (such as with a virtual account number).")
-
-    @field_validator("mask")
-    @classmethod
-    def mask_min_length(cls, value):
-        assert len(value) >= 2
-        return value
-
-    @field_validator("mask")
-    @classmethod
-    def mask_max_length(cls, value):
-        assert len(value) <= 4
-        return value
+    mask: str = Field( description="The account's mask. Should be an empty string or a string of 2-4 alphanumeric characters. This allows you to model a mask which does not match the account number (such as with a virtual account number).")
 
     @field_validator("mask")
     @classmethod
     def mask_pattern(cls, value):
-        assert value is not None and re.match(r"^[A-Za-z0-9]{2,4}$", value)
+        assert value is not None and re.match(r"^$|^[A-Za-z0-9]{2,4}$", value)
         return value
 
 Meta.update_forward_refs()

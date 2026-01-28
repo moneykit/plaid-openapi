@@ -33,10 +33,4 @@ class WatchlistScreeningEntityProgramGetResponse(BaseModel):
     is_archived: bool = Field( description="Archived programs are read-only and cannot screen new customers nor participate in ongoing monitoring.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-    @field_validator("name")
-    @classmethod
-    def name_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 WatchlistScreeningEntityProgramGetResponse.update_forward_refs()

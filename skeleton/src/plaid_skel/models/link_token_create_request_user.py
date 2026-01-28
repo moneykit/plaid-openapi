@@ -17,13 +17,19 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class LinkTokenCreateRequestUser(BaseModel):
-    """An object specifying information about the end user who will be linking their account."""
+    """An object specifying information about the end user who will be linking their account. **Required** if `user_id` isn't included."""
 
 
     client_user_id: str = Field( description="A unique ID representing the end user. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`. It is currently used as a means of searching logs for the given user in the Plaid Dashboard.")
-    phone_number: Optional[str] = Field(default=None, description="The user's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. This field is optional, but required to enable the [returning user experience](https://plaid.com/docs/link/returning-user).")
+    phone_number: Optional[str] = Field(default=None, description="The user's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. If supplied, will be used when applicable to prefill phone number fields in Link for the [returning user flow](https://plaid.com/docs/link/returning-user) and the [Identity Verification flow](https://plaid.com/docs/identity-verification). Phone number input is validated against valid number ranges; number strings that do not match a real-world phone numbering scheme may cause the request to fail, even in the Sandbox test environment.")
     phone_number_verified_time: Optional[datetime_] = Field(default=None, description="The date and time the phone number was verified in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDThh:mm:ssZ`). This was previously an optional field used in the [returning user experience](https://plaid.com/docs/link/returning-user). This field is no longer required to enable the returning user experience.   Only pass a verification time for a phone number that you have verified. If you have performed verification but don’t have the time, you may supply a signal value of the start of the UNIX epoch.   Example: `2020-01-01T00:00:00Z` ")
-    email_address: Optional[str] = Field(default=None, description="The user's email address. This field is optional, but required to enable the [pre-authenticated returning user flow](https://plaid.com/docs/link/returning-user/#pre-authenticated-rux).")
+    email_address: Optional[str] = Field(default=None, description="The user's email address. Can be used to prefill Link fields when used with [Identity Verification](https://plaid.com/docs/identity-verification).")
     email_address_verified_time: Optional[datetime_] = Field(default=None, description="The date and time the email address was verified in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDThh:mm:ssZ`). This was previously an optional field used in the [returning user experience](https://plaid.com/docs/link/returning-user). This field is no longer required to enable the returning user experience.   Only pass a verification time for an email address that you have verified. If you have performed verification but don’t have the time, you may supply a signal value of the start of the UNIX epoch.   Example: `2020-01-01T00:00:00Z`")
+
+    @field_validator("client_user_id")
+    @classmethod
+    def client_user_id_min_length(cls, value):
+        assert len(value) >= 1
+        return value
 
 LinkTokenCreateRequestUser.update_forward_refs()

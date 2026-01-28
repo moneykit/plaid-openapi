@@ -12,8 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
-from plaid_skel.models.credit_freddie_mac_verification_of_assets_voa24 import CreditFreddieMacVerificationOfAssetsVOA24
-from plaid_skel.models.credit_freddie_verification_of_employment_voe25 import CreditFreddieVerificationOfEmploymentVOE25
+from plaid_skel.models.credit_freddie_mac_verification_of_assets_deal import CreditFreddieMacVerificationOfAssetsDeal
 
 
 
@@ -22,8 +21,8 @@ class CreditFreddieMacReportsGetResponse(BaseModel):
     """CreditFreddieMacReportsGetResponse defines the response schema for `/credit/freddie_mac/reports/get`"""
 
 
-    voa: Optional[CreditFreddieMacVerificationOfAssetsVOA24] = Field(default=None,)
-    voe: Optional[CreditFreddieVerificationOfEmploymentVOE25] = Field(default=None,)
+    deal: CreditFreddieMacVerificationOfAssetsDeal = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
+    schema_version: float = Field( description="The Verification Of Assets (VOA) schema version.")
 
 CreditFreddieMacReportsGetResponse.update_forward_refs()

@@ -24,8 +24,8 @@ class TransferEventListRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    start_date: Optional[datetime_] = Field(default=None, description="The start datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
-    end_date: Optional[datetime_] = Field(default=None, description="The end datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
+    start_date: Optional[datetime_] = Field(default=None, description="The start `created` datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
+    end_date: Optional[datetime_] = Field(default=None, description="The end `created` datetime of transfers to list. This should be in RFC 3339 format (i.e. `2019-12-06T22:35:49Z`)")
     transfer_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a transfer.")
     account_id: Optional[str] = Field(default=None, description="The account ID to get events for all transactions to/from an account.")
     transfer_type: Optional[TransferEventListTransferType] = Field(default=None,)

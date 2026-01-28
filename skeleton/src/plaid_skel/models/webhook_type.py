@@ -12,3 +12,4 @@ class WebhookType(str, Enum):
     ITEM = "ITEM"
     LIABILITIES = "LIABILITIES"
     TRANSACTIONS = "TRANSACTIONS"
+    ASSETS = "ASSETS"

@@ -14,7 +14,9 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.external_payment_initiation_consent_options import ExternalPaymentInitiationConsentOptions
 from plaid_skel.models.payment_initiation_consent_constraints import PaymentInitiationConsentConstraints
+from plaid_skel.models.payment_initiation_consent_payer_details import PaymentInitiationConsentPayerDetails
 from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
+from plaid_skel.models.payment_initiation_consent_type import PaymentInitiationConsentType
 
 
 
@@ -27,9 +29,11 @@ class PaymentInitiationConsentCreateRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     recipient_id: str = Field( description="The ID of the recipient the payment consent is for. The created consent can be used to transfer funds to this recipient only.")
     reference: str = Field( description="A reference for the payment consent. This must be an alphanumeric string with at most 18 characters and must not contain any special characters.")
-    scopes: list[PaymentInitiationConsentScope] = Field( description="An array of payment consent scopes.")
+    scopes: Optional[list[PaymentInitiationConsentScope]] = Field(default=None, description="An array of payment consent scopes.")
+    type: Optional[PaymentInitiationConsentType] = Field(default=None,)
     constraints: PaymentInitiationConsentConstraints = Field()
     options: Optional[ExternalPaymentInitiationConsentOptions] = Field(default=None,)
+    payer_details: Optional[PaymentInitiationConsentPayerDetails] = Field(default=None,)
 
     @field_validator("reference")
     @classmethod

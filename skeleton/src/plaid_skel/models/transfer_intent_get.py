@@ -40,7 +40,7 @@ class TransferIntentGet(BaseModel):
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` for the account that will be debited or credited. Returned only if `account_id` was set on intent creation.")
     origination_account_id: str = Field( description="Plaid’s unique identifier for the origination account used for the transfer.")
     funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
-    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
+    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\"). When calling `/transfer/authorization/create`, specify the maximum amount to authorize. When calling `/transfer/create`, specify the exact amount of the transfer, up to a maximum of the amount authorized. If this field is left blank when calling `/transfer/create`, the maximum amount authorized in the `authorization_id` will be sent.")
     mode: TransferIntentCreateMode = Field()
     network: Optional[TransferIntentCreateNetwork] = Field(default=None,)
     ach_class: Optional[ACHClass] = Field(default=None,)

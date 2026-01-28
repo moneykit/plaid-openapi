@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.sandbox_income_webhook_fire_request_webhook_code import SandboxIncomeWebhookFireRequestWebhookCode
 
 
 
@@ -25,6 +26,7 @@ class SandboxIncomeFireWebhookRequest(BaseModel):
     item_id: str = Field( description="The Item ID associated with the verification.")
     user_id: Optional[str] = Field(default=None, description="The Plaid `user_id` of the User associated with this webhook, warning, or error.")
     webhook: str = Field( description="The URL to which the webhook should be sent.")
-    verification_status: str = Field( description="`VERIFICATION_STATUS_PROCESSING_COMPLETE`: The income verification status processing has completed. If the user uploaded multiple documents, this webhook will fire when all documents have finished processing. Call the `/income/verification/paystubs/get` endpoint and check the document metadata to see which documents were successfully parsed.  `VERIFICATION_STATUS_PROCESSING_FAILED`: A failure occurred when attempting to process the verification documentation.  `VERIFICATION_STATUS_PENDING_APPROVAL`: (deprecated) The income verification has been sent to the user for review.")
+    verification_status: Optional[str] = Field(default=None, description="`VERIFICATION_STATUS_PROCESSING_COMPLETE`: The income verification status processing has completed. If the user uploaded multiple documents, this webhook will fire when all documents have finished processing. Call the `/income/verification/paystubs/get` endpoint and check the document metadata to see which documents were successfully parsed.  `VERIFICATION_STATUS_PROCESSING_FAILED`: A failure occurred when attempting to process the verification documentation.  `VERIFICATION_STATUS_PENDING_APPROVAL`: (deprecated) The income verification has been sent to the user for review.")
+    webhook_code: SandboxIncomeWebhookFireRequestWebhookCode = Field()
 
 SandboxIncomeFireWebhookRequest.update_forward_refs()

@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.reason_code import ReasonCode
 
 
 
@@ -24,5 +25,6 @@ class TransferCancelRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     transfer_id: str = Field( description="Plaid’s unique identifier for a transfer.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID of the transfer originator. Should only be present if `client_id` is a third-party sender (TPS).")
+    reason_code: Optional[ReasonCode] = Field(default=None,)
 
 TransferCancelRequest.update_forward_refs()

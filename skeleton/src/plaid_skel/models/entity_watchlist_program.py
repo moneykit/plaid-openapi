@@ -32,10 +32,4 @@ class EntityWatchlistProgram(BaseModel):
     audit_trail: WatchlistScreeningAuditTrail = Field()
     is_archived: bool = Field( description="Archived programs are read-only and cannot screen new customers nor participate in ongoing monitoring.")
 
-    @field_validator("name")
-    @classmethod
-    def name_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 EntityWatchlistProgram.update_forward_refs()

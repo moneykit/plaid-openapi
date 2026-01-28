@@ -22,7 +22,7 @@ class UserIDNumber(BaseModel):
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
-    value: str = Field( description="Value of identity document value typed in by user. Alpha-numeric, with all formatting characters stripped.")
+    value: str = Field( description="Value of identity document value typed in by user. Alpha-numeric, with all formatting characters stripped. For specific format requirements by ID type, see [Input Validation Rules](https://plaid.com/docs/identity-verification/hybrid-input-validation/#id-numbers).")
     type: IDNumberType = Field()
 
 UserIDNumber.update_forward_refs()

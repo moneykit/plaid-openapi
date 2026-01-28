@@ -22,6 +22,6 @@ class PartnerCustomerRemoveRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    end_customer_client_id: str = Field()
+    end_customer_client_id: str = Field( description="The `client_id` of the end customer to be removed.")
 
 PartnerCustomerRemoveRequest.update_forward_refs()

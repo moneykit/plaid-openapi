@@ -12,17 +12,19 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.income_verification_doc_parsing_config import IncomeVerificationDocParsingConfig
 from plaid_skel.models.income_verification_payroll_flow_type import IncomeVerificationPayrollFlowType
 
 
 
 
 class LinkTokenCreateRequestIncomeVerificationPayrollIncome(BaseModel):
-    """Specifies options for initializing Link for use with Payroll Income."""
+    """Specifies options for initializing Link for use with Payroll Income (including Document Income). Further customization options for Document Income, such as customizing which document types may be uploaded, are also available via the [Link Customization pane](https://dashboard.plaid.com/link) in the Dashboard. (Requires Production enablement.)"""
 
 
     flow_types: Optional[List[IncomeVerificationPayrollFlowType]] = Field(default=None, description="The types of payroll income verification to enable for the Link session. If none are specified, then users will see both document and digital payroll income.")
-    is_update_mode: Optional[bool] = Field(default=None, description="An identifier to indicate whether the income verification Link token will be used for an update or not")
-    item_id_to_update: Optional[str] = Field(default=None, description="Uniquely identify a payroll income item to update with. It should only be used for update mode.")
+    is_update_mode: Optional[bool] = Field(default=None, description="An identifier to indicate whether the income verification Link token will be used for update mode. This field is only relevant for participants in the Payroll Income Refresh beta.")
+    item_id_to_update: Optional[str] = Field(default=None, description="Uniquely identify a payroll income Item to update with.  This field is only relevant for participants in the Payroll Income Refresh beta.")
+    parsing_config: Optional[List[IncomeVerificationDocParsingConfig]] = Field(default=None, description="The types of analysis to enable for document uploads. If this field is not provided, then docs will undergo OCR parsing only.")
 
 LinkTokenCreateRequestIncomeVerificationPayrollIncome.update_forward_refs()

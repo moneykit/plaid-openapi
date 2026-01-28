@@ -6,5 +6,4 @@ from enum import Enum
 
 
 class ReportType(str, Enum):
-    ASSETS = "assets"
-    INCOME = "income"
+    ASSET = "asset"

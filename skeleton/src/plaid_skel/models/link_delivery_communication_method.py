@@ -22,6 +22,6 @@ class LinkDeliveryCommunicationMethod(BaseModel):
 
 
     method: Optional[LinkDeliveryDeliveryMethod] = Field(default=None,)
-    address: Optional[str] = Field(default=None, description="The phone number / email address that link delivery sessions are delivered to. Phone numbers must be in E.164 format.")
+    address: Optional[str] = Field(default=None, description="The phone number / email address that Hosted Link sessions are delivered to. Phone numbers must be in E.164 format.")
 
 LinkDeliveryCommunicationMethod.update_forward_refs()

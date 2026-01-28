@@ -9,6 +9,7 @@ class TransferStatus(str, Enum):
     PENDING = "pending"
     POSTED = "posted"
     SETTLED = "settled"
+    FUNDS_AVAILABLE = "funds_available"
     CANCELLED = "cancelled"
     FAILED = "failed"
     RETURNED = "returned"

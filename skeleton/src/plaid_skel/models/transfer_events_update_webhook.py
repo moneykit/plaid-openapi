@@ -18,7 +18,7 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 
 
 class TransferEventsUpdateWebhook(BaseModel):
-    """Fired when new transfer events are available. Receiving this webhook indicates you should fetch the new events from `/transfer/event/sync`."""
+    """Fired when new transfer events are available. Receiving this webhook indicates you should fetch the new events from `/transfer/event/sync`. If multiple transfer events occur within a single minute, only one webhook will be fired, so a single webhook instance may correspond to multiple transfer events."""
 
 
     webhook_type: str = Field( description="`TRANSFER`")

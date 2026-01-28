@@ -25,7 +25,7 @@ class CreditPayrollIncomePrecheckRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    user_token: Optional[str] = Field(default=None, description="The user token associated with the User data is being requested for.")
+    user_token: Optional[str] = Field(default=None, description="The user token associated with the User data is being requested for. This field is used only by customers with pre-existing integrations that already use the `user_token` field. All other customers should use the `user_id` instead. For more details, see [New User APIs](https://plaid.com/docs/api/users/user-apis).")
     access_tokens: Optional[List[str]] = Field(default=None, description="An array of access tokens corresponding to Items belonging to the user whose eligibility is being checked. Note that if the Items specified here are not already initialized with `transactions`, providing them in this field will cause these Items to be initialized with (and billed for) the Transactions product.")
     employer: Optional[IncomeVerificationPrecheckEmployer] = Field(default=None,)
     us_military_info: Optional[IncomeVerificationPrecheckMilitaryInfo] = Field(default=None,)

@@ -17,7 +17,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class IdentityVerificationGetRequest(BaseModel):
-    """Request input for fetching an identity verification"""
+    """Request input for fetching an Identity Verification"""
 
 
     identity_verification_id: str = Field( description="ID of the associated Identity Verification attempt.")

@@ -17,7 +17,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class SignalDevice(BaseModel):
-    """Details about the end user's device"""
+    """Details about the end user's device. These fields are optional, but strongly recommended to increase the accuracy of results when using Signal Transaction Scores. When using a Balance-only Ruleset, these fields are ignored if the Signal Addendum has been signed; if it has not been signed, using these fields will result in an error."""
 
 
     ip_address: Optional[str] = Field(default=None, description="The IP address of the device that initiated the transaction")

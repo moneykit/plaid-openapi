@@ -23,8 +23,8 @@ class BankTransferSweepListRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     origination_account_id: Optional[str] = Field(default=None, description="If multiple origination accounts are available, `origination_account_id` must be used to specify the account that the sweeps belong to.")
-    start_time: Optional[datetime_] = Field(default=None, description="The start datetime of sweeps to return (RFC 3339 format).")
-    end_time: Optional[datetime_] = Field(default=None, description="The end datetime of sweeps to return (RFC 3339 format).")
+    start_time: Optional[datetime_] = Field(default=None, description="The start `created` datetime of sweeps to return (RFC 3339 format).")
+    end_time: Optional[datetime_] = Field(default=None, description="The end `created` datetime of sweeps to return (RFC 3339 format).")
     count: Optional[int] = Field(default=None, description="The maximum number of sweeps to return.")
 
     @field_validator("count")

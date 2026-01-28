@@ -24,7 +24,7 @@ class TransferMigrateAccountRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     account_number: str = Field( description="The user's account number.")
     routing_number: str = Field( description="The user's routing number.")
-    wire_routing_number: Optional[str] = Field(default=None, description="The user's wire transfer routing number. This is the ABA number; for some institutions, this may differ from the ACH number used in `routing_number`.")
+    wire_routing_number: Optional[str] = Field(default=None, description="The user's wire transfer routing number. This is the ABA number; for some institutions, this may differ from the ACH number used in `routing_number`. This field must be set for the created item to be eligible for wire transfers.")
     account_type: str = Field( description="The type of the bank account (`checking` or `savings`).")
 
 TransferMigrateAccountRequest.update_forward_refs()

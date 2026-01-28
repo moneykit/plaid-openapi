@@ -22,6 +22,6 @@ class SandboxTransferTestClockCreateRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    virtual_time: datetime_ = Field( description="The virtual timestamp on the test clock. This will be of the form `2006-01-02T15:04:05Z`.")
+    virtual_time: Optional[datetime_] = Field(default=None, description="The virtual timestamp on the test clock. If not provided, the current timestamp will be used. This will be of the form `2006-01-02T15:04:05Z`.")
 
 SandboxTransferTestClockCreateRequest.update_forward_refs()

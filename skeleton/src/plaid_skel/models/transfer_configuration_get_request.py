@@ -22,6 +22,6 @@ class TransferConfigurationGetRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID of the transfer originator. Should only be present if `client_id` is a third-party sender (TPS).")
+    originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID of the transfer originator. Should only be present if `client_id` is a [Platform customer](https://plaid.com/docs/transfer/application/#originators-vs-platforms).")
 
 TransferConfigurationGetRequest.update_forward_refs()

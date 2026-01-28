@@ -27,10 +27,4 @@ class EntityWatchlistScreeningReview(BaseModel):
     comment: Optional[str] = Field(default=None, description="A comment submitted by a team member as part of reviewing a watchlist screening.")
     audit_trail: WatchlistScreeningAuditTrail = Field()
 
-    @field_validator("comment")
-    @classmethod
-    def comment_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 EntityWatchlistScreeningReview.update_forward_refs()

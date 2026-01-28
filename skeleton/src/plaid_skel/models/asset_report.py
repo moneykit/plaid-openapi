@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.account_insights import AccountInsights
 from plaid_skel.models.asset_report_item import AssetReportItem
 from plaid_skel.models.asset_report_user import AssetReportUser
 
@@ -23,6 +24,7 @@ class AssetReport(BaseModel):
 
 
     asset_report_id: str = Field( description="A unique ID identifying an Asset Report. Like all Plaid identifiers, this ID is case sensitive.")
+    insights: Optional[AccountInsights] = Field(default=None,)
     client_report_id: Optional[str] = Field(default=None, description="An identifier you determine and submit for the Asset Report.")
     date_generated: datetime_ = Field( description="The date and time when the Asset Report was created, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (e.g. \"2018-04-12T03:32:11Z\").")
     days_requested: float = Field( description="The duration of transaction history you requested")

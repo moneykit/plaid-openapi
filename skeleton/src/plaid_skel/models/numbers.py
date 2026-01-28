@@ -21,7 +21,7 @@ class Numbers(BaseModel):
 
 
     account: Optional[str] = Field(default=None, description="Will be used for the account number.")
-    ach_routing: Optional[str] = Field(default=None, description="Must be a valid ACH routing number.")
+    ach_routing: Optional[str] = Field(default=None, description="Must be a valid ACH routing number. To test `/transfer/capabilities/get`, set this to 322271627 to force a `true` result.")
     ach_wire_routing: Optional[str] = Field(default=None, description="Must be a valid wire transfer routing number.")
     eft_institution: Optional[str] = Field(default=None, description="EFT institution number. Must be specified alongside `eft_branch`.")
     eft_branch: Optional[str] = Field(default=None, description="EFT branch number. Must be specified alongside `eft_institution`.")

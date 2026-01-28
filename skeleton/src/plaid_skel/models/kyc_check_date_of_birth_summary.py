@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.hidden_match_summary_code import HiddenMatchSummaryCode
 from plaid_skel.models.match_summary_code import MatchSummaryCode
 
 
@@ -22,5 +23,8 @@ class KYCCheckDateOfBirthSummary(BaseModel):
 
 
     summary: MatchSummaryCode = Field()
+    day: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    month: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    year: Optional[HiddenMatchSummaryCode] = Field(default=None,)
 
 KYCCheckDateOfBirthSummary.update_forward_refs()

@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
-from plaid_skel.models.transfer_network import TransferNetwork
+from plaid_skel.models.transfer_recurring_network import TransferRecurringNetwork
 from plaid_skel.models.transfer_recurring_schedule import TransferRecurringSchedule
 from plaid_skel.models.transfer_recurring_status import TransferRecurringStatus
 from plaid_skel.models.transfer_type import TransferType
@@ -28,19 +28,19 @@ class RecurringTransfer(BaseModel):
 
     recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
     created: datetime_ = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
-    next_origination_date: date_ = Field( description="A date in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).  The next transfer origination date after bank holiday adjustment.")
+    next_origination_date: Optional[date_] = Field(default=None, description="A date in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).  The next transfer origination date after bank holiday adjustment.")
     test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock.")
     type: TransferType = Field()
-    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
+    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\"). When calling `/transfer/authorization/create`, specify the maximum amount to authorize. When calling `/transfer/create`, specify the exact amount of the transfer, up to a maximum of the amount authorized. If this field is left blank when calling `/transfer/create`, the maximum amount authorized in the `authorization_id` will be sent.")
     status: TransferRecurringStatus = Field()
     ach_class: Optional[ACHClass] = Field(default=None,)
-    network: TransferNetwork = Field()
+    network: TransferRecurringNetwork = Field()
     origination_account_id: str = Field( description="Plaid’s unique identifier for the origination account that was used for this transfer.")
     account_id: str = Field( description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
     funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
     iso_currency_code: str = Field( description="The currency of the transfer amount, e.g. \"USD\"")
     description: str = Field( description="The description of the recurring transfer.")
-    transfer_ids: List[str] = Field()
+    transfer_ids: List[str] = Field( description="The created transfer instances associated with this `recurring_transfer_id`. If the recurring transfer has been newly created, this array will be empty.")
     user: TransferUserInResponse = Field()
     schedule: TransferRecurringSchedule = Field()
 

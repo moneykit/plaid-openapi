@@ -24,7 +24,6 @@ class AssetReportCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     access_tokens: Optional[List[str]] = Field(default=None, description="An array of access tokens corresponding to the Items that will be included in the report. The `assets` product must have been initialized for the Items during link; the Assets product cannot be added after initialization.")
-    user_token: Optional[str] = Field(default=None, description="The user token associated with the User for which to create an asset report for. All items associated with the User will be included in the report.")
     days_requested: int = Field( description="The maximum integer number of days of history to include in the Asset Report. If using Fannie Mae Day 1 Certainty, `days_requested` must be at least 61 for new originations or at least 31 for refinancings.  An Asset Report requested with \"Additional History\" (that is, with more than 61 days of transaction history) will incur an Additional History fee.")
     options: Optional[AssetReportCreateRequestOptions] = Field(default=None,)
 

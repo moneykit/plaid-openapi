@@ -18,12 +18,12 @@ from plaid_skel.models.transfer_user_address_in_request import TransferUserAddre
 
 
 class TransferAuthorizationUserInRequest(BaseModel):
-    """The legal name and other information for the account holder."""
+    """The legal name and other information for the account holder.  If the account has multiple account holders, provide the information for the account holder on whose behalf the authorization is being requested. The `user.legal_name` field is required. Other fields are not currently used and are present to support planned future functionality."""
 
 
-    legal_name: str = Field( description="The user's legal name.")
-    phone_number: Optional[str] = Field(default=None, description="The user's phone number. In order to qualify for a guaranteed transfer, at least one of `phone_number` or `email_address` must be provided.")
-    email_address: Optional[str] = Field(default=None, description="The user's email address. In order to qualify for a guaranteed transfer, at least one of `phone_number` or `email_address` must be provided.")
+    legal_name: str = Field( description="The user's legal name. If the user is a business, provide the business name.")
+    phone_number: Optional[str] = Field(default=None, description="The user's phone number.")
+    email_address: Optional[str] = Field(default=None, description="The user's email address.")
     address: Optional[TransferUserAddressInRequest] = Field(default=None,)
 
 TransferAuthorizationUserInRequest.update_forward_refs()

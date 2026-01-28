@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.client_user_identity import ClientUserIdentity
+from plaid_skel.models.consumer_report_user_identity import ConsumerReportUserIdentity
 
 
 
@@ -23,6 +25,10 @@ class UserCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_user_id: str = Field( description="A unique ID representing the end user. Maximum of 128 characters. Typically this will be a user ID number from your application. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
+    identity: Optional[ClientUserIdentity] = Field(default=None,)
+    end_customer: Optional[str] = Field(default=None, description="A unique ID representing a CRA reseller's end customer. Maximum of 128 characters.")
+    consumer_report_user_identity: Optional[ConsumerReportUserIdentity] = Field(default=None,)
+    with_upgraded_user: Optional[bool] = Field(default=None, description="When `true`, a new user will be created and a `user_id` will be returned. Otherwise, a legacy user will be created and a `user_token` will be returned.")
 
     @field_validator("client_user_id")
     @classmethod
@@ -33,6 +39,18 @@ class UserCreateRequest(BaseModel):
     @field_validator("client_user_id")
     @classmethod
     def client_user_id_max_length(cls, value):
+        assert len(value) <= 128
+        return value
+
+    @field_validator("end_customer")
+    @classmethod
+    def end_customer_min_length(cls, value):
+        assert len(value) >= 0
+        return value
+
+    @field_validator("end_customer")
+    @classmethod
+    def end_customer_max_length(cls, value):
         assert len(value) <= 128
         return value
 

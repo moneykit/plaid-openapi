@@ -27,11 +27,11 @@ class TransferIntentCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
-    funding_account_id: Optional[str] = Field(default=None, description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited. Defaults to the account configured during onboarding.")
+    funding_account_id: Optional[str] = Field(default=None, description="Specify the account used to fund the transfer. Should be specified if using legacy funding methods only. If using Plaid Ledger, leave this field blank. Customers can find a list of `funding_account_id`s in the Accounts page of your Plaid Dashboard, under the \"Account ID\" column. If this field is left blank and you are using legacy funding methods, this will default to the default `funding_account_id` specified during onboarding. Otherwise, Plaid Ledger will be used.")
     mode: TransferIntentCreateMode = Field()
     network: Optional[TransferIntentCreateNetwork] = Field(default=None,)
-    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
-    description: str = Field( description="A description for the underlying transfer. Maximum of 8 characters.")
+    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\"). When calling `/transfer/authorization/create`, specify the maximum amount to authorize. When calling `/transfer/create`, specify the exact amount of the transfer, up to a maximum of the amount authorized. If this field is left blank when calling `/transfer/create`, the maximum amount authorized in the `authorization_id` will be sent.")
+    description: str = Field( description="A description for the underlying transfer. Maximum of 15 characters.")
     ach_class: Optional[ACHClass] = Field(default=None,)
     origination_account_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for the origination account for the intent. If not provided, the default account will be used.")
     user: TransferUserInRequest = Field()
@@ -48,7 +48,7 @@ class TransferIntentCreateRequest(BaseModel):
     @field_validator("description")
     @classmethod
     def description_max_length(cls, value):
-        assert len(value) <= 8
+        assert len(value) <= 15
         return value
 
 TransferIntentCreateRequest.update_forward_refs()

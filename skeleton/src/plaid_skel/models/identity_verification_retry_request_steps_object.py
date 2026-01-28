@@ -22,8 +22,8 @@ class IdentityVerificationRetryRequestStepsObject(BaseModel):
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     verify_sms: bool = Field( description="A boolean field specifying whether the new session should require or skip the `verify_sms` step.")
-    kyc_check: bool = Field( description="A boolean field specifying whether the new session should require or skip the `kyc_check` step.")
+    kyc_check: bool = Field( description="A boolean field specifying whether the new session should require or skip the `kyc_check` (Data Source Verification) step.")
     documentary_verification: bool = Field( description="A boolean field specifying whether the new session should require or skip the `documentary_verification` step.")
-    selfie_check: bool = Field( description="A boolean field specifying whether the new session should require or skip the `selfie_check` step.")
+    selfie_check: bool = Field( description="A boolean field specifying whether the new session should require or skip the `selfie_check` step. If a previous session has already passed the `selfie_check` step, the new selfie check will be a Selfie Reauthentication check, in which the selfie is tested for liveness and for consistency with the previous selfie.")
 
 IdentityVerificationRetryRequestStepsObject.update_forward_refs()

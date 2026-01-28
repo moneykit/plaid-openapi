@@ -10,3 +10,5 @@ class TransferRefundStatus(str, Enum):
     POSTED = "posted"
     CANCELLED = "cancelled"
     FAILED = "failed"
+    SETTLED = "settled"
+    RETURNED = "returned"

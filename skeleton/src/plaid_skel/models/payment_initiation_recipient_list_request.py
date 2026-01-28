@@ -22,5 +22,25 @@ class PaymentInitiationRecipientListRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
+    count: Optional[int] = Field(default=None, description="The maximum number of recipients to return. If `count` is not specified, a maximum of 100 recipients will be returned, beginning with the recipient at the cursor (if specified).")
+    cursor: Optional[str] = Field(default=None, description="A value representing the latest recipient to be included in the response. Set this from `next_cursor` received from the previous `/payment_initiation/recipient/list` request. If provided, the response will only contain that recipient and recipients created before it. If omitted, the response will contain recipients starting from the most recent, and in descending order by the `created_at` time.")
+
+    @field_validator("count")
+    @classmethod
+    def count_max(cls, value):
+        assert value <= 100
+        return value
+
+    @field_validator("count")
+    @classmethod
+    def count_min(cls, value):
+        assert value >= 1
+        return value
+
+    @field_validator("cursor")
+    @classmethod
+    def cursor_max_length(cls, value):
+        assert len(value) <= 256
+        return value
 
 PaymentInitiationRecipientListRequest.update_forward_refs()

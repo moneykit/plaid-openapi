@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.plaid_error import PlaidError
 from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
 
 
@@ -26,5 +27,6 @@ class AutomaticallyVerifiedWebhook(BaseModel):
     account_id: str = Field( description="The `account_id` of the account associated with the webhook")
     item_id: str = Field( description="The `item_id` of the Item associated with this webhook, warning, or error")
     environment: WebhookEnvironmentValues = Field()
+    error: Optional[PlaidError] = Field(default=None,)
 
 AutomaticallyVerifiedWebhook.update_forward_refs()

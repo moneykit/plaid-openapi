@@ -28,11 +28,12 @@ class ProcessorSignalEvaluateRequest(BaseModel):
     client_transaction_id: str = Field( description="The unique ID that you would like to use to refer to this transaction. For your convenience mapping your internal data, you could use your internal ID/identifier for this transaction. The max length for this field is 36 characters.")
     amount: float = Field( description="The transaction amount, in USD (e.g. `102.05`)")
     user_present: Optional[bool] = Field(default=None, description="`true` if the end user is present while initiating the ACH transfer and the endpoint is being called; `false` otherwise (for example, when the ACH transfer is scheduled and the end user is not present, or you call this endpoint after the ACH transfer but before submitting the Nacha file for ACH processing).")
-    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID is used to correlate requests by a user with multiple Items. The max length for this field is 36 characters. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID is used to correlate requests by a user with multiple Items. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     is_recurring: Optional[bool] = Field(default=None, description="**true** if the ACH transaction is a recurring transaction; **false** otherwise ")
-    default_payment_method: Optional[str] = Field(default=None, description="The default ACH or non-ACH payment method to complete the transaction. `SAME_DAY_ACH`: Same Day ACH by NACHA. The debit transaction is processed and settled on the same day `NEXT_DAY_ACH`: Next Day ACH settlement for debit transactions, offered by some payment processors `STANDARD_ACH`: standard ACH by NACHA `REAL_TIME_PAYMENTS`: real-time payments such as RTP and FedNow `DEBIT_CARD`: if the default payment is over debit card networks `MULTIPLE_PAYMENT_METHODS`: if there is no default debit rail or there are multiple payment methods Possible values:  `SAME_DAY_ACH`, `NEXT_DAY_ACH`, `STANDARD_ACH`, `REAL_TIME_PAYMENTS`, `DEBIT_CARD`, `MULTIPLE_PAYMENT_METHODS`")
+    default_payment_method: Optional[str] = Field(default=None, description="The default ACH or non-ACH payment method to complete the transaction. `SAME_DAY_ACH`: Same Day ACH by Nacha. The debit transaction is processed and settled on the same day. `STANDARD_ACH`: standard ACH by Nacha. `MULTIPLE_PAYMENT_METHODS`: if there is no default debit rail or there are multiple payment methods. Possible values:  `SAME_DAY_ACH`, `STANDARD_ACH`, `MULTIPLE_PAYMENT_METHODS`")
     user: Optional[SignalUser] = Field(default=None,)
     device: Optional[SignalDevice] = Field(default=None,)
+    ruleset_key: Optional[str] = Field(default=None, description="The key of the ruleset to use for this transaction. You can configure a ruleset using the Plaid Dashboard, under [Signal->Rules](https://dashboard.plaid.com/signal/risk-profiles). If not provided, for customers who began using Signal Transaction Scores before October 15, 2025, by default, no ruleset will be used; for customers who began using Signal Transaction Scores after that date, or for Balance customers, the `default` ruleset will be used. For more details, or to opt out of using a ruleset, see [Signal Rules](https://plaid.com/docs/signal/signal-rules/).")
 
     @field_validator("client_transaction_id")
     @classmethod
@@ -43,12 +44,6 @@ class ProcessorSignalEvaluateRequest(BaseModel):
     @field_validator("client_transaction_id")
     @classmethod
     def client_transaction_id_max_length(cls, value):
-        assert len(value) <= 36
-        return value
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_max_length(cls, value):
         assert len(value) <= 36
         return value
 

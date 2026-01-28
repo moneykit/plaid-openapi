@@ -9,3 +9,4 @@ class TransferNetwork(str, Enum):
     ACH = "ach"
     SAME_DAY_ACH = "same-day-ach"
     RTP = "rtp"
+    WIRE = "wire"

@@ -26,12 +26,13 @@ class TransactionStream(BaseModel):
 
     account_id: str = Field( description="The ID of the account to which the stream belongs")
     stream_id: str = Field( description="A unique id for the stream")
-    category: List[str] = Field( description="A hierarchical array of the categories to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).")
-    category_id: str = Field( description="The ID of the category to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).")
+    category: Optional[List[str]] = Field(default=None, description="A hierarchical array of the categories to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).  All implementations are encouraged to use the new `personal_finance_category` instead of `category`. `personal_finance_category` provides more meaningful categorization and greater accuracy.")
+    category_id: Optional[str] = Field(default=None, description="The ID of the category to which this transaction belongs. See [Categories](https://plaid.com/docs/api/products/transactions/#categoriesget).  All implementations are encouraged to use the new `personal_finance_category` instead of `category`. `personal_finance_category` provides more meaningful categorization and greater accuracy.")
     description: str = Field( description="A description of the transaction stream.")
     merchant_name: Optional[str] = Field(default=None, description="The merchant associated with the transaction stream.")
     first_date: date_ = Field( description="The posted date of the earliest transaction in the stream.")
     last_date: date_ = Field( description="The posted date of the latest transaction in the stream.")
+    predicted_next_date: Optional[date_] = Field(default=None, description="The predicted date of the next payment. This will only be set if the next payment date can be predicted.")
     frequency: RecurringTransactionFrequency = Field()
     transaction_ids: List[str] = Field( description="An array of Plaid transaction IDs belonging to the stream, sorted by posted date.")
     average_amount: TransactionStreamAmount = Field()
@@ -39,5 +40,7 @@ class TransactionStream(BaseModel):
     is_active: bool = Field( description="Indicates whether the transaction stream is still live.")
     status: TransactionStreamStatus = Field()
     personal_finance_category: Optional[PersonalFinanceCategory] = Field(default=None,)
+    is_user_modified: bool = Field( description="As the ability to modify transactions streams has been discontinued, this field will always be `false`.")
+    last_user_modified_datetime: Optional[datetime_] = Field(default=None, description="The date and time of the most recent user modification. This will only be set if `is_user_modified` is `true`.")
 
 TransactionStream.update_forward_refs()

@@ -22,10 +22,10 @@ class LinkDeliveryGetResponse(BaseModel):
 
 
     status: LinkDeliverySessionStatus = Field()
-    created_at: datetime_ = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Link Delivery Session was created at.")
-    completed_at: Optional[datetime_] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Link Delivery Session was completed at.")
+    created_at: datetime_ = Field( description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Hosted Link session was created at.")
+    completed_at: Optional[datetime_] = Field(default=None, description="Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DDTHH:mm:ssZ`) indicating the time the given Hosted Link session was completed at.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
-    access_tokens: Optional[List[str]] = Field(default=None, description="An array of access tokens associated with the Link Delivery session.")
-    item_ids: Optional[List[str]] = Field(default=None, description="An array of `item_id`s associated with the Link Delivery session.")
+    access_tokens: Optional[List[str]] = Field(default=None, description="An array of access tokens associated with the Hosted Link session.")
+    item_ids: Optional[List[str]] = Field(default=None, description="An array of `item_id`s associated with the Hosted Link session.")
 
 LinkDeliveryGetResponse.update_forward_refs()

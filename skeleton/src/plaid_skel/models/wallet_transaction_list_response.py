@@ -22,7 +22,7 @@ class WalletTransactionListResponse(BaseModel):
 
 
     transactions: List[WalletTransaction] = Field( description="An array of transactions of an e-wallet, associated with the given `wallet_id`")
-    next_cursor: Optional[str] = Field(default=None, description="Cursor used for fetching transactions created before the latest transaction provided in this response")
+    next_cursor: Optional[str] = Field(default=None, description="The value that, when used as the optional `cursor` parameter to `/wallet/transaction/list`, will return the corresponding transaction as its first entry.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 WalletTransactionListResponse.update_forward_refs()

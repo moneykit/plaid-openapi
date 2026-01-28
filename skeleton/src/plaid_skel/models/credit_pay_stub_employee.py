@@ -24,7 +24,7 @@ class CreditPayStubEmployee(BaseModel):
 
     address: CreditPayStubAddress = Field()
     name: Optional[str] = Field(default=None, description="The name of the employee.")
-    marital_status: Optional[str] = Field(default=None, description="Marital status of the employee - either `SINGLE` or `MARRIED`.")
+    marital_status: Optional[str] = Field(default=None, description="Marital status of the employee - either `SINGLE` or `MARRIED` or `NOT LISTED`.")
     taxpayer_id: PayStubTaxpayerID = Field()
 
 CreditPayStubEmployee.update_forward_refs()

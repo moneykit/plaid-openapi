@@ -25,6 +25,6 @@ class ScreeningHitAnalysis(BaseModel):
     documents: Optional[MatchSummaryCode] = Field(default=None,)
     locations: Optional[MatchSummaryCode] = Field(default=None,)
     names: Optional[MatchSummaryCode] = Field(default=None,)
-    search_terms_version: float = Field( description="The version of the screening's `search_terms` that were compared when the screening hit was added. screening hits are immutable once they have been reviewed. If changes are detected due to updates to the screening's `search_terms`, the associated program, or the list's source data prior to review, the screening hit will be updated to reflect those changes.")
+    search_terms_version: int = Field( description="The version of the screening's `search_terms` that were compared when the screening hit was added. screening hits are immutable once they have been reviewed. If changes are detected due to updates to the screening's `search_terms`, the associated program, or the list's source data prior to review, the screening hit will be updated to reflect those changes.")
 
 ScreeningHitAnalysis.update_forward_refs()

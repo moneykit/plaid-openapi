@@ -15,7 +15,8 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 from plaid_skel.models.ach_class import ACHClass
 from plaid_skel.models.transfer_authorization_guarantee_decision import TransferAuthorizationGuaranteeDecision
 from plaid_skel.models.transfer_authorization_guarantee_decision_rationale import TransferAuthorizationGuaranteeDecisionRationale
-from plaid_skel.models.transfer_expected_settlement_schedule_item import TransferExpectedSettlementScheduleItem
+from plaid_skel.models.transfer_credit_funds_source import TransferCreditFundsSource
+from plaid_skel.models.transfer_expected_sweep_settlement_schedule_item import TransferExpectedSweepSettlementScheduleItem
 from plaid_skel.models.transfer_failure import TransferFailure
 from plaid_skel.models.transfer_network import TransferNetwork
 from plaid_skel.models.transfer_refund import TransferRefund
@@ -23,6 +24,7 @@ from plaid_skel.models.transfer_status import TransferStatus
 from plaid_skel.models.transfer_sweep_status import TransferSweepStatus
 from plaid_skel.models.transfer_type import TransferType
 from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
+from plaid_skel.models.transfer_wire_details import TransferWireDetails
 
 
 
@@ -32,17 +34,20 @@ class Transfer(BaseModel):
 
 
     id: str = Field( description="Plaid’s unique identifier for a transfer.")
+    authorization_id: str = Field( description="Plaid’s unique identifier for a transfer authorization.")
     ach_class: Optional[ACHClass] = Field(default=None,)
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` corresponding to the end-user account that will be debited or credited.")
-    funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the associated funding account, available in the Plaid Dashboard. If present, this indicates which of your business checking accounts will be credited or debited.")
+    ledger_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a Plaid Ledger Balance.")
     type: TransferType = Field()
     user: TransferUserInResponse = Field()
-    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
+    amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\"). When calling `/transfer/authorization/create`, specify the maximum amount to authorize. When calling `/transfer/create`, specify the exact amount of the transfer, up to a maximum of the amount authorized. If this field is left blank when calling `/transfer/create`, the maximum amount authorized in the `authorization_id` will be sent.")
     description: str = Field( description="The description of the transfer.")
     created: datetime_ = Field( description="The datetime when this transfer was created. This will be of the form `2006-01-02T15:04:05Z`")
     status: TransferStatus = Field()
     sweep_status: Optional[TransferSweepStatus] = Field(default=None,)
     network: TransferNetwork = Field()
+    wire_details: Optional[TransferWireDetails] = Field(default=None,)
     cancellable: bool = Field( description="When `true`, you can still cancel this transfer.")
     failure_reason: Optional[TransferFailure] = Field(default=None,)
     metadata: Optional[Dict[str, str]] = Field(default=None, description="The Metadata object is a mapping of client-provided string fields to any string value. The following limitations apply: The JSON values must be Strings (no nested JSON objects allowed) Only ASCII characters may be used Maximum of 50 key/value pairs Maximum key length of 40 characters Maximum value length of 500 characters ")
@@ -52,11 +57,14 @@ class Transfer(BaseModel):
     iso_currency_code: str = Field( description="The currency of the transfer amount, e.g. \"USD\"")
     standard_return_window: Optional[date_] = Field(default=None, description="The date 3 business days from settlement date indicating the following ACH returns can no longer happen: R01, R02, R03, R29. This will be of the form YYYY-MM-DD.")
     unauthorized_return_window: Optional[date_] = Field(default=None, description="The date 61 business days from settlement date indicating the following ACH returns can no longer happen: R05, R07, R10, R11, R51, R33, R37, R38, R51, R52, R53. This will be of the form YYYY-MM-DD.")
-    expected_settlement_date: Optional[date_] = Field(default=None, description="The expected date when the full amount of the transfer settles at the consumers’ account, if the transfer is credit; or at the customer's business checking account, if the transfer is debit. Only set for ACH transfers and is null for non-ACH transfers. Only set for ACH transfers. This will be of the form YYYY-MM-DD.")
-    originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a third-party sender (TPS).")
+    expected_settlement_date: Optional[date_] = Field(default=None, description="Deprecated for Plaid Ledger clients, use `expected_funds_available_date` instead.")
+    expected_funds_available_date: Optional[date_] = Field(default=None, description="The expected date when funds from a transfer will be made available and can be withdrawn from the associated ledger balance, assuming the debit does not return before this date. If the transfer does return before this date, this field will be null. Only applies to debit transfers. This will be of the form YYYY-MM-DD.")
+    originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a [Platform customer](https://plaid.com/docs/transfer/application/#originators-vs-platforms).")
     refunds: List[TransferRefund] = Field( description="A list of refunds associated with this transfer.")
     recurring_transfer_id: Optional[str] = Field(default=None, description="The id of the recurring transfer if this transfer belongs to a recurring transfer.")
-    settled_amount: Optional[str] = Field(default=None, description="The accumulated amount that have been swept to date. This number does not reflect `return_swept` amount if the transfer is returned. Only applies to ACH debit transfers.")
-    expected_settlement_schedule: Optional[List[TransferExpectedSettlementScheduleItem]] = Field(default=None, description="The expected settlement schedule of this transfer, if posted. Only applies to ACH debit transfers.")
+    expected_sweep_settlement_schedule: Optional[List[TransferExpectedSweepSettlementScheduleItem]] = Field(default=None, description="The expected sweep settlement schedule of this transfer, assuming this transfer is not `returned`. Only applies to ACH debit transfers.")
+    credit_funds_source: Optional[TransferCreditFundsSource] = Field(default=None,)
+    facilitator_fee: Optional[str] = Field(default=None, description="The amount to deduct from `transfer.amount` and distribute to the platform’s Ledger balance as a facilitator fee (decimal string with two digits of precision e.g. \"10.00\"). The remainder will go to the end-customer’s Ledger balance. This must be value greater than 0 and less than or equal to the `transfer.amount`.")
+    network_trace_id: Optional[str] = Field(default=None, description="The trace identifier for the transfer based on its network. This will only be set after the transfer has posted.  For `ach` or `same-day-ach` transfers, this is the ACH trace number. For `rtp` transfers, this is the Transaction Identification number. For `wire` transfers, this is the IMAD (Input Message Accountability Data) number.")
 
 Transfer.update_forward_refs()

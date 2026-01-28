@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.sweep_status import SweepStatus
+from plaid_skel.models.sweep_trigger import SweepTrigger
 
 
 
@@ -22,12 +24,16 @@ class TransferSweepListRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    start_date: Optional[datetime_] = Field(default=None, description="The start datetime of sweeps to return (RFC 3339 format).")
-    end_date: Optional[datetime_] = Field(default=None, description="The end datetime of sweeps to return (RFC 3339 format).")
+    start_date: Optional[datetime_] = Field(default=None, description="The start `created` datetime of sweeps to return (RFC 3339 format).")
+    end_date: Optional[datetime_] = Field(default=None, description="The end `created` datetime of sweeps to return (RFC 3339 format).")
     count: Optional[int] = Field(default=None, description="The maximum number of sweeps to return.")
     offset: Optional[int] = Field(default=None, description="The number of sweeps to skip before returning results.")
+    amount: Optional[str] = Field(default=None, description="Filter sweeps to only those with the specified amount.")
+    status: Optional[SweepStatus] = Field(default=None,)
     originator_client_id: Optional[str] = Field(default=None, description="Filter sweeps to only those with the specified originator client.")
     funding_account_id: Optional[str] = Field(default=None, description="Filter sweeps to only those with the specified `funding_account_id`.")
+    transfer_id: Optional[str] = Field(default=None, description="Filter sweeps to only those with the included `transfer_id`.")
+    trigger: Optional[SweepTrigger] = Field(default=None,)
 
     @field_validator("count")
     @classmethod

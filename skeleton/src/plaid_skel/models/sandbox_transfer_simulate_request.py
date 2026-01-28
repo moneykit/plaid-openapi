@@ -24,7 +24,9 @@ class SandboxTransferSimulateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     transfer_id: str = Field( description="Plaid’s unique identifier for a transfer.")
-    event_type: str = Field( description="The asynchronous event to be simulated. May be: `posted`, `settled`, `failed`, or `returned`.  An error will be returned if the event type is incompatible with the current transfer status. Compatible status --> event type transitions include:  `pending` --> `failed`  `pending` --> `posted`  `posted` --> `returned`  `posted` --> `settled` ")
+    test_clock_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a test clock. If provided, the event to be simulated is created at the `virtual_time` on the provided `test_clock`.")
+    event_type: str = Field( description="The asynchronous event to be simulated. May be: `posted`, `settled`, `failed`, `funds_available`, or `returned`.  An error will be returned if the event type is incompatible with the current transfer status. Compatible status --> event type transitions include:  `pending` --> `failed`  `pending` --> `posted`  `posted` --> `returned`  `posted` --> `settled`  `settled` --> `funds_available` (only applicable to ACH debits.) ")
     failure_reason: Optional[TransferFailure] = Field(default=None,)
+    webhook: Optional[str] = Field(default=None, description="The webhook URL to which a `TRANSFER_EVENTS_UPDATE` webhook should be sent.")
 
 SandboxTransferSimulateRequest.update_forward_refs()

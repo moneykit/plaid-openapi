@@ -24,7 +24,7 @@ class TransactionsRulesCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    personal_finance_category: str = Field( description="Personal finance detailed category.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories. ")
+    personal_finance_category: str = Field( description="Personal finance detailed category.  All implementations are encouraged to use this field instead of `category`, as it provides more meaningful and accurate categorization.  See the [taxonomy csv file](https://plaid.com/documents/pfc-taxonomy-all.csv) for a full list of personal finance categories. ")
     rule_details: TransactionsRuleDetails = Field()
 
 TransactionsRulesCreateRequest.update_forward_refs()

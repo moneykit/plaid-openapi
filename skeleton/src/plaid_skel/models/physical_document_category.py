@@ -11,3 +11,4 @@ class PhysicalDocumentCategory(str, Enum):
     PASSPORT = "passport"
     RESIDENCE_PERMIT_CARD = "residence_permit_card"
     RESIDENT_CARD = "resident_card"
+    VISA = "visa"

@@ -20,6 +20,7 @@ class RemovedTransaction(BaseModel):
     """A representation of a removed transaction"""
 
 
-    transaction_id: Optional[str] = Field(default=None, description="The ID of the removed transaction.")
+    transaction_id: str = Field( description="The ID of the removed transaction.")
+    account_id: str = Field( description="The ID of the account of the removed transaction.")
 
 RemovedTransaction.update_forward_refs()

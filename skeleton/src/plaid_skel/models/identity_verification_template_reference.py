@@ -17,10 +17,10 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class IdentityVerificationTemplateReference(BaseModel):
-    """The resource ID and version number of the template configuring the behavior of a given identity verification."""
+    """The resource ID and version number of the template configuring the behavior of a given Identity Verification."""
 
 
-    id: str = Field( description="ID of the associated Identity Verification template.")
-    version: float = Field( description="Version of the associated Identity Verification template.")
+    id: str = Field( description="ID of the associated Identity Verification template. Like all Plaid identifiers, this is case-sensitive.")
+    version: int = Field( description="Version of the associated Identity Verification template.")
 
 IdentityVerificationTemplateReference.update_forward_refs()

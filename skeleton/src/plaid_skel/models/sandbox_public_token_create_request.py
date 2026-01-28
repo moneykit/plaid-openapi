@@ -25,8 +25,9 @@ class SandboxPublicTokenCreateRequest(BaseModel):
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     institution_id: str = Field( description="The ID of the institution the Item will be associated with")
-    initial_products: List[Products] = Field( description="The products to initially pull for the Item. May be any products that the specified `institution_id`  supports. This array may not be empty.")
+    initial_products: List[Products] = Field( description="The products to initially pull for the Item. May be any products that the specified `institution_id` supports. This array may not be empty.")
     options: Optional[SandboxPublicTokenCreateRequestOptions] = Field(default=None,)
-    user_token: Optional[str] = Field(default=None, description="The user token associated with the User data is being requested for.")
+    user_token: Optional[str] = Field(default=None, description="The user token associated with the User data is being requested for. This field is used only by customers with pre-existing integrations that already use the `user_token` field. All other customers should use the `user_id` instead. For more details, see [New User APIs](https://plaid.com/docs/api/users/user-apis).")
+    user_id: Optional[str] = Field(default=None, description="A unique user identifier, created by `/user/create`. Integrations that began using `/user/create` after December 10, 2025 use this field to identify a user instead of the `user_token`. For more details, see [new user APIs](https://plaid.com/docs/api/users/user-apis).")
 
 SandboxPublicTokenCreateRequest.update_forward_refs()

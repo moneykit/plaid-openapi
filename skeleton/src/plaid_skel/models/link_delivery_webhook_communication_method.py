@@ -6,5 +6,5 @@ from enum import Enum
 
 
 class LinkDeliveryWebhookCommunicationMethod(str, Enum):
-    SMS = "sms"
-    EMAIL = "email"
+    SMS = "SMS"
+    EMAIL = "EMAIL"

@@ -11,3 +11,4 @@ class CounterpartyType(str, Enum):
     PAYMENT_APP = "payment_app"
     MARKETPLACE = "marketplace"
     PAYMENT_TERMINAL = "payment_terminal"
+    INCOME_SOURCE = "income_source"

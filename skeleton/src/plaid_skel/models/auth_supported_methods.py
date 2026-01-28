@@ -24,5 +24,6 @@ class AuthSupportedMethods(BaseModel):
     instant_auth: bool = Field( description="Indicates if instant auth is supported.")
     instant_match: bool = Field( description="Indicates if instant match is supported.")
     automated_micro_deposits: bool = Field( description="Indicates if automated microdeposits are supported.")
+    instant_micro_deposits: bool = Field( description="Indicates if instant microdeposits are supported.")
 
 AuthSupportedMethods.update_forward_refs()

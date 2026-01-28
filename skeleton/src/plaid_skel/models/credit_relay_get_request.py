@@ -25,5 +25,6 @@ class CreditRelayGetRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     relay_token: str = Field( description="The `relay_token` granting access to the report you would like to get.")
     report_type: ReportType = Field()
+    include_insights: Optional[bool] = Field(default=None, description="`true` if you would like to retrieve the Asset Report with Insights, `false` otherwise. This field defaults to `false` if omitted.")
 
 CreditRelayGetRequest.update_forward_refs()

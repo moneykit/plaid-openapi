@@ -25,6 +25,6 @@ class TransactionsRecurringGetRequest(BaseModel):
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     options: Optional[TransactionsRecurringGetRequestOptions] = Field(default=None,)
-    account_ids: List[str] = Field( description="A list of `account_ids` to retrieve for the Item  Note: An error will be returned if a provided `account_id` is not associated with the Item.")
+    account_ids: Optional[List[str]] = Field(default=None, description="An optional list of `account_ids` to retrieve for the Item. Retrieves all active accounts on item if no `account_id`s are provided.  Note: An error will be returned if a provided `account_id` is not associated with the Item.")
 
 TransactionsRecurringGetRequest.update_forward_refs()

@@ -21,5 +21,6 @@ class LinkTokenInvestments(BaseModel):
 
 
     allow_unverified_crypto_wallets: Optional[bool] = Field(default=None, description="If `true`, allow self-custody crypto wallets to be added without requiring signature verification. Defaults to `false`.")
+    allow_manual_entry: Optional[bool] = Field(default=None, description="If `true`, allow users to manually enter Investments account and holdings information. Defaults to `false`.")
 
 LinkTokenInvestments.update_forward_refs()

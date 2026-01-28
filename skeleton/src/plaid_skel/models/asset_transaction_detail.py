@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.asset_investment_transaction_type import AssetInvestmentTransactionType
 from plaid_skel.models.asset_transaction_category_type import AssetTransactionCategoryType
 from plaid_skel.models.asset_transaction_type import AssetTransactionType
 
@@ -27,8 +28,11 @@ class AssetTransactionDetail(BaseModel):
     asset_transaction_date: date_ = Field( description="Asset Transaction Date.")
     asset_transaction_post_date: date_ = Field( description="Asset Transaction Post Date.")
     asset_transaction_type: AssetTransactionType = Field()
+    asset_investment_transaction_type: Optional[AssetInvestmentTransactionType] = Field(default=None,)
     asset_transaction_paid_by_name: Optional[str] = Field(default=None, description="Populate with who did the transaction.")
+    asset_transaction_paid_to_name: Optional[str] = Field(default=None, description="Populate with for whom the transaction is done")
     asset_transaction_type_additional_description: Optional[str] = Field(default=None, description="FI Provided - examples are atm, cash, check, credit, debit, deposit, directDebit, directDeposit, dividend, fee, interest, other, payment, pointOfSale, repeatPayment, serviceCharge, transfer.")
+    asset_investment_transaction_type_description: Optional[str] = Field(default=None, description="Asset Investment Transaction Type Description.")
     asset_transaction_category_type: Optional[AssetTransactionCategoryType] = Field(default=None,)
     financial_institution_transaction_identifier: Optional[str] = Field(default=None, description="FI provided Transaction Identifier.")
 

@@ -17,10 +17,10 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class TransferAuthorizationDevice(BaseModel):
-    """Information about the device being used to initiate the authorization."""
+    """Information about the device being used to initiate the authorization. These fields are not currently incorporated into the risk check."""
 
 
-    ip_address: Optional[str] = Field(default=None, description="The IP address of the device being used to initiate the authorization. Required for Guarantee.")
-    user_agent: Optional[str] = Field(default=None, description="The user agent of the device being used to initiate the authorization. Required for Guarantee.")
+    ip_address: Optional[str] = Field(default=None, description="The IP address of the device being used to initiate the authorization.")
+    user_agent: Optional[str] = Field(default=None, description="The user agent of the device being used to initiate the authorization.")
 
 TransferAuthorizationDevice.update_forward_refs()

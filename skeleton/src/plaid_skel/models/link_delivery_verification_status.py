@@ -12,3 +12,6 @@ class LinkDeliveryVerificationStatus(str, Enum):
     MANUALLY_VERIFIED = "manually_verified"
     VERIFICATION_EXPIRED = "verification_expired"
     VERIFICATION_FAILED = "verification_failed"
+    UNSENT = "unsent"
+    DATABASE_MATCHED = "database_matched"
+    DATABASE_INSIGHTS_PENDING = "database_insights_pending"

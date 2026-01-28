@@ -21,9 +21,9 @@ class DashboardUserGetResponse(BaseModel):
     """Account information associated with a team member with access to the Plaid dashboard."""
 
 
-    id: str = Field( description="ID of the associated user.")
+    id: str = Field( description="ID of the associated user. To retrieve the email address or other details of the person corresponding to this id, use `/dashboard_user/get`.")
     created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
-    email_address: EmailStr = Field( description="A valid email address.")
+    email_address: EmailStr = Field( description="A valid email address. Must not have leading or trailing spaces and address must be RFC compliant. For more information, see [RFC 3696](https://datatracker.ietf.org/doc/html/rfc3696).")
     status: DashboardUserStatus = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

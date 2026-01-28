@@ -20,6 +20,6 @@ class EntityScreeningHitEmails(BaseModel):
     """Email address information for the associated entity watchlist hit"""
 
 
-    email_address: EmailStr = Field( description="A valid email address.")
+    email_address: EmailStr = Field( description="A valid email address. Must not have leading or trailing spaces and address must be RFC compliant. For more information, see [RFC 3696](https://datatracker.ietf.org/doc/html/rfc3696).")
 
 EntityScreeningHitEmails.update_forward_refs()

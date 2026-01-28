@@ -9,3 +9,4 @@ class DocumentDateOfBirthMatchCode(str, Enum):
     MATCH = "match"
     PARTIAL_MATCH = "partial_match"
     NO_MATCH = "no_match"
+    NO_DATA = "no_data"

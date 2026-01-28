@@ -28,10 +28,4 @@ class WatchlistScreeningIndividualReviewCreateResponse(BaseModel):
     audit_trail: WatchlistScreeningAuditTrail = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-    @field_validator("comment")
-    @classmethod
-    def comment_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 WatchlistScreeningIndividualReviewCreateResponse.update_forward_refs()

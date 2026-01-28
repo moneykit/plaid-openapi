@@ -26,6 +26,7 @@ class AssetsErrorWebhook(BaseModel):
     webhook_code: str = Field( description="`ERROR`")
     error: Optional[PlaidError] = Field(default=None,)
     asset_report_id: str = Field( description="The ID associated with the Asset Report.")
+    user_id: Optional[str] = Field(default=None, description="The `user_id` corresponding to the User ID the webhook has fired for.")
     environment: WebhookEnvironmentValues = Field()
 
 AssetsErrorWebhook.update_forward_refs()

@@ -23,6 +23,6 @@ class Warning(BaseModel):
 
     warning_type: str = Field( description="The warning type, which will always be `ASSET_REPORT_WARNING`")
     warning_code: str = Field( description="The warning code identifies a specific kind of warning. `OWNERS_UNAVAILABLE` indicates that account-owner information is not available.`INVESTMENTS_UNAVAILABLE` indicates that Investments specific information is not available. `TRANSACTIONS_UNAVAILABLE` indicates that transactions information associated with Credit and Depository accounts are unavailable.")
-    cause: Cause = Field()
+    cause: Optional[Cause] = Field(default=None,)
 
 Warning.update_forward_refs()

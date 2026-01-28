@@ -22,12 +22,6 @@ class WatchlistScreeningDocument(BaseModel):
 
 
     type: WatchlistScreeningDocumentType = Field()
-    number: str = Field( description="The numeric or alphanumeric identifier associated with this document.")
-
-    @field_validator("number")
-    @classmethod
-    def number_min_length(cls, value):
-        assert len(value) >= 4
-        return value
+    number: str = Field( description="The numeric or alphanumeric identifier associated with this document. Must be between 4 and 32 characters long, and cannot have leading or trailing spaces.")
 
 WatchlistScreeningDocument.update_forward_refs()

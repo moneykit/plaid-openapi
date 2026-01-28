@@ -19,8 +19,22 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 class SandboxPublicTokenCreateRequestOptionsTransactions(BaseModel):
     """An optional set of parameters corresponding to transactions options."""
 
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     start_date: Optional[date_] = Field(default=None, description="The earliest date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
     end_date: Optional[date_] = Field(default=None, description="The most recent date for which to fetch transaction history. Dates should be formatted as YYYY-MM-DD.")
+    days_requested: Optional[int] = Field(default=None, description="The maximum number of days of transaction history to request for the Transactions product.")
+
+    @field_validator("days_requested")
+    @classmethod
+    def days_requested_max(cls, value):
+        assert value <= 730
+        return value
+
+    @field_validator("days_requested")
+    @classmethod
+    def days_requested_min(cls, value):
+        assert value >= 1
+        return value
 
 SandboxPublicTokenCreateRequestOptionsTransactions.update_forward_refs()

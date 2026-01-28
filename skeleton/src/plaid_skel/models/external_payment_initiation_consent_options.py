@@ -18,7 +18,7 @@ from plaid_skel.models.payment_initiation_optional_restriction_bacs import Payme
 
 
 class ExternalPaymentInitiationConsentOptions(BaseModel):
-    """Additional payment consent options"""
+    """(Deprecated) Additional payment consent options. Please use `payer_details` to specify the account."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 

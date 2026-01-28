@@ -20,13 +20,13 @@ from plaid_skel.models.user_id_number import UserIDNumber
 
 
 class IdentityVerificationUserData(BaseModel):
-    """The identity data that was either collected from the user or provided via API in order to perform an identity verification."""
+    """The identity data that was either collected from the user or provided via API in order to perform an Identity Verification."""
 
 
-    phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
+    phone_number: Optional[str] = Field(default=None, description="A valid phone number in E.164 format.")
     date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     ip_address: Optional[str] = Field(default=None, description="An IPv4 or IPV6 address.")
-    email_address: Optional[EmailStr] = Field(default=None, description="A valid email address.")
+    email_address: Optional[EmailStr] = Field(default=None, description="A valid email address. Must not have leading or trailing spaces and address must be RFC compliant. For more information, see [RFC 3696](https://datatracker.ietf.org/doc/html/rfc3696).")
     name: Optional[IdentityVerificationResponseUserName] = Field(default=None,)
     address: Optional[IdentityVerificationUserAddress] = Field(default=None,)
     id_number: Optional[UserIDNumber] = Field(default=None,)

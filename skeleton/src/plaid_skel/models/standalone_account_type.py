@@ -17,13 +17,14 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class StandaloneAccountType(BaseModel):
-    """The schema below describes the various `types` and corresponding `subtypes` that Plaid recognizes and reports for financial institution accounts."""
+    """The schema below describes the various `types` and corresponding `subtypes` that Plaid recognizes and reports for financial institution accounts. For a mapping of supported types and subtypes to Plaid products, see the [Account type / product support matrix](https://plaid.com/docs/api/accounts/#account-type--product-support-matrix)."""
 
 
-    depository: str = Field( description="An account type holding cash, in which funds are deposited. Supported products for `depository` accounts are: Auth (`checking` and `savings` types only), Balance, Transactions, Identity, Payment Initiation, and Assets.")
-    credit: str = Field( description="A credit card type account. Supported products for `credit` accounts are: Balance, Transactions, Identity, and Liabilities.")
-    loan: str = Field( description="A loan type account. Supported products for `loan` accounts are: Balance, Liabilities, and Transactions.")
-    investment: str = Field( description="An investment account. Supported products for `investment` accounts are: Balance and Investments. In API versions 2018-05-22 and earlier, this type is called `brokerage`.")
-    other: str = Field( description="Other or unknown account type. Supported products for `other` accounts are: Balance, Transactions, Identity, and Assets.")
+    depository: str = Field( description="An account type holding cash, in which funds are deposited.")
+    credit: str = Field( description="A credit card type account.")
+    loan: str = Field( description="A loan type account.")
+    investment: str = Field( description="An investment account. In API versions 2018-05-22 and earlier, this type is called `brokerage`.")
+    payroll: Optional[str] = Field(default=None, description="A payroll account.")
+    other: str = Field( description="Other or unknown account type.")
 
 StandaloneAccountType.update_forward_refs()

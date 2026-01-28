@@ -13,9 +13,12 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.income_breakdown import IncomeBreakdown
-from plaid_skel.models.pay_period_details import PayPeriodDetails
+from plaid_skel.models.paystub_override_deductions import PaystubOverrideDeductions
+from plaid_skel.models.paystub_override_earnings import PaystubOverrideEarnings
 from plaid_skel.models.paystub_override_employee import PaystubOverrideEmployee
 from plaid_skel.models.paystub_override_employer import PaystubOverrideEmployer
+from plaid_skel.models.paystub_override_net_pay import PaystubOverrideNetPay
+from plaid_skel.models.paystub_override_pay_period_details import PaystubOverridePayPeriodDetails
 
 
 
@@ -27,6 +30,9 @@ class PaystubOverride(BaseModel):
     employer: Optional[PaystubOverrideEmployer] = Field(default=None,)
     employee: Optional[PaystubOverrideEmployee] = Field(default=None,)
     income_breakdown: Optional[List[IncomeBreakdown]] = Field(default=None,)
-    pay_period_details: Optional[PayPeriodDetails] = Field(default=None,)
+    net_pay: Optional[PaystubOverrideNetPay] = Field(default=None,)
+    deductions: Optional[PaystubOverrideDeductions] = Field(default=None,)
+    earnings: Optional[PaystubOverrideEarnings] = Field(default=None,)
+    pay_period_details: Optional[PaystubOverridePayPeriodDetails] = Field(default=None,)
 
 PaystubOverride.update_forward_refs()

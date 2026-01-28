@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.transfer_diligence_status import TransferDiligenceStatus
+from plaid_skel.models.transfer_platform_requirement import TransferPlatformRequirement
 
 
 
@@ -23,6 +24,7 @@ class DetailedOriginator(BaseModel):
 
     client_id: str = Field( description="Originator’s client ID.")
     transfer_diligence_status: TransferDiligenceStatus = Field()
-    company_name: str = Field()
+    company_name: str = Field( description="The company name of the end customer.")
+    outstanding_requirements: Optional[List[TransferPlatformRequirement]] = Field(default=None, description="List of outstanding requirements that must be submitted before Plaid can approve the originator. Only populated when `transfer_diligence_status` is `more_information_required`.")
 
 DetailedOriginator.update_forward_refs()

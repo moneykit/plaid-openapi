@@ -21,7 +21,7 @@ class InstitutionsSearchRequestOptions(BaseModel):
     """An optional object to filter `/institutions/search` results."""
 
 
-    oauth: Optional[bool] = Field(default=None, description="Limit results to institutions with or without mandatory OAuth login flows. Note that institutions will only have `oauth` set to `true` if *all* Items associated with that institution are required to use OAuth flows; institutions in a state of migration to OAuth may have the `oauth` attribute set to `false` even if they support OAuth.")
+    oauth: Optional[bool] = Field(default=None, description="Limit results to institutions with or without OAuth login flows. Note that institutions will have `oauth` set to `true` if some Items associated with that institution are required to use OAuth flows; institutions in a state of migration to OAuth will have the `oauth` attribute set to `true`.")
     include_optional_metadata: Optional[bool] = Field(default=None, description="When true, return the institution's homepage URL, logo and primary brand color.")
     include_auth_metadata: Optional[bool] = Field(default=None, description="When `true`, returns metadata related to the Auth product indicating which auth methods are supported.")
     include_payment_initiation_metadata: Optional[bool] = Field(default=None, description="When `true`, returns metadata related to the Payment Initiation product indicating which payment configurations are supported.")

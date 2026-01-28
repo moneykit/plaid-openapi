@@ -22,6 +22,7 @@ class TransferEventSyncResponse(BaseModel):
 
 
     transfer_events: List[TransferEvent] = Field()
+    has_more: bool = Field( description="Whether there are more events to be pulled from the endpoint that have not already been returned")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 TransferEventSyncResponse.update_forward_refs()

@@ -16,6 +16,7 @@ from plaid_skel.models.transfer_authorization_decision import TransferAuthorizat
 from plaid_skel.models.transfer_authorization_decision_rationale import TransferAuthorizationDecisionRationale
 from plaid_skel.models.transfer_authorization_guarantee_decision import TransferAuthorizationGuaranteeDecision
 from plaid_skel.models.transfer_authorization_guarantee_decision_rationale import TransferAuthorizationGuaranteeDecisionRationale
+from plaid_skel.models.transfer_authorization_payment_risk import TransferAuthorizationPaymentRisk
 from plaid_skel.models.transfer_authorization_proposed_transfer import TransferAuthorizationProposedTransfer
 
 
@@ -31,6 +32,7 @@ class TransferAuthorization(BaseModel):
     decision_rationale: Optional[TransferAuthorizationDecisionRationale] = Field(default=None,)
     guarantee_decision: Optional[TransferAuthorizationGuaranteeDecision] = Field(default=None,)
     guarantee_decision_rationale: Optional[TransferAuthorizationGuaranteeDecisionRationale] = Field(default=None,)
+    payment_risk: Optional[TransferAuthorizationPaymentRisk] = Field(default=None,)
     proposed_transfer: TransferAuthorizationProposedTransfer = Field()
 
 TransferAuthorization.update_forward_refs()

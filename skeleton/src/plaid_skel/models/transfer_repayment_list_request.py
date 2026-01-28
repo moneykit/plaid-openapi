@@ -22,8 +22,8 @@ class TransferRepaymentListRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    start_date: Optional[datetime_] = Field(default=None, description="The start datetime of repayments to return (RFC 3339 format).")
-    end_date: Optional[datetime_] = Field(default=None, description="The end datetime of repayments to return (RFC 3339 format).")
+    start_date: Optional[datetime_] = Field(default=None, description="The start `created` datetime of repayments to return (RFC 3339 format).")
+    end_date: Optional[datetime_] = Field(default=None, description="The end `created` datetime of repayments to return (RFC 3339 format).")
     count: Optional[int] = Field(default=None, description="The maximum number of repayments to return.")
     offset: Optional[int] = Field(default=None, description="The number of repayments to skip before returning results.")
 

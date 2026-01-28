@@ -23,7 +23,7 @@ class EntityScreeningStatusUpdatedWebhook(BaseModel):
 
     webhook_type: str = Field( description="`ENTITY_SCREENING`")
     webhook_code: str = Field( description="`STATUS_UPDATED`")
-    screening_id: str = Field( description="The ID of the associated screening.")
+    entity_screening_id: str = Field( description="The ID of the associated entity screening.")
     environment: WebhookEnvironmentValues = Field()
 
 EntityScreeningStatusUpdatedWebhook.update_forward_refs()

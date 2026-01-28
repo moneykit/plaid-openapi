@@ -17,19 +17,14 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class IdentityVerificationListRequest(BaseModel):
-    """Request input for listing identity verifications"""
+    """Request input for listing Identity Verifications"""
 
 
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
-    template_id: str = Field( description="ID of the associated Identity Verification template.")
-    client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
+    template_id: str = Field( description="ID of the associated Identity Verification template. Like all Plaid identifiers, this is case-sensitive.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. Either a `user_id` or the `client_user_id` must be provided. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
+    user_id: Optional[str] = Field(default=None, description="Unique user identifier, created by calling `/user/create`. Either a `user_id` or the `client_user_id` must be provided. The `user_id` may only be used instead of the `client_user_id` if you were not a pre-existing user of `/user/create` as of December 10, 2025; for more details, see [New User APIs](https://plaid.com/docs/api/users/user-apis). If both this field and a `client_user_id` are present in a request, the `user_id` must have been created from the provided `client_user_id`.")
     cursor: Optional[str] = Field(default=None, description="An identifier that determines which page of results you receive.")
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_min_length(cls, value):
-        assert len(value) >= 1
-        return value
 
 IdentityVerificationListRequest.update_forward_refs()

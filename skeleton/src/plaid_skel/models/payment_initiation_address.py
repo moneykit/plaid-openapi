@@ -17,7 +17,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class PaymentInitiationAddress(BaseModel):
-    """The optional address of the payment recipient. Required by most institutions outside of the UK."""
+    """The optional address of the payment recipient's bank account. Required by most institutions outside of the UK."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 

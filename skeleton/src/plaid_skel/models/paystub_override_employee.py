@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.paystub_override_employee_address import PaystubOverrideEmployeeAddress
+from plaid_skel.models.paystub_override_taxpayer_id import PaystubOverrideTaxpayerID
 
 
 
@@ -23,5 +24,7 @@ class PaystubOverrideEmployee(BaseModel):
 
     name: Optional[str] = Field(default=None, description="The name of the employee.")
     address: Optional[PaystubOverrideEmployeeAddress] = Field(default=None,)
+    marital_status: Optional[str] = Field(default=None, description="Marital status of the employee - either `single` or `married`.")
+    taxpayer_id: Optional[PaystubOverrideTaxpayerID] = Field(default=None,)
 
 PaystubOverrideEmployee.update_forward_refs()

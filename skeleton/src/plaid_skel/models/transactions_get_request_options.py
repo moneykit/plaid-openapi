@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.personal_finance_category_version import PersonalFinanceCategoryVersion
 
 
 
@@ -23,8 +24,10 @@ class TransactionsGetRequestOptions(BaseModel):
     account_ids: Optional[List[str]] = Field(default=None, description="A list of `account_ids` to retrieve for the Item  Note: An error will be returned if a provided `account_id` is not associated with the Item.")
     count: Optional[int] = Field(default=None, description="The number of transactions to fetch.")
     offset: Optional[int] = Field(default=None, description="The number of transactions to skip. The default value is 0.")
-    include_original_description: Optional[bool] = Field(default=None, description="Include the raw unparsed transaction description from the financial institution. This field is disabled by default. If you need this information in addition to the parsed data provided, contact your Plaid Account Manager, or submit a [Support request](https://dashboard.plaid.com/support/new/product-and-development/product-troubleshooting/product-functionality) .")
-    include_personal_finance_category: Optional[bool] = Field(default=None, description="Include the [`personal_finance_category`](https://plaid.com/docs/api/products/transactions/#transactions-get-response-transactions-personal-finance-category) object in the response.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories.  We’re introducing Category Rules - a new beta endpoint that will enable you to change the `personal_finance_category` for a transaction based on your users’ needs. When rules are set, the selected category will override the Plaid provided category. To learn more, send a note to transactions-feedback@plaid.com.")
+    include_original_description: Optional[bool] = Field(default=None, description="Include the raw unparsed transaction description from the financial institution.")
+    include_personal_finance_category: Optional[bool] = Field(default=None, description="Personal finance categories are now returned by default.")
+    personal_finance_category_version: Optional[PersonalFinanceCategoryVersion] = Field(default=None,)
+    days_requested: Optional[int] = Field(default=None, description="This field only applies to calls for Items where the Transactions product has not already been initialized (i.e. by specifying `transactions` in the `products`, `optional_products`, or `required_if_consented_products` array when calling `/link/token/create` or by making a previous call to `/transactions/sync` or `/transactions/get`). In those cases, the field controls the maximum number of days of transaction history that Plaid will request from the financial institution. The more transaction history is requested, the longer the historical update poll will take. If no value is specified, 90 days of history will be requested by default. If a value under 30 is provided, a minimum of 30 days of history will be requested.  If you are initializing your Items with transactions during the `/link/token/create` call (e.g. by including `transactions` in the `/link/token/create` `products` array), you must use the [`transactions.days_requested`](https://plaid.com/docs/api/link/#link-token-create-request-transactions-days-requested) field in the `/link/token/create` request instead of in the `/transactions/get` request.  If the Item has already been initialized with the Transactions product, this field will have no effect. The maximum amount of transaction history to request on an Item cannot be updated if Transactions has already been added to the Item. To request older transaction history on an Item where Transactions has already been added, you must delete the Item via `/item/remove` and send the user through Link to create a new Item.  Customers using [Recurring Transactions](https://plaid.com/docs/api/products/transactions/#transactionsrecurringget) should request at least 180 days of history for optimal results.")
 
     @field_validator("count")
     @classmethod
@@ -42,6 +45,18 @@ class TransactionsGetRequestOptions(BaseModel):
     @classmethod
     def offset_min(cls, value):
         assert value >= 0
+        return value
+
+    @field_validator("days_requested")
+    @classmethod
+    def days_requested_max(cls, value):
+        assert value <= 730
+        return value
+
+    @field_validator("days_requested")
+    @classmethod
+    def days_requested_min(cls, value):
+        assert value >= 1
         return value
 
 TransactionsGetRequestOptions.update_forward_refs()

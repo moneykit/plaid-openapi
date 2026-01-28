@@ -12,3 +12,4 @@ class FDXNotificationType(str, Enum):
     SERVICE = "SERVICE"
     BALANCE = "BALANCE"
     PLANNED_OUTAGE = "PLANNED_OUTAGE"
+    TAN_REVOKED = "TAN_REVOKED"

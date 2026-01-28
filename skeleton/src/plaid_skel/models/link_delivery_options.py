@@ -18,7 +18,7 @@ from plaid_skel.models.link_delivery_recipient import LinkDeliveryRecipient
 
 
 class LinkDeliveryOptions(BaseModel):
-    """Optional metadata related to the link delivery session"""
+    """Optional metadata related to the Hosted Link session"""
 
 
     recipient: Optional[LinkDeliveryRecipient] = Field(default=None,)

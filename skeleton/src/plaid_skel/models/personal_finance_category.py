@@ -12,16 +12,19 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.personal_finance_category_version import PersonalFinanceCategoryVersion
 
 
 
 
 class PersonalFinanceCategory(BaseModel):
-    """Information describing the intent of the transaction. Most relevant for personal finance use cases, but not limited to such use cases.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories."""
+    """Information describing the intent of the transaction. Most relevant for personal finance use cases, but not limited to such use cases.  See the [taxonomy CSV file](https://plaid.com/documents/pfc-taxonomy-all.csv) for a full list of personal finance categories. If you are migrating to personal finance categories from the legacy categories, also refer to the [migration guide](https://plaid.com/docs/transactions/pfc-migration/)."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     primary: str = Field( description="A high level category that communicates the broad category of the transaction.")
     detailed: str = Field( description="A granular category conveying the transaction's intent. This field can also be used as a unique identifier for the category.")
+    confidence_level: Optional[str] = Field(default=None, description="A description of how confident we are that the provided categories accurately describe the transaction intent.  `VERY_HIGH`: We are more than 98% confident that this category reflects the intent of the transaction. `HIGH`: We are more than 90% confident that this category reflects the intent of the transaction. `MEDIUM`: We are moderately confident that this category reflects the intent of the transaction. `LOW`: This category may reflect the intent, but there may be other categories that are more accurate. `UNKNOWN`: We don’t know the confidence level for this category.")
+    version: Optional[PersonalFinanceCategoryVersion] = Field(default=None,)
 
 PersonalFinanceCategory.update_forward_refs()

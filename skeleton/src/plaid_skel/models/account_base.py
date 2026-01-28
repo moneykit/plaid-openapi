@@ -13,8 +13,10 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.account_balance import AccountBalance
+from plaid_skel.models.account_holder_category import AccountHolderCategory
 from plaid_skel.models.account_subtype import AccountSubtype
 from plaid_skel.models.account_type import AccountType
+from plaid_skel.models.account_verification_insights import AccountVerificationInsights
 
 
 
@@ -23,11 +25,14 @@ class AccountBase(BaseModel):
     """A single account at a financial institution."""
 
 
-    account_id: str = Field( description="Plaid’s unique identifier for the account. This value will not change unless Plaid can't reconcile the account with the data returned by the financial institution. This may occur, for example, when the name of the account changes. If this happens a new `account_id` will be assigned to the account.  The `account_id` can also change if the `access_token` is deleted and the same credentials that were used to generate that `access_token` are used to generate a new `access_token` on a later date. In that case, the new `account_id` will be different from the old `account_id`.  If an account with a specific `account_id` disappears instead of changing, the account is likely closed. Closed accounts are not returned by the Plaid API.  Like all Plaid identifiers, the `account_id` is case sensitive.")
+    account_id: str = Field( description="Plaid’s unique identifier for the account. This value will not change unless Plaid can't reconcile the account with the data returned by the financial institution. This may occur, for example, when the name of the account changes. If this happens a new `account_id` will be assigned to the account.  The `account_id` can also change if the `access_token` is deleted and the same credentials that were used to generate that `access_token` are used to generate a new `access_token` on a later date. In that case, the new `account_id` will be different from the old `account_id`.  If an account with a specific `account_id` disappears instead of changing, the account is likely closed. Closed accounts are not returned by the Plaid API.  When using a CRA endpoint (an endpoint associated with Plaid Check Consumer Report, i.e. any endpoint beginning with `/cra/`), the `account_id` returned will not match the `account_id` returned by a non-CRA endpoint.  Like all Plaid identifiers, the `account_id` is case sensitive.")
     balances: AccountBalance = Field()
-    mask: Optional[str] = Field(default=None, description="The last 2-4 alphanumeric characters of an account's official account number. Note that the mask may be non-unique between an Item's accounts, and it may also not match the mask that the bank displays to the user.")
+    mask: Optional[str] = Field(default=None, description="The last 2-4 alphanumeric characters of either the account’s displayed mask or the account’s official account number. Note that the mask may be non-unique between an Item’s accounts.")
     name: str = Field( description="The name of the account, either assigned by the user or by the financial institution itself")
     type: AccountType = Field()
     subtype: Optional[AccountSubtype] = Field(default=None,)
+    verification_name: Optional[str] = Field(default=None, description="The account holder name that was used for micro-deposit and/or database verification. Only returned for Auth Items created via micro-deposit or database verification. This name was manually-entered by the user during Link, unless it was otherwise provided via the `user.legal_name` request field in `/link/token/create` for the Link session that created the Item.")
+    verification_insights: Optional[AccountVerificationInsights] = Field(default=None,)
+    holder_category: Optional[AccountHolderCategory] = Field(default=None,)
 
 AccountBase.update_forward_refs()

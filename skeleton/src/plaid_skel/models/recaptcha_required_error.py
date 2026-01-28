@@ -20,8 +20,8 @@ class RecaptchaRequiredError(BaseModel):
     """The request was flagged by Plaid's fraud system, and requires additional verification to ensure they are not a bot."""
 
 
-    error_type: str = Field( description="RECAPTCHA_ERROR")
-    error_code: str = Field( description="RECAPTCHA_REQUIRED")
+    error_type: str = Field( description="`RECAPTCHA_ERROR`")
+    error_code: str = Field( description="`RECAPTCHA_REQUIRED`")
     display_message: str = Field()
     http_code: str = Field( description="400")
     link_user_experience: str = Field( description="Your user will be prompted to solve a Google reCAPTCHA challenge in the Link Recaptcha pane. If they solve the challenge successfully, the user's request is resubmitted and they are directed to the next Item creation step.")

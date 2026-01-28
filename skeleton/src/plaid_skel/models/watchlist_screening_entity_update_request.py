@@ -25,17 +25,11 @@ class WatchlistScreeningEntityUpdateRequest(BaseModel):
 
     entity_watchlist_screening_id: str = Field( description="ID of the associated entity screening.")
     search_terms: Optional[UpdateEntityScreeningRequestSearchTerms] = Field(default=None,)
-    assignee: Optional[str] = Field(default=None, description="ID of the associated user.")
+    assignee: Optional[str] = Field(default=None, description="ID of the associated user. To retrieve the email address or other details of the person corresponding to this id, use `/dashboard_user/get`.")
     status: Optional[WatchlistScreeningStatus] = Field(default=None,)
-    client_user_id: Optional[str] = Field(default=None, description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. Either a `user_id` or the `client_user_id` must be provided. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     reset_fields: Optional[List[WatchlistScreeningEntityUpdateRequestResettableField]] = Field(default=None, description="A list of fields to reset back to null")
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_min_length(cls, value):
-        assert len(value) >= 1
-        return value
 
 WatchlistScreeningEntityUpdateRequest.update_forward_refs()

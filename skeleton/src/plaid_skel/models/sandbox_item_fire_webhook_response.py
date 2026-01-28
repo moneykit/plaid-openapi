@@ -20,7 +20,7 @@ class SandboxItemFireWebhookResponse(BaseModel):
     """SandboxItemFireWebhookResponse defines the response schema for `/sandbox/item/fire_webhook`"""
 
 
-    webhook_fired: bool = Field( description="Value is `true`  if the test` webhook_code`  was successfully fired.")
+    webhook_fired: bool = Field( description="Value is `true` if the test `webhook_code` was successfully fired.")
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 SandboxItemFireWebhookResponse.update_forward_refs()

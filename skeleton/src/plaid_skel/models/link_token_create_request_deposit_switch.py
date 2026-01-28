@@ -17,7 +17,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class LinkTokenCreateRequestDepositSwitch(BaseModel):
-    """Specifies options for initializing Link for use with the Deposit Switch (beta) product. This field is required if `deposit_switch` is included in the `products` array."""
+    """(Deprecated) Specifies options for initializing Link for use with the Deposit Switch (beta) product. This field is required if `deposit_switch` is included in the `products` array."""
 
 
     deposit_switch_id: str = Field( description="The `deposit_switch_id` provided by the `/deposit_switch/create` endpoint.")

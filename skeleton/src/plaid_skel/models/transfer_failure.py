@@ -21,6 +21,7 @@ class TransferFailure(BaseModel):
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
+    failure_code: Optional[str] = Field(default=None, description="The failure code, e.g. `R01`.  A failure code will be provided if and only if the transfer status is `returned`. See [ACH return codes](https://plaid.com/docs/errors/transfer/#ach-return-codes) for a full listing of ACH return codes and [RTP/RfP error codes](https://plaid.com/docs/errors/transfer/#rtprfp-error-codes) for RTP error codes.")
     ach_return_code: Optional[str] = Field(default=None, description="The ACH return code, e.g. `R01`.  A return code will be provided if and only if the transfer status is `returned`. For a full listing of ACH return codes, see [Transfer errors](https://plaid.com/docs/errors/transfer/#ach-return-codes).")
     description: Optional[str] = Field(default=None, description="A human-readable description of the reason for the failure or reversal.")
 

@@ -19,7 +19,7 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 
 
 class UserPermissionRevokedWebhook(BaseModel):
-    """The `USER_PERMISSION_REVOKED` webhook is fired when an end user has used either the [my.plaid.com portal](https://my.plaid.com) or the financial institution’s consent portal to revoke the permission that they previously granted to access an Item. Once access to an Item has been revoked, it cannot be restored. If the user subsequently returns to your application, a new Item must be created for the user."""
+    """The `USER_PERMISSION_REVOKED` webhook may be fired when an end user has revoked the permission that they previously granted to access an Item. If the end user revoked their permissions through Plaid (such as via the Plaid Portal or by contacting Plaid Support), the webhook will fire. If the end user revoked their permissions directly through the institution, this webhook may not always fire, since some institutions’ consent portals do not trigger this webhook. To attempt to restore the Item, it can be sent through [update mode](https://plaid.com/docs/link/update-mode). Depending on the exact process the end user used to revoke permissions, it may not be possible to launch update mode for the Item. If you encounter an error when attempting to create a Link token for update mode on an Item with revoked permissions, create a fresh Link token for the user.  Note that when working with tokenized account numbers with Auth or Transfer, the account number provided by Plaid will no longer work for creating transfers once user permission has been revoked, except for US Bank Items."""
 
 
     webhook_type: str = Field( description="`ITEM`")

@@ -33,7 +33,7 @@ class FDXNotification(BaseModel):
     category: FDXNotificationCategory = Field()
     severity: Optional[FDXNotificationSeverity] = Field(default=None,)
     priority: Optional[FDXNotificationPriority] = Field(default=None,)
-    publisher: FDXParty = Field()
+    publisher: Optional[FDXParty] = Field(default=None,)
     subscriber: Optional[FDXParty] = Field(default=None,)
     notification_payload: FDXNotificationPayload = Field()
     url: Optional[FDXHateoasLink] = Field(default=None,)

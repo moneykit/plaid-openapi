@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.partner_end_customer_o_auth_institution_environments import PartnerEndCustomerOAuthInstitutionEnvironments
+from plaid_skel.models.plaid_error import PlaidError
 
 
 
@@ -26,5 +27,6 @@ class PartnerEndCustomerOAuthInstitution(BaseModel):
     environments: Optional[PartnerEndCustomerOAuthInstitutionEnvironments] = Field(default=None,)
     production_enablement_date: Optional[str] = Field(default=None, description="The date on which the end customer's application was approved by the institution, or an empty string if their application has not yet been approved.")
     classic_disablement_date: Optional[str] = Field(default=None, description="The date on which non-OAuth Item adds will no longer be supported for this institution, or an empty string if no such date has been set by the institution.")
+    errors: Optional[List[PlaidError]] = Field(default=None, description="The errors encountered while registering the end customer's application with the institutions.")
 
 PartnerEndCustomerOAuthInstitution.update_forward_refs()

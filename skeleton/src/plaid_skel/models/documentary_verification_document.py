@@ -25,7 +25,7 @@ class DocumentaryVerificationDocument(BaseModel):
 
 
     status: DocumentStatus = Field()
-    attempt: float = Field( description="The `attempt` field begins with 1 and increments with each subsequent document upload.")
+    attempt: int = Field( description="The `attempt` field begins with 1 and increments with each subsequent document upload.")
     images: PhysicalDocumentImages = Field()
     extracted_data: Optional[PhysicalDocumentExtractedData] = Field(default=None,)
     analysis: DocumentAnalysis = Field()

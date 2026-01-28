@@ -13,14 +13,16 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.transfer_capabilities_get_rtp import TransferCapabilitiesGetRTP
+from plaid_skel.models.transfer_capabilities_get_rf_p import TransferCapabilitiesGetRfP
 
 
 
 
 class InstitutionSupportedNetworks(BaseModel):
-    """Contains the RTP network and types supported by the linked Item's institution."""
+    """Contains the RTP and RfP network and types supported by the linked Item's institution."""
 
 
     rtp: TransferCapabilitiesGetRTP = Field()
+    rfp: TransferCapabilitiesGetRfP = Field()
 
 InstitutionSupportedNetworks.update_forward_refs()

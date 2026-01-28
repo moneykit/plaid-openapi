@@ -22,6 +22,6 @@ class LinkDeliveryGetRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    link_delivery_session_id: str = Field( description="The ID for the Link Delivery session from a previous invocation of `/link_delivery/create`.")
+    link_delivery_session_id: str = Field( description="The ID for the Hosted Link session from a previous invocation of `/link_delivery/create`.")
 
 LinkDeliveryGetRequest.update_forward_refs()

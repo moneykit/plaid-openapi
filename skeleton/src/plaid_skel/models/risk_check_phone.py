@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.risk_check_linked_service import RiskCheckLinkedService
+from plaid_skel.models.risk_level import RiskLevel
 
 
 
@@ -22,6 +23,8 @@ class RiskCheckPhone(BaseModel):
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
-    linked_services: list[RiskCheckLinkedService] = Field()
+    linked_services: list[RiskCheckLinkedService] = Field( description="A list of online services where this phone number has been detected to have accounts or other activity.")
+    risk_level: Optional[RiskLevel] = Field(default=None,)
+    factors: Optional[List[str]] = Field(default=None, description="List of factors, when available, that contribute towards the risk level of the given risk check type.")
 
 RiskCheckPhone.update_forward_refs()

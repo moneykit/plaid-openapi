@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.personal_finance_category_version import PersonalFinanceCategoryVersion
 
 
 
@@ -21,5 +22,6 @@ class TransactionsEnrichRequestOptions(BaseModel):
 
 
     include_legacy_category: Optional[bool] = Field(default=None, description="Include `legacy_category` and `legacy_category_id` in the response (in addition to the default `personal_finance_category`).  Categories are based on Plaid's legacy taxonomy. For a full list of legacy categories, see [`/categories/get`](https://plaid.com/docs/api/products/transactions/#categoriesget).")
+    personal_finance_category_version: Optional[PersonalFinanceCategoryVersion] = Field(default=None,)
 
 TransactionsEnrichRequestOptions.update_forward_refs()

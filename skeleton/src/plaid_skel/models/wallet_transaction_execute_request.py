@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.originating_fund_source import OriginatingFundSource
 from plaid_skel.models.wallet_transaction_amount import WalletTransactionAmount
 from plaid_skel.models.wallet_transaction_counterparty import WalletTransactionCounterparty
 
@@ -29,6 +30,7 @@ class WalletTransactionExecuteRequest(BaseModel):
     counterparty: WalletTransactionCounterparty = Field()
     amount: WalletTransactionAmount = Field()
     reference: str = Field( description="A reference for the transaction. This must be an alphanumeric string with 6 to 18 characters and must not contain any special characters or spaces. Ensure that the `reference` field is unique for each transaction.")
+    originating_fund_source: Optional[OriginatingFundSource] = Field(default=None,)
 
     @field_validator("idempotency_key")
     @classmethod

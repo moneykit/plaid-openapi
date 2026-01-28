@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.risk_profile import RiskProfile
+from plaid_skel.models.ruleset import Ruleset
 from plaid_skel.models.signal_evaluate_core_attributes import SignalEvaluateCoreAttributes
 from plaid_skel.models.signal_scores import SignalScores
 from plaid_skel.models.signal_warning import SignalWarning
@@ -20,12 +22,14 @@ from plaid_skel.models.signal_warning import SignalWarning
 
 
 class SignalEvaluateResponse(BaseModel):
-    """SignalEvaluateResponse defines the response schema for `/signal/income/evaluate`"""
+    """SignalEvaluateResponse defines the response schema for `/signal/evaluate`"""
 
 
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
-    scores: SignalScores = Field()
+    scores: Optional[SignalScores] = Field(default=None,)
     core_attributes: Optional[SignalEvaluateCoreAttributes] = Field(default=None,)
-    warnings: Optional[List[SignalWarning]] = Field(default=None, description="If bank information was not able to be used as features into the Signal model, this array contains warnings describing why we were missing bank data")
+    risk_profile: Optional[RiskProfile] = Field(default=None,)
+    ruleset: Optional[Ruleset] = Field(default=None,)
+    warnings: List[SignalWarning] = Field( description="If bank information was not available to be used in the Signal Transaction Scores model, this array contains warnings describing why bank data is missing. If you want to receive an API error instead of results in the case of missing bank data, file a support ticket or contact your Plaid account manager.")
 
 SignalEvaluateResponse.update_forward_refs()

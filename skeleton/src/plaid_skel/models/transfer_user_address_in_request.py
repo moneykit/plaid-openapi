@@ -17,7 +17,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class TransferUserAddressInRequest(BaseModel):
-    """The address associated with the account holder. Providing this data will improve the likelihood that Plaid will be able to guarantee the transfer, if applicable."""
+    """The address associated with the account holder."""
 
 
     street: Optional[str] = Field(default=None, description="The street number and name (i.e., \"100 Market St.\").")

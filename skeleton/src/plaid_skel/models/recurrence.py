@@ -12,15 +12,17 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.recurring_frequency import RecurringFrequency
 
 
 
 
 class Recurrence(BaseModel):
-    """Insights relating to expenses and deposits that are predicted to occur on a scheduled basis, such as biweekly, monthly, or annually.  Common examples include loan payments, bill payments, subscriptions, and payroll income.  This is a beta field, available to all users."""
+    """This schema was for beta and is no longer populated.  Insights relating to expenses and deposits that are predicted to occur on a scheduled basis, such as biweekly, monthly, or annually.  Common examples include loan payments, bill payments, subscriptions, and payroll income.  This is a beta field, available to all users."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     is_recurring: Optional[bool] = Field(default=None, description="Whether or not the transaction is periodically recurring.")
+    frequency: Optional[RecurringFrequency] = Field(default=None,)
 
 Recurrence.update_forward_refs()

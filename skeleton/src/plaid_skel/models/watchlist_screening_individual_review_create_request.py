@@ -27,10 +27,4 @@ class WatchlistScreeningIndividualReviewCreateRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     watchlist_screening_id: str = Field( description="ID of the associated screening.")
 
-    @field_validator("comment")
-    @classmethod
-    def comment_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 WatchlistScreeningIndividualReviewCreateRequest.update_forward_refs()

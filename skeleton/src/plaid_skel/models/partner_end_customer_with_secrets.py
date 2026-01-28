@@ -19,11 +19,11 @@ from plaid_skel.models.partner_end_customer_status import PartnerEndCustomerStat
 
 
 class PartnerEndCustomerWithSecrets(BaseModel):
-    """The details for the newly created end customer, including secrets for non-Production environments."""
+    """The details for the newly created end customer, including secrets for Sandbox and Limited Production."""
 
 
-    client_id: Optional[str] = Field(default=None,)
-    company_name: Optional[str] = Field(default=None,)
+    client_id: Optional[str] = Field(default=None, description="The `client_id` of the end customer.")
+    company_name: Optional[str] = Field(default=None, description="The company name associated with the end customer.")
     status: Optional[PartnerEndCustomerStatus] = Field(default=None,)
     secrets: Optional[PartnerEndCustomerSecrets] = Field(default=None,)
 

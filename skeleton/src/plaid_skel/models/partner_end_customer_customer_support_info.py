@@ -17,10 +17,10 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class PartnerEndCustomerCustomerSupportInfo(BaseModel):
-    """This information is public. Users of your app will see this information when managing connections between your app and their bank accounts in Plaid Portal. Defaults to partner's customer support info if omitted."""
+    """This information is public. Users of your app will see this information when managing connections between your app and their bank accounts in Plaid Portal. Defaults to partner's customer support info if omitted. This field is mandatory for partners whose Plaid accounts were created after November 26, 2024 and will be mandatory for all partners by the 1033 compliance deadline."""
 
 
-    email: Optional[str] = Field(default=None,)
+    email: Optional[str] = Field(default=None, description="This field is mandatory for partners whose Plaid accounts were created after November 26, 2024 and will be mandatory for all partners by the 1033 compliance deadline.")
     phone_number: Optional[str] = Field(default=None,)
     contact_url: Optional[str] = Field(default=None,)
     link_update_url: Optional[str] = Field(default=None,)

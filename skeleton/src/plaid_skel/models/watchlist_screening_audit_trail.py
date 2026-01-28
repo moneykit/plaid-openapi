@@ -22,7 +22,7 @@ class WatchlistScreeningAuditTrail(BaseModel):
 
 
     source: Source = Field()
-    dashboard_user_id: Optional[str] = Field(default=None, description="ID of the associated user.")
+    dashboard_user_id: Optional[str] = Field(default=None, description="ID of the associated user. To retrieve the email address or other details of the person corresponding to this id, use `/dashboard_user/get`.")
     timestamp: datetime_ = Field( description="An ISO8601 formatted timestamp.")
 
 WatchlistScreeningAuditTrail.update_forward_refs()

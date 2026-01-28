@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.sandbox_public_token_create_request_options_income_verification import SandboxPublicTokenCreateRequestOptionsIncomeVerification
+from plaid_skel.models.sandbox_public_token_create_request_options_statements import SandboxPublicTokenCreateRequestOptionsStatements
 from plaid_skel.models.sandbox_public_token_create_request_options_transactions import SandboxPublicTokenCreateRequestOptionsTransactions
 
 
@@ -26,6 +27,7 @@ class SandboxPublicTokenCreateRequestOptions(BaseModel):
     override_username: Optional[str] = Field(default=None, description="Test username to use for the creation of the Sandbox Item. Default value is `user_good`.")
     override_password: Optional[str] = Field(default=None, description="Test password to use for the creation of the Sandbox Item. Default value is `pass_good`.")
     transactions: Optional[SandboxPublicTokenCreateRequestOptionsTransactions] = Field(default=None,)
+    statements: Optional[SandboxPublicTokenCreateRequestOptionsStatements] = Field(default=None,)
     income_verification: Optional[SandboxPublicTokenCreateRequestOptionsIncomeVerification] = Field(default=None,)
 
 SandboxPublicTokenCreateRequestOptions.update_forward_refs()

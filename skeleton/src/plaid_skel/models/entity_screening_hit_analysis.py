@@ -27,6 +27,6 @@ class EntityScreeningHitAnalysis(BaseModel):
     names: Optional[MatchSummaryCode] = Field(default=None,)
     phone_numbers: Optional[MatchSummaryCode] = Field(default=None,)
     urls: Optional[MatchSummaryCode] = Field(default=None,)
-    search_terms_version: float = Field( description="The version of the entity screening's `search_terms` that were compared when the entity screening hit was added. entity screening hits are immutable once they have been reviewed. If changes are detected due to updates to the entity screening's `search_terms`, the associated entity program, or the list's source data prior to review, the entity screening hit will be updated to reflect those changes.")
+    search_terms_version: int = Field( description="The version of the entity screening's `search_terms` that were compared when the entity screening hit was added. entity screening hits are immutable once they have been reviewed. If changes are detected due to updates to the entity screening's `search_terms`, the associated entity program, or the list's source data prior to review, the entity screening hit will be updated to reflect those changes.")
 
 EntityScreeningHitAnalysis.update_forward_refs()

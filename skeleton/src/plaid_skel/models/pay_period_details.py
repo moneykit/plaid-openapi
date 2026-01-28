@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.distribution_breakdown import DistributionBreakdown
+from plaid_skel.models.pay_period_details_pay_frequency import PayPeriodDetailsPayFrequency
 
 
 
@@ -26,7 +27,7 @@ class PayPeriodDetails(BaseModel):
     end_date: Optional[date_] = Field(default=None, description="The pay period end date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
     gross_earnings: Optional[float] = Field(default=None, description="Total earnings before tax/deductions.")
     pay_date: Optional[date_] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
-    pay_frequency: Optional[str] = Field(default=None, description="The frequency at which an individual is paid.")
+    pay_frequency: Optional[PayPeriodDetailsPayFrequency] = Field(default=None,)
     pay_day: Optional[date_] = Field(default=None, description="The date on which the paystub was issued, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (\"yyyy-mm-dd\").")
     start_date: Optional[date_] = Field(default=None, description="The pay period start date, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format: \"yyyy-mm-dd\".")
 

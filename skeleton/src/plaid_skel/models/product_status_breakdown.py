@@ -23,6 +23,6 @@ class ProductStatusBreakdown(BaseModel):
     success: float = Field( description="The percentage of login attempts that are successful, expressed as a decimal.")
     error_plaid: float = Field( description="The percentage of logins that are failing due to an internal Plaid issue, expressed as a decimal. ")
     error_institution: float = Field( description="The percentage of logins that are failing due to an issue in the institution's system, expressed as a decimal.")
-    refresh_interval: Optional[str] = Field(default=None, description="The `refresh_interval` may be `DELAYED` or `STOPPED` even when the success rate is high. This value is only returned for Transactions status breakdowns.")
+    refresh_interval: Optional[str] = Field(default=None, description="How frequently data for subscription products like Investments, Transactions, and Liabilities, is being refreshed, relative to the institution's normal scheduling. The `refresh_interval` may be `DELAYED` or `STOPPED` even when the success rate is high.")
 
 ProductStatusBreakdown.update_forward_refs()

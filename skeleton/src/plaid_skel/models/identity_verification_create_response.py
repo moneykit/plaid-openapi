@@ -13,12 +13,15 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.documentary_verification import DocumentaryVerification
+from plaid_skel.models.idv_protect_event import IDVProtectEvent
 from plaid_skel.models.identity_verification_status import IdentityVerificationStatus
 from plaid_skel.models.identity_verification_step_summary import IdentityVerificationStepSummary
 from plaid_skel.models.identity_verification_template_reference import IdentityVerificationTemplateReference
 from plaid_skel.models.identity_verification_user_data import IdentityVerificationUserData
 from plaid_skel.models.kyc_check_details import KYCCheckDetails
 from plaid_skel.models.risk_check_details import RiskCheckDetails
+from plaid_skel.models.selfie_check import SelfieCheck
+from plaid_skel.models.verify_sms_details import VerifySMSDetails
 
 
 
@@ -28,7 +31,7 @@ class IdentityVerificationCreateResponse(BaseModel):
 
 
     id: str = Field( description="ID of the associated Identity Verification attempt.")
-    client_user_id: str = Field( description="An identifier to help you connect this object to your internal systems. For example, your database ID corresponding to this object.")
+    client_user_id: str = Field( description="A unique ID that identifies the end user in your system. Either a `user_id` or the `client_user_id` must be provided. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     created_at: datetime_ = Field( description="An ISO8601 formatted timestamp.")
     completed_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
     previous_attempt_id: Optional[str] = Field(default=None, description="The ID for the Identity Verification preceding this session. This field will only be filled if the current Identity Verification is a retry of a previous attempt.")
@@ -38,16 +41,15 @@ class IdentityVerificationCreateResponse(BaseModel):
     status: IdentityVerificationStatus = Field()
     steps: IdentityVerificationStepSummary = Field()
     documentary_verification: Optional[DocumentaryVerification] = Field(default=None,)
+    selfie_check: Optional[SelfieCheck] = Field(default=None,)
     kyc_check: Optional[KYCCheckDetails] = Field(default=None,)
     risk_check: Optional[RiskCheckDetails] = Field(default=None,)
+    verify_sms: Optional[VerifySMSDetails] = Field(default=None,)
     watchlist_screening_id: Optional[str] = Field(default=None, description="ID of the associated screening.")
+    beacon_user_id: Optional[str] = Field(default=None, description="ID of the associated Beacon User.")
+    user_id: Optional[str] = Field(default=None, description="Unique user identifier, created by calling `/user/create`. Either a `user_id` or the `client_user_id` must be provided. The `user_id` may only be used instead of the `client_user_id` if you were not a pre-existing user of `/user/create` as of December 10, 2025; for more details, see [New User APIs](https://plaid.com/docs/api/users/user-apis). If both this field and a `client_user_id` are present in a request, the `user_id` must have been created from the provided `client_user_id`.")
     redacted_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
+    latest_scored_protect_event: Optional[IDVProtectEvent] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_min_length(cls, value):
-        assert len(value) >= 1
-        return value
 
 IdentityVerificationCreateResponse.update_forward_refs()

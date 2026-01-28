@@ -14,6 +14,7 @@ class LoanAccountSubtype(str, Enum):
     HOME_EQUITY = "home equity"
     LOAN = "loan"
     MORTGAGE = "mortgage"
+    OVERDRAFT = "overdraft"
     LINE_OF_CREDIT = "line of credit"
     STUDENT = "student"
     OTHER = "other"

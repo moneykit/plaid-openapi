@@ -22,5 +22,6 @@ class KYCCheckPhoneSummary(BaseModel):
 
 
     summary: MatchSummaryCode = Field()
+    area_code: MatchSummaryCode = Field()
 
 KYCCheckPhoneSummary.update_forward_refs()

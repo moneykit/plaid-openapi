@@ -22,7 +22,8 @@ class TransferGetRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    transfer_id: str = Field( description="Plaid’s unique identifier for a transfer.")
+    transfer_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a transfer.")
+    authorization_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a transfer authorization.")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID of the transfer originator. Should only be present if `client_id` is a third-party sender (TPS).")
 
 TransferGetRequest.update_forward_refs()

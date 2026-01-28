@@ -13,6 +13,8 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.address_purpose_label import AddressPurposeLabel
+from plaid_skel.models.hidden_match_summary_code import HiddenMatchSummaryCode
+from plaid_skel.models.kyc_check_details_international_address import KYCCheckDetailsInternationalAddress
 from plaid_skel.models.match_summary_code import MatchSummaryCode
 from plaid_skel.models.po_box_status import POBoxStatus
 
@@ -26,5 +28,10 @@ class KYCCheckAddressSummary(BaseModel):
     summary: MatchSummaryCode = Field()
     po_box: POBoxStatus = Field()
     type: AddressPurposeLabel = Field()
+    street: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    city: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    region: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    postal_code: Optional[HiddenMatchSummaryCode] = Field(default=None,)
+    international_details: Optional[KYCCheckDetailsInternationalAddress] = Field(default=None,)
 
 KYCCheckAddressSummary.update_forward_refs()

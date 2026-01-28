@@ -19,7 +19,7 @@ from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValue
 
 
 class NewAccountsAvailableWebhook(BaseModel):
-    """Fired when Plaid detects a new account for Items created or updated with [Account Select v2](https://plaid.com/docs/link/customization/#account-select). Upon receiving this webhook, you can prompt your users to share new accounts with you through [Account Select v2 update mode](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts)."""
+    """Fired when Plaid detects a new account. Upon receiving this webhook, you can prompt your users to share new accounts with you through [update mode](https://plaid.com/docs/link/update-mode/#using-update-mode-to-request-new-accounts) (US/CA only). If the end user has opted not to share new accounts with Plaid via their institution's OAuth settings, Plaid will not detect new accounts and this webhook will not fire. For end user accounts in the EU and UK, upon receiving this webhook, you can prompt your user to re-link their account and then delete the old Item via `/item/remove`."""
 
 
     webhook_type: Optional[str] = Field(default=None, description="`ITEM`")

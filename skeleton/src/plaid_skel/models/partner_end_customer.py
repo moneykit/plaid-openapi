@@ -21,8 +21,8 @@ class PartnerEndCustomer(BaseModel):
     """The details for an end customer."""
 
 
-    client_id: Optional[str] = Field(default=None,)
-    company_name: Optional[str] = Field(default=None,)
+    client_id: Optional[str] = Field(default=None, description="The `client_id` of the end customer.")
+    company_name: Optional[str] = Field(default=None, description="The company name associated with the end customer.")
     status: Optional[PartnerEndCustomerStatus] = Field(default=None,)
 
 PartnerEndCustomer.update_forward_refs()

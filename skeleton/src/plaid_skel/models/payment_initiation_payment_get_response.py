@@ -18,6 +18,7 @@ from plaid_skel.models.payment_amount import PaymentAmount
 from plaid_skel.models.payment_amount_refunded import PaymentAmountRefunded
 from plaid_skel.models.payment_initiation_payment_status import PaymentInitiationPaymentStatus
 from plaid_skel.models.payment_scheme import PaymentScheme
+from plaid_skel.models.plaid_error import PlaidError
 from plaid_skel.models.sender_bacs_nullable import SenderBACSNullable
 
 
@@ -45,6 +46,8 @@ class PaymentInitiationPaymentGetResponse(BaseModel):
     adjusted_scheme: Optional[PaymentScheme] = Field(default=None,)
     consent_id: Optional[str] = Field(default=None, description="The payment consent ID that this payment was initiated with. Is present only when payment was initiated using the payment consent.")
     transaction_id: Optional[str] = Field(default=None, description="The transaction ID that this payment is associated with, if any. This is present only when a payment was initiated using virtual accounts.")
+    end_to_end_id: Optional[str] = Field(default=None, description="A unique identifier assigned by Plaid to each payment for tracking and reconciliation purposes.  Note: Not all banks handle `end_to_end_id` consistently. To ensure accurate matching, clients should convert both the incoming `end_to_end_id` and the one provided by Plaid to the same case (either lower or upper) before comparison. For virtual account payments, Plaid manages this field automatically.")
+    error: Optional[PlaidError] = Field(default=None,)
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 PaymentInitiationPaymentGetResponse.update_forward_refs()

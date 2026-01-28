@@ -22,5 +22,6 @@ class WalletBalance(BaseModel):
 
     iso_currency_code: str = Field( description="The ISO-4217 currency code of the balance")
     current: float = Field( description="The total amount of funds in the account")
+    available: float = Field( description="The total amount of funds in the account after subtracting pending debit transaction amounts")
 
 WalletBalance.update_forward_refs()

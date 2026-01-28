@@ -22,7 +22,7 @@ from plaid_skel.models.kyc_check_phone_summary import KYCCheckPhoneSummary
 
 
 class KYCCheckDetails(BaseModel):
-    """Additional information for the `kyc_check` step. This field will be `null` unless `steps.kyc_check` has reached a terminal state of either `success` or `failed`."""
+    """Additional information for the `kyc_check` (Data Source Verification) step. This field will be `null` unless `steps.kyc_check` has reached a terminal state of either `success` or `failed`."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 

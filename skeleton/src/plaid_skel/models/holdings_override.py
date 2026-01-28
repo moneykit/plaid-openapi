@@ -23,7 +23,7 @@ class HoldingsOverride(BaseModel):
 
     institution_price: float = Field( description="The last price given by the institution for this security")
     institution_price_as_of: Optional[date_] = Field(default=None, description="The date at which `institution_price` was current. Must be formatted as an [ISO 8601](https://wikipedia.org/wiki/ISO_8601) date.")
-    cost_basis: Optional[float] = Field(default=None, description="The average original value of the holding. Multiple cost basis values for the same security purchased at different prices are not supported.")
+    cost_basis: Optional[float] = Field(default=None, description="The total cost basis of the holding (e.g., the total amount spent to acquire all assets currently in the holding).")
     quantity: float = Field( description="The total quantity of the asset held, as reported by the financial institution.")
     currency: str = Field( description="Either a valid `iso_currency_code` or `unofficial_currency_code`")
     security: SecurityOverride = Field()

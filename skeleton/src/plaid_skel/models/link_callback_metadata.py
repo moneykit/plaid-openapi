@@ -21,7 +21,7 @@ from plaid_skel.models.link_event_name import LinkEventName
 
 
 class LinkCallbackMetadata(BaseModel):
-    """Information related to the callback from the hosted Link session."""
+    """Information related to the callback from the Hosted Link session."""
 
 
     callback_type: Optional[LinkDeliveryWebhookCallbackType] = Field(default=None,)

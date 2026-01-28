@@ -16,6 +16,9 @@ from plaid_skel.models.identity_verification_step_status import IdentityVerifica
 from plaid_skel.models.risk_check_behavior import RiskCheckBehavior
 from plaid_skel.models.risk_check_device import RiskCheckDevice
 from plaid_skel.models.risk_check_email import RiskCheckEmail
+from plaid_skel.models.risk_check_facial_duplicate import RiskCheckFacialDuplicate
+from plaid_skel.models.risk_check_identity_abuse_signals import RiskCheckIdentityAbuseSignals
+from plaid_skel.models.risk_check_network import RiskCheckNetwork
 from plaid_skel.models.risk_check_phone import RiskCheckPhone
 
 
@@ -31,5 +34,8 @@ class RiskCheckDetails(BaseModel):
     email: Optional[RiskCheckEmail] = Field(default=None,)
     phone: Optional[RiskCheckPhone] = Field(default=None,)
     devices: List[RiskCheckDevice] = Field( description="Array of result summary objects specifying values for `device` attributes of risk check.")
+    identity_abuse_signals: Optional[RiskCheckIdentityAbuseSignals] = Field(default=None,)
+    network: Optional[RiskCheckNetwork] = Field(default=None,)
+    facial_duplicates: List[RiskCheckFacialDuplicate] = Field( description="The attributes related to the facial duplicates captured in risk check.")
 
 RiskCheckDetails.update_forward_refs()

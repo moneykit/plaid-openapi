@@ -45,7 +45,7 @@ class LiabilityOverride(BaseModel):
     payment_reference_number: str = Field( description="Override the `payment_reference_number` field. Can only be set if `type` is `student`.")
     pslf_status: PSLFStatus = Field()
     repayment_plan_description: str = Field( description="Override the `repayment_plan.description` field. Can only be set if `type` is `student`.")
-    repayment_plan_type: str = Field( description="Override the `repayment_plan.type` field. Can only be set if `type` is `student`. Possible values are: `\"extended graduated\"`, `\"extended standard\"`, `\"graduated\"`, `\"income-contingent repayment\"`, `\"income-based repayment\"`, `\"interest only\"`, `\"other\"`, `\"pay as you earn\"`, `\"revised pay as you earn\"`, or `\"standard\"`.")
+    repayment_plan_type: str = Field( description="Override the `repayment_plan.type` field. Can only be set if `type` is `student`. Possible values are: `\"extended graduated\"`, `\"extended standard\"`, `\"graduated\"`, `\"income-contingent repayment\"`, `\"income-based repayment\"`, `\"income-sensitive repayment\"`, `\"interest only\"`, `\"other\"`, `\"pay as you earn\"`, `\"revised pay as you earn\"`, `\"standard\"`, or `\"saving on a valuable education\"`.")
     sequence_number: str = Field( description="Override the `sequence_number` field. Can only be set if `type` is `student`.")
     servicer_address: Address = Field()
 

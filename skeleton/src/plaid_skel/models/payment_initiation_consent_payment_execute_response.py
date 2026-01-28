@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_initiation_payment_status import PaymentInitiationPaymentStatus
+from plaid_skel.models.plaid_error import PlaidError
 
 
 
@@ -24,5 +25,6 @@ class PaymentInitiationConsentPaymentExecuteResponse(BaseModel):
     payment_id: str = Field( description="A unique ID identifying the payment")
     status: PaymentInitiationPaymentStatus = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
+    error: Optional[PlaidError] = Field(default=None,)
 
 PaymentInitiationConsentPaymentExecuteResponse.update_forward_refs()

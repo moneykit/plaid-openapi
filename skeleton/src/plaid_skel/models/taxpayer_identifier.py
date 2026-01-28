@@ -18,7 +18,7 @@ from plaid_skel.models.taxpayer_identifier_type import TaxpayerIdentifierType
 
 
 class TaxpayerIdentifier(BaseModel):
-    """Information about the Taxpayer identification values assigned to the individual or legal entity.Information about the Taxpayer identification values assigned to the individual or legal entity."""
+    """Information about the Taxpayer identification values assigned to the individual or legal entity."""
 
 
     taxpayer_identifier_type: Optional[TaxpayerIdentifierType] = Field(default=None,)

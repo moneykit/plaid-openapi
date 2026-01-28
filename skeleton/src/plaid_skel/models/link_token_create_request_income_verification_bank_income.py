@@ -21,7 +21,7 @@ class LinkTokenCreateRequestIncomeVerificationBankIncome(BaseModel):
 
 
     days_requested: int = Field( description="The number of days of data to request for the Bank Income product")
-    enable_multiple_items: Optional[bool] = Field(default=None, description="Whether to enable multiple Items to be added in the Link session")
+    enable_multiple_items: Optional[bool] = Field(default=None, description="Whether to enable multiple Items to be added in the Link session. This setting is deprecated and has been replaced by the more general `enable_multi_item_link` setting, which supports all products.")
 
     @field_validator("days_requested")
     @classmethod

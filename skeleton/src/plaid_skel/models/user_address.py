@@ -17,21 +17,15 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class UserAddress(BaseModel):
-    """Home address for the user."""
+    """Home address for the user. Supported values are: not provided, address with only country code or full address.  For more context on this field, see [Input Validation by Country](https://plaid.com/docs/identity-verification/hybrid-input-validation/#input-validation-by-country)."""
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
-    street: str = Field( description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")
-    street2: Optional[str] = Field(default=None, description="Extra street information, like an apartment or suite number.")
-    city: str = Field( description="City from the end user's address")
-    region: str = Field( description="An ISO 3166-2 subdivision code. Related terms would be \"state\", \"province\", \"prefecture\", \"zone\", \"subdivision\", etc.")
-    postal_code: str = Field( description="The postal code for the associated address. Between 2 and 10 alphanumeric characters. For US-based addresses this must be 5 numeric digits.")
+    street: Optional[str] = Field(default=None, description="The primary street portion of an address. If an address is provided, this field will always be filled. A string with at least one non-whitespace alphabetical character, with a max length of 80 characters.")
+    street2: Optional[str] = Field(default=None, description="Extra street information, like an apartment or suite number. If provided, a string with at least one non-whitespace character, with a max length of 50 characters.")
+    city: Optional[str] = Field(default=None, description="City from the address. A string with at least one non-whitespace alphabetical character, with a max length of 100 characters.")
+    region: Optional[str] = Field(default=None, description="A subdivision code. \"Subdivision\" is a generic term for \"state\", \"province\", \"prefecture\", \"zone\", etc. For the list of valid codes, see [country subdivision codes](https://plaid.com/documents/country_subdivision_codes.json). Country prefixes are omitted, since they are inferred from the `country` field.")
+    postal_code: Optional[str] = Field(default=None, description="The postal code for the associated address. Between 2 and 10 alphanumeric characters. For US-based addresses this must be 5 numeric digits.")
     country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
-
-    @field_validator("country")
-    @classmethod
-    def country_min_length(cls, value):
-        assert len(value) >= 2
-        return value
 
 UserAddress.update_forward_refs()

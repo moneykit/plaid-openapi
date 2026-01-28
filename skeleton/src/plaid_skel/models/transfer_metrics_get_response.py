@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.transfer_metrics_get_authorization_usage import TransferMetricsGetAuthorizationUsage
+from plaid_skel.models.transfer_metrics_get_return_rates import TransferMetricsGetReturnRates
 
 
 
@@ -24,6 +26,10 @@ class TransferMetricsGetResponse(BaseModel):
     daily_debit_transfer_volume: str = Field( description="Sum of dollar amount of debit transfers in last 24 hours (decimal string with two digits of precision e.g. \"10.00\").")
     daily_credit_transfer_volume: str = Field( description="Sum of dollar amount of credit transfers in last 24 hours (decimal string with two digits of precision e.g. \"10.00\").")
     monthly_transfer_volume: str = Field( description="Sum of dollar amount of credit and debit transfers in current calendar month (decimal string with two digits of precision e.g. \"10.00\").")
+    monthly_debit_transfer_volume: str = Field( description="Sum of dollar amount of debit transfers in current calendar month (decimal string with two digits of precision e.g. \"10.00\").")
+    monthly_credit_transfer_volume: str = Field( description="Sum of dollar amount of credit transfers in current calendar month (decimal string with two digits of precision e.g. \"10.00\").")
     iso_currency_code: str = Field( description="The currency of the dollar amount, e.g. \"USD\".")
+    return_rates: Optional[TransferMetricsGetReturnRates] = Field(default=None,)
+    authorization_usage: Optional[TransferMetricsGetAuthorizationUsage] = Field(default=None,)
 
 TransferMetricsGetResponse.update_forward_refs()

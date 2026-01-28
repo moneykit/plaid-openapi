@@ -21,7 +21,7 @@ class AddressMatchScore(BaseModel):
 
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
-    score: Optional[int] = Field(default=None, description="Match score for address. The score can range from 0 to 100 where 100 is a perfect match and 0 is a no match. If the address is missing from either the API or financial institution, this is empty.")
+    score: Optional[int] = Field(default=None, description="Match score for address. 100 is a perfect match, 99-90 is a strong match, 89-70 is a partial match, anything below 70 is considered a weak match. Typically, the match threshold should be set to a score of 70 or higher. If the address is missing from either the API or financial institution, this is null.")
     is_postal_code_match: Optional[bool] = Field(default=None, description="postal code was provided for both and was a match")
 
 AddressMatchScore.update_forward_refs()

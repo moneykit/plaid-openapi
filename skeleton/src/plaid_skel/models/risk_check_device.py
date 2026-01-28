@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.proxy_type import ProxyType
+from plaid_skel.models.risk_level import RiskLevel
 
 
 
@@ -24,5 +25,7 @@ class RiskCheckDevice(BaseModel):
     ip_proxy_type: Optional[ProxyType] = Field(default=None,)
     ip_spam_list_count: Optional[int] = Field(default=None, description="Count of spam lists the IP address is associated with if known.")
     ip_timezone_offset: Optional[str] = Field(default=None, description="UTC offset of the timezone associated with the IP address.")
+    risk_level: Optional[RiskLevel] = Field(default=None,)
+    factors: Optional[List[str]] = Field(default=None, description="List of factors, when available, that contribute towards the risk level of the given risk check type.")
 
 RiskCheckDevice.update_forward_refs()

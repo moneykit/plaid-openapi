@@ -35,10 +35,4 @@ class WatchlistScreeningHit(BaseModel):
     analysis: Optional[ScreeningHitAnalysis] = Field(default=None,)
     data: Optional[ScreeningHitData] = Field(default=None,)
 
-    @field_validator("source_uid")
-    @classmethod
-    def source_uid_min_length(cls, value):
-        assert len(value) >= 1
-        return value
-
 WatchlistScreeningHit.update_forward_refs()

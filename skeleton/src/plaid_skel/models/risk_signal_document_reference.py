@@ -12,6 +12,9 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.risk_signal_document_status import RiskSignalDocumentStatus
+from plaid_skel.models.risk_signal_document_type import RiskSignalDocumentType
+from plaid_skel.models.risk_signal_file_type import RiskSignalFileType
 
 
 
@@ -22,5 +25,8 @@ class RiskSignalDocumentReference(BaseModel):
 
     document_id: Optional[str] = Field(default=None, description="An identifier of the document referenced by the document metadata.")
     document_name: Optional[str] = Field(default=None, description="The name of the document")
+    status: Optional[RiskSignalDocumentStatus] = Field(default=None,)
+    document_type: Optional[RiskSignalDocumentType] = Field(default=None,)
+    file_type: Optional[RiskSignalFileType] = Field(default=None,)
 
 RiskSignalDocumentReference.update_forward_refs()

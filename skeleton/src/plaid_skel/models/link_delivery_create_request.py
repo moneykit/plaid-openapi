@@ -23,7 +23,7 @@ class LinkDeliveryCreateRequest(BaseModel):
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
-    link_token: str = Field( description="A `link_token` from a previous invocation of `/link/token/create` with Link Delivery enabled.")
+    link_token: str = Field( description="A `link_token` from a previous invocation of `/link/token/create`.")
     options: Optional[LinkDeliveryOptions] = Field(default=None,)
 
 LinkDeliveryCreateRequest.update_forward_refs()

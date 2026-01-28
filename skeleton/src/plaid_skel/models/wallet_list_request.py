@@ -30,7 +30,7 @@ class WalletListRequest(BaseModel):
     @field_validator("cursor")
     @classmethod
     def cursor_max_length(cls, value):
-        assert len(value) <= 256
+        assert len(value) <= 1024
         return value
 
     @field_validator("count")

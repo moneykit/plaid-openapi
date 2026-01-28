@@ -34,7 +34,7 @@ class OverrideAccounts(BaseModel):
     type: OverrideAccountType = Field()
     subtype: Optional[AccountSubtype] = Field(default=None,)
     starting_balance: float = Field( description="If provided, the account will start with this amount as the current balance. ")
-    force_available_balance: float = Field( description="If provided, the account will always have this amount as its  available balance, regardless of current balance or changes in transactions over time.")
+    force_available_balance: float = Field( description="If provided, the account will always have this amount as its available balance, regardless of current balance or changes in transactions over time.")
     currency: str = Field( description="ISO-4217 currency code. If provided, the account will be denominated in the given currency. Transactions will also be in this currency by default.")
     meta: Meta = Field()
     numbers: Numbers = Field()

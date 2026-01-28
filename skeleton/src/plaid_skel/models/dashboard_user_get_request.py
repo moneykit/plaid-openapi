@@ -20,7 +20,7 @@ class DashboardUserGetRequest(BaseModel):
     """Request input for fetching a dashboard user"""
 
 
-    dashboard_user_id: str = Field( description="ID of the associated user.")
+    dashboard_user_id: str = Field( description="ID of the associated user. To retrieve the email address or other details of the person corresponding to this id, use `/dashboard_user/get`.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
 

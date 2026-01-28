@@ -19,8 +19,9 @@ from plaid_skel.models.customer_initiated_return_risk import CustomerInitiatedRe
 
 
 class SignalScores(BaseModel):
-    """Risk scoring details broken down by risk category."""
+    """Risk scoring details broken down by risk category. When using a Balance-only ruleset, this object will not be returned."""
 
+    model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     customer_initiated_return_risk: Optional[CustomerInitiatedReturnRisk] = Field(default=None,)
     bank_initiated_return_risk: Optional[BankInitiatedReturnRisk] = Field(default=None,)

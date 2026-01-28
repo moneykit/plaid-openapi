@@ -27,5 +27,6 @@ class PaymentInitiationMetadata(BaseModel):
     maximum_payment_amount: Dict[str, str] = Field( description="A mapping of currency to maximum payment amount (denominated in the smallest unit of currency) supported by the institution.  Example: `{\"GBP\": \"10000\"}` ")
     supports_refund_details: bool = Field( description="Indicates whether the institution supports returning refund details when initiating a payment.")
     standing_order_metadata: Optional[PaymentInitiationStandingOrderMetadata] = Field(default=None,)
+    supports_payment_consents: bool = Field( description="Indicates whether the institution supports payment consents.")
 
 PaymentInitiationMetadata.update_forward_refs()

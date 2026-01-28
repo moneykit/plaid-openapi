@@ -21,5 +21,7 @@ class JWTHeader(BaseModel):
 
 
     id: str = Field()
+    kid: str = Field()
+    alg: str = Field()
 
 JWTHeader.update_forward_refs()

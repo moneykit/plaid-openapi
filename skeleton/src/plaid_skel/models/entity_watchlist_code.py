@@ -18,5 +18,7 @@ class EntityWatchlistCode(str, Enum):
     US_SSI = "US_SSI"
     US_CMC = "US_CMC"
     US_UVL = "US_UVL"
+    US_SAM = "US_SAM"
+    US_TEL = "US_TEL"
     AU_CON = "AU_CON"
     UK_HMC = "UK_HMC"

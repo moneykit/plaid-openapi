@@ -12,9 +12,11 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.external_payment_refund_details import ExternalPaymentRefundDetails
 from plaid_skel.models.payment_initiation_consent_constraints import PaymentInitiationConsentConstraints
 from plaid_skel.models.payment_initiation_consent_scope import PaymentInitiationConsentScope
 from plaid_skel.models.payment_initiation_consent_status import PaymentInitiationConsentStatus
+from plaid_skel.models.payment_initiation_consent_type import PaymentInitiationConsentType
 
 
 
@@ -29,7 +31,9 @@ class PaymentInitiationConsent(BaseModel):
     recipient_id: str = Field( description="The ID of the recipient the payment consent is for.")
     reference: str = Field( description="A reference for the payment consent.")
     constraints: PaymentInitiationConsentConstraints = Field()
-    scopes: List[PaymentInitiationConsentScope] = Field( description="An array of payment consent scopes.")
+    scopes: Optional[List[PaymentInitiationConsentScope]] = Field(default=None, description="Deprecated, use the 'type' field instead.")
+    type: Optional[PaymentInitiationConsentType] = Field(default=None,)
+    payer_details: Optional[ExternalPaymentRefundDetails] = Field(default=None,)
 
     @field_validator("consent_id")
     @classmethod

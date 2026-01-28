@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.client_customization import ClientCustomization
 from plaid_skel.models.enrich_transaction_direction import EnrichTransactionDirection
 from plaid_skel.models.enrichments import Enrichments
 
@@ -23,10 +24,15 @@ class ClientProvidedEnrichedTransaction(BaseModel):
 
 
     id: str = Field( description="The unique ID for the transaction as provided by you in the request.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique user id used to group transactions for a given user, as a unique identifier from your application. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
+    client_account_id: Optional[str] = Field(default=None, description="A unique account id used to group transactions for a given account, as a unique identifier from your application. Personally identifiable information, such as an email address or phone number, should not be used in the `client_account_id`.")
+    account_type: Optional[str] = Field(default=None, description="The account type associated with the transaction. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema).")
+    account_subtype: Optional[str] = Field(default=None, description="The account subtype associated with the transaction. For a full list of valid types and subtypes, see the [Account schema](https://plaid.com/docs/api/accounts#account-type-schema).")
     description: str = Field( description="The raw description of the transaction.")
     amount: float = Field( description="The absolute value of the transaction (>= 0)")
     direction: Optional[EnrichTransactionDirection] = Field(default=None,)
     iso_currency_code: str = Field( description="The ISO-4217 currency code of the transaction e.g. USD.")
     enrichments: Enrichments = Field()
+    client_customization: Optional[ClientCustomization] = Field(default=None,)
 
 ClientProvidedEnrichedTransaction.update_forward_refs()

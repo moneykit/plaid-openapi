@@ -34,7 +34,7 @@ class TransferEventSyncRequest(BaseModel):
     @field_validator("count")
     @classmethod
     def count_max(cls, value):
-        assert value <= 25
+        assert value <= 500
         return value
 
     @field_validator("count")

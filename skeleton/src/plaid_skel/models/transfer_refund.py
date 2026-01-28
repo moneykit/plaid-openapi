@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.transfer_refund_failure import TransferRefundFailure
 from plaid_skel.models.transfer_refund_status import TransferRefundStatus
 
 
@@ -25,6 +26,9 @@ class TransferRefund(BaseModel):
     transfer_id: str = Field( description="The ID of the transfer to refund.")
     amount: str = Field( description="The amount of the refund (decimal string with two digits of precision e.g. \"10.00\").")
     status: TransferRefundStatus = Field()
+    failure_reason: Optional[TransferRefundFailure] = Field(default=None,)
+    ledger_id: Optional[str] = Field(default=None, description="Plaid’s unique identifier for a Plaid Ledger Balance.")
     created: datetime_ = Field( description="The datetime when this refund was created. This will be of the form `2006-01-02T15:04:05Z`")
+    network_trace_id: Optional[str] = Field(default=None, description="The trace identifier for the transfer based on its network. This will only be set after the transfer has posted.  For `ach` or `same-day-ach` transfers, this is the ACH trace number. For `rtp` transfers, this is the Transaction Identification number. For `wire` transfers, this is the IMAD (Input Message Accountability Data) number.")
 
 TransferRefund.update_forward_refs()

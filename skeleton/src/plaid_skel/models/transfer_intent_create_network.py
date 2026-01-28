@@ -8,3 +8,4 @@ from enum import Enum
 class TransferIntentCreateNetwork(str, Enum):
     ACH = "ach"
     SAME_DAY_ACH = "same-day-ach"
+    RTP = "rtp"

@@ -8,3 +8,4 @@ from enum import Enum
 class TransferAuthorizationDecision(str, Enum):
     APPROVED = "approved"
     DECLINED = "declined"
+    USER_ACTION_REQUIRED = "user_action_required"

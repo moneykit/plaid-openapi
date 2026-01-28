@@ -17,10 +17,11 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 class PartnerEndCustomerSecrets(BaseModel):
-    """The secrets for the newly created end customer in non-Production environments."""
+    """The secrets for the newly created end customer."""
 
 
     sandbox: Optional[str] = Field(default=None, description="The end customer's secret key for the Sandbox environment.")
-    development: Optional[str] = Field(default=None, description="The end customer's secret key for the Development environment.")
+    development: Optional[str] = Field(default=None, description="The end customer's secret key for the Development environment. The Development environment has been removed.")
+    production: Optional[str] = Field(default=None, description="The end customer's secret key for the Production environment. The end customer will be provided with a limited number of credits to test in the Production environment before full enablement.")
 
 PartnerEndCustomerSecrets.update_forward_refs()

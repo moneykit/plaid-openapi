@@ -26,7 +26,7 @@ class ProcessorSignalDecisionReportRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     processor_token: str = Field( description="The processor token obtained from the Plaid integration partner. Processor tokens are in the format: `processor-<environment>-<identifier>`")
     client_transaction_id: str = Field( description="Must be the same as the `client_transaction_id` supplied when calling `/signal/evaluate`")
-    initiated: bool = Field( description="`true` if the ACH transaction was initiated, `false` otherwise.  This field must be returned as a boolean. If formatted incorrectly, this will result in an [`INVALID_FIELD`](/docs/errors/invalid-request/#invalid_field) error.")
+    initiated: bool = Field( description="`true` if the ACH transaction was initiated, `false` otherwise.  This field must be returned as a boolean. If formatted incorrectly, this will result in an [`INVALID_FIELD`](https://plaid.com/docs/errors/invalid-request/#invalid_field) error.")
     days_funds_on_hold: Optional[int] = Field(default=None, description="The actual number of days (hold time) since the ACH debit transaction that you wait before making funds available to your customers. The holding time could affect the ACH return rate.  For example, use 0 if you make funds available to your customers instantly or the same day following the debit transaction, or 1 if you make funds available the next day following the debit initialization.")
     decision_outcome: Optional[SignalDecisionOutcome] = Field(default=None,)
     payment_method: Optional[SignalPaymentMethod] = Field(default=None,)
