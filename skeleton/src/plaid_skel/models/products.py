@@ -8,5 +8,5 @@ from enum import Enum
 class Products(str, Enum):
     TRANSACTIONS = "transactions"
     AUTH = "auth"
-    BALANCE = "balance"
     IDENTITY = "identity"
+    BALANCE = "balance"

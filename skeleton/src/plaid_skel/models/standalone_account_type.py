@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.credit_account import CreditAccount
 
 
 
@@ -21,7 +22,7 @@ class StandaloneAccountType(BaseModel):
 
 
     depository: str = Field( description="An account type holding cash, in which funds are deposited.")
-    credit: str = Field( description="A credit card type account.")
+    credit: CreditAccount = Field()
     loan: str = Field( description="A loan type account.")
     investment: str = Field( description="An investment account. In API versions 2018-05-22 and earlier, this type is called `brokerage`.")
     payroll: Optional[str] = Field(default=None, description="A payroll account.")

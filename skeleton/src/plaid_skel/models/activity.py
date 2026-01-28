@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.action_state import ActionState
 from plaid_skel.models.activity_type import ActivityType
+from plaid_skel.models.application_id import ApplicationID
 from plaid_skel.models.item_create_authentication import ItemCreateAuthentication
 from plaid_skel.models.scopes_nullable import ScopesNullable
 
@@ -29,7 +30,7 @@ class Activity(BaseModel):
     id: str = Field( description="A unique identifier for the activity")
     initiator: str = Field( description="Application ID of the client who initiated the activity.")
     state: ActionState = Field()
-    target_application_id: Optional[str] = Field(default=None, description="This field will map to the application ID that is returned from /item/application/list, or provided to the institution in an oauth redirect.")
+    target_application_id: Optional[ApplicationID] = Field(default=None,)
     scopes: Optional[ScopesNullable] = Field(default=None,)
     authentication: Optional[ItemCreateAuthentication] = Field(default=None,)
 

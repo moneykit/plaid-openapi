@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.phone_type import PhoneType
+from plaid_skel.models.watchlist_screening_phone_number import WatchlistScreeningPhoneNumber
 
 
 
@@ -22,6 +23,6 @@ class EntityScreeningHitPhoneNumbers(BaseModel):
 
 
     type: PhoneType = Field()
-    phone_number: str = Field( description="A phone number in E.164 format.")
+    phone_number: WatchlistScreeningPhoneNumber = Field()
 
 EntityScreeningHitPhoneNumbers.update_forward_refs()

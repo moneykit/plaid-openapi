@@ -34,7 +34,7 @@ class LinkSessionResults(BaseModel):
     cra_update_results: List[LinkSessionCraUpdateResult] = Field( description="The set of Plaid Check Item updates for the Link session.")
     bank_income_results: List[LinkSessionBankIncomeResult] = Field( description="The set of bank income verifications for the Link session.")
     payroll_income_results: List[LinkSessionPayrollIncomeResult] = Field( description="The set of payroll income verifications for the Link session.")
-    document_income_results: Optional[CreditSessionDocumentIncomeResult] = Field(default=None,)
+    document_income_results: CreditSessionDocumentIncomeResult = Field()
     cra_document_upload_results: Optional[LinkSessionCraDocumentUploadResult] = Field(default=None,)
     protect_results: Optional[LinkSessionProtectResult] = Field(default=None,)
 

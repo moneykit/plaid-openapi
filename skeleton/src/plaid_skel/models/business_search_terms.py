@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.response_business_address import ResponseBusinessAddress
+from plaid_skel.models.watchlist_screening_phone_number_nullable import WatchlistScreeningPhoneNumberNullable
 
 
 
@@ -24,7 +25,7 @@ class BusinessSearchTerms(BaseModel):
     name: Optional[str] = Field(default=None, description="The name of the business. Must have at least one character and a maximum length of 500 characters.")
     address: ResponseBusinessAddress = Field()
     website: Optional[AnyUrl] = Field(default=None, description="An 'http' or 'https' URL (must begin with either of those).")
-    phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
+    phone_number: WatchlistScreeningPhoneNumberNullable = Field()
     email_address: Optional[EmailStr] = Field(default=None, description="A valid email address. Must not have leading or trailing spaces and address must be RFC compliant. For more information, see [RFC 3696](https://datatracker.ietf.org/doc/html/rfc3696).")
 
 BusinessSearchTerms.update_forward_refs()

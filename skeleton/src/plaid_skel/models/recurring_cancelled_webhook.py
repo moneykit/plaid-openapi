@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.recurring_transfer_id import RecurringTransferID
 from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
 
 
@@ -23,7 +24,7 @@ class RecurringCancelledWebhook(BaseModel):
 
     webhook_type: str = Field( description="`TRANSFER`")
     webhook_code: str = Field( description="`RECURRING_CANCELLED`")
-    recurring_transfer_id: str = Field( description="Plaid’s unique identifier for a recurring transfer.")
+    recurring_transfer_id: RecurringTransferID = Field()
     environment: WebhookEnvironmentValues = Field()
 
 RecurringCancelledWebhook.update_forward_refs()

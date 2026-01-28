@@ -31,8 +31,8 @@ class BusinessVerificationCreateResponse(BaseModel):
     redacted_at: Optional[datetime_] = Field(default=None, description="An ISO8601 formatted timestamp.")
     status: BusinessVerificationStatusOverall = Field()
     search_terms: BusinessSearchTerms = Field()
-    kyb_check: Optional[BusinessKYBCheck] = Field(default=None,)
-    risk_check: Optional[BusinessRiskCheck] = Field(default=None,)
+    kyb_check: BusinessKYBCheck = Field()
+    risk_check: BusinessRiskCheck = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
 BusinessVerificationCreateResponse.update_forward_refs()

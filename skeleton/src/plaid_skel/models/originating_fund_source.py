@@ -23,7 +23,7 @@ class OriginatingFundSource(BaseModel):
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     full_name: str = Field( description="The full name associated with the source of the funds.")
-    address: Optional[PaymentInitiationAddress] = Field(default=None,)
+    address: PaymentInitiationAddress = Field()
     account_number: str = Field( description="The account number from which the funds are sourced.")
     bic: str = Field( description="The Business Identifier Code, also known as SWIFT code, for this bank account.")
 

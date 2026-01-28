@@ -16,11 +16,10 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 
 
-class PayrollIncomeRateOfPay(BaseModel):
-    """An object representing the rate at which an individual is paid."""
+class WalletCreateResponseAllOf(BaseModel):
+    """"""
 
 
-    pay_rate: Optional[str] = Field(default=None, description="The rate at which an employee is paid.")
-    pay_amount: Optional[float] = Field(default=None, description="The amount at which an employee is paid.")
+    request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 
-PayrollIncomeRateOfPay.update_forward_refs()
+WalletCreateResponseAllOf.update_forward_refs()

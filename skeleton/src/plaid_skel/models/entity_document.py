@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.entity_document_type import EntityDocumentType
+from plaid_skel.models.watchlist_screening_document_value import WatchlistScreeningDocumentValue
 
 
 
@@ -22,6 +23,6 @@ class EntityDocument(BaseModel):
 
 
     type: EntityDocumentType = Field()
-    number: str = Field( description="The numeric or alphanumeric identifier associated with this document. Must be between 4 and 32 characters long, and cannot have leading or trailing spaces.")
+    number: WatchlistScreeningDocumentValue = Field()
 
 EntityDocument.update_forward_refs()

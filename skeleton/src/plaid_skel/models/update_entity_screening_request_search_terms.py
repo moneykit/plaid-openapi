@@ -12,6 +12,9 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.entity_watchlist_screening_name import EntityWatchlistScreeningName
+from plaid_skel.models.watchlist_screening_document_value import WatchlistScreeningDocumentValue
+from plaid_skel.models.watchlist_screening_phone_number import WatchlistScreeningPhoneNumber
 
 
 
@@ -22,11 +25,11 @@ class UpdateEntityScreeningRequestSearchTerms(BaseModel):
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     entity_watchlist_program_id: str = Field( description="ID of the associated entity program.")
-    legal_name: Optional[str] = Field(default=None, description="The name of the organization being screened. Must have at least one alphabetical character, have a maximum length of 100 characters, and not include leading or trailing spaces.")
-    document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document. Must be between 4 and 32 characters long, and cannot have leading or trailing spaces.")
+    legal_name: Optional[EntityWatchlistScreeningName] = Field(default=None,)
+    document_number: Optional[WatchlistScreeningDocumentValue] = Field(default=None,)
     email_address: Optional[EmailStr] = Field(default=None, description="A valid email address. Must not have leading or trailing spaces and address must be RFC compliant. For more information, see [RFC 3696](https://datatracker.ietf.org/doc/html/rfc3696).")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
-    phone_number: Optional[str] = Field(default=None, description="A phone number in E.164 format.")
+    phone_number: Optional[WatchlistScreeningPhoneNumber] = Field(default=None,)
     url: Optional[AnyUrl] = Field(default=None, description="An 'http' or 'https' URL (must begin with either of those).")
 
 UpdateEntityScreeningRequestSearchTerms.update_forward_refs()

@@ -12,6 +12,8 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.watchlist_screening_document_value import WatchlistScreeningDocumentValue
+from plaid_skel.models.watchlist_screening_individual_name import WatchlistScreeningIndividualName
 
 
 
@@ -22,9 +24,9 @@ class UpdateIndividualScreeningRequestSearchTerms(BaseModel):
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     watchlist_program_id: Optional[str] = Field(default=None, description="ID of the associated program.")
-    legal_name: Optional[str] = Field(default=None, description="The legal name of the individual being screened. Must have at least one alphabetical character, have a maximum length of 100 characters, and not include leading or trailing spaces.")
+    legal_name: Optional[WatchlistScreeningIndividualName] = Field(default=None,)
     date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
-    document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document. Must be between 4 and 32 characters long, and cannot have leading or trailing spaces.")
+    document_number: Optional[WatchlistScreeningDocumentValue] = Field(default=None,)
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
 
 UpdateIndividualScreeningRequestSearchTerms.update_forward_refs()

@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.standalone_investment_transaction_transfer_type import StandaloneInvestmentTransactionTransferType
 
 
 
@@ -25,6 +26,6 @@ class StandaloneInvestmentTransactionType(BaseModel):
     cancel: str = Field( description="A cancellation of a pending transaction")
     cash: str = Field( description="Activity that modifies a cash position")
     fee: str = Field( description="Fees on the account, e.g. commission, bookkeeping, options-related.")
-    transfer: str = Field( description="Activity that modifies a position, but not through buy/sell activity e.g. options exercise, portfolio transfer")
+    transfer: StandaloneInvestmentTransactionTransferType = Field()
 
 StandaloneInvestmentTransactionType.update_forward_refs()
