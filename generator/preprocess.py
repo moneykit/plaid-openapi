@@ -29,7 +29,6 @@ def remove_unsupported_products(spec: dict) -> None:
     unsupported_products = {
         "Beacon": "/beacon/",
         "CRA": "/cra/",
-        "CreditBank": "/credit/bank",
         "Selfie": "/selfie",
     }
     

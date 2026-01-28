@@ -11237,6 +11237,381 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreditBankEmploymentGetRequest'
+  /credit/bank_income/get:
+    post:
+      summary: Retrieve information from the bank accounts used for income verification
+      tags:
+      - plaid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditBankIncomeGetResponse'
+              examples:
+                example-1:
+                  value:
+                    request_id: LhQf0THi8SH1yJm
+                    bank_income:
+                    - bank_income_id: abc123
+                      generated_time: '2022-01-31T22:47:53Z'
+                      days_requested: 90
+                      items:
+                      - last_updated_time: '2022-01-31T22:47:53Z'
+                        institution_id: ins_0
+                        institution_name: Plaid Bank
+                        item_id: "\u201CeVBnVMp7zdTJLkRNr33Rs6zr7KNJqBFL9DrE6\u201D"
+                        bank_income_accounts:
+                        - account_id: "\u201CGeooLPBGDEunl54q7N3ZcyD5aLPLEai1nkzM9\u201D"
+                          mask: '8888'
+                          name: Plaid Checking Account
+                          official_name: Plaid Checking Account
+                          type: depository
+                          subtype: checking
+                          owners:
+                          - addresses:
+                            - data:
+                                city: Malakoff
+                                country: US
+                                postal_code: '14236'
+                                region: NY
+                                street: 2992 Cameron Road
+                              primary: true
+                            - data:
+                                city: San Matias
+                                country: US
+                                postal_code: 93405-2255
+                                region: CA
+                                street: 2493 Leisure Lane
+                              primary: false
+                            emails:
+                            - data: accountholder0@example.com
+                              primary: true
+                              type: primary
+                            - data: accountholder1@example.com
+                              primary: false
+                              type: secondary
+                            - data: extraordinarily.long.email.username.123456@reallylonghostname.com
+                              primary: false
+                              type: other
+                            names:
+                            - Alberta Bobbeth Charleson
+                            phone_numbers:
+                            - data: '1112223333'
+                              primary: false
+                              type: home
+                            - data: '1112224444'
+                              primary: false
+                              type: work
+                            - data: '1112225555'
+                              primary: false
+                              type: mobile
+                        bank_income_sources:
+                        - account_id: GeooLPBGDEunl54q7N3ZcyD5aLPLEai1nkzM9
+                          income_source_id: "\u201Cf17efbdd-caab-4278-8ece-963511cd3d51\u201D"
+                          income_description: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                          income_category: SALARY
+                          start_date: '2021-11-15'
+                          end_date: '2022-01-15'
+                          pay_frequency: MONTHLY
+                          total_amount: 300
+                          transaction_count: 1
+                          historical_summary:
+                          - start_date: '2021-11-02'
+                            end_date: '2021-11-30'
+                            total_amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                            total_amounts:
+                            - amount: 100
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                            transactions:
+                            - amount: -100
+                              date: '2021-11-15'
+                              name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                              original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                              pending: false
+                              transaction_id: 6RddrWNwE1uM63Ex5GKLhzlBl76aAZfgzlQNm
+                              check_number: null
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                          - start_date: '2021-12-01'
+                            end_date: '2021-12-31'
+                            total_amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                            total_amounts:
+                            - amount: 100
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                            transactions:
+                            - amount: -100
+                              date: '2021-12-15'
+                              name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                              original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                              pending: false
+                              transaction_id: 7BddrWNwE1uM63Ex5GKLhzlBl82aAZfgzlCBl
+                              check_number: null
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                          - start_date: '2022-01-01'
+                            end_date: '2021-01-31'
+                            total_amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                            total_amounts:
+                            - amount: 100
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                            transactions:
+                            - amount: -100
+                              date: '2022-01-31'
+                              name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                              original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                              pending: false
+                              transaction_id: 9FddrWNwE1uM95Ex5GKLhzlBl76aAZfgzlNQr
+                              check_number: null
+                              iso_currency_code: USD
+                              unofficial_currency_code: null
+                      bank_income_summary:
+                        total_amount: 300
+                        iso_currency_code: USD
+                        unofficial_currency_code: null
+                        total_amounts:
+                        - amount: 300
+                          iso_currency_code: USD
+                          unofficial_currency_code: null
+                        start_date: '2021-11-15'
+                        end_date: '2022-01-15'
+                        income_sources_count: 1
+                        income_categories_count: 1
+                        income_transactions_count: 1
+                        historical_summary:
+                        - start_date: '2021-11-02'
+                          end_date: '2021-11-30'
+                          total_amount: 100
+                          iso_currency_code: USD
+                          unofficial_currency_code: null
+                          total_amounts:
+                          - amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                          transactions:
+                          - amount: -100
+                            date: '2021-11-15'
+                            name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                            original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                            pending: false
+                            transaction_id: 6RddrWNwE1uM63Ex5GKLhzlBl76aAZfgzlQNm
+                            check_number: null
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                        - start_date: '2021-12-01'
+                          end_date: '2021-12-31'
+                          total_amount: 100
+                          iso_currency_code: USD
+                          unofficial_currency_code: null
+                          total_amounts:
+                          - amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                          transactions:
+                          - amount: -100
+                            date: '2021-12-15'
+                            name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                            original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                            pending: false
+                            transaction_id: 7BddrWNwE1uM63Ex5GKLhzlBl82aAZfgzlCBl
+                            check_number: null
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                        - start_date: '2022-01-01'
+                          end_date: '2021-01-31'
+                          total_amount: 100
+                          iso_currency_code: USD
+                          unofficial_currency_code: null
+                          total_amounts:
+                          - amount: 100
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                          transactions:
+                          - amount: -100
+                            date: '2022-01-31'
+                            name: "\u201CPLAID_INC_DIRECT_DEP_PPD\u201D"
+                            original_description: PLAID_INC_DIRECT_DEP_PPD 123
+                            pending: false
+                            transaction_id: 9FddrWNwE1uM95Ex5GKLhzlBl76aAZfgzlNQr
+                            check_number: null
+                            iso_currency_code: USD
+                            unofficial_currency_code: null
+                      warnings: []
+      externalDocs:
+        url: /api/products/income/#creditbank_incomeget
+      operationId: creditBankIncomeGet
+      description: '`/credit/bank_income/get` returns the bank income report(s) for
+        a specified user.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBankIncomeGetRequest'
+  /credit/bank_income/pdf/get:
+    post:
+      summary: Retrieve information from the bank accounts used for income verification
+        in PDF format
+      tags:
+      - plaid
+      responses:
+        '200':
+          description: A PDF of the Bank Income Report
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/CreditBankIncomePDFGetResponse'
+      externalDocs:
+        url: /api/products/income/#creditbank_incomepdfget
+      operationId: creditBankIncomePdfGet
+      description: '`/credit/bank_income/pdf/get` returns the most recent bank income
+        report for a specified user in PDF format.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBankIncomePDFGetRequest'
+  /credit/bank_income/refresh:
+    post:
+      summary: Refresh a user's bank income information
+      tags:
+      - plaid
+      externalDocs:
+        url: /api/products/income/#creditbank_incomerefresh
+      operationId: creditBankIncomeRefresh
+      description: '`/credit/bank_income/refresh` refreshes the bank income report
+        data for a specific user.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBankIncomeRefreshRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditBankIncomeRefreshResponse'
+              examples:
+                example-1:
+                  value:
+                    request_id: LhQf0THi8SH1yJm
+  /credit/bank_income/webhook/update:
+    post:
+      summary: Subscribe and unsubscribe to proactive notifications for a user's income
+        profile
+      tags:
+      - plaid
+      externalDocs:
+        url: /api/products/income/#creditbank_incomewebhookupdate
+      operationId: creditBankIncomeWebhookUpdate
+      description: '`/credit/bank_income/webhook/update` allows you to subscribe or
+        unsubscribe a user for income webhook notifications.
+
+
+        If a user is subscribed, on significant changes to the user''s income profile,
+        you will receive a `BANK_INCOME_REFRESH_UPDATE` webhook, prompting you to
+        refresh bank income data for the user.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBankIncomeWebhookUpdateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditBankIncomeWebhookUpdateResponse'
+              examples:
+                example-1:
+                  value:
+                    request_id: LhQf0THi8SH1yJm
+  /credit/bank_statements/uploads/get:
+    post:
+      summary: Retrieve data for a user's uploaded bank statements
+      tags:
+      - plaid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditBankStatementsUploadsGetResponse'
+              examples:
+                example-1:
+                  value:
+                    items:
+                    - item_id: eVBnVMp7zdTJLkRNr33Rs6zr7KNJqBFL9DrE6
+                      bank_statements:
+                      - transactions:
+                        - amount: -1000
+                          date: '2023-01-01'
+                          original_description: PAYCHECK
+                          account_id: c6778d3f-e44c-4348-874e-71507c1ac12d
+                        document_metadata:
+                          document_type: BANK_STATEMENT
+                          name: statement_01.pdf
+                          status: PROCESSING_COMPLETE
+                          download_url: null
+                          page_count: 2
+                        document_id: 2jkflanbd
+                        bank_accounts:
+                        - name: CHASE CHECKING
+                          bank_name: CHASE
+                          account_type: CHECKING
+                          account_number: 000009752
+                          account_id: c6778d3f-e44c-4348-874e-71507c1ac12d
+                          owner:
+                            name: JANE DOE
+                            address:
+                              postal_code: '94133'
+                              country: US
+                              region: CA
+                              city: SAN FRANCISCO
+                              street: 2140 TAYLOR ST
+                          periods:
+                          - start_date: '2023-01-01'
+                            end_date: '2023-02-01'
+                            starting_balance: 2500
+                            ending_balance: 3500
+                      status:
+                        processing_status: PROCESSING_COMPLETE
+                      updated_at: '2023-02-01T21:14:54Z'
+                    request_id: LhQf0THi8SH1yJm
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaidError'
+      externalDocs:
+        url: /api/products/income/#creditbank_statementsuploadsget
+      operationId: creditBankStatementsUploadsGet
+      description: '`/credit/bank_statements/uploads/get` returns data from user-uploaded
+        bank statements.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditBankStatementsUploadsGetRequest'
   /credit/payroll_income/get:
     post:
       summary: Retrieve a user's payroll information
@@ -17325,11 +17700,11 @@ components:
         hosted_link:
           $ref: '#/components/schemas/LinkTokenCreateHostedLink'
       required:
-      - language
-      - redirect_uri
-      - country_codes
       - client_name
+      - redirect_uri
+      - language
       - user
+      - country_codes
     LinkTokenAccountFilters:
       description: 'By default, Link will provide limited account filtering: it will
         only display Institutions that are compatible with all products supplied in
@@ -19496,9 +19871,9 @@ components:
       type: string
       title: CountryCode
       enum:
+      - US
       - CA
       - GB
-      - US
       description: ISO-3166-1 alpha-2 country code standard.
     ConsumerReportPermissiblePurpose:
       x-hidden-from-docs: true
@@ -22002,9 +22377,9 @@ components:
       title: Products
       enum:
       - transactions
-      - identity
       - auth
       - balance
+      - identity
       description: A list of products that an institution can support. All Items must
         be initialized with at least one product. The Balance product is always available
         and does not need to be specified during initialization.
@@ -32424,6 +32799,405 @@ components:
       - region
       - postal_code
       - country
+    CreditBankEmploymentGetRequest:
+      title: CreditBankEmploymentGetRequest
+      type: object
+      description: CreditBankEmploymentGetRequest defines the request schema for `/beta/credit/v1/bank_employment/get`.
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+      required:
+      - user_token
+    CreditBankEmploymentGetResponse:
+      title: CreditBankEmploymentGetResponse
+      additionalProperties: true
+      type: object
+      description: CreditBankEmploymentGetResponse defines the response schema for
+        `/beta/credit/v1/bank_employment/get`.
+      properties:
+        bank_employment_reports:
+          type: array
+          description: Bank Employment data. Each entry in the array will be a distinct
+            bank employment report.
+          items:
+            $ref: '#/components/schemas/CreditBankEmploymentReport'
+        request_id:
+          $ref: '#/components/schemas/RequestID'
+      required:
+      - request_id
+      - bank_employment_reports
+    CreditBankEmploymentReport:
+      type: object
+      description: The report of the Bank Employment data for an end user.
+      properties:
+        bank_employment_report_id:
+          type: string
+          description: The unique identifier associated with the Bank Employment Report.
+        generated_time:
+          type: string
+          description: The time when the Bank Employment Report was generated, in
+            [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (e.g. "2018-04-12T03:32:11Z").
+          format: date-time
+        days_requested:
+          type: integer
+          description: The number of days requested by the customer for the Bank Employment
+            Report.
+        items:
+          type: array
+          description: The list of Items in the report along with the associated metadata
+            about the Item.
+          items:
+            $ref: '#/components/schemas/CreditBankEmploymentItem'
+        warnings:
+          type: array
+          description: If data from the Bank Employment report was unable to be retrieved,
+            the warnings will contain information about the error that caused the
+            data to be incomplete.
+          items:
+            $ref: '#/components/schemas/CreditBankEmploymentWarning'
+      required:
+      - bank_employment_report_id
+      - generated_time
+      - days_requested
+      - items
+      - warnings
+    CreditBankEmploymentItem:
+      type: object
+      description: The details and metadata for an end user's Item.
+      properties:
+        item_id:
+          type: string
+          description: The unique identifier for the Item.
+        last_updated_time:
+          type: string
+          description: The time when this Item's data was last retrieved from the
+            financial institution, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601)
+            format (e.g. "2018-04-12T03:32:11Z").
+          format: date-time
+        institution_id:
+          type: string
+          description: The unique identifier of the institution associated with the
+            Item.
+        institution_name:
+          type: string
+          description: The name of the institution associated with the Item.
+        bank_employments:
+          type: array
+          description: The bank employment information for this Item. Each entry in
+            the array is a different employer found.
+          items:
+            $ref: '#/components/schemas/CreditBankEmployment'
+        bank_employment_accounts:
+          type: array
+          description: The Item's accounts that have Bank Employment data.
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeAccount'
+      required:
+      - item_id
+      - last_updated_time
+      - institution_id
+      - institution_name
+      - bank_employments
+      - bank_employment_accounts
+    CreditBankEmployment:
+      type: object
+      description: Detailed information for the bank employment.
+      properties:
+        bank_employment_id:
+          type: string
+          description: A unique identifier for the bank employment.
+        account_id:
+          type: string
+          description: Plaid's unique identifier for the account.
+        employer:
+          $ref: '#/components/schemas/CreditBankEmployer'
+        latest_deposit_date:
+          type: string
+          description: The date of the most recent deposit from this employer.
+          format: date
+        earliest_deposit_date:
+          type: string
+          description: The date of the earliest deposit from this employer from within
+            the period of the days requested.
+          format: date
+      required:
+      - bank_employment_id
+      - account_id
+      - employer
+      - latest_deposit_date
+      - earliest_deposit_date
+    CreditBankEmployer:
+      type: object
+      description: Object containing employer data.
+      properties:
+        name:
+          type: string
+          description: Name of the employer.
+      required:
+      - name
+    CreditBankEmploymentWarning:
+      type: object
+      description: The warning associated with the data that was unavailable for the
+        Bank Employment Report.
+      properties:
+        warning_type:
+          $ref: '#/components/schemas/CreditBankEmploymentWarningType'
+        warning_code:
+          $ref: '#/components/schemas/CreditBankIncomeWarningCode'
+        cause:
+          $ref: '#/components/schemas/CreditBankIncomeCause'
+      required:
+      - warning_type
+      - warning_code
+      - cause
+    CreditBankEmploymentWarningType:
+      type: string
+      description: The warning type which will always be `BANK_EMPLOYMENT_WARNING`.
+      enum:
+      - BANK_EMPLOYMENT_WARNING
+    CreditBankIncomeGetRequest:
+      title: CreditBankIncomeGetRequest
+      type: object
+      description: CreditBankIncomeGetRequest defines the request schema for `/credit/bank_income/get`.
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+        options:
+          $ref: '#/components/schemas/CreditBankIncomeGetRequestOptions'
+    CreditBankIncomeGetRequestOptions:
+      description: An optional object for `/credit/bank_income/get` request options.
+      type: object
+      properties:
+        count:
+          type: integer
+          default: 1
+          description: How many Bank Income Reports should be fetched. Multiple reports
+            may be available if the report has been re-created or refreshed. If more
+            than one report is available, the most recent reports will be returned
+            first.
+    CreditBankIncomeGetResponse:
+      title: CreditBankIncomeGetResponse
+      additionalProperties: true
+      type: object
+      description: CreditBankIncomeGetResponse defines the response schema for `/credit/bank_income/get`
+      properties:
+        bank_income:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankIncome'
+        request_id:
+          $ref: '#/components/schemas/RequestID'
+      required:
+      - request_id
+    CreditBankIncomePDFGetRequest:
+      title: CreditBankIncomePDFGetRequest
+      type: object
+      description: CreditBankIncomePDFGetRequest defines the request schema for `/credit/bank_income/pdf/get`
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+      required:
+      - user_token
+    CreditBankIncomePDFGetResponse:
+      title: CreditBankIncomePDFGetResponse
+      format: binary
+      type: string
+      description: CreditBankIncomePDFGetResponse defines the response schema for
+        `/credit/bank_income/pdf/get`
+    CreditBankIncome:
+      type: object
+      description: The report of the Bank Income data for an end user.
+      properties:
+        bank_income_id:
+          type: string
+          description: The unique identifier associated with the Bank Income Report.
+        generated_time:
+          type: string
+          description: The time when the Bank Income Report was generated.
+          format: date-time
+        days_requested:
+          type: integer
+          description: The number of days requested by the customer for the Bank Income
+            Report.
+        items:
+          type: array
+          description: The list of Items in the report along with the associated metadata
+            about the Item.
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeItem'
+        bank_income_summary:
+          $ref: '#/components/schemas/CreditBankIncomeSummary'
+        warnings:
+          type: array
+          description: If data from the Bank Income report was unable to be retrieved,
+            the warnings will contain information about the error that caused the
+            data to be incomplete.
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeWarning'
+    CreditBankIncomeItem:
+      type: object
+      description: The details and metadata for an end user's Item.
+      properties:
+        bank_income_accounts:
+          type: array
+          description: The Item's accounts that have Bank Income data.
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeAccount'
+        bank_income_sources:
+          type: array
+          description: The income sources for this Item. Each entry in the array is
+            a single income source.
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeSource'
+        last_updated_time:
+          type: string
+          description: The time when this Item's data was last retrieved from the
+            financial institution.
+          format: date-time
+        institution_id:
+          type: string
+          description: The unique identifier of the institution associated with the
+            Item.
+        institution_name:
+          type: string
+          description: The name of the institution associated with the Item.
+        item_id:
+          type: string
+          description: The unique identifier for the Item.
+    CreditBankIncomeAccount:
+      type: object
+      description: The Item's bank accounts that have the selected data.
+      properties:
+        account_id:
+          type: string
+          description: Plaid's unique identifier for the account.
+        mask:
+          type: string
+          description: 'The last 2-4 alphanumeric characters of an account''s official
+            account number.
+
+            Note that the mask may be non-unique between an Item''s accounts, and
+            it may also not match the mask that the bank displays to the user.'
+          nullable: true
+        name:
+          type: string
+          description: The name of the bank account.
+        official_name:
+          type: string
+          description: The official name of the bank account.
+          nullable: true
+        subtype:
+          $ref: '#/components/schemas/DepositoryAccountSubtype'
+        type:
+          $ref: '#/components/schemas/CreditBankIncomeAccountType'
+        owners:
+          type: array
+          description: Data returned by the financial institution about the account
+            owner or owners. Identity information is optional, so field may return
+            an empty array.
+          items:
+            $ref: '#/components/schemas/Owner'
+      required:
+      - account_id
+      - mask
+      - name
+      - official_name
+      - subtype
+      - type
+      - owners
+    CreditBankIncomeAccountType:
+      type: string
+      description: The account type. This will always be `depository`.
+      enum:
+      - depository
+    CreditBankIncomeSource:
+      type: object
+      description: Detailed information for the income source.
+      properties:
+        income_source_id:
+          type: string
+          description: A unique identifier for an income source.
+        income_description:
+          type: string
+          description: The most common name or original description for the underlying
+            income transactions.
+        income_category:
+          $ref: '#/components/schemas/CreditBankIncomeCategory'
+        account_id:
+          type: string
+          description: Plaid's unique identifier for the account.
+        start_date:
+          type: string
+          format: date
+          description: 'Minimum of all dates within the specific income sources in
+            the user''s bank account for days requested by the client.
+
+            The date will be returned in an ISO 8601 format (YYYY-MM-DD).'
+        end_date:
+          type: string
+          format: date
+          description: "Maximum of all dates within the specific income sources in\
+            \ the user\u2019s bank account for days requested by the client.\nThe\
+            \ date will be returned in an ISO 8601 format (YYYY-MM-DD)."
+        pay_frequency:
+          $ref: '#/components/schemas/CreditBankIncomePayFrequency'
+        total_amount:
+          type: number
+          description: "Total amount of earnings in the user\u2019s bank account for\
+            \ the specific income source for days requested by the client."
+        transaction_count:
+          type: integer
+          description: Number of transactions for the income source within the start
+            and end date.
+        historical_summary:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeHistoricalSummary'
+    CreditBankIncomeCategory:
+      type: string
+      description: The income category. Note that the `CASH` value has been deprecated
+        and is used only for existing legacy implementations. It has been replaced
+        by the new categories `CASH_DEPOSIT` (representing cash or check deposits)
+        and `TRANSFER_FROM_APPLICATION` (representing cash transfers originating from
+        apps, such as Zelle or Venmo).
+      enum:
+      - SALARY
+      - UNEMPLOYMENT
+      - CASH
+      - GIG_ECONOMY
+      - RENTAL
+      - CHILD_SUPPORT
+      - MILITARY
+      - RETIREMENT
+      - LONG_TERM_DISABILITY
+      - BANK_INTEREST
+      - CASH_DEPOSIT
+      - TRANSFER_FROM_APPLICATION
+      - TAX_REFUND
+      - BENEFIT_OTHER
+      - OTHER
+    CreditBankIncomePayFrequency:
+      type: string
+      description: The income pay frequency.
+      enum:
+      - WEEKLY
+      - BIWEEKLY
+      - SEMI_MONTHLY
+      - MONTHLY
+      - DAILY
+      - UNKNOWN
     CreditIsoCurrencyCode:
       type: string
       description: The ISO 4217 currency code of the amount or balance.
@@ -32450,6 +33224,297 @@ components:
           $ref: '#/components/schemas/CreditIsoCurrencyCode'
         unofficial_currency_code:
           $ref: '#/components/schemas/CreditUnofficialCurrencyCode'
+    CreditBankIncomeSummary:
+      type: object
+      description: Summary for bank income across all income sources and items (max
+        history of 730 days).
+      additionalProperties: true
+      properties:
+        total_amount:
+          type: number
+          description: 'Total amount of earnings across all the income sources in
+            the end user''s Items for the days requested by the client.
+
+            This may return an incorrect value if the summary includes income sources
+            in multiple currencies.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-bank-income-summary-total-amounts)
+            instead.'
+          deprecated: true
+        iso_currency_code:
+          type: string
+          description: 'The ISO 4217 currency code of the amount or balance.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-bank-income-summary-total-amounts)
+            instead.'
+          nullable: true
+          deprecated: true
+        unofficial_currency_code:
+          type: string
+          description: 'The unofficial currency code associated with the amount or
+            balance. Always `null` if `iso_currency_code` is non-null.
+
+            Unofficial currency codes are used for currencies that do not have official
+            ISO currency codes, such as cryptocurrencies and the currencies of certain
+            countries.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-bank-income-summary-total-amounts)
+            instead.'
+          nullable: true
+          deprecated: true
+        total_amounts:
+          type: array
+          description: 'Total amount of earnings across all the income sources in
+            the end user''s Items for the days requested by the client.
+
+            This can contain multiple amounts, with each amount denominated in one
+            unique currency.'
+          items:
+            $ref: '#/components/schemas/CreditAmountWithCurrency'
+        start_date:
+          type: string
+          format: date
+          description: 'The earliest date within the days requested in which all income
+            sources identified by Plaid appear in a user''s account.
+
+            The date will be returned in an ISO 8601 format (YYYY-MM-DD).'
+        end_date:
+          type: string
+          format: date
+          description: 'The latest date in which all income sources identified by
+            Plaid appear in the user''s account.
+
+            The date will be returned in an ISO 8601 format (YYYY-MM-DD).'
+        income_sources_count:
+          type: integer
+          description: Number of income sources per end user.
+        income_categories_count:
+          type: integer
+          description: Number of income categories per end user.
+        income_transactions_count:
+          type: integer
+          description: Number of income transactions per end user.
+        historical_summary:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeHistoricalSummary'
+    CreditBankIncomeHistoricalSummary:
+      type: object
+      description: The end user's monthly summary for the income source(s).
+      additionalProperties: true
+      properties:
+        total_amount:
+          type: number
+          description: 'Total amount of earnings for the income source(s) of the user
+            for the month in the summary.
+
+            This may return an incorrect value if the summary includes income sources
+            in multiple currencies.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-items-bank-income-sources-historical-summary-total-amounts)
+            instead.'
+          deprecated: true
+        iso_currency_code:
+          type: string
+          description: 'The ISO 4217 currency code of the amount or balance.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-items-bank-income-sources-historical-summary-total-amounts)
+            instead.'
+          nullable: true
+          deprecated: true
+        unofficial_currency_code:
+          type: string
+          description: 'The unofficial currency code associated with the amount or
+            balance. Always `null` if `iso_currency_code` is non-null.
+
+            Unofficial currency codes are used for currencies that do not have official
+            ISO currency codes, such as cryptocurrencies and the currencies of certain
+            countries.
+
+            Please use [`total_amounts`](https://plaid.com/docs/api/products/income/#credit-bank_income-get-response-bank-income-items-bank-income-sources-historical-summary-total-amounts)
+            instead.'
+          nullable: true
+          deprecated: true
+        total_amounts:
+          type: array
+          description: 'Total amount of earnings for the income source(s) of the user
+            for the month in the summary.
+
+            This can contain multiple amounts, with each amount denominated in one
+            unique currency.'
+          items:
+            $ref: '#/components/schemas/CreditAmountWithCurrency'
+        start_date:
+          type: string
+          format: date
+          description: 'The start date of the period covered in this monthly summary.
+
+            This date will be the first day of the month, unless the month being covered
+            is a partial month because it is the first month included in the summary
+            and the date range being requested does not begin with the first day of
+            the month.
+
+            The date will be returned in an ISO 8601 format (YYYY-MM-DD).'
+        end_date:
+          type: string
+          format: date
+          description: 'The end date of the period included in this monthly summary.
+
+            This date will be the last day of the month, unless the month being covered
+            is a partial month because it is the last month included in the summary
+            and the date range being requested does not end with the last day of the
+            month.
+
+            The date will be returned in an ISO 8601 format (YYYY-MM-DD).'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankIncomeTransaction'
+    CreditBankIncomeTransaction:
+      type: object
+      description: The transactions data for the end user's income source(s).
+      additionalProperties: true
+      properties:
+        amount:
+          type: number
+          description: 'The settled value of the transaction, denominated in the transactions''s
+            currency as stated in `iso_currency_code` or `unofficial_currency_code`.
+
+            Positive values when money moves out of the account; negative values when
+            money moves in.
+
+            For example, credit card purchases are positive; credit card payment,
+            direct deposits, and refunds are negative.'
+        date:
+          type: string
+          format: date
+          description: 'For pending transactions, the date that the transaction occurred;
+            for posted transactions, the date that the transaction posted.
+
+            Both dates are returned in an ISO 8601 format (YYYY-MM-DD).'
+        name:
+          type: string
+          description: The merchant name or transaction description.
+        original_description:
+          type: string
+          description: The string returned by the financial institution to describe
+            the transaction.
+          nullable: true
+        pending:
+          type: boolean
+          description: 'When true, identifies the transaction as pending or unsettled.
+
+            Pending transaction details (name, type, amount, category ID) may change
+            before they are settled.'
+        transaction_id:
+          type: string
+          description: The unique ID of the transaction. Like all Plaid identifiers,
+            the `transaction_id` is case sensitive.
+        check_number:
+          type: string
+          description: The check number of the transaction. This field is only populated
+            for check transactions.
+          nullable: true
+        iso_currency_code:
+          $ref: '#/components/schemas/CreditIsoCurrencyCode'
+        unofficial_currency_code:
+          $ref: '#/components/schemas/CreditUnofficialCurrencyCode'
+    CreditBankIncomeRefreshRequest:
+      title: CreditBankIncomeRefreshRequest
+      type: object
+      description: CreditBankIncomeRefreshRequest defines the request schema for `/credit/bank_income/refresh`.
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+        options:
+          $ref: '#/components/schemas/CreditBankIncomeRefreshRequestOptions'
+      required:
+      - user_token
+    CreditBankIncomeRefreshRequestOptions:
+      description: An optional object for `/credit/bank_income/refresh` request options.
+      type: object
+      properties:
+        days_requested:
+          type: integer
+          description: How many days of data to include in the refresh. If not specified,
+            this will default to the days requested in the most recently generated
+            bank income report for the user.
+    CreditBankIncomeRefreshResponse:
+      title: CreditBankIncomeRefreshResponse
+      type: object
+      additionalProperties: true
+      description: CreditBankIncomeRefreshResponse defines the response schema for
+        `/credit/bank_income/refresh`.
+      properties:
+        request_id:
+          $ref: '#/components/schemas/RequestID'
+      required:
+      - request_id
+    CreditBankIncomeWebhookUpdateRequest:
+      title: CreditBankIncomeWebhookUpdateRequest
+      type: object
+      description: CreditBankIncomeWebhookUpdateRequest defines the request schema
+        for `/credit/bank_income/webhook/update`.
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+        enable_webhooks:
+          description: Whether the user should be enabled for proactive webhook notifications
+            when their income changes
+          type: boolean
+      required:
+      - user_token
+      - enable_webhooks
+    CreditBankIncomeWebhookUpdateResponse:
+      title: CreditBankIncomeWebhookUpdateResponse
+      type: object
+      additionalProperties: true
+      description: CreditBankIncomeWebhookUpdateResponse defines the response schema
+        for `/credit/bank_income/webhook/update`.
+      properties:
+        request_id:
+          $ref: '#/components/schemas/RequestID'
+      required:
+      - request_id
+    CreditBankStatementsUploadsGetRequest:
+      title: CreditBankStatementsUploadsGetRequest
+      type: object
+      description: CreditBankStatementsUploadsGetRequest defines the request schema
+        for `/credit/bank_statements/uploads/get`
+      properties:
+        client_id:
+          $ref: '#/components/schemas/APIClientID'
+        secret:
+          $ref: '#/components/schemas/APISecret'
+        user_token:
+          $ref: '#/components/schemas/UserToken'
+      required:
+      - user_token
+    CreditBankStatementsUploadsGetResponse:
+      title: CreditBankStatementsUploadsGetResponse
+      type: object
+      additionalProperties: true
+      description: CreditBankStatementsUploadsGetResponse defines the response schema
+        for `/credit/bank_statements/uploads/get`
+      properties:
+        items:
+          description: Array of bank statement upload items.
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankStatementUploadItem'
+        request_id:
+          $ref: '#/components/schemas/RequestID'
+      required:
+      - items
+      - request_id
     CreditPayrollIncomeRiskSignalsGetRequest:
       title: CreditPayrollIncomeRiskSignalsGetRequest
       type: object
@@ -32800,6 +33865,214 @@ components:
       - GIG
       - PLAID_GENERATED_PAYSTUB_PDF
       - NONE
+    CreditBankStatementUploadItem:
+      title: CreditBankStatementUploadItem
+      type: object
+      description: An object containing information about the bank statement upload
+        Item.
+      properties:
+        item_id:
+          $ref: '#/components/schemas/ItemId'
+        bank_statements:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditBankStatementUploadObject'
+        status:
+          $ref: '#/components/schemas/PayrollItemStatus'
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp in [ISO 8601](https://wikipedia.org/wiki/ISO_8601)
+            format (YYYY-MM-DDTHH:mm:ssZ) indicating the last time that the Item was
+            updated.
+          nullable: true
+      required:
+      - item_id
+      - bank_statements
+      - status
+      - updated_at
+    CreditBankStatementUploadObject:
+      title: CreditBankStatementUploadObject
+      type: object
+      additionalProperties: true
+      description: An object containing data that has been parsed from a user-uploaded
+        bank statement.
+      properties:
+        transactions:
+          type: array
+          description: An array of transactions appearing on the bank statement.
+          items:
+            $ref: '#/components/schemas/CreditBankStatementUploadTransaction'
+        document_metadata:
+          $ref: '#/components/schemas/CreditDocumentMetadata'
+        document_id:
+          type: string
+          description: An identifier of the document referenced by the document metadata.
+          nullable: true
+        bank_accounts:
+          type: array
+          description: An array of bank accounts associated with the uploaded bank
+            statement.
+          items:
+            $ref: '#/components/schemas/CreditBankStatementUploadBankAccount'
+      required:
+      - transactions
+      - document_metadata
+      - document_id
+      - bank_accounts
+    CreditBankStatementUploadTransaction:
+      title: CreditBankStatementUploadTransaction
+      type: object
+      description: An object containing data about a transaction appearing on a user-uploaded
+        bank statement.
+      properties:
+        amount:
+          type: number
+          description: The value of the transaction. A negative amount indicates that
+            money moved into the account (such as a paycheck being deposited).
+          nullable: true
+        date:
+          type: string
+          format: date
+          description: The date of when the transaction was made, in ISO 8601 format
+            (YYYY-MM-DD).
+          nullable: true
+        original_description:
+          type: string
+          description: The raw description of the transaction as it appears on the
+            bank statement.
+          nullable: true
+        account_id:
+          type: string
+          description: The unique id of the bank account that this transaction occurs
+            in
+          nullable: true
+      required:
+      - amount
+      - date
+      - original_description
+      - account_id
+    CreditBankStatementUploadBankAccount:
+      title: CreditBankStatementUploadBankAccount
+      type: object
+      additionalProperties: true
+      description: An object containing data about a user's bank account related to
+        an uploaded bank statement.
+      properties:
+        name:
+          type: string
+          description: The name of the bank account
+          nullable: true
+        bank_name:
+          type: string
+          description: The name of the bank institution.
+          nullable: true
+        account_type:
+          type: string
+          description: The type of the bank account.
+          nullable: true
+        account_number:
+          type: string
+          description: The bank account number.
+          nullable: true
+        owner:
+          $ref: '#/components/schemas/CreditBankStatementUploadAccountOwner'
+        periods:
+          type: array
+          description: An array of period objects, containing more data on the overall
+            period of the statement.
+          items:
+            $ref: '#/components/schemas/CreditBankStatementUploadBankAccountPeriod'
+        account_id:
+          type: string
+          description: The unique id of the bank account
+          nullable: true
+      required:
+      - name
+      - bank_name
+      - account_type
+      - account_number
+      - owner
+      - periods
+      - account_id
+    CreditBankStatementUploadAccountOwner:
+      title: CreditBankStatementUploadAccountOwner
+      type: object
+      description: An object containing data about the owner of the bank account for
+        the uploaded bank statement.
+      additionalProperties: true
+      properties:
+        name:
+          type: string
+          description: The name of the account owner
+          nullable: true
+        address:
+          $ref: '#/components/schemas/CreditBankStatementUploadAccountOwnerAddress'
+      required:
+      - name
+      - address
+    CreditBankStatementUploadAccountOwnerAddress:
+      title: CreditBankStatementUploadAccountOwnerAddress
+      description: Address on the uploaded bank statement
+      type: object
+      additionalProperties: true
+      properties:
+        city:
+          type: string
+          description: The full city name.
+          nullable: true
+        country:
+          type: string
+          description: The ISO 3166-1 alpha-2 country code.
+          nullable: true
+        postal_code:
+          type: string
+          description: The postal code of the address.
+          nullable: true
+        region:
+          type: string
+          description: 'The region or state.
+
+            Example: `"NC"`'
+          nullable: true
+        street:
+          type: string
+          description: The full street address.
+          nullable: true
+      required:
+      - city
+      - country
+      - postal_code
+      - region
+      - street
+    CreditBankStatementUploadBankAccountPeriod:
+      title: CreditBankStatementUploadBankAccountPeriod
+      type: object
+      description: An object containing data on the overall period of the statement.
+      properties:
+        start_date:
+          type: string
+          format: date
+          description: The start date of the statement period in ISO 8601 format (YYYY-MM-DD).
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          description: The end date of the statement period in ISO 8601 format (YYYY-MM-DD).
+          nullable: true
+        starting_balance:
+          type: number
+          description: The starting balance of the bank account for the period.
+          nullable: true
+        ending_balance:
+          type: number
+          description: The ending balance of the bank account for the period.
+          nullable: true
+      required:
+      - start_date
+      - end_date
+      - starting_balance
+      - ending_balance
     PayrollItem:
       title: PayrollItem
       type: object
@@ -34314,6 +35587,96 @@ components:
       - employee_id
       - payroll_id
       - position_id
+    CreditBankIncomeWarning:
+      type: object
+      description: The warning associated with the data that was unavailable for the
+        Bank Income Report.
+      properties:
+        warning_type:
+          $ref: '#/components/schemas/CreditBankIncomeWarningType'
+        warning_code:
+          $ref: '#/components/schemas/CreditBankIncomeWarningCode'
+        cause:
+          $ref: '#/components/schemas/CreditBankIncomeCause'
+    CreditBankIncomeWarningType:
+      type: string
+      description: The warning type which will always be `BANK_INCOME_WARNING`.
+      enum:
+      - BANK_INCOME_WARNING
+    CreditBankIncomeWarningCode:
+      type: string
+      description: 'The warning code identifies a specific kind of warning.
+
+        `IDENTITY_UNAVAILABLE`: Unable to extract identity for the Item
+
+        `TRANSACTIONS_UNAVAILABLE`: Unable to extract transactions for the Item
+
+        `ITEM_UNAPPROVED`: User exited flow before giving permission to share data
+        for the Item
+
+        `REPORT_DELETED`: Report deleted due to customer or consumer request
+
+        `DATA_UNAVAILABLE`: No relevant data was found for the Item'
+      enum:
+      - IDENTITY_UNAVAILABLE
+      - TRANSACTIONS_UNAVAILABLE
+      - ITEM_UNAPPROVED
+      - REPORT_DELETED
+      - DATA_UNAVAILABLE
+    CreditBankIncomeCause:
+      type: object
+      description: An error object and associated `item_id` used to identify a specific
+        Item and error when a batch operation operating on multiple Items has encountered
+        an error in one of the Items.
+      properties:
+        error_type:
+          $ref: '#/components/schemas/CreditBankIncomeErrorType'
+        error_code:
+          type: string
+          description: We use standard HTTP response codes for success and failure
+            notifications, and our errors are further classified by `error_type`.
+            In general, 200 HTTP codes correspond to success, 40X codes are for developer-
+            or user-related failures, and 50X codes are for Plaid-related issues.
+            Error fields will be `null` if no error has occurred.
+        error_message:
+          type: string
+          description: A developer-friendly representation of the error code. This
+            may change over time and is not safe for programmatic use.
+        display_message:
+          type: string
+          description: 'A user-friendly representation of the error code. null if
+            the error is not related to user action.
+
+            This may change over time and is not safe for programmatic use.'
+        item_id:
+          type: string
+          description: The `item_id` of the Item associated with this warning.
+      required:
+      - error_type
+      - error_code
+      - error_message
+      - display_message
+      - item_id
+    CreditBankIncomeErrorType:
+      type: string
+      description: A broad categorization of the error. Safe for programmatic use.
+      enum:
+      - INTERNAL_SERVER_ERROR
+      - INSUFFICIENT_CREDENTIALS
+      - ITEM_LOCKED
+      - USER_SETUP_REQUIRED
+      - COUNTRY_NOT_SUPPORTED
+      - INSTITUTION_DOWN
+      - INSTITUTION_NO_LONGER_SUPPORTED
+      - INSTITUTION_NOT_RESPONDING
+      - INVALID_CREDENTIALS
+      - INVALID_MFA
+      - INVALID_SEND_METHOD
+      - ITEM_LOGIN_REQUIRED
+      - MFA_NOT_SUPPORTED
+      - NO_ACCOUNTS
+      - ITEM_NOT_SUPPORTED
+      - ACCESS_NOT_GRANTED
     CreditRelayCreateRequest:
       type: object
       description: CreditRelayCreateRequest defines the request schema for `/credit/relay/create`

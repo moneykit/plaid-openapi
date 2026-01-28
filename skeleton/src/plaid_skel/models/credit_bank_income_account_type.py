@@ -4,7 +4,5 @@
 from enum import Enum
 
 
-class CountryCode(str, Enum):
-    US = "US"
-    CA = "CA"
-    GB = "GB"
+class CreditBankIncomeAccountType(str, Enum):
+    DEPOSITORY = "depository"
