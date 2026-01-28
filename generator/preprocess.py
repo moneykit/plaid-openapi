@@ -25,6 +25,37 @@ def expose_only_supported_country_codes(spec: dict) -> None:
     dpath.set(spec, path, list(supported))
 
 
+def remove_unsupported_products(spec: dict) -> None:
+    unsupported_products = {
+        "Beacon": "/beacon/",
+        "CRA": "/cra/",
+        "CreditBank": "/credit/bank",
+        "Selfie": "/selfie",
+    }
+    
+    paths_to_remove = []
+    for path in spec.get("paths", {}).keys():
+        for schema_pattern, path_pattern in unsupported_products.items():
+            if path_pattern in path:
+                paths_to_remove.append(path)
+                break
+    
+    for path in paths_to_remove:
+        del spec["paths"][path]
+    
+    schemas_to_remove = []
+    for schema_name in list(spec.get("components", {}).get("schemas", {}).keys()):
+        for schema_pattern in unsupported_products.keys():
+            if schema_pattern in schema_name or f"{schema_pattern}_" in schema_name:
+                schemas_to_remove.append(schema_name)
+                break
+    
+    for schema_name in schemas_to_remove:
+        del spec["components"]["schemas"][schema_name]
+    
+    print(f"Removed {len(paths_to_remove)} unsupported endpoints and {len(schemas_to_remove)} unsupported schemas")
+
+
 def remove_unsupported_properties(spec: dict) -> None:
     remove_properties = {
         "LinkTokenCreateRequest": [
@@ -161,6 +192,7 @@ def main() -> None:
 
     expose_only_supported_products(spec)
     expose_only_supported_country_codes(spec)
+    remove_unsupported_products(spec)
     remove_unsupported_properties(spec)
     add_properties_as_required(spec)
 

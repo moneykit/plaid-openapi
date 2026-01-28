@@ -39,7 +39,7 @@ class IdentityVerificationRetryResponse(BaseModel):
     status: IdentityVerificationStatus = Field()
     steps: IdentityVerificationStepSummary = Field()
     documentary_verification: Optional[DocumentaryVerification] = Field(default=None,)
-    selfie_check: Optional[SelfieCheck] = Field(default=None,)
+    selfie_check: SelfieCheck = Field()
     kyc_check: Optional[KYCCheckDetails] = Field(default=None,)
     risk_check: Optional[RiskCheckDetails] = Field(default=None,)
     watchlist_screening_id: Optional[str] = Field(default=None, description="ID of the associated screening.")
