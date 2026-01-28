@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PaymentInitiationPaymentStatus(str, Enum):
     PAYMENT_STATUS_INPUT_NEEDED = "PAYMENT_STATUS_INPUT_NEEDED"
     PAYMENT_STATUS_PROCESSING = "PAYMENT_STATUS_PROCESSING"

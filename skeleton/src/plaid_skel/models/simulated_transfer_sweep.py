@@ -11,7 +11,9 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.sweep_status import SweepStatus
+from plaid_skel.models.sweep_trigger import SweepTrigger
 
 
 
@@ -26,5 +28,8 @@ class SimulatedTransferSweep(BaseModel):
     amount: str = Field( description="Signed decimal amount of the sweep as it appears on your sweep account ledger (e.g. \"-10.00\")  If amount is not present, the sweep was net-settled to zero and outstanding debits and credits between the sweep account and Plaid are balanced.")
     iso_currency_code: str = Field( description="The currency of the sweep, e.g. \"USD\".")
     settled: Optional[date_] = Field(default=None, description="The date when the sweep settled, in the YYYY-MM-DD format.")
+    status: Optional[SweepStatus] = Field(default=None,)
+    trigger: Optional[SweepTrigger] = Field(default=None,)
+    description: Optional[str] = Field(default=None, description="The description of the deposit that will be passed to the receiving bank (up to 10 characters). Note that banks utilize this field differently, and may or may not show it on the bank statement.")
 
 SimulatedTransferSweep.update_forward_refs()

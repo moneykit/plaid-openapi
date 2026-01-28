@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class RiskCheckBehaviorUserInteractionsLabel(str, Enum):
     GENUINE = "genuine"
     NEUTRAL = "neutral"

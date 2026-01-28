@@ -11,11 +11,12 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.identity_verification_step_status import IdentityVerificationStepStatus
 from plaid_skel.models.risk_check_behavior import RiskCheckBehavior
 from plaid_skel.models.risk_check_device import RiskCheckDevice
 from plaid_skel.models.risk_check_email import RiskCheckEmail
+from plaid_skel.models.risk_check_identity_abuse_signals import RiskCheckIdentityAbuseSignals
 from plaid_skel.models.risk_check_phone import RiskCheckPhone
 
 
@@ -23,6 +24,7 @@ from plaid_skel.models.risk_check_phone import RiskCheckPhone
 
 class RiskCheckDetails(BaseModel):
     """Additional information for the `risk_check` step."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     status: IdentityVerificationStepStatus = Field()
@@ -30,5 +32,6 @@ class RiskCheckDetails(BaseModel):
     email: Optional[RiskCheckEmail] = Field(default=None,)
     phone: Optional[RiskCheckPhone] = Field(default=None,)
     devices: List[RiskCheckDevice] = Field( description="Array of result summary objects specifying values for `device` attributes of risk check.")
+    identity_abuse_signals: Optional[RiskCheckIdentityAbuseSignals] = Field(default=None,)
 
 RiskCheckDetails.update_forward_refs()

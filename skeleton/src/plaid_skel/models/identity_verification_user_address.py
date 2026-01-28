@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class IdentityVerificationUserAddress(BaseModel):
     """Even if an address has been collected, some fields may be null depending on the region's addressing system. For example:  Addresses from the United Kingdom will not include a region  Addresses from Hong Kong will not include postal code"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     street: Optional[str] = Field(default=None, description="The primary street portion of an address. If the user has submitted their address, this field will always be filled.")

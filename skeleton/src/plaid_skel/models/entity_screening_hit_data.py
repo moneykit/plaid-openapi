@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.entity_screening_hit_documents_items import EntityScreeningHitDocumentsItems
 from plaid_skel.models.entity_screening_hit_emails_items import EntityScreeningHitEmailsItems
 from plaid_skel.models.entity_screening_hit_names_items import EntityScreeningHitNamesItems

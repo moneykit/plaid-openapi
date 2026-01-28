@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.signal_device import SignalDevice
 from plaid_skel.models.signal_user import SignalUser
 
@@ -29,7 +29,7 @@ class SignalEvaluateRequest(BaseModel):
     client_transaction_id: str = Field( description="The unique ID that you would like to use to refer to this transaction. For your convenience mapping your internal data, you could use your internal ID/identifier for this transaction. The max length for this field is 36 characters.")
     amount: float = Field( description="The transaction amount, in USD (e.g. `102.05`)")
     user_present: Optional[bool] = Field(default=None, description="`true` if the end user is present while initiating the ACH transfer and the endpoint is being called; `false` otherwise (for example, when the ACH transfer is scheduled and the end user is not present, or you call this endpoint after the ACH transfer but before submitting the Nacha file for ACH processing).")
-    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID is used to correlate requests by a user with multiple Items. The max length for this field is 36 characters. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID is used to correlate requests by a user with multiple Items. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     is_recurring: Optional[bool] = Field(default=None, description="`true` if the ACH transaction is a recurring transaction; `false` otherwise ")
     default_payment_method: Optional[str] = Field(default=None, description="The default ACH or non-ACH payment method to complete the transaction. `SAME_DAY_ACH`: Same Day ACH by NACHA. The debit transaction is processed and settled on the same day `NEXT_DAY_ACH`: Next Day ACH settlement for debit transactions, offered by some payment processors `STANDARD_ACH`: standard ACH by NACHA `REAL_TIME_PAYMENTS`: real-time payments such as RTP and FedNow `DEBIT_CARD`: if the default payment is over debit card networks `MULTIPLE_PAYMENT_METHODS`: if there is no default debit rail or there are multiple payment methods Possible values:  `SAME_DAY_ACH`, `NEXT_DAY_ACH`, `STANDARD_ACH`, `REAL_TIME_PAYMENTS`, `DEBIT_CARD`, `MULTIPLE_PAYMENT_METHODS`")
     user: Optional[SignalUser] = Field(default=None,)
@@ -44,12 +44,6 @@ class SignalEvaluateRequest(BaseModel):
     @field_validator("client_transaction_id")
     @classmethod
     def client_transaction_id_max_length(cls, value):
-        assert len(value) <= 36
-        return value
-
-    @field_validator("client_user_id")
-    @classmethod
-    def client_user_id_max_length(cls, value):
         assert len(value) <= 36
         return value
 

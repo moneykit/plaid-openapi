@@ -4,8 +4,10 @@
 from enum import Enum
 
 
+
 class LinkDeliverySessionStatus(str, Enum):
     CREATED = "CREATED"
     OPENED = "OPENED"
+    EXITED = "EXITED"
     COMPLETED = "COMPLETED"
     EXPIRED = "EXPIRED"

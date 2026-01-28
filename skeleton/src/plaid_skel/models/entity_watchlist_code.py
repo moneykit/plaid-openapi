@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class EntityWatchlistCode(str, Enum):
     CA_CON = "CA_CON"
     EU_CON = "EU_CON"

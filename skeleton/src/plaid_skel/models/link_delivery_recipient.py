@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.link_delivery_communication_method import LinkDeliveryCommunicationMethod
 
 
@@ -21,7 +21,7 @@ class LinkDeliveryRecipient(BaseModel):
     """Metadata related to the recipient. If the information required to populate this field is not available, leave it blank."""
 
 
-    communication_methods: Optional[List[LinkDeliveryCommunicationMethod]] = Field(default=None, description="The list of communication methods to send the Link Delivery URL to. If delivery is not required, leave this field blank.")
+    communication_methods: Optional[List[LinkDeliveryCommunicationMethod]] = Field(default=None, description="The list of communication methods to send the Hosted Link session URL to. If delivery is not required, leave this field blank.")
     first_name: Optional[str] = Field(default=None, description="First name of the recipient. Will be used in the body of the email / text (if configured). If this information is not available, leave this field blank.")
 
 LinkDeliveryRecipient.update_forward_refs()

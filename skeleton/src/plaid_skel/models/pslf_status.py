@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -21,7 +21,7 @@ class PSLFStatus(BaseModel):
 
 
     estimated_eligibility_date: Optional[date_] = Field(default=None, description="The estimated date borrower will have completed 120 qualifying monthly payments. Returned in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format (YYYY-MM-DD).")
-    payments_made: Optional[float] = Field(default=None, description="The number of qualifying payments that have been made.")
-    payments_remaining: Optional[float] = Field(default=None, description="The number of qualifying payments remaining.")
+    payments_made: Optional[int] = Field(default=None, description="The number of qualifying payments that have been made.")
+    payments_remaining: Optional[int] = Field(default=None, description="The number of qualifying payments remaining.")
 
 PSLFStatus.update_forward_refs()

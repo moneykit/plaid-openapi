@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -21,6 +21,6 @@ class IdentityVerificationTemplateReference(BaseModel):
 
 
     id: str = Field( description="ID of the associated Identity Verification template.")
-    version: float = Field( description="Version of the associated Identity Verification template.")
+    version: int = Field( description="Version of the associated Identity Verification template.")
 
 IdentityVerificationTemplateReference.update_forward_refs()

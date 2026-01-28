@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class Form1099Type(str, Enum):
     FORM_1099_TYPE_UNKNOWN = "FORM_1099_TYPE_UNKNOWN"
     FORM_1099_TYPE_MISC = "FORM_1099_TYPE_MISC"

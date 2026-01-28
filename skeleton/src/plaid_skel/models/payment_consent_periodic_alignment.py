@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PaymentConsentPeriodicAlignment(str, Enum):
     CALENDAR = "CALENDAR"
     CONSENT = "CONSENT"

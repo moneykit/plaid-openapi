@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -23,6 +23,7 @@ class InvestmentsTransactionsGetRequestOptions(BaseModel):
     account_ids: Optional[List[str]] = Field(default=None, description="An array of `account_ids` to retrieve for the Item.")
     count: Optional[int] = Field(default=None, description="The number of transactions to fetch. ")
     offset: Optional[int] = Field(default=None, description="The number of transactions to skip when fetching transaction history")
+    async_update: Optional[bool] = Field(default=None, description="If the Item was not initialized with the investments product via the `products` array when calling `/link/token/create`, and `async_update` is set to true, the initial Investments extraction will happen asynchronously. Plaid will subsequently fire a `HISTORICAL_UPDATE` webhook when the extraction completes. When `false`, Plaid will wait to return a response until extraction completion and no `HISTORICAL_UPDATE` webhook will fire. Note that while the extraction is happening asynchronously, calls to `/investments/transactions/get` and `/investments/refresh` will return `PRODUCT_NOT_READY` errors until the extraction completes.")
 
     @field_validator("count")
     @classmethod

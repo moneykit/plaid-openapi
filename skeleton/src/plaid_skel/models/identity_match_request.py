@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.identity_match_request_options import IdentityMatchRequestOptions
 from plaid_skel.models.identity_match_user import IdentityMatchUser
 
@@ -26,7 +26,6 @@ class IdentityMatchRequest(BaseModel):
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     access_token: str = Field( description="The access token associated with the Item data is being requested for.")
     user: Optional[IdentityMatchUser] = Field(default=None,)
-    identity_verification_id: Optional[str] = Field(default=None, description="ID of the associated Identity Verification attempt. This field can be used instead of `user` to perform fuzzy match against the data collected during identity verification.")
     options: Optional[IdentityMatchRequestOptions] = Field(default=None,)
 
 IdentityMatchRequest.update_forward_refs()

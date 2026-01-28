@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.doc_type import DocType
 
 
@@ -22,7 +22,7 @@ class DocumentMetadata(BaseModel):
 
 
     name: Optional[str] = Field(default=None, description="The name of the document.")
-    status: Optional[str] = Field(default=None, description="The processing status of the document.  `PROCESSING_COMPLETE`: The document was successfully processed.  `DOCUMENT_ERROR`: The document could not be processed. Possible causes include: The document was an unacceptable document type such as an offer letter or bank statement, the document image was cropped or blurry, or the document was corrupted.  `UNKNOWN` or `null`: An internal error occured. If this happens repeatedly, contact support or your Plaid account manager.")
+    status: Optional[str] = Field(default=None, description="The processing status of the document.  `PROCESSING_COMPLETE`: The document was successfully processed.  `DOCUMENT_ERROR`: The document could not be processed. Possible causes include: The document was an unacceptable document type such as an offer letter or bank statement, the document image was cropped or blurry, or the document was corrupted.  `UNKNOWN` or `null`: An internal error occurred. If this happens repeatedly, contact support or your Plaid account manager.")
     doc_id: Optional[str] = Field(default=None, description="An identifier of the document that is also present in the paystub response.")
     doc_type: Optional[DocType] = Field(default=None,)
 

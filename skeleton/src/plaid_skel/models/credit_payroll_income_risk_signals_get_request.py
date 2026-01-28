@@ -11,13 +11,13 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class CreditPayrollIncomeRiskSignalsGetRequest(BaseModel):
-    """CreditPayrollIncomeRiskSignalsGetRequest defines the request schema for `/beta/credit/payroll_income/risk_signals/get`"""
+    """CreditPayrollIncomeRiskSignalsGetRequest defines the request schema for `/credit/payroll_income/risk_signals/get`"""
 
 
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")

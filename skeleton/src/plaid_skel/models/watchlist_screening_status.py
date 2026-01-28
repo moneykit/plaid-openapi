@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class WatchlistScreeningStatus(str, Enum):
     REJECTED = "rejected"
     PENDING_REVIEW = "pending_review"

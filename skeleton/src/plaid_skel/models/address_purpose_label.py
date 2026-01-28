@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class AddressPurposeLabel(str, Enum):
     RESIDENTIAL = "residential"
     COMMERCIAL = "commercial"

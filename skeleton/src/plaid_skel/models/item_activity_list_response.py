@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.activity import Activity
 from plaid_skel.models.last_data_access_times import LastDataAccessTimes
 
@@ -22,7 +22,7 @@ class ItemActivityListResponse(BaseModel):
     """Describes a historical log of user consent events."""
 
 
-    request_id: Optional[str] = Field(default=None, description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
+    request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
     activities: List[Activity] = Field( description="A list of activities.")
     last_data_access_times: List[LastDataAccessTimes] = Field( description="An array of objects containing timestamps for the last time each data type was accessed per application.")
     cursor: Optional[str] = Field(default=None, description="Cursor used for pagination.")

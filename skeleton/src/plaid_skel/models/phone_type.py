@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class PhoneType(str, Enum):
     PHONE = "phone"
     FAX = "fax"

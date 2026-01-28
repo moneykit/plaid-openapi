@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class DocumentAuthenticityMatchCode(str, Enum):
     MATCH = "match"
     PARTIAL_MATCH = "partial_match"

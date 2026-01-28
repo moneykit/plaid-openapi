@@ -11,7 +11,8 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.payment_initiation_address import PaymentInitiationAddress
 from plaid_skel.models.wallet_transaction_counterparty_numbers import WalletTransactionCounterpartyNumbers
 
 
@@ -23,6 +24,8 @@ class WalletTransactionCounterparty(BaseModel):
 
     name: str = Field( description="The name of the counterparty")
     numbers: WalletTransactionCounterpartyNumbers = Field()
+    address: Optional[PaymentInitiationAddress] = Field(default=None,)
+    date_of_birth: Optional[date_] = Field(default=None, description="The counterparty's birthdate, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) (YYYY-MM-DD) format.")
 
     @field_validator("name")
     @classmethod

@@ -11,8 +11,9 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.link_token_get_metadata_response import LinkTokenGetMetadataResponse
+from plaid_skel.models.link_token_get_sessions_response import LinkTokenGetSessionsResponse
 
 
 
@@ -24,6 +25,7 @@ class LinkTokenGetResponse(BaseModel):
     link_token: str = Field( description="A `link_token`, which can be supplied to Link in order to initialize it and receive a `public_token`, which can be exchanged for an `access_token`.")
     created_at: Optional[datetime_] = Field(default=None, description="The creation timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
     expiration: Optional[datetime_] = Field(default=None, description="The expiration timestamp for the `link_token`, in [ISO 8601](https://wikipedia.org/wiki/ISO_8601) format.")
+    link_sessions: Optional[List[LinkTokenGetSessionsResponse]] = Field(default=None, description="Information about link sessions created using this `link_token`.")
     metadata: LinkTokenGetMetadataResponse = Field()
     request_id: str = Field( description="A unique identifier for the request, which can be used for troubleshooting. This identifier, like all Plaid identifiers, is case sensitive.")
 

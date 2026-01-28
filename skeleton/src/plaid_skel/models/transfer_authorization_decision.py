@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class TransferAuthorizationDecision(str, Enum):
     APPROVED = "approved"
     DECLINED = "declined"

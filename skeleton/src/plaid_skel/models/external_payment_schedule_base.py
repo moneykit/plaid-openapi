@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import ConfigDict, AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 
@@ -19,6 +19,7 @@ from plaid_skel.models.payment_schedule_interval import PaymentScheduleInterval
 
 class ExternalPaymentScheduleBase(BaseModel):
     """The schedule that the payment will be executed on. If a schedule is provided, the payment is automatically set up as a standing order. If no schedule is specified, the payment will be executed only once."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     interval: Optional[PaymentScheduleInterval] = Field(default=None,)

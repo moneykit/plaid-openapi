@@ -11,16 +11,16 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
 
 class TransferAuthorizationDevice(BaseModel):
-    """Information about the device being used to initiate the authorization."""
+    """Information about the device being used to initiate the authorization. These fields are not currently incorporated into the risk check."""
 
 
-    ip_address: Optional[str] = Field(default=None, description="The IP address of the device being used to initiate the authorization. Required for Guarantee.")
-    user_agent: Optional[str] = Field(default=None, description="The user agent of the device being used to initiate the authorization. Required for Guarantee.")
+    ip_address: Optional[str] = Field(default=None, description="The IP address of the device being used to initiate the authorization.")
+    user_agent: Optional[str] = Field(default=None, description="The user agent of the device being used to initiate the authorization.")
 
 TransferAuthorizationDevice.update_forward_refs()

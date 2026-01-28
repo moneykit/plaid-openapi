@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class IdentityVerificationStatus(str, Enum):
     ACTIVE = "active"
     SUCCESS = "success"

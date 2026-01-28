@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.wallet_transaction_status import WalletTransactionStatus
 from plaid_skel.models.webhook_environment_values import WebhookEnvironmentValues
 
@@ -25,7 +25,7 @@ class WalletTransactionStatusUpdateWebhook(BaseModel):
     webhook_type: str = Field( description="`WALLET`")
     webhook_code: str = Field( description="`WALLET_TRANSACTION_STATUS_UPDATE`")
     transaction_id: str = Field( description="The `transaction_id` for the wallet transaction being updated")
-    payment_id: Optional[str] = Field(default=None, description="The `payment_id` associated with the transaction. This will be present in case of `REFUND` and `PIS_PAY_IN`")
+    payment_id: Optional[str] = Field(default=None, description="The `payment_id` associated with the transaction. This will be present in case of `REFUND` and `PIS_PAY_IN`.")
     wallet_id: Optional[str] = Field(default=None, description="The EMI (E-Money Institution) wallet that this payment is associated with. This wallet is used as an intermediary account to enable Plaid to reconcile the settlement of funds for Payment Initiation requests.")
     new_status: WalletTransactionStatus = Field()
     old_status: WalletTransactionStatus = Field()

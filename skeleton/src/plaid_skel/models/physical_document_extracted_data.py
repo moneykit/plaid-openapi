@@ -12,6 +12,7 @@ import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
 from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.identity_verification_document_address_response import IdentityVerificationDocumentAddressResponse
 from plaid_skel.models.physical_document_category import PhysicalDocumentCategory
 
 
@@ -19,6 +20,7 @@ from plaid_skel.models.physical_document_category import PhysicalDocumentCategor
 
 class PhysicalDocumentExtractedData(BaseModel):
     """Data extracted from a user-submitted document."""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     id_number: Optional[str] = Field(default=None, description="Alpha-numeric ID number extracted via OCR from the user's document image.")
@@ -26,6 +28,8 @@ class PhysicalDocumentExtractedData(BaseModel):
     expiration_date: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     issuing_country: str = Field( description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
     issuing_region: Optional[str] = Field(default=None, description="An ISO 3166-2 subdivision code. Related terms would be \"state\", \"province\", \"prefecture\", \"zone\", \"subdivision\", etc.")
+    date_of_birth: Optional[date_] = Field(default=None, description="A date extracted from the document in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
+    address: Optional[IdentityVerificationDocumentAddressResponse] = Field(default=None,)
 
     @field_validator("issuing_country")
     @classmethod

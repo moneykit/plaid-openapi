@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class POBoxStatus(str, Enum):
     YES = "yes"
     NO = "no"

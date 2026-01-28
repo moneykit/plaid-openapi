@@ -19,6 +19,7 @@ from plaid_skel.models.payment_amount_currency import PaymentAmountCurrency
 
 class PaymentAmountNullable(BaseModel):
     """The amount and currency of a payment"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     currency: PaymentAmountCurrency = Field()

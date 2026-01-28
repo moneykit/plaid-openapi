@@ -35,7 +35,8 @@ fi
 if [ ! -f "2020-09-14.yml" ]
 then
     echo "Downloading latest Plaid yaml"
-    curl https://raw.githubusercontent.com/plaid/plaid-openapi/master/2020-09-14.yml > 2020-09-14.yml
+    # curl https://raw.githubusercontent.com/plaid/plaid-openapi/master/2020-09-14.yml > 2020-09-14.yml
+    curl https://raw.githubusercontent.com/plaid/plaid-openapi/4cab11dd1319775fb578d68e3ac73ff87ac72ba8/2020-09-14.yml > 2020-09-14.yml
 fi
 
 echo "modifying fastapi template with customized_template"

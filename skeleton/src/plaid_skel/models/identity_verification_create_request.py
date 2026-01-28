@@ -11,8 +11,8 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
-from plaid_skel.models.identity_verification_request_user import IdentityVerificationRequestUser
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from plaid_skel.models.identity_verification_create_request_user import IdentityVerificationCreateRequestUser
 
 
 
@@ -21,12 +21,19 @@ class IdentityVerificationCreateRequest(BaseModel):
     """Request schema for '/identity_verification/create'"""
 
 
+    client_user_id: Optional[str] = Field(default=None, description="A unique ID that identifies the end user in your system. This ID can also be used to associate user-specific data from other Plaid products. Financial Account Matching requires this field and the `/link/token/create` `client_user_id` to be consistent. Personally identifiable information, such as an email address or phone number, should not be used in the `client_user_id`.")
     is_shareable: bool = Field( description="A flag specifying whether you would like Plaid to expose a shareable URL for the verification being created.")
     template_id: str = Field( description="ID of the associated Identity Verification template.")
     gave_consent: bool = Field( description="A flag specifying whether the end user has already agreed to a privacy policy specifying that their data will be shared with Plaid for verification purposes.  If `gave_consent` is set to `true`, the `accept_tos` step will be marked as `skipped` and the end user's session will start at the next step requirement.")
-    user: IdentityVerificationRequestUser = Field()
+    user: Optional[IdentityVerificationCreateRequestUser] = Field(default=None,)
     client_id: Optional[str] = Field(default=None, description="Your Plaid API `client_id`. The `client_id` is required and may be provided either in the `PLAID-CLIENT-ID` header or as part of a request body.")
     secret: Optional[str] = Field(default=None, description="Your Plaid API `secret`. The `secret` is required and may be provided either in the `PLAID-SECRET` header or as part of a request body.")
     is_idempotent: Optional[bool] = Field(default=None, description="An optional flag specifying how you would like Plaid to handle attempts to create an Identity Verification when an Identity Verification already exists for the provided `client_user_id` and `template_id`. If idempotency is enabled, Plaid will return the existing Identity Verification. If idempotency is disabled, Plaid will reject the request with a `400 Bad Request` status code if an Identity Verification already exists for the supplied `client_user_id` and `template_id`.")
+
+    @field_validator("client_user_id")
+    @classmethod
+    def client_user_id_min_length(cls, value):
+        assert len(value) >= 1
+        return value
 
 IdentityVerificationCreateRequest.update_forward_refs()

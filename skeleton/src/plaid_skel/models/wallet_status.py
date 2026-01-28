@@ -4,6 +4,7 @@
 from enum import Enum
 
 
+
 class WalletStatus(str, Enum):
     UNKNOWN = "UNKNOWN"
     ACTIVE = "ACTIVE"

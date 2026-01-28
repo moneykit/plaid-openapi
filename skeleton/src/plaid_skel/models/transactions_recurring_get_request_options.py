@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -20,6 +20,6 @@ class TransactionsRecurringGetRequestOptions(BaseModel):
     """An optional object to be used with the request. If specified, `options` must not be `null`."""
 
 
-    include_personal_finance_category: Optional[bool] = Field(default=None, description="Include the [`personal_finance_category`](https://plaid.com/docs/api/products/transactions/#transactions-get-response-transactions-personal-finance-category) object for each transaction stream in the response.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories.")
+    include_personal_finance_category: Optional[bool] = Field(default=None, description="Include the [`personal_finance_category`](https://plaid.com/docs/api/products/transactions/#transactions-get-response-transactions-personal-finance-category) object for each transaction stream in the response.  All implementations are encouraged to set this field to `true` and to use the `personal_finance_category` field instead of `category`. Personal finance categories are the preferred categorization system for transactions, providing higher accuracy and more meaningful categories.  See the [`taxonomy csv file`](https://plaid.com/documents/transactions-personal-finance-category-taxonomy.csv) for a full list of personal finance categories.")
 
 TransactionsRecurringGetRequestOptions.update_forward_refs()

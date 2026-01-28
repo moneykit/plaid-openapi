@@ -11,7 +11,7 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import field_validator, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 
 
 
@@ -25,7 +25,7 @@ class WatchlistScreeningSearchTerms(BaseModel):
     date_of_birth: Optional[date_] = Field(default=None, description="A date in the format YYYY-MM-DD (RFC 3339 Section 5.6).")
     document_number: Optional[str] = Field(default=None, description="The numeric or alphanumeric identifier associated with this document.")
     country: Optional[str] = Field(default=None, description="Valid, capitalized, two-letter ISO code representing the country of this object. Must be in ISO 3166-1 alpha-2 form.")
-    version: float = Field( description="The current version of the search terms. Starts at `1` and increments with each edit to `search_terms`.")
+    version: int = Field( description="The current version of the search terms. Starts at `1` and increments with each edit to `search_terms`.")
 
     @field_validator("legal_name")
     @classmethod

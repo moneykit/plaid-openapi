@@ -11,8 +11,9 @@ from datetime import datetime as datetime_  # noqa: F401
 import re  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 
-from pydantic import AnyUrl, BaseModel, EmailStr, Field, validator  # noqa: F401
+from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, Field  # noqa: F401
 from plaid_skel.models.ach_class import ACHClass
+from plaid_skel.models.transfer_credit_funds_source import TransferCreditFundsSource
 from plaid_skel.models.transfer_type import TransferType
 from plaid_skel.models.transfer_user_in_response import TransferUserInResponse
 
@@ -25,7 +26,7 @@ class TransferAuthorizationProposedTransfer(BaseModel):
 
     ach_class: Optional[ACHClass] = Field(default=None,)
     account_id: Optional[str] = Field(default=None, description="The Plaid `account_id` for the account that will be debited or credited.")
-    funding_account_id: str = Field( description="The id of the funding account to use, available in the Plaid Dashboard. This determines which of your business checking accounts will be credited or debited.")
+    funding_account_id: Optional[str] = Field(default=None, description="The id of the associated funding account, available in the Plaid Dashboard. If present, this indicates which of your business checking accounts will be credited or debited.")
     type: TransferType = Field()
     user: TransferUserInResponse = Field()
     amount: str = Field( description="The amount of the transfer (decimal string with two digits of precision e.g. \"10.00\").")
@@ -33,5 +34,6 @@ class TransferAuthorizationProposedTransfer(BaseModel):
     origination_account_id: str = Field( description="Plaid's unique identifier for the origination account that was used for this transfer.")
     iso_currency_code: str = Field( description="The currency of the transfer amount. The default value is \"USD\".")
     originator_client_id: Optional[str] = Field(default=None, description="The Plaid client ID that is the originator of this transfer. Only present if created on behalf of another client as a third-party sender (TPS).")
+    credit_funds_source: Optional[TransferCreditFundsSource] = Field(default=None,)
 
 TransferAuthorizationProposedTransfer.update_forward_refs()

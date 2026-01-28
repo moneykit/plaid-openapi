@@ -18,6 +18,7 @@ from pydantic import field_validator, ConfigDict, AnyUrl, BaseModel, EmailStr, F
 
 class WalletTransactionCounterpartyInternational(BaseModel):
     """International Bank Account Number for a Wallet Transaction"""
+
     model_config = ConfigDict(json_schema_extra={"nullable": True})
 
     iban: Optional[str] = Field(default=None, description="International Bank Account Number (IBAN).")
